@@ -5,6 +5,7 @@
 
 # Chạy migration Database (tự động tạo database):
 dotnet tool install --global dotnet-ef
+dotnet restore 
 cd .. (tới directory backend)
 dotnet ef migrations add InitialCreate --project DataAccess --startup-project Application
 dotnet ef database update --project DataAccess --startup-project Application
