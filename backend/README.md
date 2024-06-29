@@ -4,16 +4,12 @@
 4. Đặt tên hàm rõ ràng, làm sao cho người đọc có thể hiểu khi đọc tên hàm và tham số
 
 # Chạy migration Database (tự động tạo database):
-dotnet tool install --global dotnet-ef
-dotnet restore
-cd .. (tới directory backend)
-dotnet ef migrations add InitialCreate --project DataAccess --startup-project Application__
+1. dotnet tool install --global dotnet-ef
+2. dotnet restore 
+3. cd .. (tới directory backend)
+4. dotnet ef database update --project DataAccess --startup-project Application
 
 
-dotnet ef database update --project DataAccess --startup-project Application
-cập nhật database khi có thay đổi:
-dotnet ef migrations add Tên-mới-khác-cái-mấy-cái-cập-nhật-cũ --project DataAccess --startup-project Application
-dotnet ef database update --project DataAccess --startup-project Application
 
 # Đăng nhập 3 rolls:
 nhanvien@email.com - 123456
