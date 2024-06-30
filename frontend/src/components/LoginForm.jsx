@@ -1,15 +1,14 @@
 import React, { useState } from 'react';
 import logo from '../assets/logo.png';
 
-const LoginForm = () => {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+
+const LoginForm = ({submitHandler}) => {
+    const [email, setEmail] = useState('nhanvien@email.com');
+    const [password, setPassword] = useState('123456');
   
     const handleSubmit = (e) => {
-      e.preventDefault();
-      // Xử lý logic đăng nhập tại đây
-      console.log('Email:', email);
-      console.log('Password:', password);
+        e.preventDefault();
+        submitHandler({email, password});
     };
   
     return (
