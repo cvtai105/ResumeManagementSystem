@@ -1,4 +1,4 @@
-# Quy Ước: 
+# Conventions: 
 1. Sử dụng dependency injection
 2. Sử dụng async/await Task cho những tác vụ truy vấn DB, gọi API, ...
 4. Đặt tên hàm rõ ràng, làm sao cho người đọc có thể hiểu khi đọc tên hàm và tham số
@@ -12,7 +12,6 @@
 # Running instruction
 1. cd application
 1. dotnet watch run
-
 
 # Đăng nhập 3 rolls:
 nhanvien@email.com - 123456
