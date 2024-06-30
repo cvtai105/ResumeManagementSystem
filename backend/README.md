@@ -9,6 +9,11 @@
 3. dotnet restore 
 4. dotnet ef database update --project DataAccess --startup-project Application
 
+# Running instruction
+1. cd application
+1. dotnet watch run
+
+
 # Đăng nhập 3 rolls:
 nhanvien@email.com - 123456
 ungvien@email.com - 124356
