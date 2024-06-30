@@ -6,168 +6,121 @@
 @tailwind utilities;
 
 @layer components {
-  * {
-    @apply m-0 p-0 box-border text-base outline-purple/30 duration-100;
-  }
+    * {
+        @apply m-0 p-0 box-border text-base outline-purple/30 duration-100;
+    }
 
-  html {
-    @apply overflow-x-hidden;
-  }
+    html{
+        @apply overflow-x-hidden;
+    }
 
-  body {
-    @apply font-roboto font-normal text-black;
-  }
+    body {
+        @apply font-roboto font-normal text-black;
+    }
 
-  i {
-    @apply mt-0.5;
-  }
+    i {
+        @apply mt-0.5;
+    }
 
-  section {
-    @apply py-4 px-[5vw] md:px-[7vw] lg:px-[10vw];
-  }
+    section{
+        @apply py-4 px-[5vw] md:px-[7vw] lg:px-[10vw];
+    }
 
-  ::selection {
-    @apply bg-purple/30;
-  }
+    ::selection {
+        @apply bg-purple/30;
+    }
 
-  .resize-y {
-    resize: vertical;
-    overflow: auto;
-    min-height: 150px; /* Optional: set a minimum height */
-  }
+    img{
+        @apply w-full h-full object-cover;
+    }
 
-  .fixed-toolbar .ql-toolbar {
-    position: sticky;
-    top: 0;
-    z-index: 10; /* Ensure it is above other elements */
-    background-color: white; /* Ensure it has a background */
-  }
+    .navbar{
+        @apply z-10 sticky top-0 flex items-center gap-12 w-full px-[5vw] py-5 h-[80px] border-b border-grey bg-royal-blue-transparent mx-auto;
+    }
 
-  img {
-    @apply w-full h-full object-cover;
-  }
+    .h-cover{
+        @apply min-h-[calc(100vh-80px)];
+    }
 
-  .navbar {
-    @apply z-10 sticky top-0 flex items-center gap-12 w-full px-[5vw] py-5 h-[80px] border-b border-grey bg-alice-blue mx-auto;
-  }
+    .center{
+        @apply block mx-auto;
+    }
 
-  .h-cover {
-    @apply min-h-[calc(100vh-80px)];
-  }
+    .btn-dark{
+        @apply whitespace-nowrap bg-dodger-blue text-white rounded-md py-3 px-6 text-xl capitalize hover:bg-opacity-80;
+    }
 
-  .center {
-    @apply block mx-auto;
-  }
+    .btn-light{
+        @apply btn-dark border border-smoke bg-white text-black;
+    }
 
-  .btn-dark {
-    @apply whitespace-nowrap bg-dodger-blue text-white rounded-md py-3 px-6 text-xl capitalize hover:bg-opacity-80;
-  }
+    .input-box {
+        @apply w-[100%] rounded-md p-4 bg-white pl-12 border border-dark-grey focus:bg-transparent placeholder:text-black placeholder:text-opacity-50;
+    }
 
-  .btn-light {
-    @apply btn-dark border border-smoke bg-white text-black;
-  }
+    input:disabled, input:disabled ~ .input-icon{
+        @apply opacity-50;
+    }
 
-  .input-box {
-    @apply w-[100%] rounded-md p-4 bg-white pl-12 border border-dark-grey focus:bg-transparent placeholder:text-black placeholder:text-opacity-50;
-  }
+    .input-icon{
+        @apply absolute left-4 top-1/2 -translate-y-1/2;
+    }
 
-  input:disabled,
-  input:disabled ~ .input-icon {
-    @apply opacity-50;
-  }
+    .link{
+        @apply text-dark-grey hover:text-black hover:bg-grey p-3 px-4 block opacity-75;
+    }
 
-  .input-icon {
-    @apply absolute left-4 top-1/2 -translate-y-1/2;
-  }
+    .hide{
+        @apply opacity-0 pointer-events-none duration-100;
+    }
 
-  .link {
-    @apply text-dark-grey hover:text-black hover:bg-grey p-3 px-4 block opacity-75;
-  }
+    .show{
+        @apply opacity-100 pointer-events-auto;
+    }
 
-  .hide {
-    @apply opacity-0 pointer-events-none duration-100;
-  }
+    .sidebar-link{
+        @apply flex gap-4 items-center py-5 text-dark-grey hover:text-black;
+    }
 
-  .show {
-    @apply opacity-100 pointer-events-auto;
-  }
+    .sidebar-link.active{
+        @apply text-black border-r-2 border-black pl-6 bg-grey/50 -ml-6 md:rounded-tl-lg md:rounded-bl-lg max-md:border-none;
+    }
 
-  .sidebar-link {
-    @apply flex gap-4 items-center py-5 text-dark-grey hover:text-black;
-  }
+    #textEditor h2, h2{
+        @apply font-inter text-4xl leading-normal font-bold max-md:text-3xl max-md:leading-snug !important;
+    }
 
-  .sidebar-link.active {
-    @apply text-black border-r-2 border-black pl-6 bg-grey/50 -ml-6 md:rounded-tl-lg md:rounded-bl-lg max-md:border-none;
-  }
+    #textEditor h3, h3 {
+        @apply font-inter text-3xl leading-loose max-md:text-2xl max-md:leading-normal !important;
+    }
 
-  #textEditor h2,
-  h2 {
-    @apply font-roboto text-4xl leading-normal font-bold max-md:text-3xl max-md:leading-snug !important;
-  }
+    #textEditor *, .blog-page-content *{
+        @apply font-gelasio text-xl leading-10 md:text-2xl;
+    }
 
-  #textEditor h3,
-  h3 {
-    @apply font-roboto text-3xl leading-loose max-md:text-2xl max-md:leading-normal !important;
-  }
+    #textEditor a, .blog-page-content a{
+        @apply text-purple underline hover:opacity-50;
+    }
 
-  #textEditor *,
-  .blog-page-content * {
-    @apply font-roboto text-xl leading-10 md:text-2xl;
-  }
+    .tag{
+        @apply p-3 bg-grey rounded-full px-6 capitalize;
+    }
 
-  #textEditor a,
-  .blog-page-content a {
-    @apply text-purple underline hover:opacity-50;
-  }
+    .blog-title{
+        @apply text-2xl font-medium leading-7 line-clamp-3 sm:line-clamp-2;
+    }
 
-  .tag {
-    @apply p-3 bg-grey rounded-full px-6 capitalize;
-  }
-
-  .blog-title {
-    @apply text-2xl font-medium leading-7 line-clamp-3 sm:line-clamp-2;
-  }
-
-  .blog-index {
-    @apply text-4xl sm:text-3xl lg:text-5xl font-bold text-grey leading-none;
-  }
-
-  .border ul, .border ol {
-    margin: 0.5em 0;
-    padding-left: 1.5em;
-  }
-  
-  .border ul {
-    list-style-type: disc;
-  }
-  
-  .border ol {
-    list-style-type: decimal;
-  }
-
-  .ql-editor ol {
-    list-style-type: decimal;
-    margin-left: 1.5em; /* Ensure proper indentation */
-  }
-  
-  .ql-editor ul {
-    list-style-type: disc;
-    margin-left: 1.5em; /* Ensure proper indentation */
-  }
-  
-  .ql-editor ol li, .ql-editor ul li {
-    list-style-type: disc;
-    margin-bottom: 0.5em; /* Ensure spacing between items */
-  }
+    .blog-index{
+        @apply text-4xl sm:text-3xl lg:text-5xl font-bold text-grey leading-none;
+    }
 }
 
-.ce-block__content,
-.ce-toolbar__content {
-  max-width: 900px;
+.ce-block__content, .ce-toolbar__content{
+    max-width: 900px;
 }
 
-.cdx-settings-button[data-tune="withBorder"],
-.cdx-settings-button[data-tune="withBackground"],
-.cdx-settings-button[data-tune="stretched"] {
+.cdx-settings-button[data-tune='withBorder'],
+.cdx-settings-button[data-tune='withBackground'],
+.cdx-settings-button[data-tune='stretched'] {
   display: none;
 }
