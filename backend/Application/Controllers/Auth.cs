@@ -61,6 +61,7 @@ namespace Application.Controllers
                 var cookieOptions = new CookieOptions
                 {
                     HttpOnly = true,
+                    SameSite = SameSiteMode.None,
                     Expires = DateTime.UtcNow.AddHours(1)
                 };
 
