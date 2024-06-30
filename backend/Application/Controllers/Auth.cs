@@ -34,12 +34,11 @@ namespace Application.Controllers
         {
             if (await _nhanVienBL.IsValidUser(loginInfo))
             {
-                
                 var tokenString = GenerateToken(loginInfo.Email, "nhanvien");
 
                 var cookieOptions = new CookieOptions
                 {
-                    HttpOnly = true,
+                    HttpOnly = false,
                     Expires = DateTime.UtcNow.AddHours(1)
                 };
 
@@ -61,7 +60,6 @@ namespace Application.Controllers
                 var cookieOptions = new CookieOptions
                 {
                     HttpOnly = true,
-                    SameSite = SameSiteMode.None,
                     Expires = DateTime.UtcNow.AddHours(1)
                 };
 
