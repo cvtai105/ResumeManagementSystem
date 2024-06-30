@@ -8,9 +8,9 @@ public class NhanVienDAO(AppDbContext context)
 {
     private readonly AppDbContext _context = context;
 
-    public async Task<NhanVien> GetByEmail(string email)
+    public async Task<NhanVien?> GetByEmail(string email)
     {
-        return await _context.NhanViens.FirstAsync(nv => nv.Email == email);
+        return await _context.NhanViens.FirstOrDefaultAsync(nv => nv.Email == email);
     }
 
     public async Task<NhanVien> Add(NhanVien nhanVien)

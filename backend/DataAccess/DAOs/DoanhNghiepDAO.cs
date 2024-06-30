@@ -12,9 +12,9 @@ namespace DataAccess.DAOs
     {
         private readonly AppDbContext _context = context;
 
-        public async Task<DoanhNghiep> GetByEmail(string email)
+        public async Task<DoanhNghiep?> GetByEmail(string email)
         {
-            return await _context.DoanhNghieps.FirstAsync(dn => dn.Email == email);
+            return await _context.DoanhNghieps.FirstOrDefaultAsync(dn => dn.Email == email);
         }
 
         public async Task<DoanhNghiep> Add(DoanhNghiep doanhNghiep)
