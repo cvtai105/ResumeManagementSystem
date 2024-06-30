@@ -16,16 +16,17 @@ const routes = createRoutesFromElements(
   <>
     <Route path="/" element={<UngVienLayout />} >
       <Route index element={<UngVienHome />} />
-      <Route path="login" element={<UngVienLogin />} />
     </Route>
     <Route path="/nhanvien" element={<NhanVienLayout />} >
       <Route index element={<NhanVienHome />} />
-      <Route path="login" element={<NhanVienLogin />} />
     </Route>
     <Route path="/doanhnghiep" element={<DoanhNghiepLayout />} >
       <Route index element={<DoanhNghiepHome />} />
-      <Route path="login" element={<DoanhNghiepLogin />} />
     </Route>
+    <Route path="/dangnhap" element={<UngVienLogin />} />
+    <Route path="/nhanvien/dangnhap" element={<NhanVienLogin />} />
+    <Route path='/doanhnghiep/dangnhap' element={<DoanhNghiepLogin />} />
+    <Route path="*" element={<div>Not Found</div>} />
   </>
 );
 

@@ -36,7 +36,7 @@ module.exports = {
         fontFamily: {
           inter: ["'Inter'", "sans-serif"],
           gelasio: ["'Gelasio'", "serif"],
-          roboto: ["'Roboto'", "sans-serif"]
+          roboto: ["Roboto, Helvetica Neue, Helvetica, Arial, sans-serif"]
         },
     },
 
