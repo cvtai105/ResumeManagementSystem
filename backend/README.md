@@ -9,14 +9,10 @@
 3. dotnet restore 
 4. dotnet ef database update --project DataAccess --startup-project Application
 
-
-
 # Đăng nhập 3 rolls:
 nhanvien@email.com - 123456
 ungvien@email.com - 124356
 doanhnghiep@email.com - 123456
-
-
 
 # các package:
 dotnet add package Swashbuckle.AspNetCore

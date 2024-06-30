@@ -4,7 +4,6 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
-using Application.Identity;
 using DataAccess.DAOs;
 using BusinessLogic;
 
@@ -69,12 +68,7 @@ builder.Services.AddAuthentication(options =>
     };
 });
 
-builder.Services.AddAuthorization(options =>
-{
-    options.AddPolicy(IndentityData.AdminPolicyName, policy => policy.RequireClaim(IndentityData.AdminClaimName, "true"));
-    options.AddPolicy(IndentityData.JobSeekerPolicyName, policy => policy.RequireClaim(IndentityData.JobSeekerClaimName, "true"));
-    options.AddPolicy(IndentityData.JobProviderPolicyName, policy => policy.RequireClaim(IndentityData.JobProviderClaimName , "true"));
-});
+builder.Services.AddAuthorization();
 
 
 var app = builder.Build();
