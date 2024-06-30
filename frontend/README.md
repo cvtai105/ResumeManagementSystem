@@ -68,3 +68,16 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+# Instruction
+
+
+Chạy dòng lệnh này để sử dụng icon: npm install @flaticon/flaticon-uicons
+
+Cài đặt các gói cần thiết: 
+- npm i react-router-dom
+- npm install react-quill
+
+Lưu ý:
+btn-dark: Nút có background
+btn-light: Nút có border

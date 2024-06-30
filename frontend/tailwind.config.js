@@ -4,22 +4,25 @@ module.exports = {
     "./src/**/*.{js,jsx,ts,tsx}",
   ],
   theme: {
-    colors: {
-        'white': '#FFFFFF',
-        'black': '#242424',
-        'grey': '#F3F3F3',
-        'dark-grey': '#5A5A5A',
-        'red': '#FF4E4E',
-        'transparent': 'transparent',
-        'dodger-blue': '#2196F3',
-        'purple': '#8B46FF',
-        'teal': '#28DBD0',
-        'dark-cyan': '#008B8B',
-        'smoke': '#848884',
-        'coral-pink': '#F88379',
-        'royal-blue': '#5B84FF',
-        'royal-blue-transparent': 'rgba(91, 132, 255, 0.08)'
-    },
+      
+      colors: {
+          'white': '#FFFFFF',
+          'black': '#242424',
+          'grey': '#F3F3F3',
+          'dark-grey': '#5A5A5A',
+          'red': '#FF4E4E',
+          'transparent': 'transparent',
+          'dodger-blue': '#2196F3',
+          'purple': '#8B46FF',
+          'teal': '#28DBD0',
+          'navy': '#002160',
+          'dark-cyan': '#008B8B',
+          'smoke': '#848884',
+          'coral-pink': '#F88379',
+          'royal-blue': '#5B84FF',
+          'alice-blue': '#F0F8FF',
+          'royal-blue-transparent': 'rgba(91, 132, 255, 0.08)'
+      },
 
     fontSize: {
         'sm': '12px',
@@ -32,13 +35,13 @@ module.exports = {
         inherit: 'inherit'
     },
 
-    extend: {
+      extend: {
         fontFamily: {
           inter: ["'Inter'", "sans-serif"],
           gelasio: ["'Gelasio'", "serif"],
           roboto: ["Roboto, Helvetica Neue, Helvetica, Arial, sans-serif"]
         },
-    },
+      },
 
   },
 
