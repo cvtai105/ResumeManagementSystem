@@ -12,8 +12,6 @@ import DoanhNghiepLogin from './pages/DoanhNghiep/Login';
 import { createBrowserRouter } from 'react-router-dom';
 
 
-
-
 const routes = createRoutesFromElements(
   <>
     <Route path="/" element={<UngVienLayout />} >
