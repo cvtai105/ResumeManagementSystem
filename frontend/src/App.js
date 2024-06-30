@@ -1,5 +1,7 @@
 import React from 'react';
 import { createRoutesFromElements, Route, RouterProvider } from 'react-router-dom';
+import Navbar from './components/Navbar';
+import Footer from './components/Footer';
 import NhanVienLayout from './layouts/NhanVien';
 import UngVienLayout from './layouts/UngVien';
 import DoanhNghiepLayout from './layouts/DoanhNghiep';
@@ -9,6 +11,7 @@ import DoanhNghiepHome from './pages/DoanhNghiep/Home';
 import NhanVienLogin from './pages/NhanVien/Login';
 import UngVienLogin from './pages/UngVien/Login';
 import DoanhNghiepLogin from './pages/DoanhNghiep/Login';
+import DangKyThongTinDangTuyen from './pages/DoanhNghiep/DangKyThongTinDangTuyen';
 import { createBrowserRouter } from 'react-router-dom';
 
 
@@ -26,6 +29,9 @@ const routes = createRoutesFromElements(
     <Route path="/dangnhap" element={<UngVienLogin />} />
     <Route path="/nhanvien/dangnhap" element={<NhanVienLogin />} />
     <Route path='/doanhnghiep/dangnhap' element={<DoanhNghiepLogin />} />
+    <Route path="/doanhnghiep" element={<><Navbar /><Footer /></>}>
+      <Route path="dang-ky-dang-tuyen" element={<DangKyThongTinDangTuyen/>}/>
+    </Route>
     <Route path="*" element={<div>Not Found</div>} />
   </>
 );

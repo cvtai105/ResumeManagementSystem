@@ -1,16 +1,19 @@
 import { Outlet } from "react-router-dom";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 function DoanhNghiepLayout() {
   return (
     <>
       <header>
-        <h1>DoanhNghiep  Header</h1>
+        <Navbar/>
       </header>
       <main>
         <Outlet /> {/* This is where nested routes will be rendered */}
+       
       </main>
       <footer>
-        <p>Doanh Nghiệp Footer</p>
+        <Footer/>
       </footer>
     </>
   );

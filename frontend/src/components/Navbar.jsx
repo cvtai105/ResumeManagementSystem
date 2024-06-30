@@ -7,15 +7,15 @@ const Navbar = () => {
   return (
     <>
     <nav className="navbar">
-        <Link to="/" className="nav-logo flex-none w-20">
+        <Link to="/doanhnghiep" className="nav-logo flex-none w-20">
           <img src={logo} alt="JobRepo Logo" className="w-full" />
         </Link>
         <ul className="ml-5 flex justify-center space-x-10 font-semibold">
             <li> 
-                <Link to="/" className="hover:text-dodger-blue">Trang chủ</Link>
+                <Link to="/doanhnghiep" className="hover:text-dodger-blue">Trang chủ</Link>
             </li>
             <li>
-                <Link to="/dang-ky-dang-tuyen" className="hover:text-dodger-blue">Đăng tuyển</Link>
+                <Link to="dang-ky-dang-tuyen" className="hover:text-dodger-blue">Đăng tuyển</Link>
             </li>
         </ul>
         <div className="ml-auto flex gap-10">

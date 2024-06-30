@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 
@@ -69,7 +69,7 @@ const FormDangKyTuyenDungBuoc1 = ({ nextStep, handleChange, formData, setFormDat
           <ReactQuill
               value={formData.criteria}
               onChange={handleQuillChange}
-              className="mt-1 block w-full border border-smoke rounded-md resize-y fixed-toolbar h-[300px]"
+              className="mt-1 block w-full border border-smoke rounded-md resize-y fixed-toolbar"
               modules={modules}
               formats={formats}
             />
