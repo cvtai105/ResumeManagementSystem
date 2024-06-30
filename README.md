@@ -6,6 +6,3 @@
 
 # Software architect
 
-#
-Chạy dòng lệnh này để sử dụng icon:
-npm install @flaticon/flaticon-uicons

@@ -13,10 +13,12 @@ export default {
           'dodger-blue': '#2196F3',
           'purple': '#8B46FF',
           'teal': '#28DBD0',
+          'navy': '#002160',
           'dark-cyan': '#008B8B',
           'smoke': '#848884',
           'coral-pink': '#F88379',
           'royal-blue': '#5B84FF',
+          'alice-blue': '#F0F8FF',
           'royal-blue-transparent': 'rgba(91, 132, 255, 0.08)'
       },
 
@@ -33,9 +35,7 @@ export default {
 
       extend: {
           fontFamily: {
-            inter: ["'Inter'", "sans-serif"],
-            gelasio: ["'Gelasio'", "serif"],
-            roboto: ["'Roboto'", "sans-serif"]
+            roboto: ['Roboto', 'sans-serif'],
           },
       },
 

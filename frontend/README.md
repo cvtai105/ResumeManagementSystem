@@ -6,3 +6,17 @@ Currently, two official plugins are available:
 
 - [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
 - [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+
+# Instruction
+
+Running frontend: clone this repo. cd frontend. npm install. npm run dev.
+
+Chạy dòng lệnh này để sử dụng icon: npm install @flaticon/flaticon-uicons
+
+Cài đặt các gói cần thiết: 
+- npm i react-router-dom
+- npm install react-quill
+
+Lưu ý:
+btn-dark: Nút có background
+btn-light: Nút có border
