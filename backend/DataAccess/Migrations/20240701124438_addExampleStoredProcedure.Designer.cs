@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccess.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240629131120_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20240701124438_addExampleStoredProcedure")]
+    partial class addExampleStoredProcedure
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -45,9 +45,6 @@ namespace DataAccess.Migrations
                     b.Property<DateTime?>("NgayBatDau")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime?>("ThoiGianDangTuyen")
-                        .HasColumnType("int");
-
                     b.Property<DateTime?>("NgayKetThuc")
                         .HasColumnType("datetime2");
 
@@ -59,6 +56,9 @@ namespace DataAccess.Migrations
 
                     b.Property<string>("TenViTri")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("ThoiGianDangTuyen")
+                        .HasColumnType("int");
 
                     b.Property<int?>("UuDaiId")
                         .HasColumnType("int");
@@ -352,6 +352,9 @@ namespace DataAccess.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("MoTa")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TenTieuChi")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");

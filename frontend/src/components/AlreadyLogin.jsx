@@ -1,5 +1,5 @@
-import React from "react";
-import logo from "../assets/logo.png";
+import React, { useState } from 'react';
+import logo from '../assets/logo.png';
 
 const AlreadyLogin = ({ homeRedirectHandle, LogoutHandle }) => {
   return (
