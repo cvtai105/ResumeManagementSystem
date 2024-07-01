@@ -48,13 +48,20 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 builder.Services.AddScoped<NhanVienDAO>();
 builder.Services.AddScoped<UngVienDAO>();
 builder.Services.AddScoped<DoanhNghiepDAO>();
+builder.Services.AddScoped<DangTuyenDAO>();
+builder.Services.AddScoped<UuDaiDAO>();
+builder.Services.AddScoped<TieuChiTuyenDungDAO>();
+builder.Services.AddScoped<HinhThucDangTuyenDAO>();
 builder.Services.AddScoped<DoanhNghiepBL>();
 builder.Services.AddScoped<UngVienBL>();
 builder.Services.AddScoped<NhanVienBL>();
 builder.Services.AddScoped<TestDAO>();
 builder.Services.AddScoped<TestBL>();
-builder.Services.AddScoped<HinhThucDangTuyenDAO>();
 builder.Services.AddScoped<HinhThucDangTuyenBL>();
+builder.Services.AddScoped<DangTuyenBL>();
+builder.Services.AddScoped<TieuChiTuyenDungBL>();
+
+
 
 builder.Services.AddControllers();
 builder.Services.AddAuthentication(options =>

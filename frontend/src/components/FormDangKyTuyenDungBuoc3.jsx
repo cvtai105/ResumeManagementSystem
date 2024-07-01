@@ -8,9 +8,10 @@ const formatDate = (dateString) => {
   return `${day}/${month}/${year}`;
 };
 
-const FormDangKyTuyenDungBuoc3 = ({ prevStep, formData }) => {
+const FormDangKyTuyenDungBuoc3 = ({ prevStep, formData, handleSubmit }) => {
   return (
-    <div className="grid grid-cols-12 mt-10 mx-auto">
+    <form onSubmit={handleSubmit}>
+      <div className="grid grid-cols-12 mt-10 mx-auto">
       <div className="container col-start-5 col-span-4 p-10 text-navy rounded-md shadow-lg space-y-5">
         <h2 className="text-2xl font-bold mb-4">Xác Thực Thông Tin Đã Điền</h2>
         <p><strong>Vị trí tuyển dụng:</strong> {formData.jobPosition}</p>
@@ -30,10 +31,12 @@ const FormDangKyTuyenDungBuoc3 = ({ prevStep, formData }) => {
         </div>
         <div className="flex justify-between mt-4">
           <button onClick={prevStep} className="text-dodger-blue">Quay lại</button>
-          <button className="btn-dark">Xác nhận</button>
+          <button type="submit" className="btn-dark">Xác nhận</button>
         </div>
       </div>
     </div>
+    </form>
+    
   );
 };
 

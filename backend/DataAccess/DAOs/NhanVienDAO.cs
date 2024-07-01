@@ -13,6 +13,11 @@ public class NhanVienDAO(AppDbContext context)
         return await _context.NhanViens.FirstOrDefaultAsync(nv => nv.Email == email);
     }
 
+    public async Task<NhanVien?> GetById(int id)
+    {
+        return await _context.NhanViens.FirstOrDefaultAsync(nv => nv.Id == id);
+    }
+
     public async Task<NhanVien> Add(NhanVien nhanVien)
     {
         _context.NhanViens.Add(nhanVien);

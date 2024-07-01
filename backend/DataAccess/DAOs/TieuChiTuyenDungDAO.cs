@@ -4,7 +4,7 @@ using Models.Entities;
 
 namespace DataAccess.DAOs;
 
-public class TieuChiTuyenDungnDAO(AppDbContext context)
+public class TieuChiTuyenDungDAO(AppDbContext context)
 {
     private readonly AppDbContext _context = context;
 

@@ -16,6 +16,10 @@ namespace DataAccess.DAOs
         {
             return await _context.DoanhNghieps.FirstOrDefaultAsync(dn => dn.Email == email);
         }
+        public async Task<DoanhNghiep?> GetById(int id)
+        {
+            return await _context.DoanhNghieps.FirstOrDefaultAsync(dn => dn.Id == id);
+        }
 
         public async Task<DoanhNghiep> Add(DoanhNghiep doanhNghiep)
         {

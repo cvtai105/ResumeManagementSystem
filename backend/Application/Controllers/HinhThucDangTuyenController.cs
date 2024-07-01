@@ -22,5 +22,16 @@ namespace Application.Controllers{
             var forms = await _hinhThucDangTuyenBL.GetAllHinhThucDangTuyens();
             return Ok(forms);
         }
+
+        [HttpGet("name/{name}")]
+        public async Task<ActionResult<HinhThucDangTuyen>> GetByName(string name)
+        {
+            var hinhThucDangTuyen = await _hinhThucDangTuyenBL.GetHinhThucDangTuyenByName(name);
+            if (hinhThucDangTuyen == null)
+            {
+                return NotFound();
+            }
+            return Ok(hinhThucDangTuyen);
+        }
     }
 }

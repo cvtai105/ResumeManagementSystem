@@ -18,12 +18,18 @@ public class HinhThucDangTuyenDAO
         return await _context.HinhThucDangTuyens.FirstOrDefaultAsync(htdt => htdt.TenHinhThuc == name);
     }
 
+    public async Task<HinhThucDangTuyen?> GetById(int id)
+    {
+        return await _context.HinhThucDangTuyens.FirstOrDefaultAsync(htdt => htdt.Id == id);
+    }
+
     public async Task<HinhThucDangTuyen> Add(HinhThucDangTuyen hinhThucDangTuyen)
     {
         _context.HinhThucDangTuyens.Add(hinhThucDangTuyen);
         await _context.SaveChangesAsync();
         return hinhThucDangTuyen;
     }
+
 
     public async Task<List<HinhThucDangTuyen>> GetAll()
     {

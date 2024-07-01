@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace Models.Entities
 {
@@ -18,6 +19,7 @@ namespace Models.Entities
         [ForeignKey("NhanVien")]
         public NhanVien? NhanVienDangKy { get; set; }
         public DateTime? NgayDangKy { get; set; }
+        [JsonIgnore]
         public List<DangTuyen> DangTuyens { get; set; } = [];
 
     }
