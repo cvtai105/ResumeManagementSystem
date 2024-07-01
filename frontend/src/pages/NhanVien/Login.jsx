@@ -30,6 +30,8 @@ function Login() {
         else {
             setError('Sai tên đăng nhập hoặc mật khẩu');
         }
+
+        return res;
     }
 
     function homeRedirectHandle() {
