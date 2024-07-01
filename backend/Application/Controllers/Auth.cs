@@ -59,7 +59,7 @@ namespace Application.Controllers
 
                 var cookieOptions = new CookieOptions
                 {
-                    HttpOnly = true,
+                    HttpOnly = false,
                     Expires = DateTime.UtcNow.AddHours(1)
                 };
 
@@ -80,7 +80,7 @@ namespace Application.Controllers
 
                 var cookieOptions = new CookieOptions
                 {
-                    HttpOnly = true,
+                    HttpOnly = false,
                     Expires = DateTime.UtcNow.AddHours(1)
                 };
 
