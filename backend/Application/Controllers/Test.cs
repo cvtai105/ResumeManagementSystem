@@ -1,18 +1,21 @@
+using BusinessLogic;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Application.Controllers
 {
-    [Authorize]
     [Route("api/testauth")]
     [ApiController]
     public class Test : ControllerBase
     {
-        private readonly ILogger<Test> _logger;
 
-        public Test(ILogger<Test> logger)
+        private readonly ILogger<Test> _logger;
+        private readonly TestBL _testBL;
+
+        public Test(ILogger<Test> logger, TestBL TestBL)
         {
             _logger = logger;
+            _testBL = TestBL;
         }
 
         
@@ -37,6 +40,12 @@ namespace Application.Controllers
             return Ok("ungvien authorized");
         }        
 
+        [HttpGet("testprocedure")]
+        public async Task<IActionResult> TestProcedure(string email)
+        {
+            var result = await _testBL.GetNhanVienInfo(email);
+            return Ok(result);
+        }
         
     }
 }

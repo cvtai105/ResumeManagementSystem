@@ -50,6 +50,8 @@ builder.Services.AddScoped<DoanhNghiepDAO>();
 builder.Services.AddScoped<DoanhNghiepBL>();
 builder.Services.AddScoped<UngVienBL>();
 builder.Services.AddScoped<NhanVienBL>();
+builder.Services.AddScoped<TestDAO>();
+builder.Services.AddScoped<TestBL>();
 
 builder.Services.AddControllers();
 builder.Services.AddAuthentication(options =>
