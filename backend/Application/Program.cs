@@ -7,6 +7,7 @@ using System.Text;
 using DataAccess.DAOs;
 using BusinessLogic;
 using Microsoft.Identity.Client.Platforms.Features.DesktopOs.Kerberos;
+using Application.Controllers;
 
 var builder = WebApplication.CreateBuilder(args);
 var config = builder.Configuration;
@@ -50,6 +51,8 @@ builder.Services.AddScoped<DoanhNghiepDAO>();
 builder.Services.AddScoped<DoanhNghiepBL>();
 builder.Services.AddScoped<UngVienBL>();
 builder.Services.AddScoped<NhanVienBL>();
+builder.Services.AddScoped<HinhThucDangTuyenDAO>();
+builder.Services.AddScoped<HinhThucDangTuyenBL>();
 
 builder.Services.AddControllers();
 builder.Services.AddAuthentication(options =>
