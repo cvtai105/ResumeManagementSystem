@@ -1,9 +1,27 @@
-import React from 'react'
-import { Link, Outlet } from 'react-router-dom'
+import React, {useState, useEffect} from 'react'
+import { Link, Outlet, useNavigate, NavLink } from 'react-router-dom'
+import deleteCookie from "../utils/deleteCookie";
+import { isDoanhNghiepAuth } from '../fetchServices/Auth/checkAuth';
 import logo from '../assets/logo.svg'
 
 
-const Navbar = () => {
+function Navbar() {
+  const nav = useNavigate();
+  const [isAuth, setIsAuth] = useState(false);
+
+  useEffect(() => {
+    if(isDoanhNghiepAuth()){
+      setIsAuth(true);
+    }else {
+      nav('/doanhnghiep/dangnhap')
+    }
+  }, []);
+
+  function logoutHandle() {
+    deleteCookie('AuthToken');
+    setIsAuth(false);
+    nav('/doanhnghiep/dangnhap')
+  }
   return (
     <>
     <nav className="navbar">
@@ -18,10 +36,19 @@ const Navbar = () => {
                 <Link to="dang-ky-dang-tuyen" className="hover:text-dodger-blue">Đăng tuyển</Link>
             </li>
         </ul>
-        <div className="ml-auto flex gap-10">
-            <i class="text-3xl fi fi-rs-bell-notification-social-media"></i>
-            <i className="text-3xl fi fi-rr-circle-user"></i>
-        </div>
+        { !isAuth &&
+            <div className="ml-auto flex space-x-8">
+              <NavLink to="dangnhap" className="btn-dark">Đăng Nhập</NavLink>
+              <NavLink to="dangky" className="btn-light">Đăng Ký</NavLink>
+            </div>
+          }
+
+          {
+            isAuth &&
+            <div className="ml-auto flex space-x-8">
+              <button onClick={logoutHandle} className="btn-light">Đăng Xuất</button>
+            </div>
+          }
     </nav>
     <Outlet/>
     </>

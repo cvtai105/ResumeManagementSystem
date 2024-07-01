@@ -55,7 +55,7 @@ namespace Application.Controllers
         {
             if (await _doanhNghiepBL.IsValidUser(loginInfo))
             {
-                var tokenString = GenerateToken(loginInfo.Email, "DoanhNghiep");
+                var tokenString = GenerateToken(loginInfo.Email, "doanhnghiep");
 
                 var cookieOptions = new CookieOptions
                 {

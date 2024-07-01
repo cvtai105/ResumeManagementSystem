@@ -9,7 +9,7 @@ namespace Models.Entities
         public string? TenViTri { get; set; } = String.Empty;
         public int? SoLuong { get; set; }
         public string? MoTa { get; set; } = String.Empty;
-        public DateTime? NgayDangKy { get; set; }
+        public int? ThoiGianDangTuyen { get; set; }
         public DateTime? NgayBatDau { get; set; }
         public DateTime? NgayKetThuc { get; set; }
         public int DoanhNghiepId { get; set; }

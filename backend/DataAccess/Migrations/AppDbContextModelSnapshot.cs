@@ -39,8 +39,8 @@ namespace DataAccess.Migrations
                     b.Property<string>("MoTa")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime?>("NgayBatDau")
-                        .HasColumnType("datetime2");
+                    b.Property<int?>("ThoiGianDangTuyen")
+                        .HasColumnType("int");
 
                     b.Property<DateTime?>("NgayDangKy")
                         .HasColumnType("datetime2");
@@ -349,9 +349,6 @@ namespace DataAccess.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("MoTa")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("TenTieuChi")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");

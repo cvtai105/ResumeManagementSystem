@@ -137,7 +137,7 @@ namespace DataAccess.Migrations
                     TenViTri = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     SoLuong = table.Column<int>(type: "int", nullable: true),
                     MoTa = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    NgayDangKy = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    ThoiGianDangTuyen = table.Column<int>(type: "int", nullable: true),
                     NgayBatDau = table.Column<DateTime>(type: "datetime2", nullable: true),
                     NgayKetThuc = table.Column<DateTime>(type: "datetime2", nullable: true),
                     DoanhNghiepId = table.Column<int>(type: "int", nullable: false),
@@ -205,7 +205,6 @@ namespace DataAccess.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    TenTieuChi = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     MoTa = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DangTuyenId = table.Column<int>(type: "int", nullable: false)
                 },
