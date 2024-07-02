@@ -5,6 +5,7 @@ import { isNhanVienAuth } from "../fetchServices/Auth/checkAuth";
 import deleteCookie from "../utils/deleteCookie";
 import { useNavigate  } from "react-router-dom";
 
+
 function NhanVienLayout() {
   const nav = useNavigate();
   const [isAuth, setIsAuth] = useState(false);
@@ -32,6 +33,7 @@ function NhanVienLayout() {
           <nav className="flex space-x-4">
               <NavLink to="" className=" font-semibold hover:text-royal-blue">Trang Chủ</NavLink>
               <NavLink to="hopdong" className=" hover:text-royal-blue">Hợp Đồng</NavLink>
+              <NavLink to="xacthuc" className=" hover:text-royal-blue">Xác thực</NavLink>
           </nav>
           { !isAuth &&
             <div className="flex space-x-8">
@@ -51,6 +53,7 @@ function NhanVienLayout() {
       <main>
         <Outlet /> {/* This is where nested routes will be rendered */}
       </main>
+      
     </>
   );
 }
