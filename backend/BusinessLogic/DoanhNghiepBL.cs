@@ -26,6 +26,11 @@ namespace BusinessLogic
             }
             return await _doanhNghiepDAO.Add(doanhNghiep);
         }
+
+        public async Task<DoanhNghiep?> GetDoanhNghiepByEmail(string email)
+        {
+            return await _doanhNghiepDAO.GetByEmail(email);
+        }
         
     }
 }

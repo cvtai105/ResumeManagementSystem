@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, {useContext, useEffect } from "react";
 import LoginForm from "../../components/LoginForm";
 import { fetchDoanhNghiepJwt } from "../../fetchServices/Auth/fetchJwt";
 import { useNavigate  } from "react-router-dom";
@@ -6,12 +6,16 @@ import { isDoanhNghiepAuth } from "../../fetchServices/Auth/checkAuth";
 import AlreadyLogin from "../../components/AlreadyLogin";
 import deleteCookie from "../../utils/deleteCookie";
 import getCookie from "../../utils/getCookie";
+import { DoanhNghiepContext } from "../../fetchServices/DoanhNghiep/DoanhNghiepContext";
 
 function Login() {
 
     const navigate = useNavigate();
     const [error, setError] = React.useState(null);
     const [isAuth, setIsAuth] = React.useState(false);
+
+    const { setIdDoanhNghiep } = useContext(DoanhNghiepContext);
+
 
     useEffect(() => {
         if(isDoanhNghiepAuth()) {
@@ -25,6 +29,8 @@ function Login() {
         const res = await fetchDoanhNghiepJwt(data);
         if(res) {
             console.log(res);
+            setIdDoanhNghiep(res.idDoanhNghiep);
+            console.log(res.idDoanhNghiep);
             navigate('/doanhnghiep');
         }
         else {

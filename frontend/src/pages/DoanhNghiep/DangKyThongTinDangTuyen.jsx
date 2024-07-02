@@ -1,13 +1,15 @@
-import React, {useState} from 'react'
+import React, {useContext, useState, useEffect} from 'react'
 import FormDangKyTuyenDungBuoc1 from '../../components/FormDangKyTuyenDungBuoc1'
 import FormDangKyTuyenDungBuoc2 from '../../components/FormDangKyTuyenDungBuoc2';
 import FormDangKyTuyenDungBuoc3 from '../../components/FormDangKyTuyenDungBuoc3';
 import axios from 'axios';
+import { DoanhNghiepContext } from '../../fetchServices/DoanhNghiep/DoanhNghiepContext';
 
 const hostApi = process.env.REACT_APP_API_URL;
 
 const DangKyThongTinDangTuyen = () => {
     const [step, setStep] = useState(1);
+    const { idDoanhNghiep } = useContext(DoanhNghiepContext);
     const [formData, setFormData] = useState({
       jobPosition: '',
       numberOfHires: '',
@@ -17,12 +19,12 @@ const DangKyThongTinDangTuyen = () => {
       postingType: '',
       postingDescription: '',
       postingDuration: '',
-      doanhNghiepId: 1,
+      doanhNghiepId: idDoanhNghiep,
       NhanVienKiemDuyet: null,
       UuDaiId: null
     });
 
-  
+    console.log(idDoanhNghiep);
     const nextStep = () => {
       setStep(step + 1);
     };
@@ -34,6 +36,9 @@ const DangKyThongTinDangTuyen = () => {
     const handleChange = (input) => (e) => {
       setFormData({ ...formData, [input]: e.target.value });
     };
+
+    
+  
 
     const handleSubmit = () => {
       // Fetch the HinhThucDangTuyen ID based on the name

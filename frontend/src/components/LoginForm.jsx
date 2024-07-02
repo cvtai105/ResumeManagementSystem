@@ -13,7 +13,7 @@ const LoginForm = ({submitHandler}) => {
         console.log(jwt);
         if(!jwt) {
           
-        console.log("check")
+        //console.log("check")
             setError('Sai tên đăng nhập hoặc mật khẩu');
         }
     };
