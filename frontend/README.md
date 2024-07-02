@@ -77,7 +77,8 @@ Chạy dòng lệnh này để sử dụng icon: npm install @flaticon/flaticon-
 Cài đặt các gói cần thiết: 
 - npm i react-router-dom
 - npm install react-quill
+- npm i axios
 
 Lưu ý:
-btn-dark: Nút có background
-btn-light: Nút có border
+- btn-dark: Nút có background
+- btn-light: Nút có border

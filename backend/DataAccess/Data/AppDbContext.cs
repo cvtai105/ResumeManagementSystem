@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Models.DTOs;
 using Models.Entities;
 
 namespace DataAccess.Data;
@@ -16,8 +17,12 @@ public class AppDbContext(DbContextOptions options) : DbContext(options)
     public DbSet<TieuChiTuyenDung> TieuChiTuyenDungs { get; set; }
     public DbSet<UngTuyen> UngTuyens { get; set; }
     public DbSet<UuDai> UuDais { get; set; }
-    public DbSet<UngVien> UngViens { get; set; }        
+    public DbSet<UngVien> UngViens { get; set; } 
+    public DbSet<ExampleDTO> ExampleDTOs { get; set; }       
     protected override void OnModelCreating(ModelBuilder modelBuilder){
+
+        modelBuilder.Entity<ExampleDTO>().HasNoKey(); // cần cái này vì ExampleDTO không phải entity
+
         modelBuilder.Entity<UngVien>().HasData(new UngVien{
             Id = 1,
             HoTen = "Nguyễn Văn A",

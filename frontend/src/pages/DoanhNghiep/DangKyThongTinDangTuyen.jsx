@@ -2,6 +2,9 @@ import React, {useState} from 'react'
 import FormDangKyTuyenDungBuoc1 from '../../components/FormDangKyTuyenDungBuoc1'
 import FormDangKyTuyenDungBuoc2 from '../../components/FormDangKyTuyenDungBuoc2';
 import FormDangKyTuyenDungBuoc3 from '../../components/FormDangKyTuyenDungBuoc3';
+import axios from 'axios';
+
+const hostApi = process.env.REACT_APP_API_URL;
 
 const DangKyThongTinDangTuyen = () => {
     const [step, setStep] = useState(1);
@@ -12,9 +15,13 @@ const DangKyThongTinDangTuyen = () => {
       endDate: '',
       criteria: '',
       postingType: '',
-      postingDescription: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum',
-      postingDuration: ''
+      postingDescription: '',
+      postingDuration: '',
+      doanhNghiepId: 1,
+      NhanVienKiemDuyet: null,
+      UuDaiId: null
     });
+
   
     const nextStep = () => {
       setStep(step + 1);
@@ -27,14 +34,33 @@ const DangKyThongTinDangTuyen = () => {
     const handleChange = (input) => (e) => {
       setFormData({ ...formData, [input]: e.target.value });
     };
+
+    const handleSubmit = () => {
+      // Fetch the HinhThucDangTuyen ID based on the name
+      axios.get(hostApi + `/hinhthucdangtuyen/name/${formData.postingType}`)
+        .then(response => {
+          const postingTypeId = response.data.id;
+          const dataToSubmit = { ...formData, postingTypeId };
+          axios.post(hostApi + '/dangkydangtuyen', dataToSubmit)
+            .then(response => {
+              console.log(response.data);
+            })
+            .catch(error => {
+              console.error('There was an error!', error);
+            });
+        })
+        .catch(error => {
+          console.error('Error fetching the posting type', error);
+        });
+      }
   
     switch (step) {
       case 1:
         return <FormDangKyTuyenDungBuoc1 nextStep={nextStep} handleChange={handleChange} formData={formData} setFormData={setFormData}/>;
       case 2:
-        return <FormDangKyTuyenDungBuoc2 nextStep={nextStep} prevStep={prevStep} handleChange={handleChange} formData={formData} />;
+        return <FormDangKyTuyenDungBuoc2 nextStep={nextStep} prevStep={prevStep} handleChange={handleChange} formData={formData} setFormData={setFormData}/>;
       case 3:
-        return <FormDangKyTuyenDungBuoc3 prevStep={prevStep} formData={formData} />;
+        return <FormDangKyTuyenDungBuoc3 prevStep={prevStep} formData={formData} handleSubmit={handleSubmit}/>;
       default:
         return <div>Something went wrong</div>;
     }

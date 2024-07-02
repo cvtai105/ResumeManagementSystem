@@ -55,11 +55,11 @@ namespace Application.Controllers
         {
             if (await _doanhNghiepBL.IsValidUser(loginInfo))
             {
-                var tokenString = GenerateToken(loginInfo.Email, "DoanhNghiep");
+                var tokenString = GenerateToken(loginInfo.Email, "doanhnghiep");
 
                 var cookieOptions = new CookieOptions
                 {
-                    HttpOnly = true,
+                    HttpOnly = false,
                     Expires = DateTime.UtcNow.AddHours(1)
                 };
 
@@ -80,7 +80,7 @@ namespace Application.Controllers
 
                 var cookieOptions = new CookieOptions
                 {
-                    HttpOnly = true,
+                    HttpOnly = false,
                     Expires = DateTime.UtcNow.AddHours(1)
                 };
 

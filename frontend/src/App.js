@@ -1,6 +1,6 @@
 import React from 'react';
 import { createRoutesFromElements, Route, RouterProvider } from 'react-router-dom';
-import Navbar from './components/Navbar';
+import Navbar from './layouts/Navbar_DoanhNghiep';
 import Footer from './components/Footer';
 import NhanVienLayout from './layouts/NhanVien';
 import UngVienLayout from './layouts/UngVien';
