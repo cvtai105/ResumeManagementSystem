@@ -15,7 +15,7 @@
 # Khi muốn thay đổi entities / relationship giữa các entities.
 
 1. Chỉ cần chỉnh sửa trong folder entities.
-2. dotnet ef migrations add tên-phiên-bản-đặt-kiểu-gì-cũng-dc-khác-nhau-là-dc --project DataAccess --startup-project Application
+2. dotnet ef migrations add tenPhienBan --project DataAccess --startup-project Application
 3. folder migrations tự động thay đổi
 4. dotnet ef database update --project DataAccess --startup-project Application
 5. note: ai thay đổi migrations nên báo cho mn. mọi người khi pull về chỉ cần chạy dòng lệnh số 4.
