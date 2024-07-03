@@ -17,6 +17,10 @@ const Navbar = () => {
             <li>
                 <Link to="dang-ky-dang-tuyen" className="hover:text-dodger-blue">Đăng tuyển</Link>
             </li>
+            <li>
+                <Link to="review" className="hover:text-dodger-blue">Đánh giá</Link>
+            </li>
+
         </ul>
         <div className="ml-auto flex gap-10">
             <i class="text-3xl fi fi-rs-bell-notification-social-media"></i>

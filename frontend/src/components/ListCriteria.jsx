@@ -1,0 +1,193 @@
+import { useEffect } from "react";
+import React, { useState} from 'react';
+
+function ListCriteria() {
+  const data1 = [
+        {
+            id: 1,
+            content: "Có 2 bằng đại học",
+            checked: true
+        },
+        {
+            id: 2,
+            content: "Có 2 bằng đại học dfdfvdv",
+            checked: true
+        },
+        {
+            id: 3,
+            content: "Có 2 bằng đại học",
+            checked: true
+        },
+        {
+            id: 4,
+            content: "Có 2 bằng đại học",
+            checked: true
+        },
+        {
+            id: 5,
+            content: "Có 2 bằng đại họd",
+            checked: true
+        },
+        {
+            id: 6,
+            content: "Có 2 bằng đại học",
+            checked: true
+        },
+        {
+            id: 7,
+            content: "Có 2 bằng đại học sdfsfdfsdfsdfsdfsfsfsfsdfsdfsdfsdfdsfs",
+            checked: true
+        },
+        {
+            id: 8,
+            content: "Có 2 bằng đại học",
+            checked: true
+        },
+    ]
+    
+    
+    const [data, setCheckboxes] = useState(data1);
+  
+    // Trình xử lý để thay đổi trạng thái của ô kiểm tra
+    const handleCheckboxChange = (index) => {
+      console.log('Checkbox clicked:', index); // Debugging log
+      setCheckboxes((prevCheckboxes) => {
+        const newCheckboxes = prevCheckboxes.map((checkbox, idx) =>
+          idx === index ? { ...checkbox, checked: !checkbox.checked } : checkbox
+        );
+        console.log('Updated checkboxes:', newCheckboxes); // Debugging log
+        return newCheckboxes;
+      });
+    };
+  
+  const [currentPage, setCurrentPage] = useState(1);
+    const itemsPerPage = 5;
+
+    // Tính toán số trang
+    const totalPages = Math.ceil(data.length / itemsPerPage);
+  
+    // Lọc dữ liệu cho trang hiện tại
+    const currentData = data.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
+  
+    // Hàm chuyển trang
+    const handlePageChange = (page) => {
+      setCurrentPage(page);
+    };
+  
+    // Thêm các hàng trống nếu cần thiết
+    const emptyRows = itemsPerPage - currentData.length;
+    const rows = [...currentData, ...Array(emptyRows).fill({})];
+  
+    // Hàm để hiển thị các nút pagination với dấu ...
+    const renderPaginationButtons = () => {
+      const paginationButtons = [];
+      if (totalPages <= 3) {
+        for (let i = 1; i <= totalPages; i++) {
+          paginationButtons.push(
+            <button
+              key={i}
+              className={"px-3 py-1 bg-blue-100 text-blue-600 rounded border border-blue-600"}
+              onClick={() => handlePageChange(i)}
+            >
+              {i}
+            </button>
+          );
+        }
+      } else {
+        
+          paginationButtons.push(
+            <button
+              key={1}
+              className={`px-3 py-1 rounded ${currentPage === 1 ? 'bg-gray-200 text-blue-500 border border-blue-300' : 'bg-white text-gray-700 border border-gray-300'}`}
+              onClick={() => handlePageChange(1)}
+            >
+              1
+            </button>
+          );
+          if (currentPage > 2 ) paginationButtons.push(<span>...</span>);
+  
+          if(currentPage > 1 && currentPage < totalPages){
+
+            paginationButtons.push(
+              <button
+                key={currentPage}
+                className={"px-3 py-1 bg-blue-100 text-blue-600 rounded border border-blue-600 "}
+                onClick={() => handlePageChange(currentPage)}
+              >
+                {currentPage}
+              </button>
+            );
+          }
+          if (currentPage < totalPages - 1) paginationButtons.push(<span>...</span>);
+          
+          paginationButtons.push(
+            <button
+              key={totalPages}
+              className={"px-3 py-1 bg-blue-100 text-blue-600 rounded border border-blue-600"}
+              onClick={() => handlePageChange(totalPages)}
+            >
+              {totalPages}
+            </button>
+          );
+      }
+      return paginationButtons;
+    };
+  return (
+    <div className="flex justify-center items-center mt-20 bg-gray-100">
+
+      <div className="bg-white shadow-lg rounded-lg p-6 w-full max-w-4xl">
+        <div className="overflow-x-auto">
+          <table className="min-w-full bg-white border border-gray-300">
+            <thead>
+              <tr>
+                <th className="px-6 py-3 border-b border-gray-300 text-left text-sm font-medium text-gray-700">Số thứ tự</th>
+                <th className="px-6 py-3 border-b border-gray-300 text-left text-sm font-medium text-gray-700">Nội dung</th>
+                <th className="px-6 py-3 border-b border-gray-300 text-left text-sm font-medium text-gray-700">Đủ điều kiện</th>
+              </tr>
+            </thead>
+            <tbody>
+              {rows.map((row, index) => (
+                <tr key={index} className="h-[42px]" data-id={row.id}>
+                  <td className="px-6  border-b border-gray-300 text-sm" >{row.id}</td>
+                  <td className="px-6  border-b border-gray-300 text-sm">{row.content}</td>
+                  <td className="px-4 py-2 border border-gray-300">
+                    {
+                      row.id ?
+                        <input
+                        type="checkbox"
+                        checked={row.checked}
+                        onChange={() => handleCheckboxChange((currentPage - 1) * itemsPerPage + index)}
+                        className="checkbox"
+                        />
+                      :
+                      ""
+                    }
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        
+        <div className="flex justify-center mt-4 space-x-2">
+            <button className="px-3 py-1 bg-blue-100 text-blue-600 rounded border border-blue-600"
+              onClick={() => handlePageChange(currentPage - 1)}
+              disabled={currentPage === 1}
+            >
+              {'<'}
+            </button>
+            {renderPaginationButtons()}
+            <button className="px-3 py-1 bg-blue-100 text-blue-600 rounded border border-blue-600"
+              onClick={() => handlePageChange(currentPage + 1)}
+              disabled={currentPage === totalPages}
+            >
+              {'>'}
+            </button>
+          </div>
+      </div>
+
+    </div>
+  );
+}
+
+export default ListCriteria;

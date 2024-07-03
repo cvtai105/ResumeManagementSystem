@@ -32,6 +32,7 @@ function NhanVienLayout() {
           <nav className="flex space-x-4">
               <NavLink to="" className=" font-semibold hover:text-royal-blue">Trang Chủ</NavLink>
               <NavLink to="hopdong" className=" hover:text-royal-blue">Hợp Đồng</NavLink>
+              <NavLink to="danhgia" className=" hover:text-royal-blue">Đánh giá</NavLink>
           </nav>
           { !isAuth &&
             <div className="flex space-x-8">

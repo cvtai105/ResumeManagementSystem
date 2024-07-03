@@ -13,7 +13,7 @@ import UngVienLogin from './pages/UngVien/Login';
 import DoanhNghiepLogin from './pages/DoanhNghiep/Login';
 import DangKyThongTinDangTuyen from './pages/DoanhNghiep/DangKyThongTinDangTuyen';
 import { createBrowserRouter } from 'react-router-dom';
-
+import Review from './pages/NhanVien/Review';
 
 const routes = createRoutesFromElements(
   <>
@@ -28,10 +28,18 @@ const routes = createRoutesFromElements(
     </Route>
     <Route path="/dangnhap" element={<UngVienLogin />} />
     <Route path="/nhanvien/dangnhap" element={<NhanVienLogin />} />
+
+
     <Route path='/doanhnghiep/dangnhap' element={<DoanhNghiepLogin />} />
+
     <Route path="/doanhnghiep" element={<><Navbar /><Footer /></>}>
       <Route path="dang-ky-dang-tuyen" element={<DangKyThongTinDangTuyen/>}/>
     </Route>
+
+    <Route path="/nhanvien" element={<><Navbar /><Footer /></>}>
+      <Route path="danhgia" element={<Review/>}/>
+    </Route>
+
     <Route path="*" element={<div>Not Found</div>} />
   </>
 );
