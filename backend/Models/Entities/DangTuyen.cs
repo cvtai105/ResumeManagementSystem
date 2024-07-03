@@ -29,5 +29,6 @@ namespace Models.Entities
         [JsonIgnore]
         public List<TieuChiTuyenDung> TieuChiTuyenDungs { get; set; } = [];
         public List<UngTuyen> UngTuyens { get; set; } = [];
+        public List<ThanhToan> ThanhToans {get; set;} = [];
     }
 }

@@ -12,4 +12,9 @@ public class UuDaiDAO(AppDbContext context)
     {
         return await _context.UuDais.FirstOrDefaultAsync(ud => ud.Id == id);
     }
+
+    public void Attach(UuDai uuDai)
+    {
+        _context.UuDais.Attach(uuDai);
+    }
 }

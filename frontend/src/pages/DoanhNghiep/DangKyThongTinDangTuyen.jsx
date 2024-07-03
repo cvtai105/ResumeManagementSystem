@@ -2,6 +2,7 @@ import React, {useContext, useState, useEffect} from 'react'
 import FormDangKyTuyenDungBuoc1 from '../../components/FormDangKyTuyenDungBuoc1'
 import FormDangKyTuyenDungBuoc2 from '../../components/FormDangKyTuyenDungBuoc2';
 import FormDangKyTuyenDungBuoc3 from '../../components/FormDangKyTuyenDungBuoc3';
+import PaymentForm from '../../components/PaymentForm';
 import axios from 'axios';
 import { DoanhNghiepContext } from '../../fetchServices/DoanhNghiep/DoanhNghiepContext';
 
@@ -21,7 +22,11 @@ const DangKyThongTinDangTuyen = () => {
       postingDuration: '',
       doanhNghiepId: idDoanhNghiep,
       NhanVienKiemDuyet: null,
-      UuDaiId: null
+      UuDaiId: null,
+      paymentType: '',
+      paymentMethod: '',
+      totalAmount: 0,
+      installmentAmount: 0
     });
 
     console.log(idDoanhNghiep);
@@ -37,15 +42,28 @@ const DangKyThongTinDangTuyen = () => {
       setFormData({ ...formData, [input]: e.target.value });
     };
 
-    
-  
-
     const handleSubmit = () => {
       // Fetch the HinhThucDangTuyen ID based on the name
       axios.get(hostApi + `/hinhthucdangtuyen/name/${formData.postingType}`)
         .then(response => {
           const postingTypeId = response.data.id;
-          const dataToSubmit = { ...formData, postingTypeId };
+          const dataToSubmit = { 
+            jobPosition: formData.jobPosition,
+            numberOfHires: formData.numberOfHires,
+            startDate: formData.startDate,
+            endDate: formData.endDate,
+            criteria: formData.criteria,
+            postingTypeId: postingTypeId,
+            postingDuration: formData.postingDuration,
+            doanhNghiepId: formData.doanhNghiepId,
+            nhanVienKiemDuyetId: null,
+            uuDaiId: null,
+            totalAmount: formData.totalAmount,
+            installmentAmount: formData.installmentAmount,
+            paymentType: formData.paymentType,
+            paymentMethod: formData.paymentMethod
+          };
+          console.log(dataToSubmit); 
           axios.post(hostApi + '/dangkydangtuyen', dataToSubmit)
             .then(response => {
               console.log(response.data);
@@ -65,7 +83,9 @@ const DangKyThongTinDangTuyen = () => {
       case 2:
         return <FormDangKyTuyenDungBuoc2 nextStep={nextStep} prevStep={prevStep} handleChange={handleChange} formData={formData} setFormData={setFormData}/>;
       case 3:
-        return <FormDangKyTuyenDungBuoc3 prevStep={prevStep} formData={formData} handleSubmit={handleSubmit}/>;
+        return <FormDangKyTuyenDungBuoc3 nextStep={nextStep} prevStep={prevStep} formData={formData}/>;
+      case 4:
+        return <PaymentForm prevStep={prevStep} formData={formData} setFormData={setFormData} handleSubmit={handleSubmit} />;
       default:
         return <div>Something went wrong</div>;
     }

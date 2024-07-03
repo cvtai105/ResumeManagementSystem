@@ -18,7 +18,8 @@ namespace Models.Entities
         public int ThanhToanId { get; set; }
         public ThanhToan ThanhToan { get; set; } = new();
         
-        public int HinhThucThanhToanId { get; set; }
-        public HinhThucThanhToan HinhThucThanhToan { get; set; } = new();
+        public int? HinhThucThanhToanId { get; set; }
+        [ForeignKey("HinhThucThanhToanId")]
+        public HinhThucThanhToan HinhThucThanhToan { get; set; }
     }
 }

@@ -3,7 +3,7 @@ import logo from '../assets/logo.svg'
 
 const Footer = () => {
   return (
-    <footer className="bg-alice-blue px-[5vw] py-5 mt-20 z-10 mx-auto bottom-0">
+    <footer className="bg-alice-blue px-[5vw] py-5 mt-20 z-10 mx-auto bottom-0 w-full">
       <div className="container grid grid-cols-12 gap-3 items-start">
         <img src={logo} alt="Logo" className="w-[105px] col-span-3" />
         <div className="ml-5 col-span-5 font-bold w-1/2 my-auto">
