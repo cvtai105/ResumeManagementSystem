@@ -37,7 +37,7 @@ function UngVienLayout() {
                         <div className="ml-10 flex ">
                             <div className="m-auto">
                                 <NavLink to="" className={({ isActive }) => isActive ? "navlink text-dodger-blue" : "navlink"} >Việc làm</NavLink>
-                                <NavLink to="hoso" className={({ isActive }) => isActive ? "navlink text-dodger-blue" : "navlink"} activeClassName="active">Hồ sơ & CV</NavLink>
+                                <NavLink to="hoso" className={({ isActive }) => isActive ? "navlink text-dodger-blue" : "navlink"} >Hồ sơ & CV</NavLink>
                             </div>
                         </div>
                     </div>
