@@ -11,6 +11,7 @@ namespace Models.Entities
         public string MaSoThue { get; set; } = String.Empty;
         public string? DienThoai { get; set; }
         public int? NhanVienDangKyId { get; set; }
+        public bool? XacNhan { get; set; }
 
         [EmailAddress]
         public string Email { get; set; } = String.Empty;

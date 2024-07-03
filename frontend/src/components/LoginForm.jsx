@@ -19,13 +19,13 @@ const LoginForm = ({submitHandler}) => {
     };
   
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-100">
-        <div className="bg-white p-8 rounded shadow-md w-full max-w-sm">
-            <img src={logo} alt="JobRepo Logo" className="h-14 w-36 mx-auto mb-6" />
+      <div className="min-h-screen flex items-center justify-center ">
+        <div className=" p-8 rounded  w-full max-w-sm">
+            <img src={logo} alt="JobRepo Logo" className="  mx-auto mb-6" />
           <p className="text-2xl text-center font-bold mb-6 text-gray-900">Chào mừng trở lại</p>
           <form onSubmit={handleSubmit}>
             <div className="mb-4">
-              <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">
+              <label className="block text-gray-700 mb-2" htmlFor="email">
                 Email
               </label>
               <input
@@ -38,7 +38,7 @@ const LoginForm = ({submitHandler}) => {
               />
             </div>
             <div className="mb-6">
-              <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="password">
+              <label className="block text-gray-700  mb-2" htmlFor="password">
                 Mật khẩu
               </label>
               <input

@@ -14,7 +14,6 @@ namespace Models.Entities
         public int Id { get; set; }
         public string? MoTa { get; set; } = String.Empty;
         public int DangTuyenId { get; set; }
-        [JsonIgnore]
         public DangTuyen DangTuyen { get; set; } = new();
     }
 }

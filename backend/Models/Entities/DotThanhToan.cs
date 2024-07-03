@@ -14,11 +14,12 @@ namespace Models.Entities
         [ForeignKey("NhanVien")]
         public int? NhanVienThanhToanId { get; set; }
         public string? GhiChu { get; set; } = String.Empty;
-        public NhanVien? NhanVienThanhToan { get; set; } = new();
+        public NhanVien? NhanVienThanhToan { get; set; } 
         public int ThanhToanId { get; set; }
         public ThanhToan ThanhToan { get; set; } = new();
         
-        public int HinhThucThanhToanId { get; set; }
-        public HinhThucThanhToan HinhThucThanhToan { get; set; } = new();
+        public int? HinhThucThanhToanId { get; set; }
+        [ForeignKey("HinhThucThanhToanId")]
+        public HinhThucThanhToan HinhThucThanhToan { get; set; }
     }
 }

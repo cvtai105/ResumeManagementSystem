@@ -14,6 +14,7 @@ namespace Models.Entities
         public DateTime? HanThanhToan { get; set; }
         [JsonIgnore]
         public int DangTuyenId { get; set; }
+        public int HinhThucThanhToanId { get; set; }
         public List<DotThanhToan> DotThanhToans { get; set; } = new(); 
         [JsonIgnore]
         public DangTuyen DangTuyen { get; set; } = new();
