@@ -21,22 +21,24 @@ const routes = createRoutesFromElements(
     <Route path="/" element={<UngVienLayout />} >
       <Route index element={<UngVienHome />} />
     </Route>
+
     <Route path="/nhanvien" element={<><NhanVienLayout /><Footer /></>} >
       <Route index element={<NhanVienHome />} />
       <Route path='xacthuc' element={<XacThucDangKy />} /> 
       <Route path="danhgia" element={<Review/>}/>
     </Route>
+
     <Route path="/doanhnghiep" element={<DoanhNghiepLayout />} >
       <Route index element={<DoanhNghiepHome />} />
+      <Route path="dang-ky-dang-tuyen" element={<DangKyThongTinDangTuyen/>}/>
     </Route>
+
+    {/* route đăng nhập k có header */}
     <Route path="/dangnhap" element={<UngVienLogin />} />
     <Route path="/nhanvien/dangnhap" element={<NhanVienLogin />} />
-
-
     <Route path='/doanhnghiep/dangnhap' element={<DoanhNghiepLogin />} />
 
     <Route path="/doanhnghiep" element={<><Navbar /><Footer /></>}>
-      <Route path="dang-ky-dang-tuyen" element={<DangKyThongTinDangTuyen/>}/>
     </Route>
 
     <Route path="*" element={<div>Not Found</div>} />

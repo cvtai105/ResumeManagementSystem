@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { isNhanVienAuth } from "../fetchServices/Auth/checkAuth";
 import deleteCookie from "../utils/deleteCookie";
 import { useNavigate  } from "react-router-dom";
+import './nav.css';
 
 
 function NhanVienLayout() {
@@ -26,34 +27,42 @@ function NhanVienLayout() {
 
   return (
     <>
-      <header className="flex justify-between items-center bg-royal-blue-transparent py-4 px-8 ">
-          <div className="flex items-center space-x-2">
-              <img src={logo} alt="JobRepo Logo" className="h-14 w-36" />
-          </div>
-          <nav className="flex space-x-12">
-              <NavLink to="" className="  hover:text-royal-blue">Trang Chủ</NavLink>
-              <NavLink to="hopdong" className=" hover:text-royal-blue">Hợp Đồng</NavLink>
-              <NavLink to="xacthuc" className=" hover:text-royal-blue">Xác thực</NavLink>
-              <NavLink to="danhgia" className=" hover:text-royal-blue">Đánh giá</NavLink>
-          </nav>
-          { !isAuth &&
-            <div className="flex space-x-8">
-              <NavLink to="dangnhap" className="">Đăng Nhập</NavLink>
-              <NavLink to="dangky" className="">Đăng Ký</NavLink>
-            </div>
-          }
+      <nav className="bg-white shadow-md">
+            <div className="max-w-7xlpx-2 sm:px-6 lg:px-8">
+                <div className="relative flex items-center justify-between h-16">
+                    <div className="flex-1 flex  items-center justify-center sm:items-stretch sm:justify-start">
+                        <div className="flex-shrink-0">
+                            <img className="h-12 w-auto" src={logo} alt="Logo" />
+                        </div>
+                        <div className="ml-10 flex ">
+                            <div className="m-auto">
+                                <NavLink to="" end className={({ isActive }) => isActive ? "navlink text-dodger-blue" : "navlink"} >Trang Chủ</NavLink>
+                                <NavLink to="xacthuc" className={({ isActive }) => isActive ? "navlink text-dodger-blue" : "navlink"} >Xác Thực</NavLink>
+                                <NavLink to="danhgia" className={({ isActive }) => isActive ? "navlink text-dodger-blue" : "navlink"} >Đánh Giá</NavLink>
+                            </div>
+                        </div>
+                    </div>
+                    { !isAuth &&
+                      <div className="">
+                        <NavLink to="dangnhap" className="login" >Đăng nhập</NavLink>
+                        <NavLink className="login" >Đăng ký</NavLink>
+                      </div>
+                    }
 
-          {
-            isAuth &&
-            <div className="flex space-x-8">
-              <button onClick={logoutHandle} className="">Đăng Xuất</button>
+                    {
+                      isAuth &&
+                      <div className="flex">
+                        <NavLink onClick={logoutHandle} className='m-auto'>Đăng xuất</NavLink>
+                      </div>
+                    }
+                    
+                </div>
             </div>
-          }
-          
-      </header>
+        </nav>
       <main>
         <Outlet /> {/* This is where nested routes will be rendered */}
       </main>
+
       
     </>
   );
