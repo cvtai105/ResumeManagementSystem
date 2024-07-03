@@ -60,5 +60,14 @@ namespace BusinessLogic
         {
             return await _dangTuyenDAO.GetById(id);
         }
+
+
+
+       
+
+        public async Task<IEnumerable<DangTuyen>> GetFilteredDangTuyen(DateTime today)
+        {
+            return await _dangTuyenDAO.GetFilteredDangTuyen(today);
+        }
     }
 }

@@ -2,51 +2,50 @@ import { useEffect } from "react";
 import React, { useState} from 'react';
 
 function ListCriteria() {
-  const data1 = [
+  let data1 = [
         {
             id: 1,
             content: "Có 2 bằng đại học",
-            checked: true
+            
         },
         {
             id: 2,
             content: "Có 2 bằng đại học dfdfvdv",
-            checked: true
+            
         },
         {
             id: 3,
             content: "Có 2 bằng đại học",
-            checked: true
+            
         },
         {
             id: 4,
             content: "Có 2 bằng đại học",
-            checked: true
+            
         },
         {
             id: 5,
             content: "Có 2 bằng đại họd",
-            checked: true
+            
         },
         {
             id: 6,
             content: "Có 2 bằng đại học",
-            checked: true
+            
         },
         {
             id: 7,
             content: "Có 2 bằng đại học sdfsfdfsdfsdfsdfsfsfsfsdfsdfsdfsdfdsfs",
-            checked: true
+            
         },
         {
             id: 8,
             content: "Có 2 bằng đại học",
-            checked: true
         },
     ]
     
     
-    const [data, setCheckboxes] = useState(data1);
+    let [data, setCheckboxes] = useState(data1);
   
     // Trình xử lý để thay đổi trạng thái của ô kiểm tra
     const handleCheckboxChange = (index) => {
@@ -59,7 +58,13 @@ function ListCriteria() {
         return newCheckboxes;
       });
     };
-  
+    function countTrue(checkboxes) {
+      let count = 0
+      checkboxes.forEach(element => {
+          if(element.checked) count += 1;
+      }); 
+      return count;
+    }
   const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 5;
 
@@ -86,7 +91,7 @@ function ListCriteria() {
           paginationButtons.push(
             <button
               key={i}
-              className={"px-3 py-1 bg-blue-100 text-blue-600 rounded border border-blue-600"}
+              className={`px-3 py-1 bg-blue-100 text-blue-600 rounded border border-blue-600 text-sm ${currentPage === i ? 'btn-dark' : ''}`}
               onClick={() => handlePageChange(i)}
             >
               {i}
@@ -98,7 +103,7 @@ function ListCriteria() {
           paginationButtons.push(
             <button
               key={1}
-              className={`px-3 py-1 rounded ${currentPage === 1 ? 'bg-gray-200 text-blue-500 border border-blue-300' : 'bg-white text-gray-700 border border-gray-300'}`}
+              className={`px-3 py-1 bg-blue-100 text-blue-600 rounded border border-blue-600 text-sm ${currentPage === 1 ? 'btn-dark' : ''}`}
               onClick={() => handlePageChange(1)}
             >
               1
@@ -111,7 +116,7 @@ function ListCriteria() {
             paginationButtons.push(
               <button
                 key={currentPage}
-                className={"px-3 py-1 bg-blue-100 text-blue-600 rounded border border-blue-600 "}
+                className={"px-3 py-1 bg-blue-100 text-blue-600 rounded border border-blue-600 btn-dark text-sm "}
                 onClick={() => handlePageChange(currentPage)}
               >
                 {currentPage}
@@ -123,7 +128,7 @@ function ListCriteria() {
           paginationButtons.push(
             <button
               key={totalPages}
-              className={"px-3 py-1 bg-blue-100 text-blue-600 rounded border border-blue-600"}
+              className={`px-3 py-1 bg-blue-100 text-blue-600 rounded border border-blue-600 text-sm ${currentPage === totalPages ? 'btn-dark' : ''}`}
               onClick={() => handlePageChange(totalPages)}
             >
               {totalPages}
@@ -185,7 +190,6 @@ function ListCriteria() {
             </button>
           </div>
       </div>
-
     </div>
   );
 }

@@ -28,4 +28,15 @@ public class DangTuyenDAO(AppDbContext context)
         await _context.SaveChangesAsync();
         return dangTuyen;
     }
+    public async Task<IEnumerable<DangTuyen>> GetFilteredDangTuyen(DateTime today)
+    {
+        var query = _context.Set<DangTuyen>()
+            .Include(dt => dt.UngTuyens)
+            .Include(dt => dt.DoanhNghiep);
+
+        var result = await query.ToListAsync();
+
+        return result.Where(dt => 
+            dt.SoLuong == dt.UngTuyens.Count || dt.NgayKetThuc <= today).ToList();
+    }
 }

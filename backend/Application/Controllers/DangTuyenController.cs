@@ -46,6 +46,13 @@ namespace Application.Controllers{
             }
             return Ok(dangTuyen);
         }
+        [HttpGet("filter")]
+        public async Task<ActionResult<IEnumerable<DangTuyen>>> GetFilteredDangTuyen()
+        {
+            var today = DateTime.Today;
+            var filteredDangTuyens = await _dangTuyenBL.GetFilteredDangTuyen(today);
+            return Ok(filteredDangTuyens);
+        }
     }
     public class DangTuyenRequestModel
     {
