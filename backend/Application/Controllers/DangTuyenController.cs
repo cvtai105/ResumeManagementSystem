@@ -1,6 +1,7 @@
 using BusinessLogic;
 using Microsoft.AspNetCore.Mvc;
 using Models.Entities;
+using Models.RequestModel;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -17,7 +18,7 @@ namespace Application.Controllers{
         }
 
         [HttpPost]
-        public async Task<ActionResult<DangTuyen>> AddDangTuyen(DangTuyenRequestModel request)
+         public async Task<ActionResult<DangTuyen>> AddDangTuyen(DangTuyenRequestModel request)
         {
             var dangTuyen = new DangTuyen
             {
@@ -30,8 +31,29 @@ namespace Application.Controllers{
                 DoanhNghiepId = request.DoanhNghiepId,
                 NhanVienKiemDuyetId = null,
                 UuDaiId = null,
-                TieuChiTuyenDungs = request.Criteria.Split('\n').Select(c => new TieuChiTuyenDung { MoTa = c }).ToList()
+                TieuChiTuyenDungs = request.Criteria.Split('\n').Select(c => new TieuChiTuyenDung { MoTa = c }).ToList(),
+                ThanhToans = new List<ThanhToan>
+                {
+                    new ThanhToan
+                    {
+                        SoTien = request.TotalAmount,
+                        HanThanhToan = DateTime.UtcNow,
+                        DaThanhToan = request.PaymentMethod == "Chuyển khoản",
+                        HinhThucThanhToanId = request.PaymentMethod == "Chuyển khoản" ? 1 : 2,
+                        DotThanhToans = request.PaymentType == "part" ? new List<DotThanhToan>
+                        {
+                            new DotThanhToan
+                            {
+                                SoTien = request.InstallmentAmount,
+                                NgayThanhToan = DateTime.UtcNow,
+                                HinhThucThanhToanId = request.PaymentMethod == "Chuyển khoản" ? 1 : 2
+                            }
+                        } : new List<DotThanhToan>()
+                    }
+                }
             };
+
+
             var addedDangTuyen = await _dangTuyenBL.AddDangTuyen(dangTuyen);
             return CreatedAtAction(nameof(GetDangTuyenById), new { id = addedDangTuyen.Id }, addedDangTuyen);
         }
@@ -46,18 +68,5 @@ namespace Application.Controllers{
             }
             return Ok(dangTuyen);
         }
-    }
-    public class DangTuyenRequestModel
-    {
-        public string JobPosition { get; set; }
-        public int NumberOfHires { get; set; }
-        public DateTime StartDate { get; set; }
-        public DateTime EndDate { get; set; }
-        public string Criteria { get; set; }
-        public int PostingTypeId { get; set; }
-        public int PostingDuration { get; set; }
-        public int DoanhNghiepId { get; set; }
-        public int? NhanVienKiemDuyetId { get; set; }
-        public int? UuDaiId { get; set; }
     }
 }

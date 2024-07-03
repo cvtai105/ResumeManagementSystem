@@ -52,6 +52,9 @@ builder.Services.AddScoped<DangTuyenDAO>();
 builder.Services.AddScoped<UuDaiDAO>();
 builder.Services.AddScoped<TieuChiTuyenDungDAO>();
 builder.Services.AddScoped<HinhThucDangTuyenDAO>();
+builder.Services.AddScoped<HinhThucThanhToanDAO>();
+builder.Services.AddScoped<ThanhToanDAO>();
+builder.Services.AddScoped<DotThanhToanDAO>();
 builder.Services.AddScoped<DoanhNghiepBL>();
 builder.Services.AddScoped<UngVienBL>();
 builder.Services.AddScoped<NhanVienBL>();
@@ -60,7 +63,7 @@ builder.Services.AddScoped<TestBL>();
 builder.Services.AddScoped<HinhThucDangTuyenBL>();
 builder.Services.AddScoped<DangTuyenBL>();
 builder.Services.AddScoped<TieuChiTuyenDungBL>();
-
+builder.Services.AddScoped<HinhThucThanhToanBL>();
 
 
 builder.Services.AddControllers();

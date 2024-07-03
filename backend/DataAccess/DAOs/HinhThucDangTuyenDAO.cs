@@ -35,4 +35,9 @@ public class HinhThucDangTuyenDAO
     {
         return await _context.HinhThucDangTuyens.ToListAsync();
     }
+
+     public void Attach(HinhThucDangTuyen hinhThucDangTuyen)
+    {
+        _context.HinhThucDangTuyens.Attach(hinhThucDangTuyen);
+    }
 }

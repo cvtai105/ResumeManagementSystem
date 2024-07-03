@@ -55,7 +55,7 @@ const FormDangKyTuyenDungBuoc1 = ({ nextStep, handleChange, formData, setFormDat
   };
 
   return (
-    <div className="grid grid-cols-12 mt-10 mx-auto min-h-screen">
+    <div className="grid grid-cols-12 mt-10 mx-auto">
       <div className="container col-start-5 col-span-4 p-10 text-navy rounded-md shadow-lg space-y-5">
         <h2 className="text-xl font-bold mb-4">Mô Tả Công Việc</h2>
         <div className="mb-4">
