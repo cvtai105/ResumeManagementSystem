@@ -132,7 +132,6 @@ const XacThucDangKy = () => {
         <button>10</button>
         <button>&gt;</button>
       </div>
-      <Footer></Footer>
     </div>
   );
 };

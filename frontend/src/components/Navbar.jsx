@@ -18,7 +18,7 @@ const Navbar = () => {
                 <Link to="dang-ky-dang-tuyen" className="hover:text-dodger-blue">Đăng tuyển</Link>
             </li>
             <li>
-                <Link to="review" className="hover:text-dodger-blue">Đánh giá</Link>
+                <Link to="danhgia" className="hover:text-dodger-blue">Đánh giá</Link>
             </li>
 
         </ul>
