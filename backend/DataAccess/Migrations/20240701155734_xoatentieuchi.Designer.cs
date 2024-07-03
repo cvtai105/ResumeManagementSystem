@@ -4,6 +4,7 @@ using DataAccess.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccess.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240701155734_xoatentieuchi")]
+    partial class xoatentieuchi
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -343,7 +346,8 @@ namespace DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("DangTuyenId");
+                    b.HasIndex("DangTuyenId")
+                        .IsUnique();
 
                     b.HasIndex("HinhThucThanhToanId");
 
@@ -581,8 +585,8 @@ namespace DataAccess.Migrations
             modelBuilder.Entity("Models.Entities.ThanhToan", b =>
                 {
                     b.HasOne("Models.Entities.DangTuyen", "DangTuyen")
-                        .WithMany()
-                        .HasForeignKey("DangTuyenId")
+                        .WithOne("ThanhToan")
+                        .HasForeignKey("Models.Entities.ThanhToan", "DangTuyenId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -638,6 +642,9 @@ namespace DataAccess.Migrations
 
             modelBuilder.Entity("Models.Entities.DangTuyen", b =>
                 {
+                    b.Navigation("ThanhToan")
+                        .IsRequired();
+
                     b.Navigation("TieuChiTuyenDungs");
 
                     b.Navigation("UngTuyens");

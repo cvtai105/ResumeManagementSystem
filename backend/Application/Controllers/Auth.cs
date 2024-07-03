@@ -55,17 +55,18 @@ namespace Application.Controllers
         {
             if (await _doanhNghiepBL.IsValidUser(loginInfo))
             {
-                var tokenString = GenerateToken(loginInfo.Email, "DoanhNghiep");
+                var doanhNghiep = await _doanhNghiepBL.GetDoanhNghiepByEmail(loginInfo.Email);
+                var tokenString = GenerateToken(loginInfo.Email, "doanhnghiep");
 
                 var cookieOptions = new CookieOptions
                 {
-                    HttpOnly = true,
+                    HttpOnly = false,
                     Expires = DateTime.UtcNow.AddHours(1)
                 };
 
                 Response.Cookies.Append("AuthToken", tokenString, cookieOptions);
 
-                return Ok(new { Token = tokenString });
+                return Ok(new { Token = tokenString, IdDoanhNghiep = doanhNghiep.Id });
             }
 
             return Unauthorized();
@@ -80,7 +81,7 @@ namespace Application.Controllers
 
                 var cookieOptions = new CookieOptions
                 {
-                    HttpOnly = true,
+                    HttpOnly = false,
                     Expires = DateTime.UtcNow.AddHours(1)
                 };
 
@@ -91,6 +92,7 @@ namespace Application.Controllers
 
             return Unauthorized();
         }
+        
 
         private string GenerateToken(string email, string role)
         {

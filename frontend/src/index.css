@@ -47,11 +47,11 @@
   }
 
   .btn-dark {
-    @apply whitespace-nowrap bg-dodger-blue text-white rounded-md py-3 px-6 text-xl capitalize hover:bg-opacity-80;
+    @apply whitespace-nowrap bg-dodger-blue text-white rounded-md py-2 px-3 text-xl capitalize hover:bg-opacity-80;
   }
 
   .btn-light {
-    @apply btn-dark border border-smoke bg-white text-black;
+    @apply btn-dark border border-dodger-blue bg-white text-dodger-blue;
   }
 
   .input-box {

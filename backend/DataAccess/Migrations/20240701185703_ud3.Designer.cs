@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccess.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240629131120_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20240701185703_ud3")]
+    partial class ud3
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,6 +24,20 @@ namespace DataAccess.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("Models.DTOs.ExampleDTO", b =>
+                {
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FullName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Password")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.ToTable("ExampleDTOs");
+                });
 
             modelBuilder.Entity("Models.Entities.DangTuyen", b =>
                 {
@@ -45,9 +59,6 @@ namespace DataAccess.Migrations
                     b.Property<DateTime?>("NgayBatDau")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime?>("NgayDangKy")
-                        .HasColumnType("datetime2");
-
                     b.Property<DateTime?>("NgayKetThuc")
                         .HasColumnType("datetime2");
 
@@ -59,6 +70,9 @@ namespace DataAccess.Migrations
 
                     b.Property<string>("TenViTri")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("ThoiGianDangTuyen")
+                        .HasColumnType("int");
 
                     b.Property<int?>("UuDaiId")
                         .HasColumnType("int");
@@ -332,8 +346,7 @@ namespace DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("DangTuyenId")
-                        .IsUnique();
+                    b.HasIndex("DangTuyenId");
 
                     b.HasIndex("HinhThucThanhToanId");
 
@@ -352,9 +365,6 @@ namespace DataAccess.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("MoTa")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("TenTieuChi")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -574,8 +584,8 @@ namespace DataAccess.Migrations
             modelBuilder.Entity("Models.Entities.ThanhToan", b =>
                 {
                     b.HasOne("Models.Entities.DangTuyen", "DangTuyen")
-                        .WithOne("ThanhToan")
-                        .HasForeignKey("Models.Entities.ThanhToan", "DangTuyenId")
+                        .WithMany()
+                        .HasForeignKey("DangTuyenId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -631,9 +641,6 @@ namespace DataAccess.Migrations
 
             modelBuilder.Entity("Models.Entities.DangTuyen", b =>
                 {
-                    b.Navigation("ThanhToan")
-                        .IsRequired();
-
                     b.Navigation("TieuChiTuyenDungs");
 
                     b.Navigation("UngTuyens");

@@ -1,6 +1,6 @@
 import React from 'react';
 import { createRoutesFromElements, Route, RouterProvider } from 'react-router-dom';
-import Navbar from './components/Navbar';
+import Navbar from './layouts/Navbar_DoanhNghiep';
 import Footer from './components/Footer';
 import NhanVienLayout from './layouts/NhanVien';
 import UngVienLayout from './layouts/UngVien';
@@ -14,6 +14,7 @@ import DoanhNghiepLogin from './pages/DoanhNghiep/Login';
 import DangKyThongTinDangTuyen from './pages/DoanhNghiep/DangKyThongTinDangTuyen';
 import { createBrowserRouter } from 'react-router-dom';
 import Review from './pages/NhanVien/Review';
+import XacThucDangKy from './pages/NhanVien/XacThucDangKy';
 
 const routes = createRoutesFromElements(
   <>
@@ -22,6 +23,7 @@ const routes = createRoutesFromElements(
     </Route>
     <Route path="/nhanvien" element={<NhanVienLayout />} >
       <Route index element={<NhanVienHome />} />
+      <Route path='xacthuc' element={<XacThucDangKy />} /> 
     </Route>
     <Route path="/doanhnghiep" element={<DoanhNghiepLayout />} >
       <Route index element={<DoanhNghiepHome />} />

@@ -5,6 +5,7 @@ import { isNhanVienAuth } from "../fetchServices/Auth/checkAuth";
 import deleteCookie from "../utils/deleteCookie";
 import { useNavigate  } from "react-router-dom";
 
+
 function NhanVienLayout() {
   const nav = useNavigate();
   const [isAuth, setIsAuth] = useState(false);
@@ -15,7 +16,7 @@ function NhanVienLayout() {
     }else {
       nav('/nhanvien/dangnhap')
     }
-  }, []);
+  }, [nav]);
 
   function logoutHandle() {
     deleteCookie('AuthToken');
@@ -29,9 +30,10 @@ function NhanVienLayout() {
           <div className="flex items-center space-x-2">
               <img src={logo} alt="JobRepo Logo" className="h-14 w-36" />
           </div>
-          <nav className="flex space-x-4">
-              <NavLink to="" className=" font-semibold hover:text-royal-blue">Trang Chủ</NavLink>
+          <nav className="flex space-x-12">
+              <NavLink to="" className="  hover:text-royal-blue">Trang Chủ</NavLink>
               <NavLink to="hopdong" className=" hover:text-royal-blue">Hợp Đồng</NavLink>
+              <NavLink to="xacthuc" className=" hover:text-royal-blue">Xác thực</NavLink>
               <NavLink to="danhgia" className=" hover:text-royal-blue">Đánh giá</NavLink>
           </nav>
           { !isAuth &&
@@ -52,6 +54,7 @@ function NhanVienLayout() {
       <main>
         <Outlet /> {/* This is where nested routes will be rendered */}
       </main>
+      
     </>
   );
 }
