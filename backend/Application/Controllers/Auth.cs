@@ -42,7 +42,7 @@ namespace Application.Controllers
                     Expires = DateTime.UtcNow.AddHours(1)
                 };
 
-                Response.Cookies.Append("AuthToken", tokenString, cookieOptions);
+                Response.Cookies.Append("NhanVienAuthToken", tokenString, cookieOptions);
 
                 return Ok(new { Token = tokenString,  });
             }
@@ -64,7 +64,7 @@ namespace Application.Controllers
                     Expires = DateTime.UtcNow.AddHours(1)
                 };
 
-                Response.Cookies.Append("AuthToken", tokenString, cookieOptions);
+                Response.Cookies.Append("DoanhNghiepAuthToken", tokenString, cookieOptions);
 
                 return Ok(new { Token = tokenString, IdDoanhNghiep = doanhNghiep.Id });
             }
@@ -85,7 +85,7 @@ namespace Application.Controllers
                     Expires = DateTime.UtcNow.AddHours(1)
                 };
 
-                Response.Cookies.Append("AuthToken", tokenString, cookieOptions);
+                Response.Cookies.Append("UngVienAuthToken", tokenString, cookieOptions);
 
                 return Ok(new { Token = tokenString });
             }

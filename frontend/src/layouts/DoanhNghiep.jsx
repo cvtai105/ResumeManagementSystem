@@ -6,6 +6,7 @@ import deleteCookie from "../utils/deleteCookie";
 import { useNavigate  } from "react-router-dom";
 import './nav.css';
 import Footer from '../components/Footer';
+import LoginRequire from "../components/LoginRequire";
 
 function DoanhNghiepLayout() {
   const nav = useNavigate();
@@ -15,14 +16,15 @@ function DoanhNghiepLayout() {
     if(isDoanhNghiepAuth()){
       setIsAuth(true);
     }else {
+      setIsAuth(false)
     }
   }
   , [nav]);
 
   function logoutHandle() {
-    deleteCookie('AuthToken');
+    deleteCookie('DoanhNghiepAuthToken');
     setIsAuth(false);
-    nav('/dangnhap')
+    nav('/doanhnghiep/dangnhap')
   }
   
   return (
@@ -44,7 +46,7 @@ function DoanhNghiepLayout() {
                     { !isAuth &&
                       <div className="">
                         <NavLink to="dangnhap" className="login" >Đăng nhập</NavLink>
-                        <NavLink className="login" >Đăng ký</NavLink>
+                        <NavLink to="dangky" className="login" >Đăng ký</NavLink>
                       </div>
                     }
 
@@ -58,9 +60,18 @@ function DoanhNghiepLayout() {
                 </div>
             </div>
         </nav>
-      <main>
-        <Outlet /> {/* This is where nested routes will be rendered */}
-      </main>
+
+      
+      { isAuth &&
+          <main>
+            <Outlet /> {/* This is where nested routes will be rendered */}
+          </main>
+      }
+
+      { !isAuth &&
+        <LoginRequire />
+      }
+      
       <footer>
         <Footer/>
       </footer>

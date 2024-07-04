@@ -20,6 +20,7 @@
 # Entity relationship convention:
 1. khóa chính: id / classnameId
 2. khóa ngoại: <navigation property><navigationtype primarykey> / <referenced entity class name><referenced entity class primary key>
+    navagation là thuộc tính có type là các entity khác.
 3. nullable: type?
 4. nếu không sử dụng các convention trên cần config trong appdbcontext.
 

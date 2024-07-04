@@ -12,7 +12,6 @@ const LoginForm = ({submitHandler}) => {
         const jwt = await submitHandler({email, password});
         console.log(jwt);
         if(!jwt) {
-          
         //console.log("check")
             setError('Sai tên đăng nhập hoặc mật khẩu');
         }
@@ -49,8 +48,9 @@ const LoginForm = ({submitHandler}) => {
                 onChange={(e) => setPassword(e.target.value)}
                 required
               />
+              
+            {error && <p className="text-red text-base italic">{error}</p>}
             </div>
-            {error && <p className="text-red-500 text-xs italic">{error}</p>}
             <div className="flex items-center justify-between">
               <button
                 type="submit"
