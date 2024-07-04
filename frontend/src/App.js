@@ -15,6 +15,7 @@ import { createBrowserRouter } from 'react-router-dom';
 import Review from './pages/NhanVien/Review';
 import XacThucDangKy from './pages/NhanVien/XacThucDangKy';
 import DangKyThanhVienDoanhNghiep from './pages/DoanhNghiep/DangKyThanhVienDoanhNghiep'
+import JobDetail from './pages/UngVien/JobDetail';
 
 
 const routes = createRoutesFromElements(
@@ -23,6 +24,8 @@ const routes = createRoutesFromElements(
       <Route index element={<UngVienHome />} />
       <Route path="search" element = {<UngVienHome/>}>
       </Route>
+      <Route path="jobs/:id" element={<JobDetail />} />
+      
     </Route>
 
     <Route path="/nhanvien" element={<><NhanVienLayout /><Footer /></>} >

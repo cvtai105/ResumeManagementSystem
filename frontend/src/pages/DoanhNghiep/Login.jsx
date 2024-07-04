@@ -53,7 +53,7 @@ function Login() {
     return (
         <div>
             {isAuth && <AlreadyLogin homeRedirectHandle={homeRedirectHandle} LogoutHandle={logoutHandle}/>}
-            {!isAuth && <LoginForm submitHandler={submitHandler} />}
+            {!isAuth && <LoginForm submitHandler={submitHandler} pathToRegister="/doanhnghiep/dangky"/>}
         </div>  
     );
 }

@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import logo from '../assets/logo.png';
+import { Link } from 'react-router-dom';
 
 
-const LoginForm = ({submitHandler}) => {
+const LoginForm = ({submitHandler, header="Chào mừng trở lại", pathToRegister=""}) => {
     const [email, setEmail] = useState('ungvien@email.com');
     const [password, setPassword] = useState('123456');
     const [error, setError] = useState(null);
@@ -58,6 +59,16 @@ const LoginForm = ({submitHandler}) => {
               >
                 Đăng nhập
               </button>
+              
+            </div>
+            <div className="flex items-center justify-between">
+              <Link
+                to={pathToRegister}
+                className="py-2 my-4 w-full text-center rounded focus:outline-none hover:bg-royal-blue-dark"
+              >
+                Đăng ký
+              </Link>
+              
             </div>
           </form>
         </div>

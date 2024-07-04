@@ -1,9 +1,9 @@
 import React from 'react';
-import './jobcard.css';
+import './JobCard.css';
 
-const JobCard = ({ jobName, company, salaryRange, location }) => {
+const JobCard = ({ jobName, company, salaryRange, location, onClick }) => {
     return (
-        <div className="job-card text-inherit">
+        <div className="job-card text-inherit" onClick={()=>onClick()}>
           <div className="job-card-left text-inherit">
             <img src={company.image} alt="Company Logo" className="company-logo" />
           </div>
@@ -14,6 +14,7 @@ const JobCard = ({ jobName, company, salaryRange, location }) => {
               <span className="salary">{salaryRange}</span>
               <span className="location">{location}</span>
             </div>
+            
           </div>
         </div>
       );
