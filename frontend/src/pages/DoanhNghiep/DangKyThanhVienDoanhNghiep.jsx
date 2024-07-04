@@ -50,12 +50,13 @@ const DangKyThanhVienDoanhNghiep = () => {
       Email: email,
       MatKhau: "string",
     };
-    console.log(data);
-    // await axios
-    //   .post("http://localhost:5231/api/dangkydoanhnghiep", data)
-    //   .then((response) => {
-    //     console.log("Ahihi");
-    //   });
+
+    await axios
+      .post("http://localhost:5231/api/dangkydoanhnghiep", data)
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((err) => console.log(err));
   };
 
   return (
