@@ -4,8 +4,8 @@ import RegistrationDetails from './RegisterDetail';
 import ListRegister from './ListRegister';
 function ChooseRegister({nextStep, prevStep, formData, setFormData}) {
     return (
-        <div className="grid grid-cols-4 container">
-            <div className=" col-span-2">
+        <div className="grid grid-cols-5 center">
+            <div className=" col-span-3 center">
                 <ContractDetails  jobId={formData.companyId}/>
                 <ListRegister formData={formData}/>
                 <div className="flex items-center ml-[90px]">
