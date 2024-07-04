@@ -23,7 +23,7 @@ namespace Models.Entities
         public string? TrinhDoChuyenMon { get; set; } 
         public string? AnhDaiDien { get; set; } 
         public string? Cv { get; set; } 
-        [JsonIgnore]
-        public List<UngTuyen> UngTuyens { get; set; } = [];
+        // [JsonIgnore]/
+        public List<UngTuyen>? UngTuyens { get; set; }
     }
 }

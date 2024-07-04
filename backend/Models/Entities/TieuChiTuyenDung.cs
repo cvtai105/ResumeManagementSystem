@@ -10,10 +10,9 @@ namespace Models.Entities
 {
     public class TieuChiTuyenDung
     {
-        [Key]
         public int Id { get; set; }
         public string? MoTa { get; set; } = String.Empty;
         public int DangTuyenId { get; set; }
-        public DangTuyen DangTuyen { get; set; } = new();
+        public DangTuyen? DangTuyen { get; set; }
     }
 }

@@ -18,7 +18,6 @@ const ApplyModal = ({ setModalOpen, job }) => {
             formData.email = 'a@a.com';
         }
     }
-
     const handleClickOutside = (event) => {
       if (boxRef.current && !boxRef.current.contains(event.target)) {
         setModalOpen(false);
