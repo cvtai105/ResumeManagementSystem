@@ -13,7 +13,6 @@ namespace Models.Entities
         public int DangTuyenId { get; set; }
         public string? TrangThai { get; set; } = String.Empty;
         public string? DanhGia { get; set; } = String.Empty;
-        [ForeignKey("NhanVien")]
         public int? NhanVienKiemDuyenId { get; set; }
         public NhanVien? NhanVienKiemDuyen { get; set; } = new();
         public DangTuyen DangTuyen { get; set; } = new();

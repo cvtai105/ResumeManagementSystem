@@ -11,7 +11,6 @@ namespace Models.Entities
         public int Id { get; set; }
         public int SoTien { get; set; }
         public DateTime NgayThanhToan { get; set; } = DateTime.Now;
-        [ForeignKey("NhanVien")]
         public int? NhanVienThanhToanId { get; set; }
         public string? GhiChu { get; set; } = String.Empty;
         public NhanVien? NhanVienThanhToan { get; set; } 
