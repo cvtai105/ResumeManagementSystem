@@ -12,6 +12,7 @@ namespace Models.Entities
         public string? DienThoai { get; set; }
         public int? NhanVienDangKyId { get; set; }
         public bool? XacNhan { get; set; }
+        public string? DiaChi {get; set; }
 
         [EmailAddress]
         public string Email { get; set; } = String.Empty;

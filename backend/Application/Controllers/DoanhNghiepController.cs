@@ -22,8 +22,9 @@ namespace Application.Controllers{
                 TenDoanhNghiep = request.TenDoanhNghiep,
                 MaSoThue = request.MaSoThue,
                 DienThoai = request.DienThoai,
-                NhanVienDangKyId = request.NhanVienDangKyId,
-                XacNhan = request.XacNhan,
+                DiaChi = request.DiaChi,
+                NhanVienDangKyId = null,
+                XacNhan = null,
                 Email = request.Email,
                 MatKhau = request.MatKhau
             };
