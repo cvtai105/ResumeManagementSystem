@@ -5,10 +5,10 @@
 
 # Running:
 1. cd backend
-2. dotnet watch run --project Application
-3. dotnet restore (hình như cái này tự động)
-5. dotnet tool install --global dotnet-ef (có rồi thì không cần nữa)
+2. dotnet restore (hình như cái này tự động)
+3. dotnet tool install --global dotnet-ef (có rồi thì không cần nữa)
 4. dotnet ef database update --project DataAccess --startup-project Application (dùng lệnh này khi folder DataAccess/Migrations có thay đổi từ github)
+5. dotnet watch run --project Application
 
 # Khi muốn thay đổi database / relationship giữa các table / columns.
 1. Chỉ cần chỉnh sửa trong folder entities. (các entities là các objects ánh xạ tới các bảng trong database)
