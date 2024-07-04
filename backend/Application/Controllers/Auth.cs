@@ -66,7 +66,9 @@ namespace Application.Controllers
 
                 Response.Cookies.Append("DoanhNghiepAuthToken", tokenString, cookieOptions);
 
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
                 return Ok(new { Token = tokenString, IdDoanhNghiep = doanhNghiep.Id });
+#pragma warning restore CS8602 // Dereference of a possibly null reference.
             }
 
             return Unauthorized();
