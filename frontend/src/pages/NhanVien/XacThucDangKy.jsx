@@ -1,6 +1,5 @@
 import React from "react";
 import axios from "axios";
-import Footer from "../../components/Footer";
 import "./XacThucDangKy.css";
 
 const data = [

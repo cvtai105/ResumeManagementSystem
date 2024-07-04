@@ -1,5 +1,5 @@
 import React from 'react';
-import './jobcard.css';
+import './JobCard.css';
 
 const JobCard = ({ jobName, company, salaryRange, location, onClick }) => {
     return (
