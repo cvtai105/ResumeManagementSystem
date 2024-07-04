@@ -12,7 +12,7 @@ function ContractDetails() {
             <span>BIDV</span>
           </div>
           <div className="flex flex-col ml-5">
-            <span className="font-semibold">Ngày ký</span>
+            <span className="font-semibold">Ngày bắt đầu</span>
             <span>01/01/2024</span>
           </div>
           <div className="flex flex-col ml-5">
@@ -20,7 +20,7 @@ function ContractDetails() {
             <span>Full-Stack</span>
           </div>
           <div className="flex flex-col ml-5">
-            <span className="font-semibold">Ngày hạn</span>
+            <span className="font-semibold">Ngày kết thúc</span>
             <span>01/01/2025</span>
           </div>
           <div className="flex flex-col ml-5">

@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import '../index.css'
 import React, { useState} from 'react';
 
 function ListCriteria() {
@@ -142,19 +142,19 @@ function ListCriteria() {
 
       <div className="bg-white shadow-lg rounded-lg p-6 w-full max-w-4xl">
         <div className="overflow-x-auto">
-          <table className="min-w-full bg-white border border-gray-300">
+          <table className="min-w-full bg-white border custom-border">
             <thead>
               <tr>
-                <th className="px-6 py-3 border-b border-gray-300 text-left text-sm font-medium text-gray-700">Số thứ tự</th>
-                <th className="px-6 py-3 border-b border-gray-300 text-left text-sm font-medium text-gray-700">Nội dung</th>
-                <th className="px-6 py-3 border-b border-gray-300 text-left text-sm font-medium text-gray-700">Đủ điều kiện</th>
+                <th className="px-6 py-3 border border-gray-300 text-left text-sm font-medium text-gray-700 bg-grey">Số thứ tự</th>
+                <th className="px-6 py-3 border border-gray-300 text-left text-sm font-medium text-gray-700 bg-grey">Nội dung</th>
+                <th className="px-6 py-3 border border-gray-300 text-left text-sm font-medium text-gray-700 bg-grey">Đủ điều kiện</th>
               </tr>
             </thead>
             <tbody>
               {rows.map((row, index) => (
                 <tr key={index} className="h-[42px]" data-id={row.id}>
-                  <td className="px-6  border-b border-gray-300 text-sm" >{row.id}</td>
-                  <td className="px-6  border-b border-gray-300 text-sm">{row.content}</td>
+                  <td className="px-6  border border-gray-300 text-sm" >{row.id}</td>
+                  <td className="px-6  border border-gray-300 text-sm">{row.content}</td>
                   <td className="px-4 py-2 border border-gray-300">
                     {
                       row.id ?

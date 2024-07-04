@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import '../index.css'
 function ListDetailCV() {
   const data = [
         {
@@ -103,20 +103,20 @@ function ListDetailCV() {
     <div className="flex justify-right items-center mt-20 bg-gray-100 ">
       <div className="bg-white shadow-lg rounded-lg p-6 w-full max-w-4xl">
         <div className="overflow-x-auto">
-          <table className="min-w-full bg-white border border-gray-300">
+          <table className="min-w-full bg-white border custom-border">
             <thead>
               <tr>
-                <th className="px-6 py-3 border-b border-gray-300 text-left text-sm font-medium text-gray-700">Số thứ tự</th>
-                <th className="px-6 py-3 border-b border-gray-300 text-left text-sm font-medium text-gray-700">Tên chi tiết hồ sơ</th>
-                <th className="px-6 py-3 border-b border-gray-300 text-left text-sm font-medium text-gray-700">Mô tả thêm</th>
+                <th className="bg-grey px-6 py-3 border border-gray-300 text-left text-sm font-medium text-gray-700">Số thứ tự</th>
+                <th className="bg-grey px-6 py-3 border border-gray-300 text-left text-sm font-medium text-gray-700">Tên chi tiết hồ sơ</th>
+                <th className="bg-grey px-6 py-3 border border-gray-300 text-left text-sm font-medium text-gray-700">Mô tả thêm</th>
               </tr>
             </thead>
             <tbody>
               {rows.map((row, index) => (
                 <tr key={index} className="h-[42px]">
-                  <td className="px-6  border-b border-gray-300 text-sm">{row.id}</td>
-                  <td className="px-6  border-b border-gray-300 text-sm">{row.name}</td>
-                  <td className="px-6  border-b border-gray-300 text-sm">{row.discription}</td>
+                  <td className="px-6  border border-gray-300 text-sm">{row.id}</td>
+                  <td className="px-6  border border-gray-300 text-sm">{row.name}</td>
+                  <td className="px-6  border border-gray-300 text-sm">{row.discription}</td>
                 </tr>
               ))}
             </tbody>
