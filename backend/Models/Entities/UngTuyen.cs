@@ -10,12 +10,16 @@ namespace Models.Entities
     {
         public int Id { get; set; }
         public DateTime NgayUngTuyen { get; set; } = DateTime.Now;
-        public int DangTuyenId { get; set; }
+        public int DangTuyenId { get; set; } = 0;
         public string? TrangThai { get; set; } = String.Empty;
         public string? DanhGia { get; set; } = String.Empty;
+
+        public int UngVienId{get; set;}
+
         public int? NhanVienKiemDuyenId { get; set; }
         public NhanVien? NhanVienKiemDuyen { get; set; } = new();
         public DangTuyen DangTuyen { get; set; } = new();
+        public UngVien UngVien{get; set;} = new();
         public List<HoSoUngTuyen> HoSoUngTuyens { get; set; } = [];
     }
 }

@@ -1,231 +1,30 @@
-import React, { useState } from 'react';
-function DataTable() {
-  const data = [
-    {
-      contractCode: 'itcom03122401',
-      employeeCode: 'mvdpt102938',
-      applicantCode: '0000000000000',
-      registrationCode: 'mvdpt102938',
-      creationDate: '1/1/2024',
-      evaluation: '50%'
-    },
-    {
-      contractCode: 'itcom03122401',
-      employeeCode: 'mvdpt102939',
-      applicantCode: '0000000000001',
-      registrationCode: 'mvdpt102939',
-      creationDate: '1/1/2024',
-      evaluation: '60%'
-    },
-    {
-      contractCode: 'itcom03122401',
-      employeeCode: 'mvdpt102940',
-      applicantCode: '0000000000002',
-      registrationCode: 'mvdpt102940',
-      creationDate: '1/1/2024',
-      evaluation: '70%'
-    },
-    {
-      contractCode: 'itcom03122401',
-      employeeCode: 'mvdpt102941',
-      applicantCode: '0000000000003',
-      registrationCode: 'mvdpt102941',
-      creationDate: '1/1/2024',
-      evaluation: '80%'
-    },
-    {
-      contractCode: 'itcom03122401',
-      employeeCode: 'mvdpt102942',
-      applicantCode: '0000000000004',
-      registrationCode: 'mvdpt102942',
-      creationDate: '1/1/2024',
-      evaluation: '90%'
-    },
-    {
-      contractCode: 'itcom03122401',
-      employeeCode: 'mvdpt102938',
-      applicantCode: '0000000000000',
-      registrationCode: 'mvdpt102938',
-      creationDate: '1/1/2024',
-      evaluation: '50%'
-    },
-    {
-      contractCode: 'itcom03122401',
-      employeeCode: 'mvdpt102939',
-      applicantCode: '0000000000001',
-      registrationCode: 'mvdpt102939',
-      creationDate: '1/1/2024',
-      evaluation: '60%'
-    },
-    {
-      contractCode: 'itcom03122401',
-      employeeCode: 'mvdpt102940',
-      applicantCode: '0000000000002',
-      registrationCode: 'mvdpt102940',
-      creationDate: '1/1/2024',
-      evaluation: '70%'
-    },
-    {
-      contractCode: 'itcom03122401',
-      employeeCode: 'mvdpt102941',
-      applicantCode: '0000000000003',
-      registrationCode: 'mvdpt102941',
-      creationDate: '1/1/2024',
-      evaluation: '80%'
-    },
-    {
-      contractCode: 'itcom03122401',
-      employeeCode: 'mvdpt102942',
-      applicantCode: '0000000000004',
-      registrationCode: 'mvdpt102942',
-      creationDate: '1/1/2024',
-      evaluation: '90%'
-    },
-    {
-      contractCode: 'itcom03122401',
-      employeeCode: 'mvdpt102940',
-      applicantCode: '0000000000002',
-      registrationCode: 'mvdpt102940',
-      creationDate: '1/1/2024',
-      evaluation: '70%'
-    },
-    {
-      contractCode: 'itcom03122401',
-      employeeCode: 'mvdpt102941',
-      applicantCode: '0000000000003',
-      registrationCode: 'mvdpt102941',
-      creationDate: '1/1/2024',
-      evaluation: '80%'
-    },
-    {
-      contractCode: 'itcom03122401',
-      employeeCode: 'mvdpt102942',
-      applicantCode: '0000000000004',
-      registrationCode: 'mvdpt102942',
-      creationDate: '1/1/2024',
-      evaluation: '90%'
-    },
-    {
-      contractCode: 'itcom03122401',
-      employeeCode: 'mvdpt102938',
-      applicantCode: '0000000000000',
-      registrationCode: 'mvdpt102938',
-      creationDate: '1/1/2024',
-      evaluation: '50%'
-    },
-    {
-      contractCode: 'itcom03122401',
-      employeeCode: 'mvdpt102939',
-      applicantCode: '0000000000001',
-      registrationCode: 'mvdpt102939',
-      creationDate: '1/1/2024',
-      evaluation: '60%'
-    },
-    {
-      contractCode: 'itcom03122401',
-      employeeCode: 'mvdpt102940',
-      applicantCode: '0000000000002',
-      registrationCode: 'mvdpt102940',
-      creationDate: '1/1/2024',
-      evaluation: '70%'
-    },
-    {
-      contractCode: 'itcom03122401',
-      employeeCode: 'mvdpt102942',
-      applicantCode: '0000000000004',
-      registrationCode: 'mvdpt102942',
-      creationDate: '1/1/2024',
-      evaluation: '90%'
-    },
-    {
-      contractCode: 'itcom03122401',
-      employeeCode: 'mvdpt102938',
-      applicantCode: '0000000000000',
-      registrationCode: 'mvdpt102938',
-      creationDate: '1/1/2024',
-      evaluation: '50%'
-    },
-    {
-      contractCode: 'itcom03122401',
-      employeeCode: 'mvdpt102939',
-      applicantCode: '0000000000001',
-      registrationCode: 'mvdpt102939',
-      creationDate: '1/1/2024',
-      evaluation: '60%'
-    },
-    {
-      contractCode: 'itcom03122401',
-      employeeCode: 'mvdpt102940',
-      applicantCode: '0000000000002',
-      registrationCode: 'mvdpt102940',
-      creationDate: '1/1/2024',
-      evaluation: '70%'
-    },
-    {
-      contractCode: 'itcom03122401',
-      employeeCode: 'mvdpt102941',
-      applicantCode: '0000000000003',
-      registrationCode: 'mvdpt102941',
-      creationDate: '1/1/2024',
-      evaluation: '80%'
-    },
-    {
-      contractCode: 'itcom03122401',
-      employeeCode: 'mvdpt102942',
-      applicantCode: '0000000000004',
-      registrationCode: 'mvdpt102942',
-      creationDate: '1/1/2024',
-      evaluation: '90%'
-    },
-    {
-      contractCode: 'itcom03122401',
-      employeeCode: 'mvdpt102940',
-      applicantCode: '0000000000002',
-      registrationCode: 'mvdpt102940',
-      creationDate: '1/1/2024',
-      evaluation: '70%'
-    },
-    {
-      contractCode: 'itcom03122401',
-      employeeCode: 'mvdpt102941',
-      applicantCode: '0000000000003',
-      registrationCode: 'mvdpt102941',
-      creationDate: '1/1/2024',
-      evaluation: '80%'
-    },
-    {
-      contractCode: 'itcom03122401',
-      employeeCode: 'mvdpt102942',
-      applicantCode: '0000000000004',
-      registrationCode: 'mvdpt102942',
-      creationDate: '1/1/2024',
-      evaluation: '90%'
-    },
-    {
-      contractCode: 'itcom03122401',
-      employeeCode: 'mvdpt102938',
-      applicantCode: '0000000000000',
-      registrationCode: 'mvdpt102938',
-      creationDate: '1/1/2024',
-      evaluation: '50%'
-    },
-    {
-      contractCode: 'itcom03122401',
-      employeeCode: 'mvdpt102939',
-      applicantCode: '0000000000001',
-      registrationCode: 'mvdpt102939',
-      creationDate: '1/1/2024',
-      evaluation: '60%'
-    },
-    {
-      contractCode: 'itcom03122401',
-      employeeCode: 'mvdpt102940',
-      applicantCode: '0000000000002',
-      registrationCode: 'mvdpt102940',
-      creationDate: '1/1/2024',
-      evaluation: '70%'
-    },
-  ];
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+function DataTable({registerId}) {
+  let [data, setDangTuyens] = useState([]);
+
+  const getUngTuyenByIdDangTuyen = async (registerId) => {
+    try {
+        const response = await axios.get(`http://localhost:5231/api/ungtuyen/danhsach/${registerId}`);
+        return response.data;
+    } catch (error) {
+        console.error('Error fetching filtered dang tuyens:', error);
+        throw error;
+    }
+  };
+
+  useEffect(() => {
+      const fetchData = async () => {
+        try {
+            const temp = await getUngTuyenByIdDangTuyen(registerId);
+            setDangTuyens(temp);
+          } catch (error) {
+              console.error('Error fetching companies:', error);
+          }
+      };
+
+      fetchData();
+  }, []);
   const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 5;
 
@@ -300,7 +99,7 @@ function DataTable() {
     };
   return (
     
-    <div className="flex justify-center items-center mt-10 bg-gray-100">
+    <div className="flex ml-[90px] items-center mt-10 bg-gray-100">
       <div className="bg-white shadow-lg rounded-lg p-6 w-full max-w-4xl">
           <div className="flex items-center mb-5">
           <input 
@@ -319,20 +118,18 @@ function DataTable() {
                 <th className="px-6 py-3 border border-gray-300 text-left text-sm font-medium text-gray-700 bg-grey">Mã Hợp Đồng</th>
                 <th className="px-6 py-3 border border-gray-300 text-left text-sm font-medium text-gray-700 bg-grey">Mã NV Duyệt Phiếu</th>
                 <th className="px-6 py-3 border border-gray-300 text-left text-sm font-medium text-gray-700 bg-grey">Mã Ứng Viên</th>
-                <th className="px-6 py-3 border border-gray-300 text-left text-sm font-medium text-gray-700 bg-grey">Mã PĐK Ứng Tuyển</th>
                 <th className="px-6 py-3 border border-gray-300 text-left text-sm font-medium text-gray-700 bg-grey">Ngày Lập Phiếu</th>
-                <th className="px-6 py-3 border border-gray-300 text-left text-sm font-medium text-gray-700 bg-grey">Đánh Giá</th>
+                <th className="px-6 py-3 border border-gray-300 text-left text-sm font-medium text-gray-700 bg-grey">Trạng thái</th>
               </tr>
             </thead>
             <tbody>
               {rows.map((row, index) => (
                 <tr key={index} className="h-[42px]">
-                  <td className="px-6  border border-gray-300 text-sm">{row.contractCode}</td>
-                  <td className="px-6  border border-gray-300 text-sm">{row.employeeCode}</td>
-                  <td className="px-6  border border-gray-300 text-sm">{row.applicantCode}</td>
-                  <td className="px-6  border border-gray-300 text-sm">{row.registrationCode}</td>
-                  <td className="px-6  border border-gray-300 text-sm">{row.creationDate}</td>
-                  <td className="px-6  border border-gray-300 text-sm">{row.evaluation}</td>
+                  <td className="px-6  border border-gray-300 text-sm">{row.dangTuyenId}</td>
+                  <td className="px-6  border border-gray-300 text-sm">{row.nhanVienKiemDuyenId}</td>
+                  <td className="px-6  border border-gray-300 text-sm">{row.ungVienId}</td>
+                  <td className="px-6  border border-gray-300 text-sm">{row.id ? new Date(row.ngayUngTuyen).toLocaleDateString('vn') : ''}</td>
+                  <td className="px-6  border border-gray-300 text-sm">{row.id? row.trangThai ? row.trangThai : 'Chưa xử lý' : ''}</td>
                 </tr>
               ))}
             </tbody>
@@ -356,7 +153,7 @@ function DataTable() {
           </div>
           
       </div>
-
+                 
     </div>
   );
 }

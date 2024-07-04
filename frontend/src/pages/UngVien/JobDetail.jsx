@@ -14,7 +14,7 @@ const JobDetail = () => {
 
     const [showModal, setShowModal] = useState(false)
     return (
-        <div className='container'>
+        <div className='jobdetail-container'>
             {   showModal && <ApplyModal setModalOpen={setShowModal} /> }
             <div className='job-detail'>
                 <div className='job-detail__left'>

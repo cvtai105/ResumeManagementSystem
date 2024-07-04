@@ -5,7 +5,9 @@ using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using DataAccess.DAOs;
 using BusinessLogic;
-
+using Microsoft.Identity.Client.Platforms.Features.DesktopOs.Kerberos;
+using Application.Controllers;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 var config = builder.Configuration;
@@ -37,11 +39,13 @@ builder.Services.AddCors(options =>
     );
 });
 
-// builder.Services.AddControllers()
-//     .AddJsonOptions(options =>
-//     {
-//         options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve;
-//     });
+builder.Services.AddControllers()
+    .AddJsonOptions(options =>
+    {
+        options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
+        options.JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
+        options.JsonSerializerOptions.MaxDepth = 64; // hoặc giá trị lớn hơn nếu cần thiết
+    });
 
 builder.Services.AddDbContext<AppDbContext>(options =>
 {
@@ -68,6 +72,8 @@ builder.Services.AddScoped<DangTuyenBL>();
 builder.Services.AddScoped<TieuChiTuyenDungBL>();
 builder.Services.AddScoped<HinhThucThanhToanBL>();
 
+builder.Services.AddScoped<UngTuyenBL>();
+builder.Services.AddScoped<UngTuyenDAO>();
 
 builder.Services.AddControllers();
 builder.Services.AddAuthentication(options =>
