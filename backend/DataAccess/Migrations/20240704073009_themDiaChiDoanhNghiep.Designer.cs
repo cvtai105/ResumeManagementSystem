@@ -4,6 +4,7 @@ using DataAccess.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccess.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240704073009_themDiaChiDoanhNghiep")]
+    partial class themDiaChiDoanhNghiep
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -116,6 +119,9 @@ namespace DataAccess.Migrations
                     b.Property<DateTime?>("NgayDangKy")
                         .HasColumnType("datetime2");
 
+                    b.Property<int?>("NhanVien")
+                        .HasColumnType("int");
+
                     b.Property<int?>("NhanVienDangKyId")
                         .HasColumnType("int");
 
@@ -128,7 +134,7 @@ namespace DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("NhanVienDangKyId");
+                    b.HasIndex("NhanVien");
 
                     b.ToTable("DoanhNghieps");
 
@@ -540,7 +546,7 @@ namespace DataAccess.Migrations
                 {
                     b.HasOne("Models.Entities.NhanVien", "NhanVienDangKy")
                         .WithMany()
-                        .HasForeignKey("NhanVienDangKyId");
+                        .HasForeignKey("NhanVien");
 
                     b.Navigation("NhanVienDangKy");
                 });

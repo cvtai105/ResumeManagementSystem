@@ -36,7 +36,7 @@ function UngVienLayout() {
                         </div>
                         <div className="ml-10 flex ">
                             <div className="m-auto">
-                                <NavLink to="" className={({ isActive }) => isActive ? "navlink text-dodger-blue" : "navlink"} >Việc làm</NavLink>
+                                <NavLink to="" end className={({ isActive }) => isActive ? "navlink text-dodger-blue" : "navlink"} >Việc làm</NavLink>
                                 <NavLink to="hoso" className={({ isActive }) => isActive ? "navlink text-dodger-blue" : "navlink"} >Hồ sơ & CV</NavLink>
                             </div>
                         </div>
@@ -46,7 +46,7 @@ function UngVienLayout() {
                         
                         <NavLink to="doanhnghiep" className="mx-10" >Đăng tuyển dụng</NavLink>
                         <NavLink to="dangnhap" className="login" >Đăng nhập</NavLink>
-                        <NavLink to="dangky" className="login" >Đăng ký</NavLink>
+                        <NavLink className="login" >Đăng ký</NavLink>
                       </div>
                     }
 

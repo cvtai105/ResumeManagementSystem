@@ -27,5 +27,15 @@ namespace DataAccess.DAOs
             await _context.SaveChangesAsync();
             return doanhNghiep;
         }
+
+        public async Task<DoanhNghiep> UpdateXacNhan(int id, bool xacNhan)
+        {
+            var doanhNghiep = _context.DoanhNghieps.First(x => x.Id == id);
+            doanhNghiep.XacNhan = xacNhan; 
+            //Cap nhat Id NhanVien o day
+            _context.SaveChanges();
+            await _context.SaveChangesAsync();
+            return doanhNghiep;
+        }
     }
 }
