@@ -8,6 +8,7 @@ using DataAccess.DAOs;
 using BusinessLogic;
 using Microsoft.Identity.Client.Platforms.Features.DesktopOs.Kerberos;
 using Application.Controllers;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 var config = builder.Configuration;
@@ -42,7 +43,9 @@ builder.Services.AddCors(options =>
 builder.Services.AddControllers()
     .AddJsonOptions(options =>
     {
-        options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve;
+        options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
+        options.JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
+        options.JsonSerializerOptions.MaxDepth = 64; // hoặc giá trị lớn hơn nếu cần thiết
     });
 
 builder.Services.AddDbContext<AppDbContext>(options =>
