@@ -20,7 +20,7 @@ function NhanVienLayout() {
   }, [nav]);
 
   function logoutHandle() {
-    deleteCookie('AuthToken');
+    deleteCookie('NhanVienAuthToken');
     setIsAuth(false);
     nav('/nhanvien/dangnhap')
   }

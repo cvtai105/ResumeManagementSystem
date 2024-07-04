@@ -1,0 +1,71 @@
+.container {
+    display: flex;
+    justify-content: center;
+    padding-left: 11rem;
+    padding-right: 11rem;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    background-color: #f7f7f7;
+    box-sizing: border-box;
+}
+
+.job-detail {
+    display: flex;
+    width: 100%; /* Adjust this as needed */
+}
+
+.job-detail__left {
+    flex: 0 1 67%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.job-detail__left-items{
+    display: flex;
+    background-color: white;
+    padding: 2rem;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.job-detail__right {
+    flex: 0 1 calc(33% - 24px);
+    margin-left: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.job-detail__info--sections{
+    display: flex;
+
+}
+
+.job-detail__info--section{
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    width: 33.3333333333%;
+}
+
+.job-detail__info--section-icon{
+    background: linear-gradient(11deg, #00bf5d, #00907c);
+    align-items: center;
+
+    display: flex;
+    padding: 10px;
+    border-radius: 50%;
+}
+
+.job-deadline{
+    background-color: #f0f0f0;
+    border-radius: 4px;
+    padding: 4px 8px;
+    margin: 0 8px 8px 0;
+    font-size: 0.5em;
+    display: flex;
+    gap: 1em;
+    align-items: center;
+    width: fit-content;
+}

@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import logo from '../assets/logo.png';
+import { Link } from 'react-router-dom';
 
 
-const LoginForm = ({submitHandler}) => {
+const LoginForm = ({submitHandler, header="Chào mừng trở lại", pathToRegister=""}) => {
     const [email, setEmail] = useState('ungvien@email.com');
     const [password, setPassword] = useState('123456');
     const [error, setError] = useState(null);
@@ -12,7 +13,6 @@ const LoginForm = ({submitHandler}) => {
         const jwt = await submitHandler({email, password});
         console.log(jwt);
         if(!jwt) {
-          
         //console.log("check")
             setError('Sai tên đăng nhập hoặc mật khẩu');
         }
@@ -49,8 +49,9 @@ const LoginForm = ({submitHandler}) => {
                 onChange={(e) => setPassword(e.target.value)}
                 required
               />
+              
+            {error && <p className="text-red text-base italic">{error}</p>}
             </div>
-            {error && <p className="text-red-500 text-xs italic">{error}</p>}
             <div className="flex items-center justify-between">
               <button
                 type="submit"
@@ -58,6 +59,16 @@ const LoginForm = ({submitHandler}) => {
               >
                 Đăng nhập
               </button>
+              
+            </div>
+            <div className="flex items-center justify-between">
+              <Link
+                to={pathToRegister}
+                className="py-2 my-4 w-full text-center rounded focus:outline-none hover:bg-royal-blue-dark"
+              >
+                Đăng ký
+              </Link>
+              
             </div>
           </form>
         </div>

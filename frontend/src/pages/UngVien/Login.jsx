@@ -23,15 +23,17 @@ function Login() {
        
         console.log(data);
         const res = await fetchUngVienJwt(data);
-        if(res) {
-            console.log(res);
+        console.log(res);
+        if (res == null ){
+            setError('Lỗi không xác định được / Lỗi đường truyền');
+            return;
+        }
+        else if(res.status == 401) {
+            setError('Sai tên đăng nhập hoặc mật khẩu!');
+        }
+        else if (res.token) {
             navigate('/');
         }
-        else {
-            setError('Sai tên đăng nhập hoặc mật khẩu');
-        }
-
-        return res;
     }
 
     function homeRedirectHandle() {

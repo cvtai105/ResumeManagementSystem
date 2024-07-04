@@ -35,9 +35,9 @@ const Review = () => {
     };
     switch (step) {
       case 1:
-        return <ListCompany nextStep={nextStep} handleChange={handleChange} formData={formData} getFilteredDangTuyens={getFilteredDangTuyens}/>;
+        return <ListCompany nextStep={nextStep} formData={formData} setFormData={setFormData} getFilteredDangTuyens={getFilteredDangTuyens}/>;
       case 2:
-        return <ChooseRegister nextStep={nextStep} prevStep={prevStep} handleChange={handleChange} formData={formData}/>;
+        return <ChooseRegister nextStep={nextStep} prevStep={prevStep} formData={formData} setFormData={setFormData}/>;
       case 3:
         return <ReviewCV prevStep={prevStep} formData={formData} />;
       default:

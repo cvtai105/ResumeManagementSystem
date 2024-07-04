@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
-import Select from "react-select";
 import "./DangKyThanhVienDoanhNghiep.css";
+import axios from "axios";
 const pcVN = require("pc-vn");
 const province1 = pcVN.getProvinces();
 
@@ -62,13 +61,14 @@ const DangKyThanhVienDoanhNghiep = () => {
   return (
     <div>
       <div className="registration-form-container">
-        <h2>Đăng Ký Thành Viên Doanh Nghiệp</h2>
+        <p>Đăng Ký Thành Viên Doanh Nghiệp</p>
         <form className="registration-form" onSubmit={(e) => handleSubmit(e)}>
           <div className="form-group">
             <label htmlFor="companyName">Tên công ty</label>
             <input
               type="text"
               id="companyName"
+              required="required"
               name="companyName"
               placeholder="ABC"
               onChange={(e) => setTendoanhnghiep(e.target.value)}
@@ -99,6 +99,7 @@ const DangKyThanhVienDoanhNghiep = () => {
             <input
               type="email"
               id="email"
+              required="required"
               name="email"
               placeholder="abc@email.com"
               onChange={(e) => setEmail(e.target.value)}

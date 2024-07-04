@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-function DataTable() {
+function DataTable({formData}) {
   const data = [
     {
       contractCode: 'itcom03122401',
@@ -356,7 +356,7 @@ function DataTable() {
           </div>
           
       </div>
-
+                 
     </div>
   );
 }

@@ -1,6 +1,5 @@
 using Microsoft.EntityFrameworkCore;
 using DataAccess.Data;
-using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
@@ -43,7 +42,9 @@ builder.Services.AddCors(options =>
 builder.Services.AddControllers()
     .AddJsonOptions(options =>
     {
-        options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve;
+        options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
+        options.JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
+        options.JsonSerializerOptions.MaxDepth = 64; // hoặc giá trị lớn hơn nếu cần thiết
     });
 
 builder.Services.AddDbContext<AppDbContext>(options =>

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import '../index.css'
-function ListCompany({nextStep, handleChange, setFormData}) {
+function ListCompany({nextStep, setFormData}) {
   let [jobPosts, setDangTuyens] = useState([]);
 
   const getFilteredDangTuyens = async () => {
@@ -12,20 +12,20 @@ function ListCompany({nextStep, handleChange, setFormData}) {
         console.error('Error fetching filtered dang tuyens:', error);
         throw error;
     }
-};
+  };
 
-useEffect(() => {
-    const fetchData = async () => {
-      const data = await getFilteredDangTuyens();
-      setDangTuyens(data);
-        try {
-        } catch (error) {
-            console.error('Error fetching companies:', error);
-        }
-    };
+  useEffect(() => {
+      const fetchData = async () => {
+        const data = await getFilteredDangTuyens();
+        setDangTuyens(data);
+          try {
+          } catch (error) {
+              console.error('Error fetching companies:', error);
+          }
+      };
 
-    fetchData();
-}, []);
+      fetchData();
+  }, []);
     //return (<div>{Object.values(jobPosts).toString()}</div>);
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 5;
@@ -39,7 +39,14 @@ useEffect(() => {
     const handlePageChange = (page) => {
       setCurrentPage(page);
     };
-  
+    const handleButtonClick = (id) => {
+        setFormData(prevFormData => ({
+            ...prevFormData,
+            companyId: id.toString() // Giá trị mới của companyId
+        }));
+        // Chuyển sang trang khác sau khi thay đổi companyId
+        nextStep();
+    };
     // Thêm các hàng trống nếu cần thiết
     const emptyRows = itemsPerPage - currentData.length;
     const rows = [...currentData, ...Array(emptyRows).fill({})];
@@ -140,7 +147,7 @@ useEffect(() => {
                     <td className="px-6  border border-gray-300 text-sm">
                       {
                         row.id ? 
-                        <button onClick={nextStep} className='btn-dark py-1 px-2 rounded text-sm'>
+                        <button onClick={() => handleButtonClick(row.id)} className='btn-dark py-1 px-2 rounded text-sm'>
                           Chọn
                         </button> : ''  
                       }
@@ -167,7 +174,6 @@ useEffect(() => {
               </button>
             </div>
         </div>
-  
       </div>
     );
   }

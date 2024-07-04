@@ -1,4 +1,4 @@
-import { Outlet, NavLink } from "react-router-dom";
+import { Outlet, NavLink, Link } from "react-router-dom";
 import logo from "../assets/logo.png";
 import React, { useEffect, useState } from 'react';
 import { isDoanhNghiepAuth } from "../fetchServices/Auth/checkAuth";
@@ -15,14 +15,15 @@ function DoanhNghiepLayout() {
     if(isDoanhNghiepAuth()){
       setIsAuth(true);
     }else {
+      setIsAuth(false)
     }
   }
   , [nav]);
 
   function logoutHandle() {
-    deleteCookie('AuthToken');
+    deleteCookie('DoanhNghiepAuthToken');
     setIsAuth(false);
-    nav('/dangnhap')
+    nav('/doanhnghiep/dangnhap')
   }
   
   return (
@@ -44,7 +45,7 @@ function DoanhNghiepLayout() {
                     { !isAuth &&
                       <div className="">
                         <NavLink to="dangnhap" className="login" >Đăng nhập</NavLink>
-                        <NavLink className="login" >Đăng ký</NavLink>
+                        <NavLink to="dangky" className="login" >Đăng ký</NavLink>
                       </div>
                     }
 
@@ -58,9 +59,28 @@ function DoanhNghiepLayout() {
                 </div>
             </div>
         </nav>
-      <main>
-        <Outlet /> {/* This is where nested routes will be rendered */}
-      </main>
+
+      
+      { isAuth &&
+          <main>
+            <Outlet /> {/* This is where nested routes will be rendered */}
+          </main>
+      }
+
+      { !isAuth &&
+      <div className="flex items-center justify-center my-64">
+        <div>
+          <Link to="/doanhnghiep/dangnhap" className="text-center">
+            <h3>Đăng nhập để tiếp tục</h3>
+          </Link>
+          <h4 className="text-center"> hoặc </h4>
+          <Link to="/doanhnghiep/dangky" className="text-center">
+            <h3>Đăng ký thành viên</h3>
+          </Link>
+        </div>
+    </div>
+    }
+      
       <footer>
         <Footer/>
       </footer>
