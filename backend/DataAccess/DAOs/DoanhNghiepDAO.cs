@@ -28,18 +28,13 @@ namespace DataAccess.DAOs
             return doanhNghiep;
         }
 
-        public DoanhNghiep UpdateXacNhan(int id, bool xacNhan)
+        public async Task<DoanhNghiep> UpdateXacNhanAsync(int id, bool xacNhan)
         {
             var doanhNghiep = _context.DoanhNghieps.First(x => x.Id == id);
             doanhNghiep.XacNhan = xacNhan;
             //Cap nhat Id NhanVien o day
-            _context.SaveChanges();
+            _ = await _context.SaveChangesAsync();
             return doanhNghiep;
-        }
-
-        public DoanhNghiep? GetById(string id)
-        {
-            throw new NotImplementedException();
         }
     }
 }
