@@ -8,7 +8,7 @@ using DataAccess.DAOs;
 using BusinessLogic;
 using Microsoft.Identity.Client.Platforms.Features.DesktopOs.Kerberos;
 using Application.Controllers;
-
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 var config = builder.Configuration;
