@@ -72,6 +72,8 @@ builder.Services.AddScoped<DangTuyenBL>();
 builder.Services.AddScoped<TieuChiTuyenDungBL>();
 builder.Services.AddScoped<HinhThucThanhToanBL>();
 
+builder.Services.AddScoped<UngTuyenBL>();
+builder.Services.AddScoped<UngTuyenDAO>();
 
 builder.Services.AddControllers();
 builder.Services.AddAuthentication(options =>

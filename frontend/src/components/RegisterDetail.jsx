@@ -2,7 +2,7 @@ import React from 'react';
 
 function RegistrationDetails({nextStep}) {
   return (
-    <div className="flex mr-[100px] items-center bg-gray-100 px-150">
+    <div className="flex mr-[100px] items-center bg-gray-100 px-130">
       <div className="bg-white shadow-lg rounded-lg p-8 max-w-md w-full">
         <h3 className="text-xl font-semibold mb-6">CHI TIẾT PHIẾU ĐĂNG KÝ</h3>
         
@@ -59,8 +59,9 @@ function RegistrationDetails({nextStep}) {
             Ngày lập phiếu:
           </label>
           <input
-            type="date"
+            type="text"
             id="creationDate"
+            placeholder="12/12/2022"
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           />
         </div>
