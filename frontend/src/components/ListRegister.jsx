@@ -313,26 +313,26 @@ function DataTable() {
           </button>
         </div>
         <div className="overflow-x-auto">
-          <table className="min-w-full bg-white border border-gray-300">
+          <table className="min-w-full bg-white border custom-border">
             <thead>
               <tr>
-                <th className="px-6 py-3 border-b border-gray-300 text-left text-sm font-medium text-gray-700">Mã Hợp Đồng</th>
-                <th className="px-6 py-3 border-b border-gray-300 text-left text-sm font-medium text-gray-700">Mã NV Duyệt Phiếu</th>
-                <th className="px-6 py-3 border-b border-gray-300 text-left text-sm font-medium text-gray-700">Mã Ứng Viên</th>
-                <th className="px-6 py-3 border-b border-gray-300 text-left text-sm font-medium text-gray-700">Mã PĐK Ứng Tuyển</th>
-                <th className="px-6 py-3 border-b border-gray-300 text-left text-sm font-medium text-gray-700">Ngày Lập Phiếu</th>
-                <th className="px-6 py-3 border-b border-gray-300 text-left text-sm font-medium text-gray-700">Đánh Giá</th>
+                <th className="px-6 py-3 border border-gray-300 text-left text-sm font-medium text-gray-700 bg-grey">Mã Hợp Đồng</th>
+                <th className="px-6 py-3 border border-gray-300 text-left text-sm font-medium text-gray-700 bg-grey">Mã NV Duyệt Phiếu</th>
+                <th className="px-6 py-3 border border-gray-300 text-left text-sm font-medium text-gray-700 bg-grey">Mã Ứng Viên</th>
+                <th className="px-6 py-3 border border-gray-300 text-left text-sm font-medium text-gray-700 bg-grey">Mã PĐK Ứng Tuyển</th>
+                <th className="px-6 py-3 border border-gray-300 text-left text-sm font-medium text-gray-700 bg-grey">Ngày Lập Phiếu</th>
+                <th className="px-6 py-3 border border-gray-300 text-left text-sm font-medium text-gray-700 bg-grey">Đánh Giá</th>
               </tr>
             </thead>
             <tbody>
               {rows.map((row, index) => (
                 <tr key={index} className="h-[42px]">
-                  <td className="px-6  border-b border-gray-300 text-sm">{row.contractCode}</td>
-                  <td className="px-6  border-b border-gray-300 text-sm">{row.employeeCode}</td>
-                  <td className="px-6  border-b border-gray-300 text-sm">{row.applicantCode}</td>
-                  <td className="px-6  border-b border-gray-300 text-sm">{row.registrationCode}</td>
-                  <td className="px-6  border-b border-gray-300 text-sm">{row.creationDate}</td>
-                  <td className="px-6  border-b border-gray-300 text-sm">{row.evaluation}</td>
+                  <td className="px-6  border border-gray-300 text-sm">{row.contractCode}</td>
+                  <td className="px-6  border border-gray-300 text-sm">{row.employeeCode}</td>
+                  <td className="px-6  border border-gray-300 text-sm">{row.applicantCode}</td>
+                  <td className="px-6  border border-gray-300 text-sm">{row.registrationCode}</td>
+                  <td className="px-6  border border-gray-300 text-sm">{row.creationDate}</td>
+                  <td className="px-6  border border-gray-300 text-sm">{row.evaluation}</td>
                 </tr>
               ))}
             </tbody>

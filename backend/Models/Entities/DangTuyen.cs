@@ -28,6 +28,8 @@ namespace Models.Entities
         public HinhThucDangTuyen HinhThucDangTuyen { get; set; } = new(); 
         [JsonIgnore]
         public List<TieuChiTuyenDung> TieuChiTuyenDungs { get; set; } = [];
+        
+        [JsonIgnore]
         public List<UngTuyen> UngTuyens { get; set; } = [];
         public List<ThanhToan> ThanhToans {get; set;} = [];
     }
