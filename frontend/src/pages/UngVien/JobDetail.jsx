@@ -11,7 +11,7 @@ const JobDetail = () => {
         salary: '15 - 20 triệu',
     }
     return (
-        <div className='container'>
+        <div className='jobdetail-container'>
             <div className='job-detail'>
                 <div className='job-detail__left'>
                     <div className=' job-detail__left-items '>
