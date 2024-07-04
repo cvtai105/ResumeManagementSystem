@@ -24,7 +24,8 @@ namespace Models.Entities
         public HinhThucDangTuyen HinhThucDangTuyen { get; set; } = new(); 
         [JsonIgnore]
         public List<TieuChiTuyenDung> TieuChiTuyenDungs { get; set; } = [];
-        
+        [NotMapped]
+        public int SoLuongUngVien { get; set; } = 0;
         [JsonIgnore]
         public List<UngTuyen> UngTuyens { get; set; } = [];
         public List<ThanhToan> ThanhToans {get; set;} = [];

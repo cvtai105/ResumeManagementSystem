@@ -12,11 +12,20 @@ public class DangTuyenDAO(AppDbContext context)
 
     public async Task<DangTuyen?> GetById(int id)
     {
-        return await _context.DangTuyens
-            .Include(d => d.TieuChiTuyenDungs)
-            .Include(d => d.DoanhNghiep)
-            .Include(d => d.HinhThucDangTuyen)
-            .FirstOrDefaultAsync(d => d.Id == id);
+        var dangTuyen = await _context.DangTuyens
+        .Include(d => d.TieuChiTuyenDungs)
+        .Include(d => d.DoanhNghiep)
+        .Include(d => d.HinhThucDangTuyen)
+        .Include(d => d.UngTuyens)
+        .FirstOrDefaultAsync(d => d.Id == id);
+
+        if (dangTuyen != null)
+        {
+            // Tính toán số lượng ứng tuyển
+            dangTuyen.SoLuongUngVien = dangTuyen.UngTuyens.Count;
+        }
+
+        return dangTuyen;
     }
     public void Attach(DoanhNghiep doanhNghiep)
     {
