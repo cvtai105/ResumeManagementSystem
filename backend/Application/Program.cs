@@ -1,13 +1,10 @@
 using Microsoft.EntityFrameworkCore;
 using DataAccess.Data;
-using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using DataAccess.DAOs;
 using BusinessLogic;
-using Microsoft.Identity.Client.Platforms.Features.DesktopOs.Kerberos;
-using Application.Controllers;
 
 
 var builder = WebApplication.CreateBuilder(args);

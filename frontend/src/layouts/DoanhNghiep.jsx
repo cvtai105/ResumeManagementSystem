@@ -1,4 +1,4 @@
-import { Outlet, NavLink } from "react-router-dom";
+import { Outlet, NavLink, Link } from "react-router-dom";
 import logo from "../assets/logo.png";
 import React, { useEffect, useState } from 'react';
 import { isDoanhNghiepAuth } from "../fetchServices/Auth/checkAuth";
@@ -6,7 +6,6 @@ import deleteCookie from "../utils/deleteCookie";
 import { useNavigate  } from "react-router-dom";
 import './nav.css';
 import Footer from '../components/Footer';
-import LoginRequire from "../components/LoginRequire";
 
 function DoanhNghiepLayout() {
   const nav = useNavigate();
@@ -69,8 +68,18 @@ function DoanhNghiepLayout() {
       }
 
       { !isAuth &&
-        <LoginRequire />
-      }
+      <div className="flex items-center justify-center my-64">
+        <div>
+          <Link to="/doanhnghiep/dangnhap" className="text-center">
+            <h3>Đăng nhập để tiếp tục</h3>
+          </Link>
+          <h4 className="text-center"> hoặc </h4>
+          <Link to="/doanhnghiep/dangky" className="text-center">
+            <h3>Đăng ký thành viên</h3>
+          </Link>
+        </div>
+    </div>
+    }
       
       <footer>
         <Footer/>
