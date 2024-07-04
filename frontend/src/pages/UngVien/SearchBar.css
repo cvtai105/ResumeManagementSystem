@@ -1,0 +1,62 @@
+.search-bar {
+    display: flex;
+    align-items: center;
+    border-radius: 35px !important;
+    background-color: white;
+    padding: 10px;
+  }
+  
+  .search-input {
+    border: none;
+    border-radius: 25px;
+    padding: 10px;
+    font-size: 16px;
+    flex: 1;
+  }
+  
+  /* Style cho container của dropdown */
+.dropdown {
+  position: relative;
+  display: inline-block;
+  width: 160px;
+}
+
+/* Style cho select element */
+.dropdown-select {
+  width: 100%;
+  padding: 10px;
+  border-radius: 25px;
+  font-size: 16px;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+
+
+/* Style khi hover và focus */
+.dropdown-select:hover,
+.dropdown-select:focus {
+  border-color: #888;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Style cho các option */
+.dropdown-select option {
+  padding: 10px;
+  background-color: #fff;
+}
+  
+  .search-button {
+    background-color: #00b060;
+    border: none;
+    border-radius: 25px;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    margin-left: 10px;
+    cursor: pointer;
+  }
+  
+  .search-button:hover {
+    background-color: #009e56;
+  }

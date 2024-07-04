@@ -23,6 +23,7 @@ const routes = createRoutesFromElements(
     <Route path="/" element={<UngVienLayout />} >
       <Route index element={<UngVienHome />} />
     </Route>
+
     <Route path="/nhanvien" element={<><NhanVienLayout /><Footer /></>} >
       <Route index element={<NhanVienHome />} />
       <Route path='xacthuc' element={<XacThucDangKy />} /> 
@@ -30,8 +31,6 @@ const routes = createRoutesFromElements(
     </Route>
     <Route path="/dangnhap" element={<UngVienLogin />} />
     <Route path="/nhanvien/dangnhap" element={<NhanVienLogin />} />
-
-
     <Route path='/doanhnghiep/dangnhap' element={<DoanhNghiepLogin />} />
 
     <Route path="/doanhnghiep" element={<><Navbar /><Footer /></>}>

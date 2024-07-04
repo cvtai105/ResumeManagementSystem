@@ -1,54 +1,44 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
 function ListCompany({nextStep, handleChange, setFormData}) {
-    const jobPosts = [
-      { id: 1, code: 'itcom03112401', company: 'IT Company', startDate: '1/1/2024', endDate: '1/1/2024', position: 5, jobTitle: 'Fullstack Dev' },
-      { id: 2, code: 'itcom03112401', company: 'IT Company', startDate: '1/1/2024', endDate: '1/1/2024', position: 16, jobTitle: 'Fullstack Dev' },
-      { id: 3, code: 'itcom03112401', company: 'IT Company', startDate: '1/1/2024', endDate: '1/1/2024', position: 10, jobTitle: 'Fullstack Dev' },
-      { id: 4, code: 'itcom03112401', company: 'IT Company', startDate: '1/1/2024', endDate: '1/1/2024', position: 11, jobTitle: 'Fullstack Dev' },
-      { id: 5, code: 'itcom03112401', company: 'IT Company', startDate: '1/1/2024', endDate: '1/1/2024', position: 11, jobTitle: 'Fullstack Dev' },
-      { id: 6, code: 'itcom03112401', company: 'IT Company', startDate: '1/1/2024', endDate: '1/1/2024', position: 1, jobTitle: 'Fullstack Dev' },
-      { id: 7, code: 'itcom03112401', company: 'IT Company', startDate: '1/1/2024', endDate: '1/1/2024', position: 1, jobTitle: 'Fullstack Dev' },
-      { id: 8, code: 'itcom03112401', company: 'IT Company', startDate: '1/1/2024', endDate: '1/1/2024', position: 2, jobTitle: 'Fullstack Dev' },
-      { id: 9, code: 'itcom03112401', company: 'IT Company', startDate: '1/1/2024', endDate: '1/1/2024', position: 4, jobTitle: 'Fullstack Dev' },
-      { id: 10, code: 'itcom03112401', company: 'IT Company', startDate: '1/1/2024', endDate: '1/1/2024', position: 5, jobTitle: 'Fullstack Dev' },
-      { id: 11, code: 'itcom03112401', company: 'IT Company', startDate: '1/1/2024', endDate: '1/1/2024', position: 16, jobTitle: 'Fullstack Dev' },
-      { id: 12, code: 'itcom03112401', company: 'IT Company', startDate: '1/1/2024', endDate: '1/1/2024', position: 10, jobTitle: 'Fullstack Dev' },
-      { id: 13, code: 'itcom03112401', company: 'IT Company', startDate: '1/1/2024', endDate: '1/1/2024', position: 11, jobTitle: 'Fullstack Dev' },
-      { id: 14, code: 'itcom03112401', company: 'IT Company', startDate: '1/1/2024', endDate: '1/1/2024', position: 11, jobTitle: 'Fullstack Dev' },
-      { id: 15, code: 'itcom03112401', company: 'IT Company', startDate: '1/1/2024', endDate: '1/1/2024', position: 1, jobTitle: 'Fullstack Dev' },
-      { id: 16, code: 'itcom03112401', company: 'IT Company', startDate: '1/1/2024', endDate: '1/1/2024', position: 1, jobTitle: 'Fullstack Dev' },
-      { id: 17, code: 'itcom03112401', company: 'IT Company', startDate: '1/1/2024', endDate: '1/1/2024', position: 2, jobTitle: 'Fullstack Dev' },
-      { id: 18, code: 'itcom03112401', company: 'IT Company', startDate: '1/1/2024', endDate: '1/1/2024', position: 4, jobTitle: 'Fullstack Dev' },
-      { id: 1, code: 'itcom03112401', company: 'IT Company', startDate: '1/1/2024', endDate: '1/1/2024', position: 5, jobTitle: 'Fullstack Dev' },
-      { id: 2, code: 'itcom03112401', company: 'IT Company', startDate: '1/1/2024', endDate: '1/1/2024', position: 16, jobTitle: 'Fullstack Dev' },
-      { id: 3, code: 'itcom03112401', company: 'IT Company', startDate: '1/1/2024', endDate: '1/1/2024', position: 10, jobTitle: 'Fullstack Dev' },
-      { id: 4, code: 'itcom03112401', company: 'IT Company', startDate: '1/1/2024', endDate: '1/1/2024', position: 11, jobTitle: 'Fullstack Dev' },
-      { id: 5, code: 'itcom03112401', company: 'IT Company', startDate: '1/1/2024', endDate: '1/1/2024', position: 11, jobTitle: 'Fullstack Dev' },
-      { id: 6, code: 'itcom03112401', company: 'IT Company', startDate: '1/1/2024', endDate: '1/1/2024', position: 1, jobTitle: 'Fullstack Dev' },
-      { id: 7, code: 'itcom03112401', company: 'IT Company', startDate: '1/1/2024', endDate: '1/1/2024', position: 1, jobTitle: 'Fullstack Dev' },
-      { id: 8, code: 'itcom03112401', company: 'IT Company', startDate: '1/1/2024', endDate: '1/1/2024', position: 2, jobTitle: 'Fullstack Dev' },
-      { id: 9, code: 'itcom03112401', company: 'IT Company', startDate: '1/1/2024', endDate: '1/1/2024', position: 4, jobTitle: 'Fullstack Dev' },
-      { id: 10, code: 'itcom03112401', company: 'IT Company', startDate: '1/1/2024', endDate: '1/1/2024', position: 5, jobTitle: 'Fullstack Dev' },
-      { id: 11, code: 'itcom03112401', company: 'IT Company', startDate: '1/1/2024', endDate: '1/1/2024', position: 16, jobTitle: 'Fullstack Dev' },
-      { id: 12, code: 'itcom03112401', company: 'IT Company', startDate: '1/1/2024', endDate: '1/1/2024', position: 10, jobTitle: 'Fullstack Dev' },
-      { id: 13, code: 'itcom03112401', company: 'IT Company', startDate: '1/1/2024', endDate: '1/1/2024', position: 11, jobTitle: 'Fullstack Dev' },
-      { id: 14, code: 'itcom03112401', company: 'IT Company', startDate: '1/1/2024', endDate: '1/1/2024', position: 11, jobTitle: 'Fullstack Dev' },
-      { id: 15, code: 'itcom03112401', company: 'IT Company', startDate: '1/1/2024', endDate: '1/1/2024', position: 1, jobTitle: 'Fullstack Dev' },
-      { id: 16, code: 'itcom03112401', company: 'IT Company', startDate: '1/1/2024', endDate: '1/1/2024', position: 1, jobTitle: 'Fullstack Dev' },
-      { id: 17, code: 'itcom03112401', company: 'IT Company', startDate: '1/1/2024', endDate: '1/1/2024', position: 2, jobTitle: 'Fullstack Dev' },
-      { id: 18, code: 'itcom03112401', company: 'IT Company', startDate: '1/1/2024', endDate: '1/1/2024', position: 4, jobTitle: 'Fullstack Dev' },
-    ];
+  let [jobPosts, setDangTuyens] = useState([]);
+
+  const getFilteredDangTuyens = async () => {
+    try {
+        const response = await axios.get('http://localhost:5231/api/dangkydangtuyen/filter');
+        return response.data;
+    } catch (error) {
+        console.error('Error fetching filtered dang tuyens:', error);
+        throw error;
+    }
+};
+
+useEffect(() => {
+    const fetchData = async () => {
+        try {
+            const data = await getFilteredDangTuyens();
+            setDangTuyens(data);
+        } catch (error) {
+            console.error('Error fetching companies:', error);
+        }
+    };
+
+    fetchData();
+}, []);
+
   
+
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 5;
 
     // Tính toán số trang
     const totalPages = Math.ceil(jobPosts.length / itemsPerPage);
-  
+
+
+    //if(jobPosts.length === 0) return (<div>sdsfsdfsdf</div>)
     // Lọc dữ liệu cho trang hiện tại
     const currentData = jobPosts.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
-  
     // Hàm chuyển trang
     const handlePageChange = (page) => {
       setCurrentPage(page);
@@ -66,7 +56,7 @@ function ListCompany({nextStep, handleChange, setFormData}) {
           paginationButtons.push(
             <button
               key={i}
-              className={"px-3 py-1 bg-blue-100 text-blue-600 rounded border border-blue-600"}
+              className={`px-3 py-1 bg-blue-100 text-blue-600 rounded border border-blue-600 text-sm ${currentPage === i ? 'btn-dark' : ''}`}
               onClick={() => handlePageChange(i)}
             >
               {i}
@@ -78,7 +68,7 @@ function ListCompany({nextStep, handleChange, setFormData}) {
           paginationButtons.push(
             <button
               key={1}
-              className={`px-3 py-1 rounded ${currentPage === 1 ? 'bg-gray-200 text-blue-500 border border-blue-300' : 'bg-white text-gray-700 border border-gray-300'}`}
+              className={`px-3 py-1 bg-blue-100 text-blue-600 rounded border text-sm border-blue-600 ${currentPage === 1 ? 'btn-dark' : ''}`}
               onClick={() => handlePageChange(1)}
             >
               1
@@ -91,7 +81,7 @@ function ListCompany({nextStep, handleChange, setFormData}) {
             paginationButtons.push(
               <button
                 key={currentPage}
-                className={"px-3 py-1 bg-blue-100 text-blue-600 rounded border border-blue-600 "}
+                className={"px-3 py-1 bg-blue-100 text-blue-600 rounded border border-blue-600 btn-dark text-sm"}
                 onClick={() => handlePageChange(currentPage)}
               >
                 {currentPage}
@@ -103,7 +93,7 @@ function ListCompany({nextStep, handleChange, setFormData}) {
           paginationButtons.push(
             <button
               key={totalPages}
-              className={"px-3 py-1 bg-blue-100 text-blue-600 rounded border border-blue-600"}
+              className={`px-3 py-1 bg-blue-100 text-blue-600 rounded border text-sm border-blue-600 ${currentPage === totalPages ? 'btn-dark' : ''}`}
               onClick={() => handlePageChange(totalPages)}
             >
               {totalPages}
@@ -133,9 +123,9 @@ function ListCompany({nextStep, handleChange, setFormData}) {
                 <tr>
                   <th className="px-6 py-3 border-b border-gray-300 text-left text-sm font-medium text-gray-700">Mã Hợp Đồng</th>
                   <th className="px-6 py-3 border-b border-gray-300 text-left text-sm font-medium text-gray-700 w-[200px]">Tên Công Ty</th>
-                  <th className="px-6 py-3 border-b border-gray-300 text-left text-sm font-medium text-gray-700">Ngày Bắt Đầu</th>
-                  <th className="px-6 py-3 border-b border-gray-300 text-left text-sm font-medium text-gray-700">Ngày Kết Thúc</th>
-                  <th className="px-6 py-3 border-b border-gray-300 text-left text-sm font-medium text-gray-700">Số Vị Trí</th>
+                  <th className="px-6 py-3 border-b border-gray-300 text-left text-sm font-medium text-gray-700 w-[200px]">Ngày Bắt Đầu</th>
+                  <th className="px-6 py-3 border-b border-gray-300 text-left text-sm font-medium text-gray-700 w-[200px]">Ngày Kết Thúc</th>
+                  <th className="px-6 py-3 border-b border-gray-300 text-left text-sm font-medium text-gray-700 w-[200px]">Số Vị Trí</th>
                   <th className="px-6 py-3 border-b border-gray-300 text-left text-sm font-medium text-gray-700 w-[200px]">Tên Công Việc</th>
                   <th className="px-6 py-3 border-b border-gray-300 text-left text-sm font-medium text-gray-700"></th>
 
@@ -144,12 +134,12 @@ function ListCompany({nextStep, handleChange, setFormData}) {
               <tbody>
                 {rows.map((row, index) => (
                   <tr key={index} className={`h-[42px]`}>
-                    <td className="px-6  border-b border-gray-300 text-sm">{row.code}</td>
-                    <td className="px-6  border-b border-gray-300 text-sm">{row.company}</td>
-                    <td className="px-6  border-b border-gray-300 text-sm">{row.startDate}</td>
-                    <td className="px-6  border-b border-gray-300 text-sm">{row.endDate}</td>
-                    <td className="px-6  border-b border-gray-300 text-sm">{row.position}</td>
-                    <td className="px-6  border-b border-gray-300 text-sm">{row.jobTitle}</td>
+                    <td className="px-6  border-b border-gray-300 text-sm">{row.id}</td>
+                    <td className="px-6  border-b border-gray-300 text-sm">{row.tenDoanhNghiep}</td>
+                    <td className="px-6  border-b border-gray-300 text-sm">{row.ngayBatDau}</td>
+                    <td className="px-6  border-b border-gray-300 text-sm">{row.ngayKetThuc}</td>
+                    <td className="px-6  border-b border-gray-300 text-sm">{row.soLuong}</td>
+                    <td className="px-6  border-b border-gray-300 text-sm">{row.tenViTri}</td>
                     <td>
                       {
                         row.id ? 
@@ -179,7 +169,6 @@ function ListCompany({nextStep, handleChange, setFormData}) {
                 {'>'}
               </button>
             </div>
-            
         </div>
   
       </div>

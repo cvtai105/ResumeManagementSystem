@@ -252,7 +252,7 @@ function DataTable() {
           paginationButtons.push(
             <button
               key={i}
-              className={"px-3 py-1 bg-blue-100 text-blue-600 rounded border border-blue-600"}
+              className={`px-3 py-1 bg-blue-100 text-blue-600 rounded border border-blue-600 text-sm ${currentPage === i ? 'btn-dark' : ''}`}
               onClick={() => handlePageChange(i)}
             >
               {i}
@@ -264,7 +264,7 @@ function DataTable() {
           paginationButtons.push(
             <button
               key={1}
-              className={`px-3 py-1 rounded ${currentPage === 1 ? 'bg-gray-200 text-blue-500 border border-blue-300' : 'bg-white text-gray-700 border border-gray-300'}`}
+              className={`px-3 py-1 bg-blue-100 text-blue-600 rounded border border-blue-600 text-sm ${currentPage === 1 ? 'btn-dark' : ''}`}
               onClick={() => handlePageChange(1)}
             >
               1
@@ -277,7 +277,7 @@ function DataTable() {
             paginationButtons.push(
               <button
                 key={currentPage}
-                className={"px-3 py-1 bg-blue-100 text-blue-600 rounded border border-blue-600 "}
+                className={"px-3 py-1 bg-blue-100 text-blue-600 rounded border border-blue-600 btn-dark text-sm"}
                 onClick={() => handlePageChange(currentPage)}
               >
                 {currentPage}
@@ -289,7 +289,7 @@ function DataTable() {
           paginationButtons.push(
             <button
               key={totalPages}
-              className={"px-3 py-1 bg-blue-100 text-blue-600 rounded border border-blue-600"}
+              className={`px-3 py-1 bg-blue-100 text-blue-600 rounded border border-blue-600 text-sm ${currentPage === totalPages ? 'btn-dark' : ''}`}
               onClick={() => handlePageChange(totalPages)}
             >
               {totalPages}

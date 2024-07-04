@@ -1,0 +1,24 @@
+.navlink {
+    font-size: 1.1em;
+    font-weight: 600;
+    letter-spacing: .175px;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.login {
+    border: 1px solid rgb(33 150 243 );
+    color: rgb(33 150 243 / var(--tw-text-opacity));
+    border-radius: 5px;
+    padding: 0.5rem 2rem;
+    margin-left: 1rem;
+}
+
+.login:hover {
+    background-color: rgb(33 150 243 / var(--tw-bg-opacity));
+    color: white;
+}
+
+.navlink:hover {
+    color: rgb(33 150 243 / var(--tw-text-opacity))
+}
