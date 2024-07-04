@@ -100,7 +100,7 @@ const XacThucDangKy = () => {
 
   return (
     <div>
-      <h1>Doanh nghiệp đăng ký thành viên</h1>
+      <p className="text-3xl font-semibold text-center mt-6 mb-2">Doanh nghiệp đăng ký thành viên</p>
       <div className="grid grid-cols-12">
         <div className="col-span-10 col-start-3">
           <input type="text" placeholder="Tìm kiếm" className="search-bar" />

@@ -16,6 +16,7 @@ import Review from './pages/NhanVien/Review';
 import XacThucDangKy from './pages/NhanVien/XacThucDangKy';
 import DangKyThanhVienDoanhNghiep from './pages/DoanhNghiep/DangKyThanhVienDoanhNghiep'
 import JobDetail from './pages/UngVien/JobDetail';
+import Recruitment from './pages/DoanhNghiep/Recruitment';
 
 
 const routes = createRoutesFromElements(
@@ -25,11 +26,10 @@ const routes = createRoutesFromElements(
       <Route path="search" element = {<UngVienHome/>}>
       </Route>
       <Route path="jobs/:id" element={<JobDetail />} />
-      
     </Route>
 
     <Route path="/nhanvien" element={<><NhanVienLayout /><Footer /></>} >
-      <Route index element={<NhanVienHome />} />
+      <Route index element={<XacThucDangKy />} />
       <Route path='xacthuc' element={<XacThucDangKy />} /> 
       <Route path="danhgia" element={<Review/>}/>
     </Route>
@@ -37,6 +37,7 @@ const routes = createRoutesFromElements(
     <Route path="/doanhnghiep" element={ <DoanhNghiepLayout/>}>
       <Route index element={<DoanhNghiepHome />} />
       <Route path="dang-ky-dang-tuyen" element={<DangKyThongTinDangTuyen/>}/>
+      <Route path="recruitments/:id" element={<Recruitment/>}/>
     </Route>
 
     <Route path="/dangnhap" element={<UngVienLogin />} />
