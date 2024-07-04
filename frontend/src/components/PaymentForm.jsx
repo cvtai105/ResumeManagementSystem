@@ -85,7 +85,7 @@ const PaymentForm = ({
               className="border border-smoke rounded-lg w-full p-2"
             >
               <option value="" disabled>Chọn kiểu thanh toán</option>
-              <option value="part">Theo đợt</option>
+              <option value="part" disabled={formData.postingDuration < 30} >Theo đợt</option>
               <option value="all">Toàn bộ</option>
             </select>
             {errors.paymentType && <p className="text-red">{errors.paymentType}</p>}
