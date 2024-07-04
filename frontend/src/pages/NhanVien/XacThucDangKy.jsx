@@ -1,4 +1,5 @@
 import React from "react";
+import axios from "axios";
 import Footer from "../../components/Footer";
 import "./XacThucDangKy.css";
 
@@ -75,20 +76,31 @@ const data = [
     address: "12 Nguyễn Huệ, Q1, TPHCM",
     email: "abc@gmail.com",
   },
-  {
-    id: "itcom03112410",
-    company: "IT Company",
-    taxCode: "01 23456789 - 010",
-    representative: "Nguyễn J",
-    address: "12 Nguyễn Huệ, Q1, TPHCM",
-    email: "abc@gmail.com",
-  },
+  // Các đối tượng khác...
 ];
 
 const XacThucDangKy = () => {
+  const handleVerify = async (id) => {
+    try {
+      await axios.post(`/api/doanhnghiep/${id}/xacnhan`, { xacNhan: 1 });
+      alert("Đã xác thực thành công");
+    } catch (error) {
+      console.error("Có lỗi xảy ra khi xác thực:", error);
+    }
+  };
+
+  const handleReject = async (id) => {
+    try {
+      await axios.post(`/api/doanhnghiep/${id}/xacnhan`, { xacNhan: 0 });
+      alert("Đã từ chối thành công");
+    } catch (error) {
+      console.error("Có lỗi xảy ra khi từ chối:", error);
+    }
+  };
+
   return (
     <div>
-      <h1>Doanh nghiệp đăng ký thành viên</h1>;
+      <h1>Doanh nghiệp đăng ký thành viên</h1>
       <div className="grid grid-cols-12">
         <div className="col-span-10 col-start-3">
           <input type="text" placeholder="Tìm kiếm" className="search-bar" />
@@ -101,7 +113,7 @@ const XacThucDangKy = () => {
                 <th>Đại Diện</th>
                 <th>Địa Chỉ</th>
                 <th>Email</th>
-                <th>A</th>
+                <th>Hành động</th>
               </tr>
             </thead>
             <tbody>
@@ -114,8 +126,18 @@ const XacThucDangKy = () => {
                   <td>{row.address}</td>
                   <td>{row.email}</td>
                   <td>
-                    <button className="verify">Xác thực</button>
-                    <button className="reject">Từ chối</button>
+                    <button
+                      className="verify"
+                      onClick={() => handleVerify(row.id)}
+                    >
+                      Xác thực
+                    </button>
+                    <button
+                      className="reject"
+                      onClick={() => handleReject(row.id)}
+                    >
+                      Từ chối
+                    </button>
                   </td>
                 </tr>
               ))}

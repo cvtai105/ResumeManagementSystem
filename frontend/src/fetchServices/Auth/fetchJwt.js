@@ -5,8 +5,6 @@ const doanhnghiepAuthPath = '/auth/doanhnghiep';
 
 
 export const fetchNhanVienJwt = async (data) => {
-    console.log(data);
-    console.log(hostApi + nhanvienAuthPath)
     return await fetchJwt(nhanvienAuthPath, data);
 }
 
@@ -30,10 +28,6 @@ const fetchJwt = async (path, data) => {
             credentials: 'include',
         });
         
-        console.log(`request to ${hostApi}/${path} with data: ${JSON.stringify(data)}`)
-
-        console.log(`response status: ${response.status}`);
-
         return await response.json();
     } catch (error) {
         return null;

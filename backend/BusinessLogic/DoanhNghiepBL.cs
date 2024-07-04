@@ -12,7 +12,7 @@ namespace BusinessLogic
     {
         private readonly DoanhNghiepDAO _doanhNghiepDAO = doanhNghiepDAO;
 
-        public async Task<bool> IsValidUser (LoginRecord loginRecord)
+        public async Task<bool> IsValidUser(LoginRecord loginRecord)
         {
             var doanhNghiep = await _doanhNghiepDAO.GetByEmail(loginRecord.Email);
             return doanhNghiep != null && doanhNghiep.MatKhau == loginRecord.Password;
@@ -31,6 +31,15 @@ namespace BusinessLogic
         {
             return await _doanhNghiepDAO.GetByEmail(email);
         }
-        
+
+        public async Task<DoanhNghiep?> GetDoanhNghiepByID(int id)
+        {
+            return await _doanhNghiepDAO.GetById(id);
+        }
+
+        public void UpdateDoanhNghiep(DoanhNghiep doanhnghiep)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
