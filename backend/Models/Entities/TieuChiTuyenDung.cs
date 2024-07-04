@@ -11,7 +11,8 @@ namespace Models.Entities
     public class TieuChiTuyenDung
     {
         public int Id { get; set; }
-        public string? MoTa { get; set; } = String.Empty;
+        public string? TenTieuChi { get; set; }
+        public string? MoTa { get; set; }
         public int DangTuyenId { get; set; }
         public DangTuyen? DangTuyen { get; set; }
     }

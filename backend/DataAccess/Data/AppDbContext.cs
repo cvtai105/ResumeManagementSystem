@@ -48,7 +48,21 @@ public class AppDbContext(DbContextOptions options) : DbContext(options)
             TrinhDoChuyenMon = "CNTT",
             AnhDaiDien = "example.jpg",
             Cv = "example.jpg"
-        });
+        },
+        new UngVien{
+            Id = 3,
+            HoTen = "Nguyễn Văn C",
+            Email = "ungvien3@email.com",
+            MatKhau = "123456",
+            DiaChi = "Hà Nội",
+            SoDienThoai = "0123456789",
+            NgaySinh = new DateTime(1999, 1, 1),
+            TrinhDoHocVan = "Đại học FPT",
+            TrinhDoChuyenMon = "CNTT",
+            AnhDaiDien = "example.jpg",
+            Cv = "example.jpg"
+        }   
+    );
 
         modelBuilder.Entity<NhanVien>().HasData(new NhanVien{
             Id = 1,
@@ -230,7 +244,240 @@ public class AppDbContext(DbContextOptions options) : DbContext(options)
                 DoanhNghiepId = 3,
                 HinhThucDangTuyenId = 3
             }
-            
+        );
+
+        modelBuilder.Entity<TieuChiTuyenDung>().HasData(
+            new TieuChiTuyenDung{
+                Id = 1,
+                TenTieuChi = "Kinh Nghiệm Làm Việc",
+                MoTa = "30 Năm kinh nghiệm làm việc trong lĩnh vực lập trình",
+                DangTuyenId = 1
+            },
+            new TieuChiTuyenDung{
+                Id = 2,
+                TenTieuChi = "Kỹ năng kế toán",
+                MoTa = "Có kiến thức vững về kế toán",
+                DangTuyenId = 2
+            },
+            new TieuChiTuyenDung{
+                Id = 3,
+                TenTieuChi = "Kỹ năng kinh doanh",
+                MoTa = "Có kiến thức vững về kinh doanh",
+                DangTuyenId = 3
+            },
+            new TieuChiTuyenDung{
+                Id = 4,
+                TenTieuChi = "Kỹ năng kinh doanh",
+                MoTa = "Có kiến thức vững về kinh doanh",
+                DangTuyenId = 4
+            },
+            new TieuChiTuyenDung{
+                Id = 5,
+                TenTieuChi = "Kỹ năng kinh doanh",
+                MoTa = "Có kiến thức vững về kinh doanh",
+                DangTuyenId = 5
+            },
+            new TieuChiTuyenDung{
+                Id = 6,
+                TenTieuChi = "Độ tuổi",
+                MoTa = "20-25 tuổi",
+                DangTuyenId = 1
+            },
+            new TieuChiTuyenDung{
+                Id = 7,
+                TenTieuChi = "Độ tuổi",
+                MoTa = "20-25 tuổi",
+                DangTuyenId = 2
+            },
+            new TieuChiTuyenDung{
+                Id = 8,
+                TenTieuChi = "Độ tuổi",
+                MoTa = "20-25 tuổi",
+                DangTuyenId = 3
+            },
+            new TieuChiTuyenDung{
+                Id = 9,
+                TenTieuChi = "Độ tuổi",
+                MoTa = "20-25 tuổi",
+                DangTuyenId = 4
+            },
+            new TieuChiTuyenDung{
+                Id = 10,
+                TenTieuChi = "Độ tuổi",
+                MoTa = "20-25 tuổi",
+                DangTuyenId = 5
+            },
+            new TieuChiTuyenDung{
+                Id = 11,
+                TenTieuChi = "Trình độ học vấn",
+                MoTa = "Đại học",
+                DangTuyenId = 1
+            },
+            new TieuChiTuyenDung{
+                Id = 12,
+                TenTieuChi = "Trình độ học vấn",
+                MoTa = "Đại học",
+                DangTuyenId = 2
+            },
+            new TieuChiTuyenDung{
+                Id = 13,
+                TenTieuChi = "Trình độ học vấn",
+                MoTa = "Đại học",
+                DangTuyenId = 3
+            },
+            new TieuChiTuyenDung{
+                Id = 14,
+                TenTieuChi = "Trình độ học vấn",
+                MoTa = "Đại học",
+                DangTuyenId = 4
+            },
+            new TieuChiTuyenDung{
+                Id = 15,
+                TenTieuChi = "Trình độ học vấn",
+                MoTa = "Đại học",
+                DangTuyenId = 5
+            }
+        );
+        
+        modelBuilder.Entity<UngTuyen>().HasData(
+            new UngTuyen{
+                Id = 1,
+                NgayUngTuyen = new DateTime(2021, 1, 1),
+                DangTuyenId = 1,
+                DanhGia = null,
+                UngVienId = 2,
+                NhanVienKiemDuyenId = 1
+            },
+            new UngTuyen{
+                Id = 2,
+                NgayUngTuyen = new DateTime(2021, 1, 1),
+                DangTuyenId = 2,
+                DanhGia = null,
+                UngVienId = 2,
+                NhanVienKiemDuyenId = 1
+            },
+            new UngTuyen{
+                Id = 3,
+                NgayUngTuyen = new DateTime(2021, 1, 1),
+                DangTuyenId = 3,
+                DanhGia = null,
+                UngVienId = 2,
+                NhanVienKiemDuyenId = 1
+            },
+            new UngTuyen{
+                Id = 4,
+                NgayUngTuyen = new DateTime(2021, 1, 1),
+                DangTuyenId = 4,
+                DanhGia = null,
+                UngVienId = 2,
+                NhanVienKiemDuyenId = 1
+            },
+            new UngTuyen{
+                Id = 5,
+                NgayUngTuyen = new DateTime(2021, 1, 1),
+                DangTuyenId = 5,
+                DanhGia = null,
+                UngVienId = 2,
+                NhanVienKiemDuyenId = 1
+            },
+            new UngTuyen{
+                Id = 6,
+                NgayUngTuyen = new DateTime(2021, 1, 1),
+                DangTuyenId = 1,
+                DanhGia = null,
+                UngVienId = 3,
+                NhanVienKiemDuyenId = 1
+            },
+            new UngTuyen{
+                Id = 7,
+                NgayUngTuyen = new DateTime(2021, 1, 1),
+                DangTuyenId = 2,
+                DanhGia = null,
+                UngVienId = 3,
+                NhanVienKiemDuyenId = 1
+            },
+            new UngTuyen{
+                Id = 8,
+                NgayUngTuyen = new DateTime(2021, 1, 1),
+                DangTuyenId = 3,
+                DanhGia = null,
+                UngVienId = 3,
+                NhanVienKiemDuyenId = 1
+            },
+            new UngTuyen{
+                Id = 9,
+                NgayUngTuyen = new DateTime(2021, 1, 1),
+                DangTuyenId = 4,
+                DanhGia = null,
+                UngVienId = 3,
+                NhanVienKiemDuyenId = 1
+            }
+        );
+
+        modelBuilder.Entity<HoSoUngTuyen>().HasData(
+            new HoSoUngTuyen{
+                Id = 1,
+                UngTuyenId = 1,
+                TenHoSo = "CV",
+                MoTa = "CV",
+                FileHoSo = "example.pdf"
+            },
+            new HoSoUngTuyen{
+                Id = 2,
+                UngTuyenId = 2,
+                TenHoSo = "CV",
+                MoTa = "CV",
+                FileHoSo = "example.pdf"
+            },
+            new HoSoUngTuyen{
+                Id = 3,
+                UngTuyenId = 3,
+                TenHoSo = "CV",
+                MoTa = "CV",
+                FileHoSo = "example.pdf"
+            },
+            new HoSoUngTuyen{
+                Id = 4,
+                UngTuyenId = 4,
+                TenHoSo = "CV",
+                MoTa = "CV",
+                FileHoSo = "example.pdf"
+            },
+            new HoSoUngTuyen{
+                Id = 5,
+                UngTuyenId = 5,
+                TenHoSo = "CV",
+                MoTa = "CV",
+                FileHoSo = "example.pdf"
+            },
+            new HoSoUngTuyen{
+                Id = 6,
+                UngTuyenId = 6,
+                TenHoSo = "CV",
+                MoTa = "CV",
+                FileHoSo = "example.pdf"
+            },
+            new HoSoUngTuyen{
+                Id = 7,
+                UngTuyenId = 7,
+                TenHoSo = "CV",
+                MoTa = "CV",
+                FileHoSo = "example.pdf"
+            },
+            new HoSoUngTuyen{
+                Id = 8,
+                UngTuyenId = 8,
+                TenHoSo = "CV",
+                MoTa = "CV",
+                FileHoSo = "example.pdf"
+            },
+            new HoSoUngTuyen{
+                Id = 9,
+                UngTuyenId = 9,
+                TenHoSo = "CV",
+                MoTa = "CV",
+                FileHoSo = "example.pdf"
+            }
         );
 
     }
