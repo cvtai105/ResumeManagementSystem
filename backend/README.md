@@ -13,7 +13,7 @@
 # Khi muốn thay đổi database / relationship giữa các table / columns.
 1. Chỉ cần chỉnh sửa trong folder entities. (các entities là các objects ánh xạ tới các bảng trong database)
 2. dotnet ef migrations add tenPhienBan --project DataAccess --startup-project Application
-3. folder DataAccess/Migrations thay đổi - thêm các design scripts cho database.
+3. folder DataAccess/Migrations thay đổi - thêm các design scripts cho database. người khác dùng folder này để cập nhật các thay đổi
 4. dotnet ef database update --project DataAccess --startup-project Application
 5. note: ai thay đổi migrations nên báo cho mn. mọi người khi pull về chỉ cần chạy dòng lệnh số 4.
 
