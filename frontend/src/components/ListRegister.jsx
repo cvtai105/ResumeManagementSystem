@@ -300,7 +300,7 @@ function DataTable({formData}) {
     };
   return (
     
-    <div className="flex justify-center items-center mt-10 bg-gray-100">
+    <div className="flex ml-[90px] items-center mt-10 bg-gray-100">
       <div className="bg-white shadow-lg rounded-lg p-6 w-full max-w-4xl">
           <div className="flex items-center mb-5">
           <input 

@@ -2,7 +2,7 @@ import React from 'react';
 
 function RegistrationDetails({nextStep}) {
   return (
-    <div className="flex justify-center items-center bg-gray-100">
+    <div className="flex mr-[100px] items-center bg-gray-100 px-150">
       <div className="bg-white shadow-lg rounded-lg p-8 max-w-md w-full">
         <h3 className="text-xl font-semibold mb-6">CHI TIẾT PHIẾU ĐĂNG KÝ</h3>
         
