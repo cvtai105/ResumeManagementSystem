@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Text.Json.Serialization;
 
 namespace Models.Entities
 {
@@ -22,6 +23,7 @@ namespace Models.Entities
         public string? TrinhDoChuyenMon { get; set; } 
         public string? AnhDaiDien { get; set; } 
         public string? Cv { get; set; } 
+        [JsonIgnore]
         public List<UngTuyen> UngTuyens { get; set; } = [];
     }
 }

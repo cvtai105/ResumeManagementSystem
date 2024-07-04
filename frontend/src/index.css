@@ -156,3 +156,9 @@
 .cdx-settings-button[data-tune="stretched"] {
   display: none;
 }
+
+
+.custom-border th,
+.custom-border td {
+  border-color: gainsboro; /* Màu đỏ cho các ô */
+}

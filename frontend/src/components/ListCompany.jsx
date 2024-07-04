@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-
+import '../index.css'
 function ListCompany({nextStep, handleChange, setFormData}) {
   let [jobPosts, setDangTuyens] = useState([]);
 
@@ -16,9 +16,9 @@ function ListCompany({nextStep, handleChange, setFormData}) {
 
 useEffect(() => {
     const fetchData = async () => {
+      const data = await getFilteredDangTuyens();
+      setDangTuyens(data);
         try {
-            const data = await getFilteredDangTuyens();
-            setDangTuyens(data);
         } catch (error) {
             console.error('Error fetching companies:', error);
         }
@@ -26,17 +26,13 @@ useEffect(() => {
 
     fetchData();
 }, []);
-
-  
-
+    //return (<div>{Object.values(jobPosts).toString()}</div>);
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 5;
-
     // Tính toán số trang
     const totalPages = Math.ceil(jobPosts.length / itemsPerPage);
 
 
-    //if(jobPosts.length === 0) return (<div>sdsfsdfsdf</div>)
     // Lọc dữ liệu cho trang hiện tại
     const currentData = jobPosts.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
     // Hàm chuyển trang
@@ -102,7 +98,8 @@ useEffect(() => {
       }
       return paginationButtons;
     };
-  
+
+    
     return (
     
       <div className="flex justify-center items-center mt-10 bg-gray-100">
@@ -118,29 +115,29 @@ useEffect(() => {
           </button>
         </div>
           <div className="overflow-x-auto">
-            <table className="min-w-full bg-white border border-gray-300">
+            <table className="min-w-full bg-white border custom-border">
               <thead>
                 <tr>
-                  <th className="px-6 py-3 border-b border-gray-300 text-left text-sm font-medium text-gray-700">Mã Hợp Đồng</th>
-                  <th className="px-6 py-3 border-b border-gray-300 text-left text-sm font-medium text-gray-700 w-[200px]">Tên Công Ty</th>
-                  <th className="px-6 py-3 border-b border-gray-300 text-left text-sm font-medium text-gray-700 w-[200px]">Ngày Bắt Đầu</th>
-                  <th className="px-6 py-3 border-b border-gray-300 text-left text-sm font-medium text-gray-700 w-[200px]">Ngày Kết Thúc</th>
-                  <th className="px-6 py-3 border-b border-gray-300 text-left text-sm font-medium text-gray-700 w-[200px]">Số Vị Trí</th>
-                  <th className="px-6 py-3 border-b border-gray-300 text-left text-sm font-medium text-gray-700 w-[200px]">Tên Công Việc</th>
-                  <th className="px-6 py-3 border-b border-gray-300 text-left text-sm font-medium text-gray-700"></th>
+                  <th className="px-6 py-3 border border-gray-300 text-left text-sm font-medium text-gray-700 bg-grey">Mã Hợp Đồng</th>
+                  <th className="px-6 py-3 border border-gray-300 text-left text-sm font-medium text-gray-700 bg-grey w-[200px]">Tên Công Ty</th>
+                  <th className="px-6 py-3 border border-gray-300 text-left text-sm font-medium text-gray-700 bg-grey w-[200px]">Ngày Bắt Đầu</th>
+                  <th className="px-6 py-3 border border-gray-300 text-left text-sm font-medium text-gray-700 bg-grey w-[200px]">Ngày Kết Thúc</th>
+                  <th className="px-6 py-3 border border-gray-300 text-left text-sm font-medium text-gray-700 bg-grey w-[200px]">Số Vị Trí</th>
+                  <th className="px-6 py-3 border border-gray-300 text-left text-sm font-medium text-gray-700 bg-grey w-[200px]">Tên Công Việc</th>
+                  <th className="px-6 py-3 border border-gray-300 text-left text-sm font-medium text-gray-700 bg-grey"></th>
 
                 </tr>
               </thead>
               <tbody>
                 {rows.map((row, index) => (
                   <tr key={index} className={`h-[42px]`}>
-                    <td className="px-6  border-b border-gray-300 text-sm">{row.id}</td>
-                    <td className="px-6  border-b border-gray-300 text-sm">{row.tenDoanhNghiep}</td>
-                    <td className="px-6  border-b border-gray-300 text-sm">{row.ngayBatDau}</td>
-                    <td className="px-6  border-b border-gray-300 text-sm">{row.ngayKetThuc}</td>
-                    <td className="px-6  border-b border-gray-300 text-sm">{row.soLuong}</td>
-                    <td className="px-6  border-b border-gray-300 text-sm">{row.tenViTri}</td>
-                    <td>
+                    <td className="px-6  border border-gray-300 text-sm">{row.id}</td>
+                    <td className="px-6  border border-gray-300 text-sm">{row.doanhNghiep?.tenDoanhNghiep}</td>
+                    <td className="px-6  border border-gray-300 text-sm">{row.id ? new Date(row.ngayBatDau).toLocaleDateString('vn') : ''}</td>
+                    <td className="px-6  border border-gray-300 text-sm">{row.id ? new Date(row.ngayKetThuc).toLocaleDateString('vn') : ''}</td>
+                    <td className="px-6  border border-gray-300 text-sm">{row.soLuong}</td>
+                    <td className="px-6  border border-gray-300 text-sm">{row.tenViTri}</td>
+                    <td className="px-6  border border-gray-300 text-sm">
                       {
                         row.id ? 
                         <button onClick={nextStep} className='btn-dark py-1 px-2 rounded text-sm'>

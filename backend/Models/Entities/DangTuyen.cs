@@ -14,20 +14,18 @@ namespace Models.Entities
         public DateTime? NgayBatDau { get; set; }
         public DateTime? NgayKetThuc { get; set; }
         public int DoanhNghiepId { get; set; }
-        
-        
-
         public int? NhanVienKiemDuyetId { get; set; } 
         public int? UuDaiId { get; set; }
         public int? HinhThucDangTuyenId { get; set; }
         
         public DoanhNghiep DoanhNghiep { get; set; } = new();
         public UuDai? UuDai { get; set; } = new();
-        [ForeignKey("NhanVienKiemDuyetId")]
         public NhanVien? NhanVienKiemDuyet { get; set; } = new();
         public HinhThucDangTuyen HinhThucDangTuyen { get; set; } = new(); 
         [JsonIgnore]
         public List<TieuChiTuyenDung> TieuChiTuyenDungs { get; set; } = [];
+        
+        [JsonIgnore]
         public List<UngTuyen> UngTuyens { get; set; } = [];
         public List<ThanhToan> ThanhToans {get; set;} = [];
     }

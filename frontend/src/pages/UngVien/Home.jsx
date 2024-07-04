@@ -64,7 +64,7 @@ function Home() {
             <SearchBar />
         </div>
         <div className="px-44">
-            <div className="flex justify-between items-center mt-6">
+            <div className="flex justify-between items-center">
                 <h3 className="text-2xl font-semibold text-dodger-blue">Việc làm mới</h3>
                 <Pagination onPageChange={(x)=>setCurrentPage(x)} currentPage={currentPage} totalPages={totalPages}/>
             </div>

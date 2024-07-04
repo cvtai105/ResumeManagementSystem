@@ -17,12 +17,9 @@ namespace Models.Entities
         [EmailAddress]
         public string Email { get; set; } = String.Empty;
         public string MatKhau { get; set; } = String.Empty;
-
-        [ForeignKey("NhanVien")]
         public NhanVien? NhanVienDangKy { get; set; }
         public DateTime? NgayDangKy { get; set; }
         [JsonIgnore]
         public List<DangTuyen> DangTuyens { get; set; } = [];
-
     }
 }
