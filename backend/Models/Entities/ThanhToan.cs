@@ -14,7 +14,7 @@ namespace Models.Entities
         public DateTime? HanThanhToan { get; set; }
         // [JsonIgnore]
         public int DangTuyenId { get; set; }
-        public int HinhThucThanhToanId { get; set; }
+        public int? HinhThucThanhToanId { get; set; } //có ai dùng cái này k. anh xóa nha. Thanh toán có 1 hoặc nhiều đợt thanh toán. hình thức thanh toán là khóa ngoại của đợt thanh t
         public List<DotThanhToan>? DotThanhToans { get; set; }
         // [JsonIgnore]
         public DangTuyen? DangTuyen { get; set; } 
