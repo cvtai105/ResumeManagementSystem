@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Dynamic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -14,7 +15,7 @@ namespace Models.Entities
         public string? DanhGia { get; set; }
 
         public int UngVienId{get; set;}
-
+        public string? TrangThai{get; set;} = String.Empty;
         public int? NhanVienKiemDuyenId { get; set; }
         public NhanVien? NhanVienKiemDuyen { get; set; }
         public DangTuyen? DangTuyen { get; set; }

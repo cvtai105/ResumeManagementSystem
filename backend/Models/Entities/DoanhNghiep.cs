@@ -9,11 +9,12 @@ namespace Models.Entities
         public int Id { get; set; }
         public string TenDoanhNghiep { get; set; } = String.Empty;
         public string MaSoThue { get; set; } = String.Empty;
-        public string? DienThoai { get; set; }
+        public string? DienThoai { get; set; } = String.Empty;
+        public string? NguoiDaiDien { get; set; } = String.Empty;
         public int? NhanVienDangKyId { get; set; }
         public bool? XacNhan { get; set; }
-        public string? DiaChi {get; set; }
-        public string? Image { get; set; }
+        public string? DiaChi { get; set; } = String.Empty;
+        public string? Image { get; set; } = String.Empty;
 
         [EmailAddress]
         public string Email { get; set; } = String.Empty;

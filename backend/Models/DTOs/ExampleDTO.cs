@@ -10,6 +10,9 @@ namespace Models.DTOs
         public string? FullName { get; set; }
         public string? Email { get; set; } = String.Empty;
         public string? Password { get; set; } = String.Empty;
-        
+    }
+    public class UpdateStatusDto
+    {
+        public string Status { get; set; } = String.Empty;
     }
 }

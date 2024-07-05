@@ -21,7 +21,7 @@ function ChooseRegister({nextStep, prevStep, formData, setFormData}) {
                 </div>
             </div>
             <div className='col-span-2 flex justify-center items-center'>
-                <RegistrationDetails nextStep={nextStep} setFormData={setFormData} selectedRegister={selectedRegister}/>
+                <RegistrationDetails nextStep={nextStep} setFormData={setFormData} selectedRegister={selectedRegister} formData={formData}/>
             </div>
 
         </div>

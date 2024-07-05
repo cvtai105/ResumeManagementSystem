@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Models.Entities;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Models.DTOs;
 
 namespace Application.Controllers
 {
@@ -26,6 +27,16 @@ namespace Application.Controllers
                 return NotFound();
             }
             return Ok(ungtuyen);
+        }
+        [HttpPut("update/{id}")]
+        public async Task<IActionResult> UpdateStatus(int id, [FromBody] UpdateStatusDto updateStatusDto)
+        {
+            var result = await _ungTuyenBL.UpdateStatus(id, updateStatusDto.Status);
+            if (!result)
+            {
+                return BadRequest("Failed to update status");
+            }
+            return Ok("Status updated successfully");
         }
     }
 }

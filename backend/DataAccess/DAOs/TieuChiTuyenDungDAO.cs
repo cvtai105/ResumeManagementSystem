@@ -19,4 +19,11 @@ public class TieuChiTuyenDungDAO(AppDbContext context)
         await _context.SaveChangesAsync();
         return tieuChiTuyenDung;
     }
+    public async Task<IEnumerable<TieuChiTuyenDung>> GetDoanhSachTCTDByIdBaiDang(int id)
+    {
+        return await _context.TieuChiTuyenDungs
+            .Where(d => d.DangTuyenId == id)
+            .ToListAsync();
+    }
+
 }
