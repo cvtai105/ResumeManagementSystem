@@ -18,6 +18,11 @@ public class UngTuyenBL
             return await _ungTuyenDAO.GetDoanhSachUngTuyenByIdBaiDang(id);
         }
 
+        public async Task<bool> UpdateStatus(int id, string status)
+        {
+            return await _ungTuyenDAO.UpdateStatus(id, status);
+        }
+
         public async Task<UngTuyen> UngTuyen(UngTuyen ungTuyen)
         {
             return await _ungTuyenDAO.Add(ungTuyen);
