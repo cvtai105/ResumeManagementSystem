@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./DangKyThanhVienDoanhNghiep.css";
+import { toast } from "react-toastify";
 import axios from "axios";
 const pcVN = require("pc-vn");
 const province1 = pcVN.getProvinces();
@@ -17,6 +18,7 @@ const DangKyThanhVienDoanhNghiep = () => {
   const [masothue, setMasothue] = useState("");
   const [nguoidaidien, setNguoidaidien] = useState("");
   const [email, setEmail] = useState("");
+  const [matkhau, setMatKhau] = useState("");
   const [dienthoai, setDienthoai] = useState("");
   const [diachi, setDiachi] = useState("");
 
@@ -40,6 +42,25 @@ const DangKyThanhVienDoanhNghiep = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (
+      !tendoanhnghiep ||
+      !masothue ||
+      !nguoidaidien ||
+      !dienthoai ||
+      !diachi ||
+      !ward ||
+      !district ||
+      !province ||
+      !email ||
+      !matkhau
+    ) {
+      toast.error("Điền thiếu thông tin");
+      return;
+    }
+
+    const currentDate = new Date().toISOString();
+
     const data = {
       TenDoanhNghiep: tendoanhnghiep,
       MaSoThue: masothue,
@@ -49,22 +70,27 @@ const DangKyThanhVienDoanhNghiep = () => {
       DiaChi: diachi + "," + ward + "," + district + "," + province,
       XacNhan: true,
       Email: email,
-      MatKhau: "string",
+      MatKhau: matkhau,
+      NgayDangKy: currentDate,
     };
     console.log(data);
     await axios
-      .post(hostApi + "/api/dangkydoanhnghiep", data)
+      .post(hostApi + "/dangkydoanhnghiep", data)
       .then((response) => {
         console.log(response);
+        toast.success("Đã ghi nhận thông tin đăng ký");
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err);
+        toast.error("Lỗi trong quá trình đăng ký");
+      });
   };
 
   return (
     <div>
       <div className="registration-form-container">
         <p>Đăng Ký Thành Viên Doanh Nghiệp</p>
-        <form className="registration-form" onSubmit={(e) => handleSubmit(e)}>
+        <form className="registration-form" onSubmit={handleSubmit}>
           <div className="form-group">
             <label htmlFor="companyName">Tên công ty</label>
             <input
@@ -105,6 +131,16 @@ const DangKyThanhVienDoanhNghiep = () => {
               name="email"
               placeholder="abc@email.com"
               onChange={(e) => setEmail(e.target.value)}
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="matkhau">Mật khẩu</label>
+            <input
+              type="text"
+              id="matkhau"
+              name="matkhau"
+              placeholder="abc@12345"
+              onChange={(e) => setMatKhau(e.target.value)}
             />
           </div>
           <div className="form-group">
@@ -181,6 +217,7 @@ const DangKyThanhVienDoanhNghiep = () => {
               onChange={(e) => setDiachi(e.target.value)}
             />
           </div>
+
           <button type="submit" className="submit-button">
             Đăng ký
           </button>

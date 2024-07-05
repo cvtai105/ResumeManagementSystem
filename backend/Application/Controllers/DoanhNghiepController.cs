@@ -34,10 +34,12 @@ namespace Application.Controllers
                 MaSoThue = request.MaSoThue,
                 DienThoai = request.DienThoai,
                 DiaChi = request.DiaChi,
+                NguoiDaiDien = request.NguoiDaiDien,
                 NhanVienDangKyId = null,
                 XacNhan = null,
                 Email = request.Email,
-                MatKhau = request.MatKhau
+                MatKhau = request.MatKhau,
+                NgayDangKy = DateTime.Now
             };
 
             try
@@ -46,7 +48,7 @@ namespace Application.Controllers
 
                 if (addDoanhNghiep != null)
                 {
-                    return Ok(new { message = "Đang trong quá trình xác thực" });
+                    return Ok(new { message = "Đã ghi nhận thông tin đăng ký" });
                 }
                 else
                 {
@@ -73,6 +75,17 @@ namespace Application.Controllers
             return Ok(doanhnghiep);
         }
 
+        [HttpGet("danhsach")]
+        public async Task<ActionResult<DoanhNghiep>> GetDoanhNghiep()
+        {
+            var doanhnghiep = await _doanhNghiepBL.GetDoanhNghiep();
+            if (doanhnghiep == null)
+            {
+                return NotFound();
+            }
+            return Ok(doanhnghiep);
+        }
+
         [HttpGet("{id}")]
         public async Task<ActionResult<DoanhNghiep>> GetDoanhNghiepByID(int id)
         {
@@ -84,8 +97,8 @@ namespace Application.Controllers
             return Ok(doanhnghiep);
         }
 
-        [HttpPatch("{id}")]
-        public async Task<ActionResult> UpdateXacNhan(int id, [FromBody] bool xacNhan)
+        [HttpPatch("{id}/{status}")]
+        public async Task<ActionResult> UpdateXacNhan(int id, bool status)
         {
             var doanhnghiep = await _doanhNghiepBL.GetDoanhNghiepByID(id);
             if (doanhnghiep == null)
@@ -93,10 +106,10 @@ namespace Application.Controllers
                 return NotFound();
             }
 
-            doanhnghiep.XacNhan = xacNhan;
+            doanhnghiep.XacNhan = status;
             try
             {
-                _doanhNghiepBL.UpdateDoanhNghiep(doanhnghiep);
+                await _doanhNghiepBL.UpdateDoanhNghiep(doanhnghiep);
             }
             catch (Exception)
             {

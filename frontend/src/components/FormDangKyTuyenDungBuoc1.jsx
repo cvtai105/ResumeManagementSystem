@@ -1,51 +1,56 @@
-import React, {useState} from "react";
-import ReactQuill from 'react-quill';
-import 'react-quill/dist/quill.snow.css';
+import React, { useState } from "react";
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
 
 const modules = {
-  toolbar: [
-    [{ 'list': 'ordered' }],
-    ['bold', 'italic', 'underline'],
-  ],
+  toolbar: [[{ list: "ordered" }], ["bold", "italic", "underline"]],
   clipboard: {
     matchVisual: false,
   },
 };
 
-const formats = [
-  'list',
-  'bold', 'italic', 'underline',
-  'indent'
-];
+const formats = ["list", "bold", "italic", "underline", "indent"];
 
-const FormDangKyTuyenDungBuoc1 = ({ nextStep, handleChange, formData, setFormData }) => {
+const FormDangKyTuyenDungBuoc1 = ({
+  nextStep,
+  handleChange,
+  formData,
+  setFormData,
+}) => {
   const [errors, setErrors] = useState({});
+  const [negotiable, setNegotiable] = useState(false);
 
-  const handleQuillChange = (value) => {
+  const handleCriteriaChange = (value) => {
     setFormData({ ...formData, criteria: value });
   };
 
+  const handleDescriptionChange = (value) => {
+    setFormData({ ...formData, jobDescription: value });
+  };
+
+  
+
   const validate = () => {
     let tempErrors = {};
-    const today = new Date().toISOString().split('T')[0]; // Get today's date in YYYY-MM-DD format
 
-    tempErrors.jobPosition = formData.jobPosition ? "" : "Vui lòng nhập vị trí tuyển dụng.";
-    tempErrors.numberOfHires = formData.numberOfHires ? "" : "Vui lòng nhập số lượng tuyển dụng.";
-    tempErrors.startDate = formData.startDate ? "" : "Vui lòng nhập ngày bắt đầu tuyển dụng.";
-    tempErrors.endDate = formData.endDate ? "" : "Vui lòng nhập ngày kết thúc tuyển dụng.";
-    tempErrors.endDate = formData.criteria ? "" : "Vui lòng nhập tiêu chí.";
-    
-    if (formData.startDate && formData.startDate < today) {
-      tempErrors.startDate = "Ngày bắt đầu tuyển dụng không hợp lệ.";
-    }
+    tempErrors.jobPosition = formData.jobPosition
+      ? ""
+      : "Vui lòng nhập vị trí tuyển dụng.";
+    tempErrors.numberOfHires = formData.numberOfHires
+      ? ""
+      : "Vui lòng nhập số lượng tuyển dụng.";
 
-    if (formData.startDate && formData.endDate && formData.endDate <= formData.startDate) {
-      tempErrors.endDate = "Ngày kết thúc tuyển dụng phải lớn hơn ngày bắt đầu tuyển dụng.";
+    tempErrors.jobDescription = formData.jobDescription ? "" : "Vui lòng nhập mô tả.";
+
+    tempErrors.criteria = formData.criteria ? "" : "Vui lòng nhập tiêu chí.";
+
+    if(!negotiable && formData.minSalary == null && formData.maxSalary == null){
+      tempErrors.salary = "Vui lòng chọn mức lương.";
     }
 
     setErrors(tempErrors);
 
-    return Object.values(tempErrors).every(x => x === "");
+    return Object.values(tempErrors).every((x) => x === "");
   };
 
   const handleSubmit = () => {
@@ -53,6 +58,17 @@ const FormDangKyTuyenDungBuoc1 = ({ nextStep, handleChange, formData, setFormDat
       nextStep();
     }
   };
+
+  const handleNegotiableChange = (event) => {
+    const isChecked = event.target.checked;
+    setFormData({
+      ...formData,
+      negotiable: isChecked,
+      minSalary: isChecked ? '' : formData.minSalary,
+      maxSalary: isChecked ? '' : formData.maxSalary,
+    });
+  };
+
 
   return (
     <div className="grid grid-cols-12 mt-10 mx-auto">
@@ -79,8 +95,64 @@ const FormDangKyTuyenDungBuoc1 = ({ nextStep, handleChange, formData, setFormDat
             onChange={handleChange("numberOfHires")}
           />
         </div>
-        {errors.numberOfHires && <p className="text-red">{errors.numberOfHires}</p>}
+        {errors.numberOfHires && (
+          <p className="text-red">{errors.numberOfHires}</p>
+        )}
         <div className="mb-4">
+          <label className="block font-semibold">Mô tả công việc</label>
+          <ReactQuill
+            value={formData.jobDescription}
+            onChange={handleDescriptionChange}
+            className="mt-1 block w-full border border-smoke rounded-md resize-y fixed-toolbar"
+            modules={modules}
+            formats={formats}
+          />
+        </div>
+        {errors.jobDescription && (
+          <p className="text-red">{errors.jobDescription}</p>
+        )}
+       
+       <div className="mb-4">
+          <label className="block font-semibold">Mức lương</label>
+          <div className="flex space-x-4">
+            <div className="flex-1">
+              <label className="block font-semibold">Từ</label>
+              <input
+                type="number"
+                className="mt-1 block w-full border border-smoke rounded-md p-1"
+                value={formData.minSalary}
+                onChange={handleChange('minSalary')}
+                disabled={formData.negotiable}
+              />
+            </div>
+            <div className="flex-1">
+              <label className="block font-semibold">Đến</label>
+              <input
+                type="number"
+                className="mt-1 block w-full border border-smoke rounded-md p-1"
+                value={formData.maxSalary}
+                onChange={handleChange('maxSalary')}
+                disabled={formData.negotiable}
+              />
+            </div>
+          </div>
+          <div className="mt-2">
+            <label className="inline-flex items-center">
+              <input
+                type="checkbox"
+                className="form-checkbox"
+                checked={formData.negotiable}
+                onChange={handleNegotiableChange}
+              />
+              <span className="ml-2">Mức lương thỏa thuận</span>
+            </label>
+          </div>
+        </div>
+        {errors.salary && (
+          <p className="text-red">{errors.salary}</p>
+        )}
+
+        {/* <div className="mb-4">
           <label className="block font-semibold">Ngày bắt đầu tuyển dụng*</label>
           <input
             type="date"
@@ -99,17 +171,17 @@ const FormDangKyTuyenDungBuoc1 = ({ nextStep, handleChange, formData, setFormDat
             onChange={handleChange("endDate")}
           />
         </div>
-        {errors.endDate && <p className="text-red">{errors.endDate}</p>}
+        {errors.endDate && <p className="text-red">{errors.endDate}</p>} */}
         <div className="mb-4">
           <label className="block font-semibold">Tiêu chí phù hợp</label>
           <ReactQuill
-              value={formData.criteria}
-              onChange={handleQuillChange}
-              className="mt-1 block w-full border border-smoke rounded-md resize-y fixed-toolbar"
-              modules={modules}
-              formats={formats}
-            />
-            {errors.criteria && <p className="text-red">{errors.criteria}</p>}
+            value={formData.criteria}
+            onChange={handleCriteriaChange}
+            className="mt-1 block w-full border border-smoke rounded-md resize-y fixed-toolbar"
+            modules={modules}
+            formats={formats}
+          />
+          {errors.criteria && <p className="text-red">{errors.criteria}</p>}
         </div>
         <div className="flex justify-end">
           <button className="btn-dark justify-end" onClick={handleSubmit}>

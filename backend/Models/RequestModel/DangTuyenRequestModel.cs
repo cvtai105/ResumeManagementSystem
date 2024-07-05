@@ -4,8 +4,10 @@ namespace Models.RequestModel
     {
         public string JobPosition { get; set; } = String.Empty;
         public int NumberOfHires { get; set; }
-        public DateTime StartDate { get; set; }
-        public DateTime EndDate { get; set; }
+        public string? jobDescription { get; set; }
+        public int minSalary {get; set; }
+        public int maxSalary {get; set; }
+        public bool negotiable {get; set; }
         public string Criteria { get; set; }= String.Empty;
         public int PostingTypeId { get; set; }
         public int PostingDuration { get; set; }
