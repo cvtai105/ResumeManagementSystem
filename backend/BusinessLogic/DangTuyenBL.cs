@@ -116,9 +116,6 @@ namespace BusinessLogic
         {
             return await _dangTuyenDAO.GetById(id);
         }
-
-
-
        
 
         public async Task<IEnumerable<DangTuyen>> GetFilteredDangTuyen(DateTime today)
@@ -155,6 +152,11 @@ namespace BusinessLogic
             };
 
             return info;
+        }
+
+        public async Task<DangTuyen?> GetDetailDangTuyenForDoanhNghiep(int id)
+        {
+            return await _dangTuyenDAO.GetDetailForDoanhNghiep(id);
         }
     }
 }

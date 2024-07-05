@@ -100,4 +100,28 @@ public class DangTuyenDAO(AppDbContext context)
         }
     }
 
+    //khi doanh nghiep xem chi tiết đăng tuyển, cần lấy ra danh sách ứng viên đã ứng tuyển và các Hồ sơ ứng tuyển 
+    public async Task<DangTuyen?> GetDetailForDoanhNghiep(int idDangTuyen)
+    {
+        try{
+            var dangTuyen = await _context.DangTuyens
+            .Include(dt => dt.UngTuyens)
+                .ThenInclude(dut => dut.UngVien) // Include thông tin ứng viên
+            .Include(dt => dt.UngTuyens)
+                .ThenInclude(dut => dut.HoSoUngTuyens)
+            .FirstOrDefaultAsync(dt => dt.Id == idDangTuyen);
+
+            if (dangTuyen!=null && dangTuyen.UngTuyens != null)
+            {
+                // Tính toán số lượng ứng tuyển
+                dangTuyen.SoLuongUngVien = dangTuyen.UngTuyens.Count;
+            }
+
+            return dangTuyen;
+        }
+        catch(Exception){
+            return null;
+        }
+
+    }
 }

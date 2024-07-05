@@ -13,7 +13,6 @@ namespace Models.Entities
         public DateTime? NgayUngTuyen { get; set; }
         public int DangTuyenId { get; set; } = 0;
         public string? DanhGia { get; set; }
-
         public int UngVienId{get; set;}
         public string? TrangThai{get; set;} = String.Empty;
         public int? NhanVienKiemDuyenId { get; set; }

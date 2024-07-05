@@ -21,7 +21,9 @@ namespace Application.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetRecruitmentById(int id)
         {
-            //lấy chi tiết thông tin đnăg tuyển để hiển thị cho ứng viên bao gồm thông tin doanh nghiệp, tiêu chí tuyển dụng, số lượng ứng viên đã ứng tuyển
+            //check cookie để xác định role của user
+            //nếu là ứng viên thì _dangtuyenBL.GetDangTuyenById(id);
+            //nếu là doanh nghiệp thì _dangtuyenBL.GetDangTuyenByIdForDoanhNghiep(id);
             var recruitment = await _dangtuyenBL.GetDangTuyenById(id);
             return Ok(recruitment);
         }
