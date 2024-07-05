@@ -18,7 +18,7 @@ public class AppDbContext(DbContextOptions options) : DbContext(options)
     public DbSet<UngTuyen> UngTuyens { get; set; }
     public DbSet<UuDai> UuDais { get; set; }
     public DbSet<UngVien> UngViens { get; set; } 
-    public DbSet<ExampleDTO> ExampleDTOs { get; set; }       
+    public DbSet<ExampleDTO> ExampleDTOs { get; set; }  
     protected override void OnModelCreating(ModelBuilder modelBuilder){
 
         modelBuilder.Entity<ExampleDTO>().HasNoKey(); // cần cái này vì ExampleDTO không phải entity

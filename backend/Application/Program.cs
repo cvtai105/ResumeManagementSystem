@@ -79,6 +79,8 @@ builder.Services.AddScoped<HinhThucThanhToanBL>();
 
 builder.Services.AddScoped<UngTuyenBL>();
 builder.Services.AddScoped<UngTuyenDAO>();
+builder.Services.AddScoped<HoSoUngTuyenBL>();
+builder.Services.AddScoped<HoSoUngTuyenDAO>();
 
 builder.Services.AddControllers();
 builder.Services.AddAuthentication(options =>

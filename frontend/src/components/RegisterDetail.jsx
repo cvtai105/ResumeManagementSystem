@@ -1,11 +1,24 @@
 import React from 'react';
 
-function RegistrationDetails({nextStep, selectedRegister}) {
+function RegistrationDetails({nextStep, selectedRegister, setFormData, formData}) {
+
+  const handleButtonClick = (id) => {
+    if(!id){
+      document.getElementById("notification").innerText = "Chọn ứng tuyển!!!";
+      return;
+    }
+    setFormData(prevFormData => ({
+        ...prevFormData,
+        registrationId: id.toString() // Giá trị mới của companyId
+    }));
+    // Chuyển sang trang khác sau khi thay đổi companyId
+    nextStep();
+  };
   return (
     <div className="flex mr-[100px] items-center bg-gray-100 px-130">
       <div className="bg-white shadow-lg rounded-lg p-8 max-w-md w-full">
         <h3 className="text-xl font-semibold mb-6">CHI TIẾT PHIẾU ĐĂNG KÝ</h3>
-        
+        <div className="mb-3 text-red" id="notification"></div>
         <div className="mb-4">
           <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="applicantCode">
             Mã ứng tuyển:
@@ -71,7 +84,7 @@ function RegistrationDetails({nextStep, selectedRegister}) {
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           />
         </div>
-        <button onClick={nextStep}
+        <button onClick={() => handleButtonClick(selectedRegister?.id || '')}
           type="button"
           className="mt-5 w-full btn-dark text-white py-2 px-4 hover:bg-blue-600 focus:outline-none focus:shadow-outline border rounded"
         >

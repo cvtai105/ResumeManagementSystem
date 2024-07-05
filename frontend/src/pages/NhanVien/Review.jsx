@@ -10,7 +10,7 @@ const Review = () => {
     const [step, setStep] = useState(1);
     const [formData, setFormData] = useState({
       companyId: '',
-      employeeId: '',
+      registrationId: '',
     });
   
     const nextStep = () => {

@@ -1,32 +1,31 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import '../index.css'
-function ListDetailCV() {
-  const data = [
-        {
-            id: 1,
-            name: "IELTS",
-            discription: "IELST 7.0"
+function ListDetailCV({formData}) {
+  let [data, setDangTuyens] = useState([]);
 
-        },
-        {
-            id: 2,
-            name: "IELTS",
-            discription: "IELST 7.0"
+  const getDanhSach = async (registerId) => {
+    try {
+        const response = await axios.get(`http://localhost:5231/api/hosoungtuyen/danhsach/${registerId}`);
+        return response.data;
+    } catch (error) {
+        console.error('Error fetching filtered dang tuyens:', error);
+        throw error;
+    }
+  };
 
-        },
-        {
-            id: 3,
-            name: "IELTS",
-            discription: "IELST 7.0"
+  useEffect(() => {
+      const fetchData = async () => {
+        try {
+            const temp = await getDanhSach(formData.registrationId);
+            setDangTuyens(temp);
+          } catch (error) {
+              console.error('Error fetching companies:', error);
+          }
+      };
 
-        },
-        {
-            id: 4,
-            name: "IELTS",
-            discription: "IELST 7.0"
-
-        },
-    ]
+      fetchData();
+  }, []);
   const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 5;
 
@@ -114,9 +113,9 @@ function ListDetailCV() {
             <tbody>
               {rows.map((row, index) => (
                 <tr key={index} className="h-[42px]">
-                  <td className="px-6  border border-gray-300 text-sm">{row.id}</td>
-                  <td className="px-6  border border-gray-300 text-sm">{row.name}</td>
-                  <td className="px-6  border border-gray-300 text-sm">{row.discription}</td>
+                  <td className="px-6  border border-gray-300 text-sm">{row.id ? index + 1: ''}</td>
+                  <td className="px-6  border border-gray-300 text-sm">{row.tenHoSo}</td>
+                  <td className="px-6  border border-gray-300 text-sm">{row.moTa}</td>
                 </tr>
               ))}
             </tbody>
