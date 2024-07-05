@@ -1,6 +1,5 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
-import Footer from "../../components/Footer";
 import "./XacThucDangKy.css";
 
 const data = [
@@ -80,6 +79,23 @@ const data = [
 ];
 
 const XacThucDangKy = () => {
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          "http://localhost:5231/api/doanhnghiep"
+        );
+        setData(response.data);
+      } catch (error) {
+        console.error("Có lỗi xảy ra khi lấy dữ liệu:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   const handleVerify = async (id) => {
     try {
       await axios.post(`/api/doanhnghiep/${id}/xacnhan`, { xacNhan: 1 });

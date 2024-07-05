@@ -4,6 +4,8 @@ import axios from "axios";
 const pcVN = require("pc-vn");
 const province1 = pcVN.getProvinces();
 
+const hostApi = process.env.REACT_APP_API_URL;
+
 const DangKyThanhVienDoanhNghiep = () => {
   const [province, setProvince] = useState("");
   const [district, setDistrict] = useState("");
@@ -49,9 +51,9 @@ const DangKyThanhVienDoanhNghiep = () => {
       Email: email,
       MatKhau: "string",
     };
-
+    console.log(data);
     await axios
-      .post("http://localhost:5231/api/dangkydoanhnghiep", data)
+      .post(hostApi + "/api/dangkydoanhnghiep", data)
       .then((response) => {
         console.log(response);
       })

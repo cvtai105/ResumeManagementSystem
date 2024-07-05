@@ -19,8 +19,15 @@ namespace Application.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<DoanhNghiep>> AddDoanhNghiep(DoanhNghiepRequestModel request)
+        public async Task<ActionResult> AddDoanhNghiep([FromBody] DoanhNghiepRequestModel request)
         {
+            if (request == null || string.IsNullOrEmpty(request.TenDoanhNghiep) || string.IsNullOrEmpty(request.MaSoThue) ||
+                string.IsNullOrEmpty(request.DienThoai) || string.IsNullOrEmpty(request.DiaChi) ||
+                string.IsNullOrEmpty(request.Email) || string.IsNullOrEmpty(request.MatKhau))
+            {
+                return BadRequest(new { message = "Bạn điền thiếu thông tin" });
+            }
+
             var doanhnghiep = new DoanhNghiep
             {
                 TenDoanhNghiep = request.TenDoanhNghiep,
@@ -32,10 +39,28 @@ namespace Application.Controllers
                 Email = request.Email,
                 MatKhau = request.MatKhau
             };
-            Console.WriteLine(request);
-            var addDoanhNghiep = await _doanhNghiepBL.Register(doanhnghiep);
-            return NotFound();
+
+            try
+            {
+                var addDoanhNghiep = await _doanhNghiepBL.Register(doanhnghiep);
+
+                if (addDoanhNghiep != null)
+                {
+                    return Ok(new { message = "Đang trong quá trình xác thực" });
+                }
+                else
+                {
+                    return StatusCode(500, new { message = "An error occurred while processing your request." });
+                }
+            }
+            catch (Exception ex)
+            {
+                // Log the exception (ex)
+                Console.WriteLine(ex);
+                return StatusCode(500, new { message = "An error occurred while processing your request." });
+            }
         }
+
 
         [HttpGet]
         public async Task<ActionResult<DoanhNghiep>> GetDoanhNghiepByEmail(String gmail)
