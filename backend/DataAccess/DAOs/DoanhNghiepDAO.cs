@@ -12,6 +12,13 @@ namespace DataAccess.DAOs
     {
         private readonly AppDbContext _context = context;
 
+        public async Task<List<DoanhNghiep>> GetUnverifiedDoanhNghiep()
+        {
+            return await _context.DoanhNghieps
+                                 .Where(d => d.XacNhan == null)
+                                 .ToListAsync();
+        }
+
         public async Task<DoanhNghiep?> GetByEmail(string email)
         {
             return await _context.DoanhNghieps.FirstOrDefaultAsync(dn => dn.Email == email);
@@ -30,10 +37,12 @@ namespace DataAccess.DAOs
 
         public async Task<DoanhNghiep> UpdateXacNhanAsync(int id, bool xacNhan)
         {
-            var doanhNghiep = _context.DoanhNghieps.First(x => x.Id == id);
+            var doanhNghiep = await _context.DoanhNghieps.FirstOrDefaultAsync(x => x.Id == id);
+            if (doanhNghiep == null) throw new KeyNotFoundException("DoanhNghiep not found");
+
             doanhNghiep.XacNhan = xacNhan;
-            //Cap nhat Id NhanVien o day
-            _ = await _context.SaveChangesAsync();
+            // Update Id NhanVien here if necessary
+            await _context.SaveChangesAsync();
             return doanhNghiep;
         }
     }
