@@ -35,6 +35,11 @@ builder.Services.AddCors(options =>
                 .AllowAnyMethod()
                 .AllowAnyHeader()
                 .AllowCredentials();
+            
+            policy.WithOrigins("https://resume-management-system.vercel.app")
+                .AllowAnyMethod()
+                .AllowAnyHeader()
+                .AllowCredentials();
         }
     );
 });

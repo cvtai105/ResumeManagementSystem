@@ -15,7 +15,7 @@ namespace Models.Entities
         public string? GhiChu { get; set; } = String.Empty;
         public NhanVien? NhanVienThanhToan { get; set; } 
         public int ThanhToanId { get; set; }
-        public ThanhToan ThanhToan { get; set; } = new();
+        public ThanhToan? ThanhToan { get; set; }
         public int? HinhThucThanhToanId { get; set; }
         public HinhThucThanhToan? HinhThucThanhToan { get; set; }
     }

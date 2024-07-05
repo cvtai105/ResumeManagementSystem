@@ -1,6 +1,5 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
-import Footer from "../../components/Footer";
 import "./XacThucDangKy.css";
 
 const data = [
@@ -80,6 +79,23 @@ const data = [
 ];
 
 const XacThucDangKy = () => {
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          "http://localhost:5231/api/doanhnghiep"
+        );
+        setData(response.data);
+      } catch (error) {
+        console.error("Có lỗi xảy ra khi lấy dữ liệu:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   const handleVerify = async (id) => {
     try {
       await axios.post(`/api/doanhnghiep/${id}/xacnhan`, { xacNhan: 1 });
@@ -100,7 +116,7 @@ const XacThucDangKy = () => {
 
   return (
     <div>
-      <h1>Doanh nghiệp đăng ký thành viên</h1>
+      <p className="text-3xl font-semibold text-center mt-6 mb-2">Doanh nghiệp đăng ký thành viên</p>
       <div className="grid grid-cols-12">
         <div className="col-span-10 col-start-3">
           <input type="text" placeholder="Tìm kiếm" className="search-bar" />
