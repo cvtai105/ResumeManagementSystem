@@ -13,6 +13,6 @@ namespace Models.Entities
         [EmailAddress]
         public string Email { get; set; } = String.Empty;
         public string MatKhau { get; set; } = String.Empty;
-        public string? AnhDaiDien { get; set; } = String.Empty;
+        public string? AnhDaiDien { get; set; }
     }
 }

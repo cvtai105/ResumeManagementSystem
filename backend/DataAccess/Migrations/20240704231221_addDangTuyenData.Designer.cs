@@ -4,6 +4,7 @@ using DataAccess.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccess.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240704231221_addDangTuyenData")]
+    partial class addDangTuyenData
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -390,80 +393,6 @@ namespace DataAccess.Migrations
                     b.HasIndex("UngTuyenId");
 
                     b.ToTable("HoSoUngTuyens");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            FileHoSo = "example.pdf",
-                            MoTa = "CV",
-                            TenHoSo = "CV",
-                            UngTuyenId = 1
-                        },
-                        new
-                        {
-                            Id = 2,
-                            FileHoSo = "example.pdf",
-                            MoTa = "CV",
-                            TenHoSo = "CV",
-                            UngTuyenId = 2
-                        },
-                        new
-                        {
-                            Id = 3,
-                            FileHoSo = "example.pdf",
-                            MoTa = "CV",
-                            TenHoSo = "CV",
-                            UngTuyenId = 3
-                        },
-                        new
-                        {
-                            Id = 4,
-                            FileHoSo = "example.pdf",
-                            MoTa = "CV",
-                            TenHoSo = "CV",
-                            UngTuyenId = 4
-                        },
-                        new
-                        {
-                            Id = 5,
-                            FileHoSo = "example.pdf",
-                            MoTa = "CV",
-                            TenHoSo = "CV",
-                            UngTuyenId = 5
-                        },
-                        new
-                        {
-                            Id = 6,
-                            FileHoSo = "example.pdf",
-                            MoTa = "CV",
-                            TenHoSo = "CV",
-                            UngTuyenId = 6
-                        },
-                        new
-                        {
-                            Id = 7,
-                            FileHoSo = "example.pdf",
-                            MoTa = "CV",
-                            TenHoSo = "CV",
-                            UngTuyenId = 7
-                        },
-                        new
-                        {
-                            Id = 8,
-                            FileHoSo = "example.pdf",
-                            MoTa = "CV",
-                            TenHoSo = "CV",
-                            UngTuyenId = 8
-                        },
-                        new
-                        {
-                            Id = 9,
-                            FileHoSo = "example.pdf",
-                            MoTa = "CV",
-                            TenHoSo = "CV",
-                            UngTuyenId = 9
-                        });
                 });
 
             modelBuilder.Entity("Models.Entities.NhanVien", b =>
@@ -550,121 +479,11 @@ namespace DataAccess.Migrations
                     b.Property<string>("MoTa")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("TenTieuChi")
-                        .HasColumnType("nvarchar(max)");
-
                     b.HasKey("Id");
 
                     b.HasIndex("DangTuyenId");
 
                     b.ToTable("TieuChiTuyenDungs");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            DangTuyenId = 1,
-                            MoTa = "30 Năm kinh nghiệm làm việc trong lĩnh vực lập trình",
-                            TenTieuChi = "Kinh Nghiệm Làm Việc"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            DangTuyenId = 2,
-                            MoTa = "Có kiến thức vững về kế toán",
-                            TenTieuChi = "Kỹ năng kế toán"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            DangTuyenId = 3,
-                            MoTa = "Có kiến thức vững về kinh doanh",
-                            TenTieuChi = "Kỹ năng kinh doanh"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            DangTuyenId = 4,
-                            MoTa = "Có kiến thức vững về kinh doanh",
-                            TenTieuChi = "Kỹ năng kinh doanh"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            DangTuyenId = 5,
-                            MoTa = "Có kiến thức vững về kinh doanh",
-                            TenTieuChi = "Kỹ năng kinh doanh"
-                        },
-                        new
-                        {
-                            Id = 6,
-                            DangTuyenId = 1,
-                            MoTa = "20-25 tuổi",
-                            TenTieuChi = "Độ tuổi"
-                        },
-                        new
-                        {
-                            Id = 7,
-                            DangTuyenId = 2,
-                            MoTa = "20-25 tuổi",
-                            TenTieuChi = "Độ tuổi"
-                        },
-                        new
-                        {
-                            Id = 8,
-                            DangTuyenId = 3,
-                            MoTa = "20-25 tuổi",
-                            TenTieuChi = "Độ tuổi"
-                        },
-                        new
-                        {
-                            Id = 9,
-                            DangTuyenId = 4,
-                            MoTa = "20-25 tuổi",
-                            TenTieuChi = "Độ tuổi"
-                        },
-                        new
-                        {
-                            Id = 10,
-                            DangTuyenId = 5,
-                            MoTa = "20-25 tuổi",
-                            TenTieuChi = "Độ tuổi"
-                        },
-                        new
-                        {
-                            Id = 11,
-                            DangTuyenId = 1,
-                            MoTa = "Đại học",
-                            TenTieuChi = "Trình độ học vấn"
-                        },
-                        new
-                        {
-                            Id = 12,
-                            DangTuyenId = 2,
-                            MoTa = "Đại học",
-                            TenTieuChi = "Trình độ học vấn"
-                        },
-                        new
-                        {
-                            Id = 13,
-                            DangTuyenId = 3,
-                            MoTa = "Đại học",
-                            TenTieuChi = "Trình độ học vấn"
-                        },
-                        new
-                        {
-                            Id = 14,
-                            DangTuyenId = 4,
-                            MoTa = "Đại học",
-                            TenTieuChi = "Trình độ học vấn"
-                        },
-                        new
-                        {
-                            Id = 15,
-                            DangTuyenId = 5,
-                            MoTa = "Đại học",
-                            TenTieuChi = "Trình độ học vấn"
-                        });
                 });
 
             modelBuilder.Entity("Models.Entities.UngTuyen", b =>
@@ -687,6 +506,9 @@ namespace DataAccess.Migrations
                     b.Property<int?>("NhanVienKiemDuyenId")
                         .HasColumnType("int");
 
+                    b.Property<string>("TrangThai")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("UngVienId")
                         .HasColumnType("int");
 
@@ -699,80 +521,6 @@ namespace DataAccess.Migrations
                     b.HasIndex("UngVienId");
 
                     b.ToTable("UngTuyens");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            DangTuyenId = 1,
-                            NgayUngTuyen = new DateTime(2021, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            NhanVienKiemDuyenId = 1,
-                            UngVienId = 2
-                        },
-                        new
-                        {
-                            Id = 2,
-                            DangTuyenId = 2,
-                            NgayUngTuyen = new DateTime(2021, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            NhanVienKiemDuyenId = 1,
-                            UngVienId = 2
-                        },
-                        new
-                        {
-                            Id = 3,
-                            DangTuyenId = 3,
-                            NgayUngTuyen = new DateTime(2021, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            NhanVienKiemDuyenId = 1,
-                            UngVienId = 2
-                        },
-                        new
-                        {
-                            Id = 4,
-                            DangTuyenId = 4,
-                            NgayUngTuyen = new DateTime(2021, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            NhanVienKiemDuyenId = 1,
-                            UngVienId = 2
-                        },
-                        new
-                        {
-                            Id = 5,
-                            DangTuyenId = 5,
-                            NgayUngTuyen = new DateTime(2021, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            NhanVienKiemDuyenId = 1,
-                            UngVienId = 2
-                        },
-                        new
-                        {
-                            Id = 6,
-                            DangTuyenId = 1,
-                            NgayUngTuyen = new DateTime(2021, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            NhanVienKiemDuyenId = 1,
-                            UngVienId = 3
-                        },
-                        new
-                        {
-                            Id = 7,
-                            DangTuyenId = 2,
-                            NgayUngTuyen = new DateTime(2021, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            NhanVienKiemDuyenId = 1,
-                            UngVienId = 3
-                        },
-                        new
-                        {
-                            Id = 8,
-                            DangTuyenId = 3,
-                            NgayUngTuyen = new DateTime(2021, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            NhanVienKiemDuyenId = 1,
-                            UngVienId = 3
-                        },
-                        new
-                        {
-                            Id = 9,
-                            DangTuyenId = 4,
-                            NgayUngTuyen = new DateTime(2021, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            NhanVienKiemDuyenId = 1,
-                            UngVienId = 3
-                        });
                 });
 
             modelBuilder.Entity("Models.Entities.UngVien", b =>
@@ -849,20 +597,6 @@ namespace DataAccess.Migrations
                             DiaChi = "Hà Nội",
                             Email = "ungvien2@email.com",
                             HoTen = "Nguyễn Văn B",
-                            MatKhau = "123456",
-                            NgaySinh = new DateTime(1999, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            SoDienThoai = "0123456789",
-                            TrinhDoChuyenMon = "CNTT",
-                            TrinhDoHocVan = "Đại học FPT"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            AnhDaiDien = "example.jpg",
-                            Cv = "example.jpg",
-                            DiaChi = "Hà Nội",
-                            Email = "ungvien3@email.com",
-                            HoTen = "Nguyễn Văn C",
                             MatKhau = "123456",
                             NgaySinh = new DateTime(1999, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             SoDienThoai = "0123456789",

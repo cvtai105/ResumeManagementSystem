@@ -9,10 +9,10 @@ namespace Models.Entities
         public DateTime? NgayBatDau { get; set; }
         public DateTime? NgayKetThuc { get; set; }
         public int DoanhNghiepId { get; set; }
-        public DoanhNghiep DoanhNghiep { get; set; } = new();
+        public DoanhNghiep? DoanhNghiep { get; set; }
 
-        [JsonIgnore]
-        public List<DangTuyen> DangTuyens { get; set; } = [];
+        // [JsonIgnore]
+        public List<DangTuyen>? DangTuyens { get; set; }
 
     } 
 }
