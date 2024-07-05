@@ -17,4 +17,9 @@ public class UngTuyenBL
         {
             return await _ungTuyenDAO.GetDoanhSachUngTuyenByIdBaiDang(id);
         }
+
+        public async Task<UngTuyen> UngTuyen(UngTuyen ungTuyen)
+        {
+            return await _ungTuyenDAO.Add(ungTuyen);
+        }
     }

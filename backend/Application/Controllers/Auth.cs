@@ -115,7 +115,7 @@ namespace Application.Controllers
                 Expires = DateTime.UtcNow.Add(_expiration),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature),
                 Issuer = _issuer,
-                Audience = _audience
+                Audience = _audience,
             };
 
             var token = tokenHandler.CreateToken(tokenDescriptor);
