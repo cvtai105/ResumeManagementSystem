@@ -18,7 +18,7 @@ function ReviewCV({ prevStep, formData}) {
         // Chuyển sang trang khác sau khi thay đổi companyId
         //prevStep();
         
-        updateApplicationStatus(formData.registrationId, review ? "Đạt" : "Không đạt")
+        updateApplicationStatus(formData.registrationId, review ? "Đạt" : "Không đạt");
         prevStep();
       };
     return (
