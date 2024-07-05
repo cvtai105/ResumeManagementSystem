@@ -1,13 +1,25 @@
 import React, {useState} from 'react';
 import ListCriteria from './ListCriteria';
 import ListDetailCV from './ListDetailCV';
-
+import axios from 'axios';
 function ReviewCV({ prevStep, formData}) {
+    const updateApplicationStatus = async (applicationId, newStatus) => {
+        try {
+          const response = await axios.put(`http://localhost:5231/api/ungtuyen/update/${applicationId}`, {
+            status: newStatus
+          });
+          console.log(response.data);
+        } catch (error) {
+          console.error('Error updating application status:', error);
+        }
+      };
     const [review, setReview] = useState(null);
     const handleButtonClick = () => {
         // Chuyển sang trang khác sau khi thay đổi companyId
         //prevStep();
-        document.getElementById('test').innerText = review ? 'true' : 'false'; 
+        
+        updateApplicationStatus(formData.registrationId, review ? "Đạt" : "Không đạt")
+        prevStep();
       };
     return (
         <div className="grid grid-cols-4 center">
