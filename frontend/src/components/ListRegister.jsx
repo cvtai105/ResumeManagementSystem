@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-function DataTable({registerId}) {
+function DataTable({registerId, handleRowClick}) {
   let [data, setDangTuyens] = useState([]);
 
   const getUngTuyenByIdDangTuyen = async (registerId) => {
@@ -115,7 +115,7 @@ function DataTable({registerId}) {
           <table className="min-w-full bg-white border custom-border">
             <thead>
               <tr>
-                <th className="px-6 py-3 border border-gray-300 text-left text-sm font-medium text-gray-700 bg-grey">Mã Hợp Đồng</th>
+                <th className="px-6 py-3 border border-gray-300 text-left text-sm font-medium text-gray-700 bg-grey">Mã Ứng Tuyển</th>
                 <th className="px-6 py-3 border border-gray-300 text-left text-sm font-medium text-gray-700 bg-grey">Mã NV Duyệt Phiếu</th>
                 <th className="px-6 py-3 border border-gray-300 text-left text-sm font-medium text-gray-700 bg-grey">Mã Ứng Viên</th>
                 <th className="px-6 py-3 border border-gray-300 text-left text-sm font-medium text-gray-700 bg-grey">Ngày Lập Phiếu</th>
@@ -124,8 +124,8 @@ function DataTable({registerId}) {
             </thead>
             <tbody>
               {rows.map((row, index) => (
-                <tr key={index} className="h-[42px]">
-                  <td className="px-6  border border-gray-300 text-sm">{row.dangTuyenId}</td>
+                <tr key={index} className="h-[42px]" onClick={() => handleRowClick(row)}>
+                  <td className="px-6  border border-gray-300 text-sm">{row.id}</td>
                   <td className="px-6  border border-gray-300 text-sm">{row.nhanVienKiemDuyenId}</td>
                   <td className="px-6  border border-gray-300 text-sm">{row.ungVienId}</td>
                   <td className="px-6  border border-gray-300 text-sm">{row.id ? new Date(row.ngayUngTuyen).toLocaleDateString('vn') : ''}</td>

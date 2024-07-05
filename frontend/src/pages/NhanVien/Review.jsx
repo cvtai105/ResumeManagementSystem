@@ -9,8 +9,8 @@ import axios from 'axios';
 const Review = () => {
     const [step, setStep] = useState(1);
     const [formData, setFormData] = useState({
-      companyId: '',
-      employeeId: '',
+      companyId: 0,
+      registrationId: 0,
     });
   
     const nextStep = () => {

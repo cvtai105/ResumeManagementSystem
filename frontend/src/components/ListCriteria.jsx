@@ -1,51 +1,34 @@
 import '../index.css'
-import React, { useState} from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
-function ListCriteria() {
-  let data1 = [
-        {
-            id: 1,
-            content: "Có 2 bằng đại học",
-            
-        },
-        {
-            id: 2,
-            content: "Có 2 bằng đại học dfdfvdv",
-            
-        },
-        {
-            id: 3,
-            content: "Có 2 bằng đại học",
-            
-        },
-        {
-            id: 4,
-            content: "Có 2 bằng đại học",
-            
-        },
-        {
-            id: 5,
-            content: "Có 2 bằng đại họd",
-            
-        },
-        {
-            id: 6,
-            content: "Có 2 bằng đại học",
-            
-        },
-        {
-            id: 7,
-            content: "Có 2 bằng đại học sdfsfdfsdfsdfsdfsfsfsfsdfsdfsdfsdfdsfs",
-            
-        },
-        {
-            id: 8,
-            content: "Có 2 bằng đại học",
-        },
-    ]
+function ListCriteria({setReview, formData}) {
+  let [data, setCheckboxes] = useState([]);
+  const getDanhSach = async (registerId) => {
+    try {
+        const response = await axios.get(`http://localhost:5231/api/tieuchituyendung/danhsach/${registerId}`);
+        return response.data;
+    } catch (error) {
+        console.error('Error fetching filtered dang tuyens:', error);
+        throw error;
+    }
+  };
+
+  useEffect(() => {
+      const fetchData = async () => {
+        try {
+            const temp = await getDanhSach(formData.companyId);
+            setCheckboxes(temp);
+          } catch (error) {
+              console.error('Error fetching companies:', error);
+          }
+      };
+
+      fetchData();
+  }, []);
     
     
-    let [data, setCheckboxes] = useState(data1);
+   
   
     // Trình xử lý để thay đổi trạng thái của ô kiểm tra
     const handleCheckboxChange = (index) => {
@@ -55,6 +38,9 @@ function ListCriteria() {
           idx === index ? { ...checkbox, checked: !checkbox.checked } : checkbox
         );
         console.log('Updated checkboxes:', newCheckboxes); // Debugging log
+        const countChecked = countTrue(newCheckboxes);
+        countChecked == data.length ? setReview(true) : setReview(false) 
+        document.getElementById("test").innerText = countTrue(newCheckboxes);
         return newCheckboxes;
       });
     };
@@ -139,13 +125,14 @@ function ListCriteria() {
     };
   return (
     <div className="flex justify-center items-center mt-20 bg-gray-100">
-
+      <div id="test"></div>
       <div className="bg-white shadow-lg rounded-lg p-6 w-full max-w-4xl">
         <div className="overflow-x-auto">
           <table className="min-w-full bg-white border custom-border">
             <thead>
               <tr>
                 <th className="px-6 py-3 border border-gray-300 text-left text-sm font-medium text-gray-700 bg-grey">Số thứ tự</th>
+                <th className="px-6 py-3 border border-gray-300 text-left text-sm font-medium text-gray-700 bg-grey">Tên tiêu chí</th>
                 <th className="px-6 py-3 border border-gray-300 text-left text-sm font-medium text-gray-700 bg-grey">Nội dung</th>
                 <th className="px-6 py-3 border border-gray-300 text-left text-sm font-medium text-gray-700 bg-grey">Đủ điều kiện</th>
               </tr>
@@ -153,9 +140,10 @@ function ListCriteria() {
             <tbody>
               {rows.map((row, index) => (
                 <tr key={index} className="h-[42px]" data-id={row.id}>
-                  <td className="px-6  border border-gray-300 text-sm" >{row.id}</td>
-                  <td className="px-6  border border-gray-300 text-sm">{row.content}</td>
-                  <td className="px-4 py-2 border border-gray-300">
+                  <td className="px-6  border border-gray-300 text-sm" >{row.id ? index + 1 : ''}</td>
+                  <td className="px-6  border border-gray-300 text-sm">{row.tenTieuChi}</td>
+                  <td className="px-6  border border-gray-300 text-sm">{row.moTa}</td>
+                  <td className="px-6  border border-gray-300 text-sm">
                     {
                       row.id ?
                         <input

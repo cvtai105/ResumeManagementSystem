@@ -35,6 +35,11 @@ builder.Services.AddCors(options =>
                 .AllowAnyMethod()
                 .AllowAnyHeader()
                 .AllowCredentials();
+            
+            policy.WithOrigins("https://resume-management-system.vercel.app")
+                .AllowAnyMethod()
+                .AllowAnyHeader()
+                .AllowCredentials();
         }
     );
 });
@@ -74,6 +79,8 @@ builder.Services.AddScoped<HinhThucThanhToanBL>();
 
 builder.Services.AddScoped<UngTuyenBL>();
 builder.Services.AddScoped<UngTuyenDAO>();
+builder.Services.AddScoped<HoSoUngTuyenBL>();
+builder.Services.AddScoped<HoSoUngTuyenDAO>();
 
 builder.Services.AddControllers();
 builder.Services.AddAuthentication(options =>

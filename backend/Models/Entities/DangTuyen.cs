@@ -13,6 +13,8 @@ namespace Models.Entities
         public int? ThoiGianDangTuyen { get; set; }
         public string? TrangThai { get; set; }
         public string? MucLuong { get; set; }
+        public string? ChuyenNganh { get; set; }
+        public string? KhuVuc { get; set; }
 
         //ngày bắt đầu đăng tuyển là ngày public 10 ngày sau khi thanh toán, ngày đăng ký là ngày đăng ký
         public DateTime? NgayDangKy { get; set; }

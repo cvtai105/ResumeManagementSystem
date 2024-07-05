@@ -18,7 +18,7 @@ public class AppDbContext(DbContextOptions options) : DbContext(options)
     public DbSet<UngTuyen> UngTuyens { get; set; }
     public DbSet<UuDai> UuDais { get; set; }
     public DbSet<UngVien> UngViens { get; set; } 
-    public DbSet<ExampleDTO> ExampleDTOs { get; set; }       
+    public DbSet<ExampleDTO> ExampleDTOs { get; set; }  
     protected override void OnModelCreating(ModelBuilder modelBuilder){
 
         modelBuilder.Entity<ExampleDTO>().HasNoKey(); // cần cái này vì ExampleDTO không phải entity
@@ -151,6 +151,8 @@ public class AppDbContext(DbContextOptions options) : DbContext(options)
                 NgayDangKy = new DateTime(2021, 1, 1),
                 NgayBatDau = new DateTime(2021, 1, 10),
                 NgayKetThuc = new DateTime(2021, 1, 20),
+                KhuVuc = "Hà Nội",
+                ChuyenNganh = "IT",
                 DoanhNghiepId = 1,
                 HinhThucDangTuyenId = 1
             },
@@ -175,6 +177,8 @@ public class AppDbContext(DbContextOptions options) : DbContext(options)
                 NgayDangKy = new DateTime(2021, 1, 1),
                 NgayBatDau = new DateTime(2021, 1, 10),
                 NgayKetThuc = new DateTime(2021, 1, 20),
+                KhuVuc = "Hà Nội",
+                ChuyenNganh = "Kế Toán",
                 DoanhNghiepId = 2,
                 HinhThucDangTuyenId = 2
             },
@@ -197,6 +201,8 @@ public class AppDbContext(DbContextOptions options) : DbContext(options)
                 NgayDangKy = new DateTime(2021, 1, 1),
                 NgayBatDau = new DateTime(2021, 1, 10),
                 NgayKetThuc = new DateTime(2021, 1, 20),
+                KhuVuc = "Hồ Chi Minh",
+                ChuyenNganh = "Kinh Doanh",
                 DoanhNghiepId = 3,
                 HinhThucDangTuyenId = 3
             },
@@ -219,6 +225,8 @@ public class AppDbContext(DbContextOptions options) : DbContext(options)
                 NgayDangKy = new DateTime(2021, 1, 1),
                 NgayBatDau = new DateTime(2021, 1, 10),
                 NgayKetThuc = new DateTime(2021, 1, 20),
+                KhuVuc = "Hồ Chi Minh",
+                ChuyenNganh = "Kinh Doanh",
                 DoanhNghiepId = 3,
                 HinhThucDangTuyenId = 3
             },
@@ -242,6 +250,8 @@ public class AppDbContext(DbContextOptions options) : DbContext(options)
                 NgayBatDau = new DateTime(2021, 1, 10),
                 NgayKetThuc = new DateTime(2021, 1, 20),
                 DoanhNghiepId = 3,
+                KhuVuc = "Hồ Chi Minh",
+                ChuyenNganh = "Kinh Doanh",
                 HinhThucDangTuyenId = 3
             }
         );
