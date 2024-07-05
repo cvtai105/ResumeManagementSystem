@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace Application.Controllers{
     [Route("api/dangkydangtuyen")]
     [ApiController]
-   public class DangTuyenController : ControllerBase
+    public class DangTuyenController : ControllerBase
     {
         private readonly DangTuyenBL _dangTuyenBL;
 
@@ -24,14 +24,15 @@ namespace Application.Controllers{
             {
                 TenViTri = request.JobPosition,
                 SoLuong = request.NumberOfHires,
-                NgayBatDau = request.StartDate,
-                NgayKetThuc = request.EndDate,
+                MoTa = request.jobDescription,
+                MucLuong = !request.negotiable ?  request.minSalary +  " - " + request.maxSalary + " VNĐ" : "Thỏa thuận",
                 HinhThucDangTuyenId = request.PostingTypeId,
                 ThoiGianDangTuyen = request.PostingDuration,
                 DoanhNghiepId = request.DoanhNghiepId,
                 NhanVienKiemDuyetId = null,
                 UuDaiId = null,
                 TieuChiTuyenDungs = request.Criteria.Split('\n').Select(c => new TieuChiTuyenDung { MoTa = c }).ToList(),
+                NgayDangKy = DateTime.UtcNow,
                 ThanhToans = new List<ThanhToan>
                 {
                     new ThanhToan

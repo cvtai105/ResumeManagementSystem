@@ -13,9 +13,11 @@ const DangKyThongTinDangTuyen = () => {
     const { idDoanhNghiep } = useContext(DoanhNghiepContext);
     const [formData, setFormData] = useState({
       jobPosition: '',
+      jobDescription: '',
       numberOfHires: '',
-      startDate: '',
-      endDate: '',
+      minSalary: null,
+      maxSalary: null,
+      negotiable: false,
       criteria: '',
       postingType: '',
       postingDescription: '',
@@ -29,7 +31,6 @@ const DangKyThongTinDangTuyen = () => {
       installmentAmount: 0
     });
 
-    console.log(idDoanhNghiep);
     const nextStep = () => {
       setStep(step + 1);
     };
@@ -39,7 +40,8 @@ const DangKyThongTinDangTuyen = () => {
     };
   
     const handleChange = (input) => (e) => {
-      setFormData({ ...formData, [input]: e.target.value });
+      const value = input === 'negotiable' ? e.target.checked : e.target.value;
+      setFormData({ ...formData, [input]: value });
     };
 
     const handleSubmit = () => {
@@ -49,9 +51,11 @@ const DangKyThongTinDangTuyen = () => {
           const postingTypeId = response.data.id;
           const dataToSubmit = { 
             jobPosition: formData.jobPosition,
+            jobDescription: formData.jobDescription,
             numberOfHires: formData.numberOfHires,
-            startDate: formData.startDate,
-            endDate: formData.endDate,
+            minSalary: formData.minSalary ? parseInt(formData.minSalary, 10) : 0,
+            maxSalary: formData.maxSalary ? parseInt(formData.maxSalary, 10) : 0,
+            negotiable: formData.negotiable,
             criteria: formData.criteria,
             postingTypeId: postingTypeId,
             postingDuration: formData.postingDuration,

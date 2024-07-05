@@ -33,14 +33,15 @@ const PaymentForm = ({
   useEffect(() => {
     // Tính tổng tiền thanh toán dựa trên bảng giá và thời gian đăng tuyển
     let rate = 0;
+    console.log(formData.postingType)
     switch (formData.postingType) {
       case "Website Công Ty":
         rate = 20000;
         break;
-      case "Báo giấy":
+      case "Báo Giấy":
         rate = 10000;
         break;
-      case "Banner quảng cáo":
+      case "Banner Quảng cáo":
         rate = 50000;
         break;
       default:
