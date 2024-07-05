@@ -17,7 +17,8 @@ import XacThucDangKy from './pages/NhanVien/XacThucDangKy';
 import DangKyThanhVienDoanhNghiep from './pages/DoanhNghiep/DangKyThanhVienDoanhNghiep'
 import JobDetail from './pages/UngVien/JobDetail';
 import Recruitment from './pages/DoanhNghiep/Recruitment';
-
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const routes = createRoutesFromElements(
   <>
@@ -54,7 +55,11 @@ const router = createBrowserRouter(routes);
 function App() {
 
   return (
+    <>
     <RouterProvider router={router} />
+    <ToastContainer />
+    </>
+    
   );
 }
 

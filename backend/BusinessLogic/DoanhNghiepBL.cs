@@ -27,6 +27,12 @@ namespace BusinessLogic
             return await _doanhNghiepDAO.Add(doanhNghiep);
         }
 
+        public async Task<List<DoanhNghiep>> GetDoanhNghiep()
+        {
+            return await _doanhNghiepDAO.GetUnverifiedDoanhNghiep();
+        }
+
+
         public async Task<DoanhNghiep?> GetDoanhNghiepByEmail(string email)
         {
             return await _doanhNghiepDAO.GetByEmail(email);
@@ -37,9 +43,21 @@ namespace BusinessLogic
             return await _doanhNghiepDAO.GetById(id);
         }
 
-        public void UpdateDoanhNghiep(DoanhNghiep doanhnghiep)
+        public async Task UpdateDoanhNghiep(DoanhNghiep doanhnghiep)
         {
-            throw new NotImplementedException();
+            if (doanhnghiep == null) throw new ArgumentNullException(nameof(doanhnghiep));
+
+            if (doanhnghiep.XacNhan.HasValue)
+            {
+                // Only call the DAO method if XacNhan is not null
+                await _doanhNghiepDAO.UpdateXacNhanAsync(doanhnghiep.Id, doanhnghiep.XacNhan.Value);
+            }
+            else
+            {
+                // Handle the case where XacNhan is null (e.g., throw an exception or handle it as required)
+                throw new ArgumentException("XacNhan value cannot be null");
+            }
         }
+
     }
 }

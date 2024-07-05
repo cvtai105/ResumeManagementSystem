@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { toast } from "react-toastify";
 import axios from "axios";
 import "./XacThucDangKy.css";
 
@@ -85,38 +86,50 @@ const XacThucDangKy = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5231/api/doanhnghiep"
+          "http://localhost:5231/api/dangkydoanhnghiep/danhsach"
         );
-        setData(response.data);
+        setData(response.data); // Update the state with fetched data
       } catch (error) {
-        console.error("Có lỗi xảy ra khi lấy dữ liệu:", error);
+        console.error("Error fetching doanh nghiep list:", error);
       }
     };
-
     fetchData();
+    console.log(data);
   }, []);
 
   const handleVerify = async (id) => {
     try {
-      await axios.post(`/api/doanhnghiep/${id}/xacnhan`, { xacNhan: 1 });
-      alert("Đã xác thực thành công");
+      await axios.patch(
+        `http://localhost:5231/api/dangkydoanhnghiep/${id}/true`
+      );
+      toast.success("Đã xác nhận thành công", {
+        autoClose: 8000, // Set to 8 seconds
+      });
+      window.location.reload();
     } catch (error) {
-      console.error("Có lỗi xảy ra khi xác thực:", error);
+      toast.error("Có lỗi xảy ra khi xác thực: " + error.message, {
+        autoClose: 8000, // Set to 8 seconds
+      });
     }
   };
 
   const handleReject = async (id) => {
     try {
-      await axios.post(`/api/doanhnghiep/${id}/xacnhan`, { xacNhan: 0 });
-      alert("Đã từ chối thành công");
+      await axios.patch(
+        `http://localhost:5231/api/dangkydoanhnghiep/${id}/false`
+      );
+      toast.error("Đã từ chối thành công");
+      window.location.reload();
     } catch (error) {
-      console.error("Có lỗi xảy ra khi từ chối:", error);
+      toast.error("Có lỗi xảy ra khi từ chối:", error);
     }
   };
 
   return (
     <div>
-      <p className="text-3xl font-semibold text-center mt-6 mb-2">Doanh nghiệp đăng ký thành viên</p>
+      <p className="text-3xl font-semibold text-center mt-6 mb-2">
+        Doanh nghiệp đăng ký thành viên
+      </p>
       <div className="grid grid-cols-12">
         <div className="col-span-10 col-start-3">
           <input type="text" placeholder="Tìm kiếm" className="search-bar" />
@@ -136,10 +149,10 @@ const XacThucDangKy = () => {
               {data.map((row, index) => (
                 <tr key={index}>
                   <td>{row.id}</td>
-                  <td>{row.company}</td>
-                  <td>{row.taxCode}</td>
-                  <td>{row.representative}</td>
-                  <td>{row.address}</td>
+                  <td>{row.tenDoanhNghiep}</td>
+                  <td>{row.maSoThue}</td>
+                  <td>{row.nguoiDaiDien}</td>
+                  <td>{row.diaChi}</td>
                   <td>{row.email}</td>
                   <td>
                     <button

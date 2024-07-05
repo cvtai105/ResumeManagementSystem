@@ -9,8 +9,8 @@ import axios from 'axios';
 const Review = () => {
     const [step, setStep] = useState(1);
     const [formData, setFormData] = useState({
-      companyId: '',
-      employeeId: '',
+      companyId: 0,
+      registrationId: 0,
     });
   
     const nextStep = () => {
@@ -37,7 +37,7 @@ const Review = () => {
       case 1:
         return <ListCompany nextStep={nextStep} formData={formData} setFormData={setFormData} getFilteredDangTuyens={getFilteredDangTuyens}/>;
       case 2:
-        return <ChooseRegister nextStep={nextStep} prevStep={prevStep} formData={formData} setFormData={setFormData}/>;
+        return <ChooseRegister nextStep={nextStep} prevStep={prevStep} formData={formData} setFormData={setFormData} step={step}/>;
       case 3:
         return <ReviewCV prevStep={prevStep} formData={formData} />;
       default:

@@ -4,6 +4,7 @@ using DataAccess.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccess.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240705094835_themDoanhNghiep_NguoiDaiDien")]
+    partial class themDoanhNghiep_NguoiDaiDien
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -44,17 +47,11 @@ namespace DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("ChuyenNganh")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<int>("DoanhNghiepId")
                         .HasColumnType("int");
 
                     b.Property<int?>("HinhThucDangTuyenId")
                         .HasColumnType("int");
-
-                    b.Property<string>("KhuVuc")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("MoTa")
                         .HasColumnType("nvarchar(max)");
@@ -105,10 +102,8 @@ namespace DataAccess.Migrations
                         new
                         {
                             Id = 1,
-                            ChuyenNganh = "IT",
                             DoanhNghiepId = 1,
                             HinhThucDangTuyenId = 1,
-                            KhuVuc = "Hà Nội",
                             MoTa = "    - Phát triển ứng dụng web với các Javascript Framework AngularJS hoặc ReactJS kết hợp với API Server.\r\n\r\n    - Phát triển thêm tính năng mới hoặc cải tiến tính năng sẵn có trên ứng dụng web theo yêu cầu.\r\n\r\n    - Tích hợp các thư viện của Third Party vào ứng dụng web.\r\n\r\n    - Tối ưu hiệu suất ứng dụng nhằm đảm bảo tính tương thích trên tất cả các thiết bị và trình duyệt khác nhau.",
                             MucLuong = "10.000.000 - 15.000.000 VND",
                             NgayBatDau = new DateTime(2021, 1, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -122,10 +117,8 @@ namespace DataAccess.Migrations
                         new
                         {
                             Id = 2,
-                            ChuyenNganh = "Kế Toán",
                             DoanhNghiepId = 2,
                             HinhThucDangTuyenId = 2,
-                            KhuVuc = "Hà Nội",
                             MoTa = "    - Thực hiện các công việc kế toán theo quy định của pháp luật.\r\n\r\n    - Lập báo cáo tài chính hàng quý, hàng năm.\r\n\r\n    - Lập bảng cân đối kế toán, bảng cân đối kế toán.\r\n\r\n    - Lập báo cáo thuế hàng quý, hàng năm.\r\n\r\n    - Thực hiện các công việc khác theo sự phân công của cấp trên.",
                             MucLuong = "5.000.000 - 7.000.000 VND",
                             NgayBatDau = new DateTime(2021, 1, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -139,10 +132,8 @@ namespace DataAccess.Migrations
                         new
                         {
                             Id = 3,
-                            ChuyenNganh = "Kinh Doanh",
                             DoanhNghiepId = 3,
                             HinhThucDangTuyenId = 3,
-                            KhuVuc = "Hồ Chi Minh",
                             MoTa = "    - Tìm kiếm khách hàng tiềm năng.\r\n\r\n    - Tư vấn sản phẩm, dịch vụ cho khách hàng.\r\n\r\n    - Chăm sóc khách hàng hiện tại.\r\n\r\n    - Thực hiện các công việc khác theo sự phân công của cấp trên.",
                             MucLuong = "5.000.000 - 7.000.000 VND",
                             NgayBatDau = new DateTime(2021, 1, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -156,10 +147,8 @@ namespace DataAccess.Migrations
                         new
                         {
                             Id = 4,
-                            ChuyenNganh = "Kinh Doanh",
                             DoanhNghiepId = 3,
                             HinhThucDangTuyenId = 3,
-                            KhuVuc = "Hồ Chi Minh",
                             MoTa = "    - Tìm kiếm khách hàng tiềm năng.\r\n\r\n    - Tư vấn sản phẩm, dịch vụ cho khách hàng.\r\n\r\n    - Chăm sóc khách hàng hiện tại.\r\n\r\n    - Thực hiện các công việc khác theo sự phân công của cấp trên.",
                             MucLuong = "Thỏa thuận",
                             NgayBatDau = new DateTime(2021, 1, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -173,10 +162,8 @@ namespace DataAccess.Migrations
                         new
                         {
                             Id = 5,
-                            ChuyenNganh = "Kinh Doanh",
                             DoanhNghiepId = 3,
                             HinhThucDangTuyenId = 3,
-                            KhuVuc = "Hồ Chi Minh",
                             MoTa = "    - Tìm kiếm khách hàng tiềm năng.\r\n\r\n    - Tư vấn sản phẩm, dịch vụ cho khách hàng.\r\n\r\n    - Chăm sóc khách hàng hiện tại.\r\n\r\n    - Thực hiện các công việc khác theo sự phân công của cấp trên.",
                             MucLuong = "Thỏa thuận",
                             NgayBatDau = new DateTime(2021, 1, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -549,7 +536,7 @@ namespace DataAccess.Migrations
                     b.Property<DateTime?>("HanThanhToan")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("HinhThucThanhToanId")
+                    b.Property<int>("HinhThucThanhToanId")
                         .HasColumnType("int");
 
                     b.Property<int>("SoTien")
@@ -715,9 +702,6 @@ namespace DataAccess.Migrations
                     b.Property<int?>("NhanVienKiemDuyenId")
                         .HasColumnType("int");
 
-                    b.Property<string>("TrangThai")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<int>("UngVienId")
                         .HasColumnType("int");
 
@@ -738,7 +722,6 @@ namespace DataAccess.Migrations
                             DangTuyenId = 1,
                             NgayUngTuyen = new DateTime(2021, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             NhanVienKiemDuyenId = 1,
-                            TrangThai = "",
                             UngVienId = 2
                         },
                         new
@@ -747,7 +730,6 @@ namespace DataAccess.Migrations
                             DangTuyenId = 2,
                             NgayUngTuyen = new DateTime(2021, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             NhanVienKiemDuyenId = 1,
-                            TrangThai = "",
                             UngVienId = 2
                         },
                         new
@@ -756,7 +738,6 @@ namespace DataAccess.Migrations
                             DangTuyenId = 3,
                             NgayUngTuyen = new DateTime(2021, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             NhanVienKiemDuyenId = 1,
-                            TrangThai = "",
                             UngVienId = 2
                         },
                         new
@@ -765,7 +746,6 @@ namespace DataAccess.Migrations
                             DangTuyenId = 4,
                             NgayUngTuyen = new DateTime(2021, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             NhanVienKiemDuyenId = 1,
-                            TrangThai = "",
                             UngVienId = 2
                         },
                         new
@@ -774,7 +754,6 @@ namespace DataAccess.Migrations
                             DangTuyenId = 5,
                             NgayUngTuyen = new DateTime(2021, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             NhanVienKiemDuyenId = 1,
-                            TrangThai = "",
                             UngVienId = 2
                         },
                         new
@@ -783,7 +762,6 @@ namespace DataAccess.Migrations
                             DangTuyenId = 1,
                             NgayUngTuyen = new DateTime(2021, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             NhanVienKiemDuyenId = 1,
-                            TrangThai = "",
                             UngVienId = 3
                         },
                         new
@@ -792,7 +770,6 @@ namespace DataAccess.Migrations
                             DangTuyenId = 2,
                             NgayUngTuyen = new DateTime(2021, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             NhanVienKiemDuyenId = 1,
-                            TrangThai = "",
                             UngVienId = 3
                         },
                         new
@@ -801,7 +778,6 @@ namespace DataAccess.Migrations
                             DangTuyenId = 3,
                             NgayUngTuyen = new DateTime(2021, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             NhanVienKiemDuyenId = 1,
-                            TrangThai = "",
                             UngVienId = 3
                         },
                         new
@@ -810,7 +786,6 @@ namespace DataAccess.Migrations
                             DangTuyenId = 4,
                             NgayUngTuyen = new DateTime(2021, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             NhanVienKiemDuyenId = 1,
-                            TrangThai = "",
                             UngVienId = 3
                         });
                 });
@@ -1021,7 +996,9 @@ namespace DataAccess.Migrations
 
                     b.HasOne("Models.Entities.HinhThucThanhToan", null)
                         .WithMany("ThanhToans")
-                        .HasForeignKey("HinhThucThanhToanId");
+                        .HasForeignKey("HinhThucThanhToanId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("DangTuyen");
                 });

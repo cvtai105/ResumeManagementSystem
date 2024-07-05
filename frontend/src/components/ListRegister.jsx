@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-function DataTable({registerId, handleRowClick}) {
+function DataTable({registerId, handleRowClick, step}) {
   let [data, setDangTuyens] = useState([]);
 
   const getUngTuyenByIdDangTuyen = async (registerId) => {
@@ -14,17 +14,17 @@ function DataTable({registerId, handleRowClick}) {
   };
 
   useEffect(() => {
-      const fetchData = async () => {
+    const fetchData = async () => {
         try {
             const temp = await getUngTuyenByIdDangTuyen(registerId);
             setDangTuyens(temp);
-          } catch (error) {
-              console.error('Error fetching companies:', error);
-          }
-      };
+        } catch (error) {
+            console.error('Error fetching companies:', error);
+        }
+    };
 
-      fetchData();
-  }, []);
+    fetchData();
+}, [registerId, step]);
   const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 5;
 

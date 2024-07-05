@@ -10,13 +10,34 @@ public class UngTuyenDAO(AppDbContext context)
 {
     private readonly AppDbContext _context = context;
 
-    public async Task<IEnumerable<UngTuyen>> GetDoanhSachUngTuyenByIdBaiDang(int idContract)
-    {
-        return await _context.UngTuyens
-            .Where(d => d.DangTuyenId == idContract)
-            .ToListAsync();
-    }
+    public async Task<IEnumerable<Models.Entities.UngTuyen>> GetDoanhSachUngTuyenByIdBaiDang(int idBaiDang)
+{
+    var ungTuyenList = await _context.UngTuyens
+        .Where(u => u.DangTuyenId == idBaiDang)
+        .Select(u => new Models.Entities.UngTuyen
+        {
+            Id = u.Id,
+            TrangThai = u.TrangThai ?? "Chưa xử lý",
+            NhanVienKiemDuyenId = u.NhanVienKiemDuyenId,
+            UngVienId = u.UngVienId,
+            NgayUngTuyen = u.NgayUngTuyen
+        })
+        .ToListAsync();
 
+    return ungTuyenList;
+}
+
+    public async Task<bool> UpdateStatus(int id, string status)
+    {
+        var ungTuyen = await _context.UngTuyens.FindAsync(id);
+        if (ungTuyen == null)
+        {
+            return false;
+        }
+        ungTuyen.TrangThai = status;
+        await _context.SaveChangesAsync();
+        return true;
+}
     public async Task<UngTuyen> Add(UngTuyen ungTuyen)
     {   
         await _context.UngTuyens.AddAsync(ungTuyen);
