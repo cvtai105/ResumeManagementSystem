@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import './JobDetail.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faClock } from '@fortawesome/free-solid-svg-icons';
@@ -6,28 +6,54 @@ import ApplyModal from './ApplyModal';
 import useFetch from '../../hooks/useFetch';
 import { useParams } from 'react-router-dom';
 import formateDate from '../../utils/formateDate';
+import jwtDecode from '../../utils/jwtDecode';
+import getCookie from '../../utils/getCookie';
 const hostApi = process.env.REACT_APP_API_URL;
+const hostImgURL = process.env.REACT_APP_IMAGE_URL;
 
 
 
 const JobDetail = () => {
-
+  
+    const [hasApplied, setHasApplied] = useState(false);
     const jobId = useParams().id;
-    
-    const { data, error } = useFetch(`${hostApi}/recruitments/${jobId}`);
+    const { data: job, error: fetchJobErr } = useFetch(`${hostApi}/recruitments/${jobId}`);
+    console.log(job);
+    const token = getCookie('UngVienAuthToken');
+    const user = jwtDecode(token);
+    console.log(user);
+    useEffect(() => {
+        if(job && user){
+            const isApplied = job?.ungTuyens?.some(ungTuyen => ungTuyen.ungVienId === parseInt(user.nameid));
+            setHasApplied(isApplied);
+        }
+        else{
+            setHasApplied(false);
+            console.log('no job or no user');
+        }
+    }, [job, user])
 
-    console.log(data);
 
-    const job = data;
+
+    const ApplyClickHandle = (e) => {
+        if(user){
+            setTimeout(() => {
+                setShowModal(true);
+            }, 0)
+        }
+        else{
+            alert('Bạn cần đăng nhập để ứng tuyển');
+        }
+    }
 
     const [showModal, setShowModal] = useState(false)
     return (
         <div className='jobdetail-container'>
-            {   showModal && <ApplyModal setModalOpen={setShowModal} /> }
+            {   showModal && <ApplyModal setModalOpen={setShowModal} job ={job} userId={user.nameid} setHasApplied={setHasApplied} /> }
             <div className='job-detail'>
                 <div className='job-detail__left'>
                     <div className=' job-detail__left-items '>
-                        <div className='text-2xl font-semibold'>
+                        <div className='text-2xl font-semibold '>
                             {job?.tenViTri}
                         </div>
                         <div className="job-detail__info--sections ">
@@ -71,13 +97,18 @@ const JobDetail = () => {
                             <FontAwesomeIcon icon={faClock} />
                             <p>Hạn nộp hồ sơ: {formateDate(job?.ngayKetThuc)}</p>
                         </div>
-                        <button 
-                            className='bg-dodger-blue hover:bg-navy rounded-lg py-2 text-white'
-                            onClick={()=>setTimeout(() => {
-                                setShowModal(true);
-                              }, 0)}>
-                            Ứng tuyển ngay
-                        </button>
+
+                        {
+                            hasApplied && <button className='text-dark-grey'>Bạn đã ứng tuyển vào vị trí này</button>
+                        }
+                        {
+                            !hasApplied && <button
+                                className='bg-royal-blue hover:bg-navy rounded-lg py-2 text-white'
+                                onClick={ApplyClickHandle}>
+                                Ứng tuyển ngay
+                            </button>
+                        }
+
                     </div>
                     
                     <div className='job-detail__left-items'>
@@ -99,13 +130,21 @@ const JobDetail = () => {
                 <div className='job-detail__right'>
                     <div className='job-detail__left-items'>
                         <div className='text-2xl font-semibold flex gap-4'>
-                            <img className='w-20 h-20' src={job?.doanhNghiep?.logo} alt='logo'  />
+                            <img className='w-20 h-20' src={`${hostImgURL}/DoanhNghiep/${job?.doanhNghiep?.id}.jpg`} alt='logo'  />
                             {job?.doanhNghiep?.tenDoanhNghiep}
                         </div>
-                        <div className='flex my-4 gap-4'>
-                            <div className='text-xl'>Khu Vực</div>
-                            <div className='text-xl font-semibold'>{job?.khuVuc}</div>
+                        <div className='flex flex-col '>
+                            <div className='flex flex-col mt-4 '>
+                                <div className='text-xl'>Khu Vực</div>
+                                <div className='text-xl font-semibold'>{job?.khuVuc}</div>
+                            </div>
+                            <div className='flex flex-col mt-4 '>
+                                <div className='text-xl'>Website công ty</div>                                
+                             <a className='text-royal-blue' href="https://www.facebook.com/cv.tai02">example.com</a>
+
+                            </div>
                         </div>
+                        
                     </div>
                     <div className='job-detail__left-items'>
                         <div className='text-2xl font-semibold'>

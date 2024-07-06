@@ -62,13 +62,13 @@ function DoanhNghiepLayout() {
 
       
       { isAuth &&
-          <main>
+          <main className="">
             <Outlet /> {/* This is where nested routes will be rendered */}
           </main>
       }
 
       { !isAuth &&
-      <div className="flex items-center justify-center my-64">
+      <div className="flex min-h-max items-center justify-center my-64">
         <div>
           <Link to="/doanhnghiep/dangnhap" className="text-center">
             <h3>Đăng nhập để tiếp tục</h3>

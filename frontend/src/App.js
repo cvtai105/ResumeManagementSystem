@@ -29,7 +29,7 @@ const routes = createRoutesFromElements(
       <Route path="jobs/:id" element={<JobDetail />} />
     </Route>
 
-    <Route path="/nhanvien" element={<><NhanVienLayout /><Footer /></>} >
+    <Route path="/nhanvien" element={<><NhanVienLayout /></>} >
       <Route index element={<XacThucDangKy />} />
       <Route path='xacthuc' element={<XacThucDangKy />} /> 
       <Route path="danhgia" element={<Review/>}/>

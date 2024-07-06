@@ -5,6 +5,7 @@ import { isNhanVienAuth } from "../fetchServices/Auth/checkAuth";
 import deleteCookie from "../utils/deleteCookie";
 import { useNavigate  } from "react-router-dom";
 import './nav.css';
+import Footer from "../components/Footer";
 
 
 function NhanVienLayout() {
@@ -59,9 +60,11 @@ function NhanVienLayout() {
                 </div>
             </div>
         </nav>
-      <main>
+      <main className="min-h-screen">
         <Outlet /> {/* This is where nested routes will be rendered */}
       </main>
+
+      <Footer />
 
       
     </>

@@ -52,5 +52,9 @@ public class UngTuyenDAO(AppDbContext context)
         await _context.SaveChangesAsync();
         return application;
     }
-    
+
+    public async Task<UngTuyen?> GetByUngVienIdAndDangTuyenId(int id, int dangTuyenId)
+    {
+        return await _context.UngTuyens.FirstOrDefaultAsync(u => u.UngVienId == id && u.DangTuyenId == dangTuyenId);
+    }
 }

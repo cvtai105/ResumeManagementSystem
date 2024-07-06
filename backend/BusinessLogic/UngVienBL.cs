@@ -12,10 +12,14 @@ namespace BusinessLogic
     {
         private readonly UngVienDAO _ungVienDAO = ungVienDAO;
 
-        public async Task<bool> IsValidUser (LoginRecord loginRecord)
+        public async Task<UngVien?> IsValidUser (LoginRecord loginRecord)
         {
             var ungVien = await _ungVienDAO.GetByEmail(loginRecord.Email);
-            return ungVien != null && ungVien.MatKhau == loginRecord.Password;
+            if( ungVien != null && ungVien.MatKhau == loginRecord.Password)
+            {
+                return ungVien;
+            }
+            return null;
         }
 
         public async Task<UngVien?> RegisterUser(UngVien? ungVien)
@@ -26,6 +30,12 @@ namespace BusinessLogic
             }
             return await _ungVienDAO.Add(ungVien);
         }
+
+        public async Task<UngVien?> GetUngVien(int id)
+        {
+            return await _ungVienDAO.GetById(id);
+        }
+      
         
     }
 }
