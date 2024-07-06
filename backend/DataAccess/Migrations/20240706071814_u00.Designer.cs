@@ -4,6 +4,7 @@ using DataAccess.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccess.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240706071814_u00")]
+    partial class u00
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -111,9 +114,9 @@ namespace DataAccess.Migrations
                             KhuVuc = "Hà Nội",
                             MoTa = "    - Phát triển ứng dụng web với các Javascript Framework AngularJS hoặc ReactJS kết hợp với API Server.\r\n\r\n    - Phát triển thêm tính năng mới hoặc cải tiến tính năng sẵn có trên ứng dụng web theo yêu cầu.\r\n\r\n    - Tích hợp các thư viện của Third Party vào ứng dụng web.\r\n\r\n    - Tối ưu hiệu suất ứng dụng nhằm đảm bảo tính tương thích trên tất cả các thiết bị và trình duyệt khác nhau.",
                             MucLuong = "10.000.000 - 15.000.000 VND",
-                            NgayBatDau = new DateTime(2024, 7, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            NgayDangKy = new DateTime(2024, 7, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            NgayKetThuc = new DateTime(2024, 7, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            NgayBatDau = new DateTime(2021, 1, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            NgayDangKy = new DateTime(2021, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            NgayKetThuc = new DateTime(2021, 1, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             SoLuong = 5,
                             TenViTri = "Lập trình viên",
                             ThoiGianDangTuyen = 30,
@@ -128,9 +131,9 @@ namespace DataAccess.Migrations
                             KhuVuc = "Hà Nội",
                             MoTa = "    - Thực hiện các công việc kế toán theo quy định của pháp luật.\r\n\r\n    - Lập báo cáo tài chính hàng quý, hàng năm.\r\n\r\n    - Lập bảng cân đối kế toán, bảng cân đối kế toán.\r\n\r\n    - Lập báo cáo thuế hàng quý, hàng năm.\r\n\r\n    - Thực hiện các công việc khác theo sự phân công của cấp trên.",
                             MucLuong = "5.000.000 - 7.000.000 VND",
-                            NgayBatDau = new DateTime(2024, 7, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            NgayDangKy = new DateTime(2024, 7, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            NgayKetThuc = new DateTime(2024, 7, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            NgayBatDau = new DateTime(2021, 1, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            NgayDangKy = new DateTime(2021, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            NgayKetThuc = new DateTime(2021, 1, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             SoLuong = 2,
                             TenViTri = "Kế toán",
                             ThoiGianDangTuyen = 30,
@@ -145,9 +148,9 @@ namespace DataAccess.Migrations
                             KhuVuc = "Hồ Chi Minh",
                             MoTa = "    - Tìm kiếm khách hàng tiềm năng.\r\n\r\n    - Tư vấn sản phẩm, dịch vụ cho khách hàng.\r\n\r\n    - Chăm sóc khách hàng hiện tại.\r\n\r\n    - Thực hiện các công việc khác theo sự phân công của cấp trên.",
                             MucLuong = "5.000.000 - 7.000.000 VND",
-                            NgayBatDau = new DateTime(2024, 7, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            NgayDangKy = new DateTime(2024, 6, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            NgayKetThuc = new DateTime(2024, 8, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            NgayBatDau = new DateTime(2021, 1, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            NgayDangKy = new DateTime(2021, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            NgayKetThuc = new DateTime(2021, 1, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             SoLuong = 3,
                             TenViTri = "Nhân viên kinh doanh",
                             ThoiGianDangTuyen = 30,
@@ -162,9 +165,9 @@ namespace DataAccess.Migrations
                             KhuVuc = "Hồ Chi Minh",
                             MoTa = "    - Tìm kiếm khách hàng tiềm năng.\r\n\r\n    - Tư vấn sản phẩm, dịch vụ cho khách hàng.\r\n\r\n    - Chăm sóc khách hàng hiện tại.\r\n\r\n    - Thực hiện các công việc khác theo sự phân công của cấp trên.",
                             MucLuong = "Thỏa thuận",
-                            NgayBatDau = new DateTime(2024, 7, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            NgayDangKy = new DateTime(2024, 7, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            NgayKetThuc = new DateTime(2024, 8, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            NgayBatDau = new DateTime(2021, 1, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            NgayDangKy = new DateTime(2021, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            NgayKetThuc = new DateTime(2021, 1, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             SoLuong = 3,
                             TenViTri = "Nhân viên kinh doanh",
                             ThoiGianDangTuyen = 30,
@@ -179,96 +182,11 @@ namespace DataAccess.Migrations
                             KhuVuc = "Hồ Chi Minh",
                             MoTa = "    - Tìm kiếm khách hàng tiềm năng.\r\n\r\n    - Tư vấn sản phẩm, dịch vụ cho khách hàng.\r\n\r\n    - Chăm sóc khách hàng hiện tại.\r\n\r\n    - Thực hiện các công việc khác theo sự phân công của cấp trên.",
                             MucLuong = "Thỏa thuận",
-                            NgayBatDau = new DateTime(2024, 8, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            NgayDangKy = new DateTime(2024, 7, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            NgayKetThuc = new DateTime(2024, 9, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            NgayBatDau = new DateTime(2021, 1, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            NgayDangKy = new DateTime(2021, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            NgayKetThuc = new DateTime(2021, 1, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             SoLuong = 3,
                             TenViTri = "Nhân viên kinh doanh",
-                            ThoiGianDangTuyen = 30,
-                            TrangThai = "Đang tuyển"
-                        },
-                        new
-                        {
-                            Id = 6,
-                            ChuyenNganh = "Kinh Doanh",
-                            DoanhNghiepId = 3,
-                            HinhThucDangTuyenId = 3,
-                            KhuVuc = "Hồ Chi Minh",
-                            MoTa = "    - Tìm kiếm khách hàng tiềm năng.\r\n\r\n    - Tư vấn sản phẩm, dịch vụ cho khách hàng.\r\n\r\n    - Chăm sóc khách hàng hiện tại.\r\n\r\n    - Thực hiện các công việc khác theo sự phân công của cấp trên.",
-                            MucLuong = "Thỏa thuận",
-                            NgayBatDau = new DateTime(2024, 8, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            NgayDangKy = new DateTime(2024, 7, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            NgayKetThuc = new DateTime(2024, 9, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            SoLuong = 3,
-                            TenViTri = "Nhân viên marketing",
-                            ThoiGianDangTuyen = 30,
-                            TrangThai = "Đang tuyển"
-                        },
-                        new
-                        {
-                            Id = 7,
-                            ChuyenNganh = "Kinh Doanh",
-                            DoanhNghiepId = 3,
-                            HinhThucDangTuyenId = 3,
-                            KhuVuc = "Hồ Chi Minh",
-                            MoTa = "    - Full stack .NET Developer.\r\n\r\n    - Fix bug, maintain, develop new features.\r\n\r\n    - Make sure the code quality, performance, and maintainability.\r\n\r\n    - and other tasks assigned by the project manager.",
-                            MucLuong = "Thỏa thuận",
-                            NgayBatDau = new DateTime(2024, 8, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            NgayDangKy = new DateTime(2024, 7, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            NgayKetThuc = new DateTime(2024, 9, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            SoLuong = 3,
-                            TenViTri = "Senior .NET Developer",
-                            ThoiGianDangTuyen = 30,
-                            TrangThai = "Đang tuyển"
-                        },
-                        new
-                        {
-                            Id = 8,
-                            ChuyenNganh = "Kinh Doanh",
-                            DoanhNghiepId = 3,
-                            HinhThucDangTuyenId = 3,
-                            KhuVuc = "Hồ Chi Minh",
-                            MoTa = "    - Full stack .NET Developer.\r\n\r\n    - Fix bug, maintain, develop new features.\r\n\r\n    - Make sure the code quality, performance, and maintainability.\r\n\r\n    - and other tasks assigned by the project manager.",
-                            MucLuong = "3.000.000 VND",
-                            NgayBatDau = new DateTime(2024, 8, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            NgayDangKy = new DateTime(2024, 7, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            NgayKetThuc = new DateTime(2024, 9, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            SoLuong = 3,
-                            TenViTri = "Intern .NET Developer",
-                            ThoiGianDangTuyen = 30,
-                            TrangThai = "Đang tuyển"
-                        },
-                        new
-                        {
-                            Id = 9,
-                            ChuyenNganh = "Kinh Doanh",
-                            DoanhNghiepId = 3,
-                            HinhThucDangTuyenId = 3,
-                            KhuVuc = "Hồ Chi Minh",
-                            MoTa = "    - Full stack .NET Developer.\r\n\r\n    - Fix bug, maintain, develop new features.\r\n\r\n    - Make sure the code quality, performance, and maintainability.\r\n\r\n    - and other tasks assigned by the project manager.",
-                            MucLuong = "30M - 40M",
-                            NgayBatDau = new DateTime(2024, 8, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            NgayDangKy = new DateTime(2024, 7, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            NgayKetThuc = new DateTime(2024, 9, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            SoLuong = 3,
-                            TenViTri = "Kỹ sư thiết kế đồ họa",
-                            ThoiGianDangTuyen = 30,
-                            TrangThai = "Đang tuyển"
-                        },
-                        new
-                        {
-                            Id = 10,
-                            ChuyenNganh = "Kinh Doanh",
-                            DoanhNghiepId = 3,
-                            HinhThucDangTuyenId = 3,
-                            KhuVuc = "Hồ Chi Minh",
-                            MoTa = "    - Full stack .NET Developer.\r\n\r\n    - Fix bug, maintain, develop new features.\r\n\r\n    - Make sure the code quality, performance, and maintainability.\r\n\r\n    - and other tasks assigned by the project manager.",
-                            MucLuong = "30M - 40M",
-                            NgayBatDau = new DateTime(2024, 8, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            NgayDangKy = new DateTime(2024, 7, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            NgayKetThuc = new DateTime(2024, 9, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            SoLuong = 3,
-                            TenViTri = "Kỹ sư thiết kế đồ họa",
                             ThoiGianDangTuyen = 30,
                             TrangThai = "Đang tuyển"
                         });
@@ -335,7 +253,7 @@ namespace DataAccess.Migrations
                             Image = "",
                             MaSoThue = "123456",
                             MatKhau = "123456",
-                            NgayDangKy = new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            NgayDangKy = new DateTime(2021, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             NguoiDaiDien = "",
                             TenDoanhNghiep = "Cty TNHH ABC"
                         },
@@ -348,7 +266,7 @@ namespace DataAccess.Migrations
                             Image = "",
                             MaSoThue = "123456",
                             MatKhau = "123456",
-                            NgayDangKy = new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            NgayDangKy = new DateTime(2021, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             NguoiDaiDien = "",
                             TenDoanhNghiep = "Cty TNHH XYZ"
                         },
@@ -361,7 +279,7 @@ namespace DataAccess.Migrations
                             Image = "",
                             MaSoThue = "123456",
                             MatKhau = "123456",
-                            NgayDangKy = new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            NgayDangKy = new DateTime(2021, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             NguoiDaiDien = "",
                             TenDoanhNghiep = "Cty TNHH KLM"
                         });
@@ -821,7 +739,7 @@ namespace DataAccess.Migrations
                         {
                             Id = 1,
                             DangTuyenId = 1,
-                            NgayUngTuyen = new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            NgayUngTuyen = new DateTime(2021, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             NhanVienKiemDuyenId = 1,
                             TrangThai = "",
                             UngVienId = 2
@@ -830,7 +748,7 @@ namespace DataAccess.Migrations
                         {
                             Id = 2,
                             DangTuyenId = 2,
-                            NgayUngTuyen = new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            NgayUngTuyen = new DateTime(2021, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             NhanVienKiemDuyenId = 1,
                             TrangThai = "",
                             UngVienId = 2
@@ -839,7 +757,7 @@ namespace DataAccess.Migrations
                         {
                             Id = 3,
                             DangTuyenId = 3,
-                            NgayUngTuyen = new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            NgayUngTuyen = new DateTime(2021, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             NhanVienKiemDuyenId = 1,
                             TrangThai = "",
                             UngVienId = 2
@@ -848,7 +766,7 @@ namespace DataAccess.Migrations
                         {
                             Id = 4,
                             DangTuyenId = 4,
-                            NgayUngTuyen = new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            NgayUngTuyen = new DateTime(2021, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             NhanVienKiemDuyenId = 1,
                             TrangThai = "",
                             UngVienId = 2
@@ -857,7 +775,7 @@ namespace DataAccess.Migrations
                         {
                             Id = 5,
                             DangTuyenId = 5,
-                            NgayUngTuyen = new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            NgayUngTuyen = new DateTime(2021, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             NhanVienKiemDuyenId = 1,
                             TrangThai = "",
                             UngVienId = 2
@@ -866,7 +784,7 @@ namespace DataAccess.Migrations
                         {
                             Id = 6,
                             DangTuyenId = 1,
-                            NgayUngTuyen = new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            NgayUngTuyen = new DateTime(2021, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             NhanVienKiemDuyenId = 1,
                             TrangThai = "",
                             UngVienId = 3
@@ -875,7 +793,7 @@ namespace DataAccess.Migrations
                         {
                             Id = 7,
                             DangTuyenId = 2,
-                            NgayUngTuyen = new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            NgayUngTuyen = new DateTime(2021, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             NhanVienKiemDuyenId = 1,
                             TrangThai = "",
                             UngVienId = 3
@@ -884,7 +802,7 @@ namespace DataAccess.Migrations
                         {
                             Id = 8,
                             DangTuyenId = 3,
-                            NgayUngTuyen = new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            NgayUngTuyen = new DateTime(2021, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             NhanVienKiemDuyenId = 1,
                             TrangThai = "",
                             UngVienId = 3
@@ -893,7 +811,7 @@ namespace DataAccess.Migrations
                         {
                             Id = 9,
                             DangTuyenId = 4,
-                            NgayUngTuyen = new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            NgayUngTuyen = new DateTime(2021, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             NhanVienKiemDuyenId = 1,
                             TrangThai = "",
                             UngVienId = 3
@@ -932,6 +850,7 @@ namespace DataAccess.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("MatKhau")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("NgaySinh")

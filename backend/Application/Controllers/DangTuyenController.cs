@@ -2,8 +2,9 @@ using BusinessLogic;
 using Microsoft.AspNetCore.Mvc;
 using Models.Entities;
 using Models.RequestModel;
-using System.Collections.Generic;
 using System.Threading.Tasks;
+using System.Collections.Generic;
+using System;
 
 namespace Application.Controllers{
     [Route("api/dangkydangtuyen")]
@@ -18,7 +19,7 @@ namespace Application.Controllers{
         }
 
         [HttpPost]
-         public async Task<ActionResult<DangTuyen>> AddDangTuyen(DangTuyenRequestModel request)
+        public async Task<ActionResult<DangTuyen>> AddDangTuyen(DangTuyenRequestModel request)
         {
             var dangTuyen = new DangTuyen
             {
@@ -33,6 +34,9 @@ namespace Application.Controllers{
                 UuDaiId = null,
                 TieuChiTuyenDungs = request.Criteria.Split('\n').Select(c => new TieuChiTuyenDung { MoTa = c }).ToList(),
                 NgayDangKy = DateTime.UtcNow,
+                NgayBatDau = request.PaymentMethod == "Chuyển khoản" ?  DateTime.UtcNow.AddDays(10) : (DateTime?)null,
+                NgayKetThuc = request.PaymentMethod == "Chuyển khoản" ? DateTime.UtcNow.AddDays(10).AddDays(request.PostingDuration) : (DateTime?)null,
+                TrangThai = "Chờ duyệt",
                 ThanhToans = new List<ThanhToan>
                 {
                     new ThanhToan
@@ -41,15 +45,15 @@ namespace Application.Controllers{
                         HanThanhToan = DateTime.UtcNow,
                         DaThanhToan = request.PaymentMethod == "Chuyển khoản",
                         HinhThucThanhToanId = request.PaymentMethod == "Chuyển khoản" ? 1 : 2,
-                        DotThanhToans = request.PaymentType == "part" ? new List<DotThanhToan>
+                        DotThanhToans = new List<DotThanhToan>
                         {
                             new DotThanhToan
                             {
-                                SoTien = request.InstallmentAmount,
-                                NgayThanhToan = DateTime.UtcNow,
+                                SoTien = request.PaymentType == "part" ? request.InstallmentAmount : request.TotalAmount,
+                                NgayThanhToan = request.PaymentMethod == "Chuyển khoản" ? DateTime.UtcNow : null,
                                 HinhThucThanhToanId = request.PaymentMethod == "Chuyển khoản" ? 1 : 2
                             }
-                        } : new List<DotThanhToan>()
+                        } 
                     }
                 }
             };
