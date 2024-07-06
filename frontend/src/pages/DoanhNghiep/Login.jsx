@@ -27,7 +27,7 @@ function Login() {
        
         console.log(data);
         const res = await fetchDoanhNghiepJwt(data);
-        setIdDoanhNghiep (res.idDoanhNghiep) ;
+        setIdDoanhNghiep (res?.idDoanhNghiep) ;
         console.log(res);
         if (res == null ){
             setError('Lỗi không xác định được / Lỗi đường truyền');
