@@ -7,6 +7,7 @@ using DataAccess.DAOs;
 using BusinessLogic;
 using Microsoft.Identity.Client.Platforms.Features.DesktopOs.Kerberos;
 using Application.Controllers;
+using Serilog;
 using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -22,6 +23,9 @@ var config = builder.Configuration;
 builder.Logging.ClearProviders();
 builder.Logging.AddConsole();
 builder.Logging.AddDebug();
+
+var _logger = new LoggerConfiguration().MinimumLevel.Error().WriteTo.File("log.txt").CreateLogger();
+builder.Logging.AddSerilog(_logger);
 
 var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 

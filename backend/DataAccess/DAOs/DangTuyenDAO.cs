@@ -2,6 +2,7 @@ using DataAccess.Data;
 using Microsoft.EntityFrameworkCore;
 using Models.Entities;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 
 namespace DataAccess.DAOs;
@@ -19,7 +20,7 @@ public class DangTuyenDAO(AppDbContext context)
         .Include(d => d.UngTuyens)
         .FirstOrDefaultAsync(d => d.Id == id);
 
-        if (dangTuyen != null)
+        if (dangTuyen!=null && dangTuyen.UngTuyens != null)
         {
             // Tính toán số lượng ứng tuyển
             dangTuyen.SoLuongUngVien = dangTuyen.UngTuyens.Count;
@@ -47,8 +48,6 @@ public class DangTuyenDAO(AppDbContext context)
         _context.UuDais.Attach(uuDai);
     }
 
-    
-
     public async Task<DangTuyen> Add(DangTuyen dangTuyen)
     {
         _context.Entry(dangTuyen.DoanhNghiep).State = EntityState.Unchanged;
@@ -71,5 +70,58 @@ public class DangTuyenDAO(AppDbContext context)
 
         return result.Where(dt => 
             dt.SoLuong == dt.UngTuyens.Count || dt.NgayKetThuc <= today).ToList();
+    }
+
+    //Tài
+    public IEnumerable<DangTuyen> Get(
+        Expression<Func<DangTuyen, bool>>? filter = null,
+        Func<IQueryable<DangTuyen>, IOrderedQueryable<DangTuyen>>? orderBy = null,
+        string includeProperties = "")
+    {
+        IQueryable<DangTuyen> query = _context.DangTuyens;
+
+        if (filter != null)
+        {
+            query = query.Where(filter);
+        }
+
+        foreach (var includeProperty in includeProperties.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
+        {
+            query = query.Include(includeProperty);
+        }
+
+        if (orderBy != null)
+        {
+            return orderBy(query).ToList();
+        }
+        else
+        {
+            return query.ToList();
+        }
+    }
+
+    //khi doanh nghiep xem chi tiết đăng tuyển, cần lấy ra danh sách ứng viên đã ứng tuyển và các Hồ sơ ứng tuyển 
+    public async Task<DangTuyen?> GetDetailForDoanhNghiep(int idDangTuyen)
+    {
+        try{
+            var dangTuyen = await _context.DangTuyens
+            .Include(dt => dt.UngTuyens)
+                .ThenInclude(dut => dut.UngVien) // Include thông tin ứng viên
+            .Include(dt => dt.UngTuyens)
+                .ThenInclude(dut => dut.HoSoUngTuyens)
+            .FirstOrDefaultAsync(dt => dt.Id == idDangTuyen);
+
+            if (dangTuyen!=null && dangTuyen.UngTuyens != null)
+            {
+                // Tính toán số lượng ứng tuyển
+                dangTuyen.SoLuongUngVien = dangTuyen.UngTuyens.Count;
+            }
+
+            return dangTuyen;
+        }
+        catch(Exception){
+            return null;
+        }
+
     }
 }

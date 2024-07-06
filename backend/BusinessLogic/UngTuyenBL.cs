@@ -17,8 +17,15 @@ public class UngTuyenBL
         {
             return await _ungTuyenDAO.GetDoanhSachUngTuyenByIdBaiDang(id);
         }
+
         public async Task<bool> UpdateStatus(int id, string status)
         {
             return await _ungTuyenDAO.UpdateStatus(id, status);
         }
+
+        public async Task<UngTuyen?> UngTuyen(UngTuyen ungTuyen, UngVien ungvien, List<HoSoUngTuyen> hoSoUngTuyens)
+        {
+            throw new NotImplementedException();
+        }
+    
     }

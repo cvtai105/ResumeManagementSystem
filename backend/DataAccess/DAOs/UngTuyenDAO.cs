@@ -37,5 +37,20 @@ public class UngTuyenDAO(AppDbContext context)
         ungTuyen.TrangThai = status;
         await _context.SaveChangesAsync();
         return true;
+}
+    public async Task<UngTuyen> Add(UngTuyen ungTuyen)
+    {   
+        await _context.UngTuyens.AddAsync(ungTuyen);
+        await _context.SaveChangesAsync();
+        return ungTuyen;
     }
+
+    public async Task<UngTuyen> Update(UngTuyen application)
+    {
+        _context.UngTuyens.Attach(application);
+        _context.Entry(application).State = EntityState.Modified;
+        await _context.SaveChangesAsync();
+        return application;
+    }
+    
 }
