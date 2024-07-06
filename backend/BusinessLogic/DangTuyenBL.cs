@@ -117,12 +117,15 @@ namespace BusinessLogic
             return await _dangTuyenDAO.GetById(id);
         }
        
-
         public async Task<IEnumerable<DangTuyen>> GetFilteredDangTuyen(DateTime today)
         {
             return await _dangTuyenDAO.GetFilteredDangTuyen(today);
         }
 
+        public async Task<IEnumerable<Object>> GetHoSoUngTuyenThuocIDUngTuyen(int id)
+        {
+            return await _dangTuyenDAO.GetHoSoUngTuyenThuocIDUngTuyen(id);
+        }
 
         //Tài
         public  Object GetRecruitments(string? keyword = null, int page = 1, string? location = null, string? branch = null)
@@ -158,5 +161,6 @@ namespace BusinessLogic
         {
             return await _dangTuyenDAO.GetDetailForDoanhNghiep(id);
         }
+        
     }
 }

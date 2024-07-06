@@ -71,6 +71,38 @@ public class DangTuyenDAO(AppDbContext context)
         return result.Where(dt => 
             dt.SoLuong == dt.UngTuyens.Count || dt.NgayKetThuc <= today).ToList();
     }
+    public async Task<IEnumerable<Object>> GetHoSoUngTuyenThuocIDUngTuyen(int id)
+    {
+    using (var context = _context)
+    {
+        var result = await context.DangTuyens
+            .Where(dt => dt.Id == id)
+            .Join(context.UngTuyens,
+                  dt => dt.Id,
+                  ut => ut.DangTuyenId,
+                  (dt, ut) => new { dt, ut })
+            .Join(context.UngViens,
+                  combined => combined.ut.UngVienId,
+                  uv => uv.Id,
+                  (combined, uv) => new { combined.dt, combined.ut, uv })
+            .Join(context.HoSoUngTuyens,
+                  combined => combined.ut.Id,
+                  hsut => hsut.UngTuyenId,
+                  (combined, hsut) => new
+                  {
+                      combined.ut.Id,
+                      combined.uv.HoTen,
+                      combined.uv.Email,
+                      combined.uv.SoDienThoai,
+                      combined.uv.AnhDaiDien,
+                      hsut.TenHoSo,
+                      hsut.FileHoSo
+                  })
+            .ToListAsync();
+
+        return result;
+    }
+    }
 
     //Tài
     public IEnumerable<DangTuyen> Get(

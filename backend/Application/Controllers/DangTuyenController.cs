@@ -80,5 +80,11 @@ namespace Application.Controllers{
             var filteredDangTuyens = await _dangTuyenBL.GetFilteredDangTuyen(today);
             return Ok(filteredDangTuyens);
         }
+        [HttpGet("/api/doanhnghiep/dangtuyen/{id}")]
+        public async Task<ActionResult<IEnumerable<Object>>> GetHoSoUngTuyenThuocIDUngTuyen(int id)
+        {
+            var hoSoUngTuyenThuocIDUngTuyens = await _dangTuyenBL.GetHoSoUngTuyenThuocIDUngTuyen(id);
+            return Ok(hoSoUngTuyenThuocIDUngTuyens);
+        }
     }
 }
