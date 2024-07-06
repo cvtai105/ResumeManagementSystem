@@ -1,31 +1,25 @@
 // src/components/ThongTinUngTuyen.js
-import React from 'react';
-
-const applicants = await (await fetch('http://localhost:5231/api/doanhnghiep/dangtuyen/1')).json()
-// [
-//   {
-//     hoTen: "Nguyễn Văn B",
-//     email: "ungvien2@email.com",
-//     soDienThoai: "0123456789",
-//     anhDaiDien: "example.jpg",
-//     tenHoSo: "CV",
-//     fileHoSo: "example.pdf"
-//   },
-//   {
-//     hoTen: "Nguyễn Văn C",
-//     email: "ungvien3@email.com",
-//     soDienThoai: "0123456789",
-//     anhDaiDien: "example.jpg",
-//     tenHoSo: "CV",
-//     fileHoSo: "example.pdf"
-//   }
-// ];
-//Chuyen du lieu cung thanh API
-console.log(await (await fetch('http://localhost:5231/api/doanhnghiep/dangtuyen/1')).json());
+import { useState, useEffect } from 'react';
+import React  from 'react';
+import { useParams} from 'react-router-dom';
 
 
+const fetchApplicants = async (idDangTuyen) => {
+  const response = await fetch(`http://localhost:5231/api/doanhnghiep/dangtuyen/${idDangTuyen}`);
+  const data = await response.json();
+  return data;
+}
 
 const Recruitment = () => {
+  const idDangTuyen = useParams().id;
+  console.log(idDangTuyen);
+
+  const [applicants, setApplicants] = useState([]);
+
+  useEffect(() => {
+    fetchApplicants(idDangTuyen).then(data => setApplicants(data));
+  }, [idDangTuyen]);
+
   return (
     <div className="container mx-auto p-4">
       <h1 className="text-2xl font-bold mb-4">Thông Tin Ứng Tuyển</h1>

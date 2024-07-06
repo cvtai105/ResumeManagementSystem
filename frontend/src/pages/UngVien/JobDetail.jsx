@@ -62,7 +62,7 @@ const JobDetail = () => {
                                     </svg>
                                 </div>
                                 <div className="job-detail__info--section-content">
-                                    <div className="job-detail__info--section-content-title">Tỉ lệ chọi</div>
+                                    <div className="job-detail__info--section-content-title">Số lượng ứng viên</div>
                                     <div className="job-detail__info--section-content-value">{job?.soLuongUngVien} đơn / {job?.soLuong} slot</div>
                                 </div>
                             </div>

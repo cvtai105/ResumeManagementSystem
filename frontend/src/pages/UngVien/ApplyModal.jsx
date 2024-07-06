@@ -1,4 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
+import validateEmail from '../../utils/validateEmail';
+import validatePhoneNumber from '../../utils/validatePhoneNumber';
 
 const ApplyModal = ({ setModalOpen, job }) => {
     const boxRef = useRef(null);

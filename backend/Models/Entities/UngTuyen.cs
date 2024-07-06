@@ -14,6 +14,7 @@ namespace Models.Entities
         public int DangTuyenId { get; set; } = 0;
         public string? DanhGia { get; set; }
         public int UngVienId{get; set;}
+        public DateTime? NgayKiemDuyen { get; set; }
         public string? TrangThai{get; set;} = String.Empty;
         public int? NhanVienKiemDuyenId { get; set; }
         public NhanVien? NhanVienKiemDuyen { get; set; }

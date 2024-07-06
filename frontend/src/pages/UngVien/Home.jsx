@@ -13,7 +13,6 @@ function Home() {
     const [currentPage, setCurrentPage] = useState(1);
 
     const {data, loading, error} = useFetch(`${hostApi}/recruitments?page=${currentPage}`);
-    console.log(data);
 
     const jobData = data?.data || [];
 
