@@ -79,7 +79,7 @@ public class AppDbContext(DbContextOptions options) : DbContext(options)
             DienThoai = "0123456789",
             Email = "doanhnghiep@email.com",
             MatKhau = "123456",
-            NgayDangKy = new DateTime(2021, 1, 1)
+            NgayDangKy = new DateTime(2024, 1, 1)
         },
         new DoanhNghiep{
             Id = 2,
@@ -88,7 +88,7 @@ public class AppDbContext(DbContextOptions options) : DbContext(options)
             DienThoai = "0123456789",
             Email = "doanhnghiep2@email.com",
             MatKhau = "123456",
-            NgayDangKy = new DateTime(2021, 1, 1)
+            NgayDangKy = new DateTime(2024, 1, 1)
         },
         new DoanhNghiep{
             Id = 3,
@@ -97,7 +97,7 @@ public class AppDbContext(DbContextOptions options) : DbContext(options)
             DienThoai = "0123456789",
             Email = "doanhnghiep3@email.com",
             MatKhau = "123456",
-            NgayDangKy = new DateTime(2021, 1, 1)
+            NgayDangKy = new DateTime(2024, 1, 1)
         });
 
         modelBuilder.Entity<HinhThucDangTuyen>().HasData(
@@ -148,9 +148,9 @@ public class AppDbContext(DbContextOptions options) : DbContext(options)
                 ThoiGianDangTuyen = 30,
                 TrangThai = "Đang tuyển",
                 MucLuong = "10.000.000 - 15.000.000 VND",
-                NgayDangKy = new DateTime(2021, 1, 1),
-                NgayBatDau = new DateTime(2021, 1, 10),
-                NgayKetThuc = new DateTime(2021, 1, 20),
+                NgayDangKy = new DateTime(2024, 7, 1),
+                NgayBatDau = new DateTime(2024, 7, 10),
+                NgayKetThuc = new DateTime(2024, 7, 30),
                 KhuVuc = "Hà Nội",
                 ChuyenNganh = "IT",
                 DoanhNghiepId = 1,
@@ -174,9 +174,9 @@ public class AppDbContext(DbContextOptions options) : DbContext(options)
                 ThoiGianDangTuyen = 30,
                 TrangThai = "Đang tuyển",
                 MucLuong = "5.000.000 - 7.000.000 VND",
-                NgayDangKy = new DateTime(2021, 1, 1),
-                NgayBatDau = new DateTime(2021, 1, 10),
-                NgayKetThuc = new DateTime(2021, 1, 20),
+                NgayDangKy = new DateTime(2024, 7, 1),
+                NgayBatDau = new DateTime(2024, 7, 10),
+                NgayKetThuc = new DateTime(2024, 7, 30),
                 KhuVuc = "Hà Nội",
                 ChuyenNganh = "Kế Toán",
                 DoanhNghiepId = 2,
@@ -198,9 +198,9 @@ public class AppDbContext(DbContextOptions options) : DbContext(options)
                 ThoiGianDangTuyen = 30,
                 TrangThai = "Đang tuyển",
                 MucLuong = "5.000.000 - 7.000.000 VND",
-                NgayDangKy = new DateTime(2021, 1, 1),
-                NgayBatDau = new DateTime(2021, 1, 10),
-                NgayKetThuc = new DateTime(2021, 1, 20),
+                NgayDangKy = new DateTime(2024, 6, 1),
+                NgayBatDau = new DateTime(2024, 7, 10),
+                NgayKetThuc = new DateTime(2024, 8, 20),
                 KhuVuc = "Hồ Chi Minh",
                 ChuyenNganh = "Kinh Doanh",
                 DoanhNghiepId = 3,
@@ -222,9 +222,9 @@ public class AppDbContext(DbContextOptions options) : DbContext(options)
                 ThoiGianDangTuyen = 30,
                 TrangThai = "Đang tuyển",
                 MucLuong = "Thỏa thuận",
-                NgayDangKy = new DateTime(2021, 1, 1),
-                NgayBatDau = new DateTime(2021, 1, 10),
-                NgayKetThuc = new DateTime(2021, 1, 20),
+                NgayDangKy = new DateTime(2024, 7, 1),
+                NgayBatDau = new DateTime(2024, 7, 10),
+                NgayKetThuc = new DateTime(2024, 8, 20),
                 KhuVuc = "Hồ Chi Minh",
                 ChuyenNganh = "Kinh Doanh",
                 DoanhNghiepId = 3,
@@ -246,9 +246,129 @@ public class AppDbContext(DbContextOptions options) : DbContext(options)
                 ThoiGianDangTuyen = 30,
                 TrangThai = "Đang tuyển",
                 MucLuong = "Thỏa thuận",
-                NgayDangKy = new DateTime(2021, 1, 1),
-                NgayBatDau = new DateTime(2021, 1, 10),
-                NgayKetThuc = new DateTime(2021, 1, 20),
+                NgayDangKy = new DateTime(2024, 7, 1),
+                NgayBatDau = new DateTime(2024, 8, 10),
+                NgayKetThuc = new DateTime(2024, 9, 20),
+                DoanhNghiepId = 3,
+                KhuVuc = "Hồ Chi Minh",
+                ChuyenNganh = "Kinh Doanh",
+                HinhThucDangTuyenId = 3
+            },
+            new DangTuyen {
+                Id = 6,
+                TenViTri = "Nhân viên marketing",
+                SoLuong = 3,
+                MoTa = """
+                    - Tìm kiếm khách hàng tiềm năng.
+
+                    - Tư vấn sản phẩm, dịch vụ cho khách hàng.
+
+                    - Chăm sóc khách hàng hiện tại.
+
+                    - Thực hiện các công việc khác theo sự phân công của cấp trên.
+                """,
+                ThoiGianDangTuyen = 30,
+                TrangThai = "Đang tuyển",
+                MucLuong = "Thỏa thuận",
+                NgayDangKy = new DateTime(2024, 7, 1),
+                NgayBatDau = new DateTime(2024, 8, 10),
+                NgayKetThuc = new DateTime(2024, 9, 20),
+                DoanhNghiepId = 3,
+                KhuVuc = "Hồ Chi Minh",
+                ChuyenNganh = "Kinh Doanh",
+                HinhThucDangTuyenId = 3
+            },
+            new DangTuyen {
+                Id = 7,
+                TenViTri = "Senior .NET Developer",
+                SoLuong = 3,
+                MoTa = """
+                    - Full stack .NET Developer.
+
+                    - Fix bug, maintain, develop new features.
+
+                    - Make sure the code quality, performance, and maintainability.
+
+                    - and other tasks assigned by the project manager.
+                """,
+                ThoiGianDangTuyen = 30,
+                TrangThai = "Đang tuyển",
+                MucLuong = "Thỏa thuận",
+                NgayDangKy = new DateTime(2024, 7, 1),
+                NgayBatDau = new DateTime(2024, 8, 10),
+                NgayKetThuc = new DateTime(2024, 9, 20),
+                DoanhNghiepId = 3,
+                KhuVuc = "Hồ Chi Minh",
+                ChuyenNganh = "Kinh Doanh",
+                HinhThucDangTuyenId = 3
+            },
+            new DangTuyen {
+                Id = 8,
+                TenViTri = "Intern .NET Developer",
+                SoLuong = 3,
+                MoTa = """
+                    - Full stack .NET Developer.
+
+                    - Fix bug, maintain, develop new features.
+
+                    - Make sure the code quality, performance, and maintainability.
+
+                    - and other tasks assigned by the project manager.
+                """,
+                ThoiGianDangTuyen = 30,
+                TrangThai = "Đang tuyển",
+                MucLuong = "3.000.000 VND",
+                NgayDangKy = new DateTime(2024, 7, 1),
+                NgayBatDau = new DateTime(2024, 8, 10),
+                NgayKetThuc = new DateTime(2024, 9, 20),
+                DoanhNghiepId = 3,
+                KhuVuc = "Hồ Chi Minh",
+                ChuyenNganh = "Kinh Doanh",
+                HinhThucDangTuyenId = 3
+            },
+            new DangTuyen {
+                Id = 9,
+                TenViTri = "Kỹ sư thiết kế đồ họa",
+                SoLuong = 3,
+                MoTa = """
+                    - Full stack .NET Developer.
+
+                    - Fix bug, maintain, develop new features.
+
+                    - Make sure the code quality, performance, and maintainability.
+
+                    - and other tasks assigned by the project manager.
+                """,
+                ThoiGianDangTuyen = 30,
+                TrangThai = "Đang tuyển",
+                MucLuong = "30M - 40M",
+                NgayDangKy = new DateTime(2024, 7, 1),
+                NgayBatDau = new DateTime(2024, 8, 10),
+                NgayKetThuc = new DateTime(2024, 9, 20),
+                DoanhNghiepId = 3,
+                KhuVuc = "Hồ Chi Minh",
+                ChuyenNganh = "Kinh Doanh",
+                HinhThucDangTuyenId = 3
+            },
+            new DangTuyen {
+                Id = 10,
+                TenViTri = "Kỹ sư thiết kế đồ họa",
+                SoLuong = 3,
+                MoTa = """
+                    - Full stack .NET Developer.
+
+                    - Fix bug, maintain, develop new features.
+
+                    - Make sure the code quality, performance, and maintainability.
+
+                    - and other tasks assigned by the project manager.
+                """,
+                ThoiGianDangTuyen = 30,
+                TrangThai = "Đang tuyển",
+                MucLuong = "30M - 40M",
+                NgayDangKy = new DateTime(2024, 7, 1),
+                NgayBatDau = new DateTime(2024, 8, 10),
+                NgayKetThuc = new DateTime(2024, 9, 20),
                 DoanhNghiepId = 3,
                 KhuVuc = "Hồ Chi Minh",
                 ChuyenNganh = "Kinh Doanh",
@@ -352,7 +472,7 @@ public class AppDbContext(DbContextOptions options) : DbContext(options)
         modelBuilder.Entity<UngTuyen>().HasData(
             new UngTuyen{
                 Id = 1,
-                NgayUngTuyen = new DateTime(2021, 1, 1),
+                NgayUngTuyen = new DateTime(2024, 1, 1),
                 DangTuyenId = 1,
                 DanhGia = null,
                 UngVienId = 2,
@@ -360,7 +480,7 @@ public class AppDbContext(DbContextOptions options) : DbContext(options)
             },
             new UngTuyen{
                 Id = 2,
-                NgayUngTuyen = new DateTime(2021, 1, 1),
+                NgayUngTuyen = new DateTime(2024, 1, 1),
                 DangTuyenId = 2,
                 DanhGia = null,
                 UngVienId = 2,
@@ -368,7 +488,7 @@ public class AppDbContext(DbContextOptions options) : DbContext(options)
             },
             new UngTuyen{
                 Id = 3,
-                NgayUngTuyen = new DateTime(2021, 1, 1),
+                NgayUngTuyen = new DateTime(2024, 1, 1),
                 DangTuyenId = 3,
                 DanhGia = null,
                 UngVienId = 2,
@@ -376,7 +496,7 @@ public class AppDbContext(DbContextOptions options) : DbContext(options)
             },
             new UngTuyen{
                 Id = 4,
-                NgayUngTuyen = new DateTime(2021, 1, 1),
+                NgayUngTuyen = new DateTime(2024, 1, 1),
                 DangTuyenId = 4,
                 DanhGia = null,
                 UngVienId = 2,
@@ -384,7 +504,7 @@ public class AppDbContext(DbContextOptions options) : DbContext(options)
             },
             new UngTuyen{
                 Id = 5,
-                NgayUngTuyen = new DateTime(2021, 1, 1),
+                NgayUngTuyen = new DateTime(2024, 1, 1),
                 DangTuyenId = 5,
                 DanhGia = null,
                 UngVienId = 2,
@@ -392,7 +512,7 @@ public class AppDbContext(DbContextOptions options) : DbContext(options)
             },
             new UngTuyen{
                 Id = 6,
-                NgayUngTuyen = new DateTime(2021, 1, 1),
+                NgayUngTuyen = new DateTime(2024, 1, 1),
                 DangTuyenId = 1,
                 DanhGia = null,
                 UngVienId = 3,
@@ -400,7 +520,7 @@ public class AppDbContext(DbContextOptions options) : DbContext(options)
             },
             new UngTuyen{
                 Id = 7,
-                NgayUngTuyen = new DateTime(2021, 1, 1),
+                NgayUngTuyen = new DateTime(2024, 1, 1),
                 DangTuyenId = 2,
                 DanhGia = null,
                 UngVienId = 3,
@@ -408,7 +528,7 @@ public class AppDbContext(DbContextOptions options) : DbContext(options)
             },
             new UngTuyen{
                 Id = 8,
-                NgayUngTuyen = new DateTime(2021, 1, 1),
+                NgayUngTuyen = new DateTime(2024, 1, 1),
                 DangTuyenId = 3,
                 DanhGia = null,
                 UngVienId = 3,
@@ -416,7 +536,7 @@ public class AppDbContext(DbContextOptions options) : DbContext(options)
             },
             new UngTuyen{
                 Id = 9,
-                NgayUngTuyen = new DateTime(2021, 1, 1),
+                NgayUngTuyen = new DateTime(2024, 1, 1),
                 DangTuyenId = 4,
                 DanhGia = null,
                 UngVienId = 3,

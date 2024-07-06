@@ -3,14 +3,22 @@ import './JobDetail.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faClock } from '@fortawesome/free-solid-svg-icons';
 import ApplyModal from './ApplyModal';
+import useFetch from '../../hooks/useFetch';
+import { useParams } from 'react-router-dom';
+import formateDate from '../../utils/formateDate';
+const hostApi = process.env.REACT_APP_API_URL;
 
 
 
 const JobDetail = () => {
-    const job = {
-        name: 'Frontend Developer',
-        salary: '15 - 20 triệu',
-    }
+
+    const jobId = useParams().id;
+    
+    const { data, error } = useFetch(`${hostApi}/recruitments/${jobId}`);
+
+    console.log(data);
+
+    const job = data;
 
     const [showModal, setShowModal] = useState(false)
     return (
@@ -20,7 +28,7 @@ const JobDetail = () => {
                 <div className='job-detail__left'>
                     <div className=' job-detail__left-items '>
                         <div className='text-2xl font-semibold'>
-                            {job.name}
+                            {job?.tenViTri}
                         </div>
                         <div className="job-detail__info--sections ">
                             <div className="job-detail__info--section">
@@ -32,7 +40,7 @@ const JobDetail = () => {
                                 </div>
                                 <div className="job-detail__info--section-content">
                                     <div className="job-detail__info--section-content-title">Mức lương</div>
-                                    <div className="job-detail__info--section-content-value">Thoả thuận</div>
+                                    <div className="job-detail__info--section-content-value">{job?.mucLuong}</div>
                                 </div>
                             </div>
                             <div className="job-detail__info--section">
@@ -43,7 +51,7 @@ const JobDetail = () => {
                                 </div>
                                 <div className="job-detail__info--section-content">
                                     <div className="job-detail__info--section-content-title">Địa điểm</div>
-                                    <div className="job-detail__info--section-content-value">Hà Nội</div>
+                                    <div className="job-detail__info--section-content-value">{job?.khuVuc}</div>
                                 </div>
                             </div>
                             <div className="job-detail__info--section" id="job-detail-info-experience">
@@ -54,14 +62,14 @@ const JobDetail = () => {
                                     </svg>
                                 </div>
                                 <div className="job-detail__info--section-content">
-                                    <div className="job-detail__info--section-content-title">Kinh nghiệm</div>
-                                    <div className="job-detail__info--section-content-value">2 năm</div>
+                                    <div className="job-detail__info--section-content-title">Tỉ lệ chọi</div>
+                                    <div className="job-detail__info--section-content-value">{job?.soLuongUngVien} đơn / {job?.soLuong} slot</div>
                                 </div>
                             </div>
                         </div>
                         <div className="job-deadline">
                             <FontAwesomeIcon icon={faClock} />
-                            <p>Hạn nộp hồ sơ: 01/08/2024</p>
+                            <p>Hạn nộp hồ sơ: {formateDate(job?.ngayKetThuc)}</p>
                         </div>
                         <button 
                             className='bg-dodger-blue hover:bg-navy rounded-lg py-2 text-white'
@@ -79,21 +87,38 @@ const JobDetail = () => {
                         <div className='text-xl font-semibold'>
                             Mô tả
                         </div>
-                        <div className='text-xl font-semibold'>
-                            Yêu cầu
+                        <div
+                            dangerouslySetInnerHTML ={{__html: job?.moTa.split('\n').map(line => `<p>${line}</p>`).join('')}}
+                            
+                        >
+
                         </div>
+                       
                     </div>
                 </div>
                 <div className='job-detail__right'>
                     <div className='job-detail__left-items'>
-                        <div className='text-2xl font-semibold'>
-                            Thông tin công ty
+                        <div className='text-2xl font-semibold flex gap-4'>
+                            <img className='w-20 h-20' src={job?.doanhNghiep?.logo} alt='logo'  />
+                            {job?.doanhNghiep?.tenDoanhNghiep}
+                        </div>
+                        <div className='flex my-4 gap-4'>
+                            <div className='text-xl'>Khu Vực</div>
+                            <div className='text-xl font-semibold'>{job?.khuVuc}</div>
                         </div>
                     </div>
                     <div className='job-detail__left-items'>
                         <div className='text-2xl font-semibold'>
                             Yêu cầu chung
                         </div>
+                        {
+                            job?.tieuChiTuyenDungs?.map((tieuChi, index) => (
+                                <div key={index}>
+                                    <div className='text-xl font-semibold'>{tieuChi.tenTieuChi}</div>
+                                    <div>{tieuChi.moTa}</div>
+                                </div>
+                            ))
+                        }
                     </div>
                 </div>
                

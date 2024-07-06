@@ -109,7 +109,7 @@ public class DangTuyenDAO(AppDbContext context)
                 .ThenInclude(dut => dut.UngVien) // Include thông tin ứng viên
             .Include(dt => dt.UngTuyens)
                 .ThenInclude(dut => dut.HoSoUngTuyens)
-            .FirstOrDefaultAsync(dt => dt.Id == idDangTuyen);
+            .FirstOrDefaultAsync(dt => dt.Id == idDangTuyen);  
 
             if (dangTuyen!=null && dangTuyen.UngTuyens != null)
             {
