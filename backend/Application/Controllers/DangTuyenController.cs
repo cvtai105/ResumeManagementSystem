@@ -5,6 +5,7 @@ using Models.RequestModel;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using System;
+using Models.DTOs;
 
 namespace Application.Controllers{
     [Route("api/dangkydangtuyen")]
