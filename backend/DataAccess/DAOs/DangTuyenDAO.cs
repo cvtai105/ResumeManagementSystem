@@ -156,4 +156,17 @@ public class DangTuyenDAO(AppDbContext context)
         }
 
     }
+
+    //le
+    public async Task<bool> UpdateNgayBatDau(int id,  DateTime ngayBatDau)
+    {
+        var dangTuyen = await _context.DangTuyens.FindAsync(id);
+        if (dangTuyen == null)
+        {
+            return false;
+        }
+        dangTuyen.NgayBatDau = ngayBatDau;
+        await _context.SaveChangesAsync();
+        return true;
+}
 }

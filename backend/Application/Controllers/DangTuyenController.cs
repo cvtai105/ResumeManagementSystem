@@ -86,5 +86,19 @@ namespace Application.Controllers{
             var hoSoUngTuyenThuocIDUngTuyens = await _dangTuyenBL.GetHoSoUngTuyenThuocIDUngTuyen(id);
             return Ok(hoSoUngTuyenThuocIDUngTuyens);
         }
+       //le
+       [HttpPut("update/{id}")]
+        public async Task<IActionResult> UpdateNgayBatDau(int id, [FromBody] UpdateNgayBatDauDto dto)
+        {
+            var result = await _dangTuyenBL.UpdateNgayBatDau(id, dto.NgayBatDau);
+            if (result)
+            {
+                return Ok(new { message = "NgayBatDau updated successfully" });
+            }
+            else
+            {
+                return BadRequest(new { message = "Failed to update NgayBatDau" });
+            }
+        }
     }
 }

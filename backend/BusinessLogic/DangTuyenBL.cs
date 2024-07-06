@@ -161,6 +161,11 @@ namespace BusinessLogic
         {
             return await _dangTuyenDAO.GetDetailForDoanhNghiep(id);
         }
-        
+        //le
+        public async Task<bool> UpdateNgayBatDau(int id, DateTime ngayBatDau)
+        {
+            return await _dangTuyenDAO.UpdateNgayBatDau(id, ngayBatDau);
+        }
+      
     }
 }
