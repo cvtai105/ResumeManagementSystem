@@ -6,7 +6,7 @@ namespace Models.Entities
 {
     public class DangTuyen
     {
-        public  int Id { get; set; }
+        public int Id { get; set; }
         public string? TenViTri { get; set; }
         public int? SoLuong { get; set; }
         public string? MoTa { get; set; }
@@ -16,24 +16,21 @@ namespace Models.Entities
         public string? ChuyenNganh { get; set; }
         public string? KhuVuc { get; set; }
 
-        //ngày bắt đầu đăng tuyển là ngày public 10 ngày sau khi thanh toán, ngày đăng ký là ngày đăng ký
         public DateTime? NgayDangKy { get; set; }
         public DateTime? NgayBatDau { get; set; }
         public DateTime? NgayKetThuc { get; set; }
         public int DoanhNghiepId { get; set; }
-        public int? NhanVienKiemDuyetId { get; set; } 
+        public int? NhanVienKiemDuyetId { get; set; }
         public int? UuDaiId { get; set; }
         public int? HinhThucDangTuyenId { get; set; }
         public DoanhNghiep? DoanhNghiep { get; set; }
         public UuDai? UuDai { get; set; }
         public NhanVien? NhanVienKiemDuyet { get; set; }
-        public HinhThucDangTuyen? HinhThucDangTuyen { get; set; }  
-        // [JsonIgnore]
+        public HinhThucDangTuyen? HinhThucDangTuyen { get; set; }
         public List<TieuChiTuyenDung>? TieuChiTuyenDungs { get; set; }
         [NotMapped]
         public int SoLuongUngVien { get; set; } = 0;
-        // [JsonIgnore]
         public List<UngTuyen>? UngTuyens { get; set; }
-        public List<ThanhToan>? ThanhToans {get; set;}
+        public List<ThanhToan>? ThanhToans { get; set; }
     }
 }

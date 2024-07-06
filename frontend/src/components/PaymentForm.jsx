@@ -55,7 +55,7 @@ const PaymentForm = ({
         totalAmount: total,
         installmentAmount: formData.paymentType === 'part' ? total * 0.3 : total,
         paymentType: 'all',
-        paymentMethod: 'transfer',
+        paymentMethod: formData.paymentMethod,
       }));
   }, [formData.postingType, formData.postingDuration, formData.paymentType, setFormData]);
 

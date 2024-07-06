@@ -10,7 +10,7 @@ namespace Models.Entities
     {
         public int Id { get; set; }
         public int SoTien { get; set; }
-        public DateTime NgayThanhToan { get; set; } = DateTime.Now;
+        public DateTime? NgayThanhToan { get; set; } = DateTime.Now;
         public int? NhanVienThanhToanId { get; set; }
         public string? GhiChu { get; set; } = String.Empty;
         public NhanVien? NhanVienThanhToan { get; set; } 
