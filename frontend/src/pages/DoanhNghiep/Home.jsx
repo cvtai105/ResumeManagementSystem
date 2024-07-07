@@ -3,13 +3,19 @@ import { Link } from 'react-router-dom';
 import JobCard from './JobCard.jsx'
 import useFetch from '../../hooks/useFetch';
 import formateDate from '../../utils/formateDate.js';
+import { getDoanhNghiepId } from '../../utils/getUserId.js';
 const hostApi = process.env.REACT_APP_API_URL;
 
 const Home = () => {
+  const doanhNghiepId = getDoanhNghiepId();
 
-  const {data, loading, error} = useFetch(`${hostApi}/recruitments?page=${1}`);
+  const {data, loading, error} = useFetch(`${hostApi}/recruitments/for-company/${doanhNghiepId}`);
 
-  const jobData = data?.data || [];
+  const jobData = data || [];
+
+  //sort by id desc
+  jobData.sort((a, b) => b.id - a.id);
+  console.log(jobData);
 
   
 
@@ -26,6 +32,9 @@ const Home = () => {
                 jobName={job.tenViTri}
                 salaryRange={job.mucLuong}
                 expiredDate={formateDate(job.ngayKetThuc)}
+                applicantsCount={job.ungTuyens.length}
+                positionCount={job.soLuong}
+                applications={job.ungTuyens}
                 />
             ))}
             </div>
