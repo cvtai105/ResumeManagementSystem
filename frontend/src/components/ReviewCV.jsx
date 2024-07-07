@@ -12,6 +12,7 @@ function ReviewCV({ prevStep, formData }) {
         }
       );
       console.log(response.data);
+      prevStep();
     } catch (error) {
       console.error("Error updating application status:", error);
     }
@@ -25,7 +26,6 @@ function ReviewCV({ prevStep, formData }) {
       formData.registrationId,
       review ? "Đạt" : "Không đạt"
     );
-    prevStep();
   };
   return (
     <div className="grid grid-cols-4 center">
