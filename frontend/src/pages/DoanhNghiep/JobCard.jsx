@@ -39,7 +39,7 @@ const JobCard = ({ jobName, salaryRange, expiredDate, positionCount ,applicantsC
                   <hr className="mx-2 border border-gray-300 h-6" />
                   <div className="flex-2 flex items-center">
                     <FaUsers className="mr-2" />
-                    <span>{applicantsCount} ứng viên / {positionCount} vị trị </span>
+                    <span>{applicantsCount} ứng viên / {positionCount} vị trí </span>
                   </div>
                 </div>
                 <FaListUl className="ml-4 text-gray-500 hover:text-gray-700" />

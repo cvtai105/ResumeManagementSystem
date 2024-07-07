@@ -120,7 +120,6 @@ const JobDetail = () => {
                         </div>
                         <div
                             dangerouslySetInnerHTML ={{__html: job?.moTa.split('\n').map(line => `<p>${line}</p>`).join('')}}
-                            
                         >
 
                         </div>
@@ -154,7 +153,7 @@ const JobDetail = () => {
                             job?.tieuChiTuyenDungs?.map((tieuChi, index) => (
                                 <div key={index}>
                                     <div className='text-xl font-semibold'>{tieuChi.tenTieuChi}</div>
-                                    <div>{tieuChi.moTa}</div>
+                                    <div dangerouslySetInnerHTML={{ __html: tieuChi.moTa }}></div>
                                 </div>
                             ))
                         }
