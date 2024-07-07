@@ -11,7 +11,7 @@ on:
 
 jobs:
   build:
-    -script: dotnet build backend/Application/Application.csproj --configuration $(buildConfiguration)
+    script: dotnet build backend/Application/Application.csproj --configuration $(buildConfiguration)
     runs-on: windows-latest
 
     steps:
