@@ -1794,3 +1794,5 @@ Invalid column name 'TrangThai'.
    at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
 ClientConnectionId:c8669106-48bf-49a5-a86e-0f2762545af3
 Error Number:207,State:1,Class:16
+2024-07-07 17:42:10.678 +07:00 [ERR] Get recruitment by id
+2024-07-07 17:42:10.724 +07:00 [ERR] Get recruitment by id
