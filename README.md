@@ -9,3 +9,4 @@
 # git command:
 1. git checkout <branch name>  --> tới nhánh khác  
 2. git branch <bracnch nam> --> tạo nhánh mới
+3. git merge <branch name> --> merge <branch name> và branch đang dùng
