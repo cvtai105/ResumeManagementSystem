@@ -90,6 +90,7 @@ public class DangTuyenDAO(AppDbContext context)
                   hsut => hsut.UngTuyenId,
                   (combined, hsut) => new
                   {
+                    
                       combined.ut.Id,
                       combined.uv.HoTen,
                       combined.uv.Email,
@@ -155,5 +156,23 @@ public class DangTuyenDAO(AppDbContext context)
             return null;
         }
 
+    }
+
+    public async Task<IEnumerable<DangTuyen>> GetRecruitmentForCompany(int doanhNghiepId)
+    {
+        try{
+            var dangTuyen = await _context.DangTuyens
+            .Where(dt => dt.DoanhNghiepId == doanhNghiepId)
+            .Include(dt => dt.UngTuyens)
+                .ThenInclude(dut => dut.UngVien) // Include thông tin ứng viên
+            .Include(dt => dt.UngTuyens)
+                .ThenInclude(dut => dut.HoSoUngTuyens)
+            .ToListAsync();
+
+            return dangTuyen;
+        }
+        catch(Exception){
+            return [];
+        }
     }
 }
