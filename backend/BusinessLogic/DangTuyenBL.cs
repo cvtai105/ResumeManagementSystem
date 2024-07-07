@@ -7,7 +7,7 @@ namespace BusinessLogic
 {
     public class DangTuyenBL
     {
-       private readonly DangTuyenDAO _dangTuyenDAO;
+        private readonly DangTuyenDAO _dangTuyenDAO;
         private readonly TieuChiTuyenDungDAO _tieuChiTuyenDungDAO;
         private readonly DoanhNghiepDAO _doanhNghiepDAO;
         private readonly HinhThucDangTuyenDAO _hinhThucDangTuyenDAO;
@@ -53,9 +53,9 @@ namespace BusinessLogic
             dangTuyen.UuDai = null;
 
 
-           var addedDangTuyen = await _dangTuyenDAO.Add(dangTuyen);
+            var addedDangTuyen = await _dangTuyenDAO.Add(dangTuyen);
 
-           foreach (var payment in dangTuyen.ThanhToans)
+            foreach (var payment in dangTuyen.ThanhToans)
             {
                 payment.DangTuyenId = addedDangTuyen.Id;
                 var addedThanhToan = await _thanhToanDAO.Add(payment);
@@ -74,7 +74,7 @@ namespace BusinessLogic
                 await _tieuChiTuyenDungDAO.Add(criteria);
             }
 
-            
+
 
             // Add Payment Information
             // var thanhToan = new ThanhToan
@@ -116,7 +116,7 @@ namespace BusinessLogic
         {
             return await _dangTuyenDAO.GetById(id);
         }
-       
+
         public async Task<IEnumerable<DangTuyen>> GetFilteredDangTuyen(DateTime today)
         {
             return await _dangTuyenDAO.GetFilteredDangTuyen(today);
@@ -128,12 +128,12 @@ namespace BusinessLogic
         }
 
         //Tài
-        public  Object GetRecruitments(string? keyword = null, int page = 1, string? location = null, string? branch = null)
+        public Object GetRecruitments(string? keyword = null, int page = 1, string? location = null, string? branch = null)
         {
 
             // Define the filter
             Expression<Func<DangTuyen, bool>> filter = r =>
-                (string.IsNullOrEmpty(keyword) || (r.TenViTri != null && r.TenViTri.Contains(keyword)) || (r.MoTa != null && r.MoTa.Contains(keyword)))  &&
+                (string.IsNullOrEmpty(keyword) || (r.TenViTri != null && r.TenViTri.Contains(keyword)) || (r.MoTa != null && r.MoTa.Contains(keyword))) &&
                 (string.IsNullOrEmpty(location) || r.KhuVuc == location) &&
                 (string.IsNullOrEmpty(branch) || r.ChuyenNganh == branch) && r.NgayKetThuc >= DateTime.Now;
 
@@ -141,16 +141,17 @@ namespace BusinessLogic
             Func<IQueryable<DangTuyen>, IOrderedQueryable<DangTuyen>> orderBy = q => q.OrderByDescending(r => r.Id);
 
             // Get the data from the repository
-            IEnumerable<DangTuyen> recruitments = _dangTuyenDAO.Get(filter, orderBy,"DoanhNghiep");
+            IEnumerable<DangTuyen> recruitments = _dangTuyenDAO.Get(filter, orderBy, "DoanhNghiep");
 
             // Apply pagination
             int pageSize = 8;
             var pagedRecruitments = recruitments.Skip((page - 1) * pageSize).Take(pageSize);
 
-            var info = new {
+            var info = new
+            {
                 Total = recruitments.Count(),
                 PerPage = pageSize,
-                PageCount = (int) Math.Ceiling((double) recruitments.Count() / pageSize),
+                PageCount = (int)Math.Ceiling((double)recruitments.Count() / pageSize),
                 Data = pagedRecruitments
             };
 
@@ -166,6 +167,28 @@ namespace BusinessLogic
         {
             return await _dangTuyenDAO.UpdateNgayBatDau(id, ngayBatDau);
         }
-      
+
+        //le
+        public async Task<bool> UpdatePaymentStatus(int dangTuyenId, bool status)
+        {
+            return await _thanhToanDAO.UpdatePaymentStatus(dangTuyenId, status);
+        }
+
+        //le
+        public async Task<decimal> GetTotalPaidAmount(int id)
+        {
+            return await _thanhToanDAO.GetTotalPaidAmount(id);
+        }
+
+        public async Task<decimal> GetPaymentAmount(int id)
+        {
+            return await _thanhToanDAO.GetPaymentAmount(id);
+        }
+
+
+        public async Task<bool> GetPaymentStatus(int id)
+        {
+            return await _thanhToanDAO.GetPaymentStatus(id);
+        }
     }
 }

@@ -19,5 +19,8 @@ namespace Models.DTOs
     {
         public DateTime NgayBatDau { get; set; }
     }
+       public class UpdatePaymentStatusDto
+    {
+        public bool DaThanhToan { get; set; } }
 
 }

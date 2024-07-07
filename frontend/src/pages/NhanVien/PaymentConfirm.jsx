@@ -3,14 +3,13 @@ import Pagination from "../../components/Pagination";
 import { Button } from '@mui/material';
 import axios from 'axios';
 
-import "./PaymentConfirm.css";
-
 const hostApi = process.env.REACT_APP_API_URL;
 
 const PaymentConfirm = () => {
     const [totalPages, setTotalPages] = useState(1);
     const [currentPage, setCurrentPage] = useState(1);
     const [dangTuyenData, setDangTuyenData] = useState([]);
+    const [paymentStatuses, setPaymentStatuses] = useState({});
 
     useEffect(() => {
         fetchDangTuyenData();
@@ -25,12 +24,21 @@ const PaymentConfirm = () => {
                 doanhNghiep: dangTuyen.doanhNghiep?.tenDoanhNghiep || 'N/A',
                 SoLuong: dangTuyen.soLuong || 0,
                 TenViTri: dangTuyen.tenViTri || 'N/A',
-                NgayBatDau: dangTuyen.ngayBatDau ? formatDate(dangTuyen.ngayBatDau) : null, 
-                ThanhToan: dangTuyen.thanhToan || 0 
+                NgayBatDau: dangTuyen.ngayBatDau ? formatDate(dangTuyen.ngayBatDau) : null,
+                ThanhToan: dangTuyen.thanhToan || 0
             }));
 
             setDangTuyenData(formattedData);
             setTotalPages(pageCount);
+
+            // Fetch payment status for each dangTuyen item
+            formattedData.forEach(async (dangTuyen) => {
+                const statusResponse = await axios.get(`${hostApi}/dangkydangtuyen/paymentstatus/${dangTuyen.Id}`);
+                setPaymentStatuses(prevStatuses => ({
+                    ...prevStatuses,
+                    [dangTuyen.Id]: statusResponse.data
+                }));
+            });
         } catch (error) {
             console.error("Error fetching dangTuyen data:", error);
         }
@@ -55,64 +63,57 @@ const PaymentConfirm = () => {
         const hours = String(date.getHours()).padStart(2, '0');
         const minutes = String(date.getMinutes()).padStart(2, '0');
         const seconds = String(date.getSeconds()).padStart(2, '0');
-        
+
         return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
     };
 
     const handleThanhToanClick = async (id) => {
         try {
-            const currentDate = formatDateTime(new Date());
-            console.log(currentDate);
-            
+            const currentDate = new Date();
+
             await axios.put(`${hostApi}/dangkydangtuyen/update/${id}`, { NgayBatDau: currentDate });
+            await axios.put(`${hostApi}/dangkydangtuyen/update/thanhtoan/${id}`, { DaThanhToan: true });
             fetchDangTuyenData();
         } catch (error) {
             console.error("Error updating payment status:", error);
         }
     };
 
-    const isDateBeforeOrEqualTo = (dateString, compareToDateString) => {
-        if (!dateString) return false; 
-        const date = new Date(dateString);
-        const compareTo = new Date(compareToDateString);
-        console.log(date, "**************", compareTo);
-        return date <= compareTo;
-    };
-
     return (
         <div className="px-44 min-h-screen bg-gray-100 text-center">
-            <h3 className="text-2xl font-semibold text-blue-500 mt-6 mb-4">Danh Sách Đăng Tuyển</h3>
+            <h5 className="text-2xl font-semibold text-blue-500 mt-6 mb-4">Danh Sách Đăng Tuyển</h5>
             <div className="payment-table">
-                <table className="w-full border-collapse border border-gray-200">
+                <table className="min-w-full bg-white border custom-border">
                     <thead className="bg-gray-100">
                         <tr>
-                            <th className="border border-gray-200 px-4 py-2">Mã Đăng Tuyển</th>
-                            <th className="border border-gray-200 px-4 py-2">Tên Công Ty</th>
-                            <th className="border border-gray-200 px-4 py-2">Số Lượng</th>
-                            <th className="border border-gray-200 px-4 py-2">Tên Vị Trí</th>
-                            <th className="border border-gray-200 px-4 py-2">Ngày Bắt Đầu</th>
-                            <th className="border border-gray-200 px-4 py-2">Trạng Thái Thanh Toán</th>
-                            <th className="border border-gray-200 px-4 py-2">Hành Động</th>
+                            <th className="px-5 py-2 border border-gray-300 text-left text-sm font-medium text-gray-700 bg-grey">Mã Đăng Tuyển</th>
+                            <th className="px-5 py-2 border border-gray-300 text-left text-sm font-medium text-gray-700 bg-grey">Tên Công Ty</th>
+                            <th className="px-5 py-2 border border-gray-300 text-left text-sm font-medium text-gray-700 bg-grey">Số Lượng</th>
+                            <th className="px-5 py-2 border border-gray-300 text-left text-sm font-medium text-gray-700 bg-grey">Tên Vị Trí</th>
+                            <th className="px-5 py-2 border border-gray-300 text-left text-sm font-medium text-gray-700 bg-grey">Ngày Bắt Đầu</th>
+                            <th className="px-5 py-2 border border-gray-300 text-left text-sm font-medium text-gray-700 bg-grey">Trạng Thái Thanh Toán</th>
+                            <th className="px-5 py-2 border border-gray-300 text-left text-sm font-medium text-gray-700 bg-grey">Hành Động</th>
                         </tr>
                     </thead>
                     <tbody>
                         {dangTuyenData.map((dangTuyen) => (
                             <tr key={dangTuyen.Id}>
-                                <td className="border border-gray-200 px-4 py-2">{dangTuyen.Id}</td>
-                                <td className="border border-gray-200 px-4 py-2">{dangTuyen.doanhNghiep}</td>
-                                <td className="border border-gray-200 px-4 py-2">{dangTuyen.SoLuong}</td>
-                                <td className="border border-gray-200 px-4 py-2">{dangTuyen.TenViTri}</td>
-                                <td className="border border-gray-200 px-4 py-2">{dangTuyen.NgayBatDau || 'N/A'}</td>
-                                <td className="border border-gray-200 px-4 py-2">
-                                    {!dangTuyen.NgayBatDau ? 'Chưa thanh toán' : 'Đã thanh toán'}
+                                <td className="px-6 border border-gray-300 text-sm">{dangTuyen.Id}</td>
+                                <td className="px-6 border border-gray-300 text-sm">{dangTuyen.doanhNghiep}</td>
+                                <td className="px-6 border border-gray-300 text-sm">{dangTuyen.SoLuong}</td>
+                                <td className="px-6 border border-gray-300 text-sm">{dangTuyen.TenViTri}</td>
+                                <td className="px-6 border border-gray-300 text-sm">{dangTuyen.NgayBatDau || 'N/A'}</td>
+                                <td className="px-6 border border-gray-300 text-sm">
+                                    {paymentStatuses[dangTuyen.Id] ? 'Đã thanh toán' : 'Chưa thanh toán'}
                                 </td>
                                 <td className="border border-gray-200 px-4 py-2">
                                     <Button
+                                        className="px-6 py-2 mt-10 btn-dark text-white rounded"
                                         variant="contained"
                                         color="primary"
                                         size="small"
                                         onClick={() => handleThanhToanClick(dangTuyen.Id)}
-                                        disabled={dangTuyen.NgayBatDau}
+                                        disabled={paymentStatuses[dangTuyen.Id]}
                                     >
                                         Thanh Toán
                                     </Button>
@@ -130,4 +131,3 @@ const PaymentConfirm = () => {
 };
 
 export default PaymentConfirm;
-
