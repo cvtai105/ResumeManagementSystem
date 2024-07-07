@@ -79,6 +79,7 @@ const DangKyThanhVienDoanhNghiep = () => {
       .then((response) => {
         console.log(response);
         toast.success("Đã ghi nhận thông tin đăng ký");
+        window.location.href = "/doanhnghiep/dangnhap";
       })
       .catch((err) => {
         console.log(err);
