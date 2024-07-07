@@ -128,9 +128,8 @@ namespace BusinessLogic
         }
 
         //Tài
-        public  Object GetRecruitments(string? keyword = null, int page = 1, string? location = null, string? branch = null)
+        public Object GetRecruitments(string? keyword = null, int page = 1, string? location = null, string? branch = null)
         {
-
             // Define the filter
             Expression<Func<DangTuyen, bool>> filter = r =>
                 (string.IsNullOrEmpty(keyword) || (r.TenViTri != null && r.TenViTri.Contains(keyword)) || (r.MoTa != null && r.MoTa.Contains(keyword)))  &&
@@ -157,9 +156,18 @@ namespace BusinessLogic
             return info;
         }
 
-        public async Task<DangTuyen?> GetDetailDangTuyenForDoanhNghiep(int id)
+        public  async Task<IEnumerable<DangTuyen>> ListRecruitmentForCompany(int doanhNghiepId)
         {
-            return await _dangTuyenDAO.GetDetailForDoanhNghiep(id);
+            //Get Recruitments of a company that have ngayketthuc whitin 1 month
+
+            return await _dangTuyenDAO.GetRecruitmentForCompany(doanhNghiepId);
+
+            
+            // Func<IQueryable<DangTuyen>, IOrderedQueryable<DangTuyen>> orderBy = q => q.OrderByDescending(r => r.Id);
+            // Expression<Func<DangTuyen, bool>> filter = r => 
+            //     (r.DoanhNghiepId == doanhNghiepId) && r.NgayKetThuc > DateTime.Now.AddMonths(-1);
+
+            // return _dangTuyenDAO.Get(filter, orderBy, "DoanhNghiep");
         }
         
     }

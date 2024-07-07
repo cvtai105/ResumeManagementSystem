@@ -31,7 +31,7 @@ namespace Application.Controllers
             return Ok(ungtuyen);
         }
         [HttpPut("update/{id}")]
-        public async Task<IActionResult> UpdateStatus(int id, [FromForm] UpdateStatusDto updateStatusDto)
+        public async Task<IActionResult> UpdateStatus(int id, [FromBody] UpdateStatusDto updateStatusDto)
         {
             var result = await _ungTuyenBL.UpdateStatus(id, updateStatusDto.Status);
             if (!result)

@@ -5,3 +5,7 @@
 
 
 # Software architect
+
+# git command:
+1. git checkout <branch name>  --> tới nhánh khác  
+2. git branch <bracnch nam> --> tạo nhánh mới

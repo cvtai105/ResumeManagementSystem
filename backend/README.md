@@ -1,3 +1,7 @@
+# Reset DB ( khi test lỗi thì có thể dùng để reset lại dữ liệu )
+1. dotnet ef database update 0 --project DataAccess --startup-project Application
+2. dotnet ef database update --project DataAccess --startup-project Application
+
 # Conventions:
 1. Sử dụng dependency injection
 2. Sử dụng async/await Task cho những tác vụ truy vấn DB, gọi API, ...
@@ -17,6 +21,8 @@
 3. folder DataAccess/Migrations tự động thay đổi - thêm các design scripts cho database. người khác dùng folder này để cập nhật các thay đổi
 4. dotnet ef database update --project DataAccess --startup-project Application
 5. note: ai thay đổi folder Migrations (chạy dòng số 2) nên báo cho mn. mọi người khi pull về chỉ cần chạy dòng lệnh số 4.
+
+
 
 # Entity relationship convention:
 1. khóa chính: id / classnameId

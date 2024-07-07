@@ -90,6 +90,7 @@ public class DangTuyenDAO(AppDbContext context)
                   hsut => hsut.UngTuyenId,
                   (combined, hsut) => new
                   {
+                    
                       combined.ut.Id,
                       combined.uv.HoTen,
                       combined.uv.Email,
@@ -136,12 +137,14 @@ public class DangTuyenDAO(AppDbContext context)
     public async Task<DangTuyen?> GetDetailForDoanhNghiep(int idDangTuyen)
     {
         try{
+#pragma warning disable CS8620 // Argument cannot be used for parameter due to differences in the nullability of reference types.
             var dangTuyen = await _context.DangTuyens
             .Include(dt => dt.UngTuyens)
-                .ThenInclude(dut => dut.UngVien) // Include thông tin ứng viên
+                .ThenInclude(dut => dut.UngVien) // Include thông tin ứng v iên
             .Include(dt => dt.UngTuyens)
                 .ThenInclude(dut => dut.HoSoUngTuyens)
-            .FirstOrDefaultAsync(dt => dt.Id == idDangTuyen);  
+            .FirstOrDefaultAsync(dt => dt.Id == idDangTuyen);
+#pragma warning restore CS8620 // Argument cannot be used for parameter due to differences in the nullability of reference types.
 
             if (dangTuyen!=null && dangTuyen.UngTuyens != null)
             {
@@ -155,5 +158,25 @@ public class DangTuyenDAO(AppDbContext context)
             return null;
         }
 
+    }
+
+    public async Task<IEnumerable<DangTuyen>> GetRecruitmentForCompany(int doanhNghiepId)
+    {
+        try{
+#pragma warning disable CS8620 // Argument cannot be used for parameter due to differences in the nullability of reference types.
+            var dangTuyen = await _context.DangTuyens
+            .Where(dt => dt.DoanhNghiepId == doanhNghiepId)
+            .Include(dt => dt.UngTuyens)
+                .ThenInclude(dut => dut.UngVien) // Include thông tin ứng viên
+            .Include(dt => dt.UngTuyens)
+                .ThenInclude(dut => dut.HoSoUngTuyens)
+            .ToListAsync();
+#pragma warning restore CS8620 // Argument cannot be used for parameter due to differences in the nullability of reference types.
+
+            return dangTuyen;
+        }
+        catch(Exception){
+            return [];
+        }
     }
 }

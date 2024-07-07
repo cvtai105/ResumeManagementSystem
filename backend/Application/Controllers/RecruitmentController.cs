@@ -18,15 +18,22 @@ namespace Application.Controllers
             _dangtuyenBL = dangtuyenBL;
         }
 
+        [HttpGet("for-company/{id}")]
+        public async  Task<IActionResult> DoanhNghiepGetRecruitments(int id)
+        {
+            var result = await  _dangtuyenBL.ListRecruitmentForCompany(id);
+            if (result == null)
+            {
+                return BadRequest();
+            }
+            return Ok(result);
+        }
 
 
         [HttpGet("{id}")]
         public async Task<IActionResult> GetRecruitmentById(int id)
         {
             _logger.LogError("Get recruitment by id");
-            //check cookie để xác định role của user
-            //nếu là ứng viên thì _dangtuyenBL.GetDangTuyenById(id);
-            //nếu là doanh nghiệp thì _dangtuyenBL.GetDangTuyenByIdForDoanhNghiep(id);
             var recruitment = await _dangtuyenBL.GetDangTuyenById(id);
             return Ok(recruitment); //jsonserialize
         }

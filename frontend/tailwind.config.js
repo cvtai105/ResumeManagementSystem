@@ -41,6 +41,24 @@ module.exports = {
           gelasio: ["'Gelasio'", "serif"],
           roboto: ["Roboto, Helvetica Neue, Helvetica, Arial, sans-serif"]
         },
+        flex: {
+          '4': '4 4 0%',
+          '2': '2 2 0%',
+        },
+        keyframes: {
+          'expand': {
+            '0%': { maxHeight: '0', opacity: '0' },
+            '100%': { maxHeight: '500px', opacity: '1' }, // Adjust maxHeight as necessary
+          },
+          'collapse': {
+            '0%': { maxHeight: '500px', opacity: '1' }, // Adjust maxHeight as necessary
+            '100%': { maxHeight: '0', opacity: '0' },
+          }
+        },
+        animation: {
+          'expand': 'expand 300ms ease-out forwards',
+          'collapse': 'collapse 300ms ease-in forwards',
+        }
       },
 
   },
