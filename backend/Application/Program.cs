@@ -59,7 +59,7 @@ builder.Services.AddControllers()
 
 builder.Services.AddDbContext<AppDbContext>(options =>
 {
-    options.UseSqlServer(builder.Configuration.GetConnectionString("AzureDbConnection"));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("AzureConnection"));
 });
 
 builder.Services.AddScoped<NhanVienDAO>();
