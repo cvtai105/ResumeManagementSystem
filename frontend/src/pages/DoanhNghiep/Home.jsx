@@ -1,37 +1,36 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import JobCard from './JobCard.jsx'
+import useFetch from '../../hooks/useFetch';
+import formateDate from '../../utils/formateDate.js';
+const hostApi = process.env.REACT_APP_API_URL;
 
 const Home = () => {
-  const [recruitments, setRecruitments] = useState([]);
 
-  const simulatedData = [
-    { id: 1, title: 'Frontend Developer', salaryRange: '20-30M', applyCount: 10, need: 3, deadline: '2024-12-31'},
-    { id: 2, title: 'Backend Developer', salaryRange: '25-35M', applyCount: 5, need: 1, deadline: '2024-12-31'},
-    { id: 3, title: 'UX/UI Designer', salaryRange: '18-25M', applyCount: 8, need: 2, deadline: '2024-12-31'},
-  ];
+  const {data, loading, error} = useFetch(`${hostApi}/recruitments?page=${1}`);
 
-  useEffect(() => {
-    // Set the simulated data when the component mounts
-    setRecruitments(simulatedData);
-  }, []);
+  const jobData = data?.data || [];
+
+  
 
   return (
-    <div className="flex flex-col mx-20 mt-10">
-      <p className="text-3xl font-bold mb-4">Tin đăng tuyển của công ty</p>
-      <div className="grid gap-4">
-        {recruitments.map(job => (
-          <Link to={"recruitments/" + job.id} key={job.id} className="border p-4 rounded shadow hover:bg-grey cursor-pointer">
-            <p className="text-2xl font-bold">{job.title}</p>
-            <p className="text-gray-700">Mức lương: {job.salaryRange}</p>
-            <p className="text-gray-700">Số ứng viên/Số lượng tuyển: {job.applyCount} / {job.need}</p>
-            <p className="text-gray-700">Hạn: {job.deadline}</p>
-          </Link>
-        ))}
-        {recruitments.length === 0 && (
-          <p className="text-gray-600">Không có tin tuyển dụng hiện tại.</p>
-        )}
-      </div>
-    </div>
+    <>
+      <div className="px-44 mt-4 min-h-screen bg-f7f7f7">
+            <div className="flex justify-between items-center">
+                <h3 className="text-2xl font-semibold text-dodger-blue">Tin Đăng Tuyển của công ty</h3>
+            </div>
+            <div className="flex flex-col gap-4 text-sm">
+            {jobData.map((job, index) => (
+                <JobCard
+                key={job.id}
+                jobName={job.tenViTri}
+                salaryRange={job.mucLuong}
+                expiredDate={formateDate(job.ngayKetThuc)}
+                />
+            ))}
+            </div>
+        </div>
+      </>
   );
 };
 
