@@ -133,12 +133,19 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-app.UseCors(MyAllowSpecificOrigins);
+app.UseCors(MyAllowSpecificOrigins);var staticFilesPath = Path.Combine(builder.Environment.ContentRootPath, "StaticFiles");
+if (!Directory.Exists(staticFilesPath))
+{
+    Directory.CreateDirectory(staticFilesPath);
+}
 
 var cacheMaxAgeOneWeek = (60 * 60 * 24 * 7).ToString();
 app.UseStaticFiles(new StaticFileOptions
 {
     FileProvider = new PhysicalFileProvider( 
+
+
+
            Path.Combine(builder.Environment.ContentRootPath, "StaticFiles")),
     RequestPath = "/static-files",
     OnPrepareResponse = ctx =>
