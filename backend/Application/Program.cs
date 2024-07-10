@@ -46,7 +46,7 @@ builder.Services.AddCors(options =>
                 .AllowAnyHeader()
                 .AllowCredentials();
             
-            policy.WithOrigins("https://resume-management-system.vercel.app")
+            policy.WithOrigins("https://jobmarket-nu.vercel.app")
                 .AllowAnyMethod()
                 .AllowAnyHeader()
                 .AllowCredentials();
