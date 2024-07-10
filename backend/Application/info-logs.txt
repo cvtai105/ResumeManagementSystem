@@ -1,0 +1,24 @@
+2024-07-10 05:01:49.508 +07:00 [INF] User profile is available. Using 'C:\Users\cvtai\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-07-10 05:01:49.559 +07:00 [INF] Now listening on: http://localhost:5231
+2024-07-10 05:01:49.560 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-07-10 05:01:49.560 +07:00 [INF] Hosting environment: Development
+2024-07-10 05:01:49.560 +07:00 [INF] Content root path: C:\Users\cvtai\OneDrive\Desktop\ResumeManagementSystem\backend\application
+2024-07-10 05:01:49.755 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5231/swagger/index.html - null null
+2024-07-10 05:01:49.834 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5231/swagger/index.html - 200 null text/html;charset=utf-8 80.3711ms
+2024-07-10 05:01:49.848 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5231/_framework/aspnetcore-browser-refresh.js - null null
+2024-07-10 05:01:49.851 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5231/_framework/aspnetcore-browser-refresh.js - 200 13732 application/javascript; charset=utf-8 2.3781ms
+2024-07-10 05:01:50.148 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5231/swagger/v1/swagger.json - null null
+2024-07-10 05:01:50.245 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5231/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 96.9241ms
+2024-07-10 05:05:30.734 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5231/swagger/index.html - null null
+2024-07-10 05:05:30.736 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5231/swagger/index.html - 200 null text/html;charset=utf-8 1.6563ms
+2024-07-10 05:05:30.748 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5231/_framework/aspnetcore-browser-refresh.js - null null
+2024-07-10 05:05:30.748 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5231/_framework/aspnetcore-browser-refresh.js - 200 13732 application/javascript; charset=utf-8 0.7439ms
+2024-07-10 05:05:30.955 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5231/swagger/v1/swagger.json - null null
+2024-07-10 05:05:30.968 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5231/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 12.7253ms
+2024-07-10 05:09:20.509 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5231/swagger/index.html - null null
+2024-07-10 05:09:20.509 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5231/swagger/index.html - 200 null text/html;charset=utf-8 0.7808ms
+2024-07-10 05:09:20.519 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5231/_framework/aspnetcore-browser-refresh.js - null null
+2024-07-10 05:09:20.519 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5231/_framework/aspnetcore-browser-refresh.js - 200 13732 application/javascript; charset=utf-8 0.2172ms
+2024-07-10 05:09:20.589 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5231/swagger/v1/swagger.json - null null
+2024-07-10 05:09:20.598 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5231/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 8.4629ms
+2024-07-10 05:10:19.854 +07:00 [INF] Application is shutting down...

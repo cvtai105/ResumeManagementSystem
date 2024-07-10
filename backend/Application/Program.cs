@@ -10,22 +10,27 @@ using Application.Controllers;
 using Serilog;
 using System.Text.Json.Serialization;
 using Microsoft.Extensions.FileProviders;
+using Serilog.Events;
+using Microsoft.AspNetCore.HttpLogging;
 
 var builder = WebApplication.CreateBuilder(args);
 var config = builder.Configuration;
 
-{
-    //swagger
-    builder.Services.AddEndpointsApiExplorer();
-    builder.Services.AddSwaggerGen();
-}
+//swagger
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
 
 // Cấu hình dịch vụ logging
 builder.Logging.ClearProviders();
 builder.Logging.AddConsole();
 builder.Logging.AddDebug();
 
-var _logger = new LoggerConfiguration().MinimumLevel.Error().WriteTo.File("log.txt").CreateLogger();
+var _logger = new LoggerConfiguration()
+                .MinimumLevel.Debug()
+                .WriteTo.File(path: "info-logs.txt", restrictedToMinimumLevel: LogEventLevel.Information)
+                .WriteTo.File(path: "error-logs.txt", restrictedToMinimumLevel: LogEventLevel.Error) 
+                .CreateLogger();
+
 builder.Logging.AddSerilog(_logger);
 
 var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
@@ -123,13 +128,14 @@ builder.Services.AddAuthentication(options =>
 
 builder.Services.AddAuthorization();
 
-
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
 {
+    app.UseHttpLogging();
     app.UseSwagger();
     app.UseSwaggerUI();
+    app.UseDeveloperExceptionPage();
 }
 
 app.UseHttpsRedirection();
@@ -143,9 +149,6 @@ var cacheMaxAgeOneWeek = (60 * 60 * 24 * 7).ToString();
 app.UseStaticFiles(new StaticFileOptions
 {
     FileProvider = new PhysicalFileProvider( 
-
-
-
            Path.Combine(builder.Environment.ContentRootPath, "StaticFiles")),
     RequestPath = "/static-files",
     OnPrepareResponse = ctx =>
@@ -154,7 +157,6 @@ app.UseStaticFiles(new StaticFileOptions
              "Cache-Control", $"public, max-age={cacheMaxAgeOneWeek}");
     }
 });
-
 
 app.UseAuthentication();
 app.UseAuthorization();
