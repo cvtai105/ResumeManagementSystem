@@ -104,6 +104,27 @@ public class DangTuyenDAO(AppDbContext context)
         return result;
     }
     }
+    public async Task<IEnumerable<object>> getHopDongSapHetHan()
+    {
+        using (var context = _context)
+        {
+            var result = await (from dt in context.DangTuyens
+                                join dn in context.DoanhNghieps on dt.DoanhNghiepId equals dn.Id
+                                join ut in context.UngTuyens on dt.Id equals ut.DangTuyenId
+                                where EF.Functions.DateDiffDay(DateTime.Now, dt.NgayKetThuc) <= 20
+                                group new { dt, dn, ut } by new { dt.Id, dn.TenDoanhNghiep, dt.NgayKetThuc, dt.SoLuong } into g
+                                select new 
+                                {
+                                    Id = g.Key.Id,
+                                    TenDoanhNghiep = g.Key.TenDoanhNghiep,
+                                    NgayKetThuc = g.Key.NgayKetThuc,
+                                    SoLuong = g.Key.SoLuong,
+                                    ViTri = g.Count(x => x.ut.DangTuyenId == g.Key.Id)
+                                }).ToListAsync();
+
+            return result;
+        }
+    }
 
     //Tài
     public IEnumerable<DangTuyen> Get(
