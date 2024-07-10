@@ -21,17 +21,17 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 // Cấu hình dịch vụ logging
-builder.Logging.ClearProviders();
-builder.Logging.AddConsole();
-builder.Logging.AddDebug();
+// builder.Logging.ClearProviders();
+// builder.Logging.AddConsole();
+// builder.Logging.AddDebug();
 
-var _logger = new LoggerConfiguration()
-                .MinimumLevel.Debug()
-                .WriteTo.File(path: "info-logs.txt", restrictedToMinimumLevel: LogEventLevel.Information)
-                .WriteTo.File(path: "error-logs.txt", restrictedToMinimumLevel: LogEventLevel.Error) 
-                .CreateLogger();
+// var _logger = new LoggerConfiguration()
+//                 .MinimumLevel.Debug()
+//                 .WriteTo.File(path: "info-logs.txt", restrictedToMinimumLevel: LogEventLevel.Information)
+//                 .WriteTo.File(path: "error-logs.txt", restrictedToMinimumLevel: LogEventLevel.Error) 
+//                 .CreateLogger();
 
-builder.Logging.AddSerilog(_logger);
+// builder.Logging.AddSerilog(_logger);
 
 var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 
@@ -130,37 +130,37 @@ builder.Services.AddAuthorization();
 
 var app = builder.Build();
 
-if (app.Environment.IsDevelopment())
-{
+// if (app.Environment.IsDevelopment())
+// {
     app.UseSwagger();
     app.UseSwaggerUI();
     app.UseDeveloperExceptionPage();
-}
-if (!app.Environment.IsDevelopment())
-{
-    app.UseExceptionHandler("/error");
-    app.UseHsts();
-}
+// }
+// if (!app.Environment.IsDevelopment())
+// {
+//     app.UseExceptionHandler("/error");
+//     app.UseHsts();
+// }
 
 app.UseHttpsRedirection();
-app.UseCors(MyAllowSpecificOrigins);var staticFilesPath = Path.Combine(builder.Environment.ContentRootPath, "StaticFiles");
-if (!Directory.Exists(staticFilesPath))
-{
-    Directory.CreateDirectory(staticFilesPath);
-}
+// app.UseCors(MyAllowSpecificOrigins);var staticFilesPath = Path.Combine(builder.Environment.ContentRootPath, "StaticFiles");
+// if (!Directory.Exists(staticFilesPath))
+// {
+//     Directory.CreateDirectory(staticFilesPath);
+// }
 
-var cacheMaxAgeOneWeek = (60 * 60 * 24 * 7).ToString();
-app.UseStaticFiles(new StaticFileOptions
-{
-    FileProvider = new PhysicalFileProvider( 
-           Path.Combine(builder.Environment.ContentRootPath, "StaticFiles")),
-    RequestPath = "/static-files",
-    OnPrepareResponse = ctx =>
-    {
-        ctx.Context.Response.Headers.Append(
-             "Cache-Control", $"public, max-age={cacheMaxAgeOneWeek}");
-    }
-});
+// var cacheMaxAgeOneWeek = (60 * 60 * 24 * 7).ToString();
+// // app.UseStaticFiles(new StaticFileOptions
+// // {
+// //     FileProvider = new PhysicalFileProvider( 
+// //            Path.Combine(builder.Environment.ContentRootPath, "StaticFiles")),
+// //     RequestPath = "/static-files",
+// //     OnPrepareResponse = ctx =>
+// //     {
+// //         ctx.Context.Response.Headers.Append(
+// //              "Cache-Control", $"public, max-age={cacheMaxAgeOneWeek}");
+// //     }
+// // });
 
 app.UseAuthentication();
 app.UseAuthorization();
