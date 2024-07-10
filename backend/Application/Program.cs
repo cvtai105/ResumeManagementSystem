@@ -136,6 +136,11 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
     app.UseDeveloperExceptionPage();
 }
+if (!app.Environment.IsDevelopment())
+{
+    app.UseExceptionHandler("/error");
+    app.UseHsts();
+}
 
 app.UseHttpsRedirection();
 app.UseCors(MyAllowSpecificOrigins);var staticFilesPath = Path.Combine(builder.Environment.ContentRootPath, "StaticFiles");
