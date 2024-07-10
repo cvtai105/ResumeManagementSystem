@@ -45,3 +45,270 @@
 2024-07-10 17:18:02.297 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5231/swagger/v1/swagger.json - null null
 2024-07-10 17:18:02.397 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5231/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 99.7911ms
 2024-07-10 17:22:01.148 +07:00 [INF] Application is shutting down...
+2024-07-10 18:59:03.294 +07:00 [INF] User profile is available. Using 'C:\Users\cvtai\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-07-10 18:59:03.349 +07:00 [INF] Now listening on: http://localhost:5231
+2024-07-10 18:59:03.349 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-07-10 18:59:03.350 +07:00 [INF] Hosting environment: Development
+2024-07-10 18:59:03.350 +07:00 [INF] Content root path: C:\Users\cvtai\OneDrive\Desktop\ResumeManagementSystem\backend\application
+2024-07-10 18:59:03.539 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5231/swagger/index.html - null null
+2024-07-10 18:59:03.649 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5231/swagger/index.html - 200 null text/html;charset=utf-8 111.357ms
+2024-07-10 18:59:03.669 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5231/_framework/aspnetcore-browser-refresh.js - null null
+2024-07-10 18:59:03.670 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5231/_framework/aspnetcore-browser-refresh.js - 200 13732 application/javascript; charset=utf-8 1.2349ms
+2024-07-10 18:59:03.792 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5231/swagger/v1/swagger.json - null null
+2024-07-10 18:59:03.885 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5231/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 92.7146ms
+2024-07-10 18:59:13.455 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5231/api/recruitments?page=1 - null null
+2024-07-10 18:59:13.465 +07:00 [WRN] Failed to determine the https port for redirect.
+2024-07-10 18:59:13.466 +07:00 [INF] Executing endpoint 'Application.Controllers.RecruitmentsController.GetRecruitments (Application)'
+2024-07-10 18:59:13.481 +07:00 [INF] Route matched with {action = "GetRecruitments", controller = "Recruitments"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetRecruitments(System.String, Int32, System.String, System.String) on controller Application.Controllers.RecruitmentsController (Application).
+2024-07-10 18:59:14.796 +07:00 [INF] Executed DbCommand (67ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [d].[Id], [d].[ChuyenNganh], [d].[DoanhNghiepId], [d].[HinhThucDangTuyenId], [d].[KhuVuc], [d].[MoTa], [d].[MucLuong], [d].[NgayBatDau], [d].[NgayDangKy], [d].[NgayKetThuc], [d].[NhanVienKiemDuyetId], [d].[SoLuong], [d].[TenViTri], [d].[ThoiGianDangTuyen], [d].[TrangThai], [d].[UuDaiId], [d0].[Id], [d0].[DiaChi], [d0].[DienThoai], [d0].[Email], [d0].[Image], [d0].[MaSoThue], [d0].[MatKhau], [d0].[NgayDangKy], [d0].[NguoiDaiDien], [d0].[NhanVienDangKyId], [d0].[TenDoanhNghiep], [d0].[XacNhan]
+FROM [DangTuyens] AS [d]
+INNER JOIN [DoanhNghieps] AS [d0] ON [d].[DoanhNghiepId] = [d0].[Id]
+WHERE [d].[NgayKetThuc] >= GETDATE()
+ORDER BY [d].[Id] DESC
+2024-07-10 18:59:14.876 +07:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType0`4[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.IEnumerable`1[[Models.Entities.DangTuyen, Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-07-10 18:59:14.902 +07:00 [INF] Executed action Application.Controllers.RecruitmentsController.GetRecruitments (Application) in 1417.6948ms
+2024-07-10 18:59:14.902 +07:00 [INF] Executed endpoint 'Application.Controllers.RecruitmentsController.GetRecruitments (Application)'
+2024-07-10 18:59:14.907 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5231/api/recruitments?page=1 - 200 null application/json; charset=utf-8 1452.7673ms
+2024-07-10 19:09:04.666 +07:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5231/api/recruitments?page=1 - null null
+2024-07-10 19:09:04.669 +07:00 [INF] CORS policy execution successful.
+2024-07-10 19:09:04.670 +07:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5231/api/recruitments?page=1 - 204 null null 3.9605ms
+2024-07-10 19:09:04.672 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5231/api/recruitments?page=1 - null null
+2024-07-10 19:09:04.673 +07:00 [INF] CORS policy execution successful.
+2024-07-10 19:09:04.673 +07:00 [INF] Executing endpoint 'Application.Controllers.RecruitmentsController.GetRecruitments (Application)'
+2024-07-10 19:09:04.673 +07:00 [INF] Route matched with {action = "GetRecruitments", controller = "Recruitments"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetRecruitments(System.String, Int32, System.String, System.String) on controller Application.Controllers.RecruitmentsController (Application).
+2024-07-10 19:09:05.152 +07:00 [INF] Executed DbCommand (57ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [d].[Id], [d].[ChuyenNganh], [d].[DoanhNghiepId], [d].[HinhThucDangTuyenId], [d].[KhuVuc], [d].[MoTa], [d].[MucLuong], [d].[NgayBatDau], [d].[NgayDangKy], [d].[NgayKetThuc], [d].[NhanVienKiemDuyetId], [d].[SoLuong], [d].[TenViTri], [d].[ThoiGianDangTuyen], [d].[TrangThai], [d].[UuDaiId], [d0].[Id], [d0].[DiaChi], [d0].[DienThoai], [d0].[Email], [d0].[Image], [d0].[MaSoThue], [d0].[MatKhau], [d0].[NgayDangKy], [d0].[NguoiDaiDien], [d0].[NhanVienDangKyId], [d0].[TenDoanhNghiep], [d0].[XacNhan]
+FROM [DangTuyens] AS [d]
+INNER JOIN [DoanhNghieps] AS [d0] ON [d].[DoanhNghiepId] = [d0].[Id]
+WHERE [d].[NgayKetThuc] >= GETDATE()
+ORDER BY [d].[Id] DESC
+2024-07-10 19:09:05.154 +07:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType0`4[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.IEnumerable`1[[Models.Entities.DangTuyen, Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-07-10 19:09:05.156 +07:00 [INF] Executed action Application.Controllers.RecruitmentsController.GetRecruitments (Application) in 482.171ms
+2024-07-10 19:09:05.156 +07:00 [INF] Executed endpoint 'Application.Controllers.RecruitmentsController.GetRecruitments (Application)'
+2024-07-10 19:09:05.156 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5231/api/recruitments?page=1 - 200 null application/json; charset=utf-8 484.0755ms
+2024-07-10 19:09:05.163 +07:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5231/static-files/images/DoanhNghiep/3.jpg - null null
+2024-07-10 19:09:05.164 +07:00 [INF] CORS policy execution successful.
+2024-07-10 19:09:05.164 +07:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5231/static-files/images/DoanhNghiep/3.jpg - 204 null null 0.6248ms
+2024-07-10 19:09:05.165 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5231/static-files/images/DoanhNghiep/3.jpg - null null
+2024-07-10 19:09:05.179 +07:00 [INF] Sending file. Request path: '/images/DoanhNghiep/3.jpg'. Physical path: 'C:\Users\cvtai\OneDrive\Desktop\ResumeManagementSystem\backend\application\StaticFiles\images\DoanhNghiep\3.jpg'
+2024-07-10 19:09:05.179 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5231/static-files/images/DoanhNghiep/3.jpg - 200 7350 image/jpeg 13.7558ms
+2024-07-10 19:09:09.075 +07:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5231/api/recruitments/9 - null null
+2024-07-10 19:09:09.076 +07:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5231/static-files/images/DoanhNghiep/undefined.jpg - null null
+2024-07-10 19:09:09.076 +07:00 [INF] CORS policy execution successful.
+2024-07-10 19:09:09.076 +07:00 [INF] CORS policy execution successful.
+2024-07-10 19:09:09.076 +07:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5231/api/recruitments/9 - 204 null null 0.5526ms
+2024-07-10 19:09:09.076 +07:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5231/static-files/images/DoanhNghiep/undefined.jpg - 204 null null 0.205ms
+2024-07-10 19:09:09.078 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5231/api/recruitments/9 - null null
+2024-07-10 19:09:09.078 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5231/static-files/images/DoanhNghiep/undefined.jpg - null null
+2024-07-10 19:09:09.078 +07:00 [INF] CORS policy execution successful.
+2024-07-10 19:09:09.078 +07:00 [INF] Executing endpoint 'Application.Controllers.RecruitmentsController.GetRecruitmentById (Application)'
+2024-07-10 19:09:09.078 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5231/static-files/images/DoanhNghiep/undefined.jpg - 404 0 null 0.4043ms
+2024-07-10 19:09:09.078 +07:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5231/static-files/images/DoanhNghiep/undefined.jpg, Response status code: 404
+2024-07-10 19:09:09.082 +07:00 [INF] Route matched with {action = "GetRecruitmentById", controller = "Recruitments"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetRecruitmentById(Int32) on controller Application.Controllers.RecruitmentsController (Application).
+2024-07-10 19:09:09.089 +07:00 [ERR] Get recruitment by id
+2024-07-10 19:09:09.162 +07:00 [WRN] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+2024-07-10 19:09:09.644 +07:00 [INF] Executed DbCommand (464ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[ChuyenNganh], [t].[DoanhNghiepId], [t].[HinhThucDangTuyenId], [t].[KhuVuc], [t].[MoTa], [t].[MucLuong], [t].[NgayBatDau], [t].[NgayDangKy], [t].[NgayKetThuc], [t].[NhanVienKiemDuyetId], [t].[SoLuong], [t].[TenViTri], [t].[ThoiGianDangTuyen], [t].[TrangThai], [t].[UuDaiId], [t].[Id0], [t].[Id1], [t0].[Id], [t0].[DangTuyenId], [t0].[MoTa], [t0].[TenTieuChi], [t].[DiaChi], [t].[DienThoai], [t].[Email], [t].[Image], [t].[MaSoThue], [t].[MatKhau], [t].[NgayDangKy0], [t].[NguoiDaiDien], [t].[NhanVienDangKyId], [t].[TenDoanhNghiep], [t].[XacNhan], [t].[MoTa0], [t].[TenHinhThuc], [u].[Id], [u].[DangTuyenId], [u].[DanhGia], [u].[NgayKiemDuyen], [u].[NgayUngTuyen], [u].[NhanVienKiemDuyenId], [u].[TrangThai], [u].[UngVienId]
+FROM (
+    SELECT TOP(1) [d].[Id], [d].[ChuyenNganh], [d].[DoanhNghiepId], [d].[HinhThucDangTuyenId], [d].[KhuVuc], [d].[MoTa], [d].[MucLuong], [d].[NgayBatDau], [d].[NgayDangKy], [d].[NgayKetThuc], [d].[NhanVienKiemDuyetId], [d].[SoLuong], [d].[TenViTri], [d].[ThoiGianDangTuyen], [d].[TrangThai], [d].[UuDaiId], [d0].[Id] AS [Id0], [d0].[DiaChi], [d0].[DienThoai], [d0].[Email], [d0].[Image], [d0].[MaSoThue], [d0].[MatKhau], [d0].[NgayDangKy] AS [NgayDangKy0], [d0].[NguoiDaiDien], [d0].[NhanVienDangKyId], [d0].[TenDoanhNghiep], [d0].[XacNhan], [h].[Id] AS [Id1], [h].[MoTa] AS [MoTa0], [h].[TenHinhThuc]
+    FROM [DangTuyens] AS [d]
+    INNER JOIN [DoanhNghieps] AS [d0] ON [d].[DoanhNghiepId] = [d0].[Id]
+    LEFT JOIN [HinhThucDangTuyens] AS [h] ON [d].[HinhThucDangTuyenId] = [h].[Id]
+    WHERE [d].[Id] = @__id_0
+) AS [t]
+LEFT JOIN [TieuChiTuyenDungs] AS [t0] ON [t].[Id] = [t0].[DangTuyenId]
+LEFT JOIN [UngTuyens] AS [u] ON [t].[Id] = [u].[DangTuyenId]
+ORDER BY [t].[Id], [t].[Id0], [t].[Id1], [t0].[Id]
+2024-07-10 19:09:09.659 +07:00 [INF] Executing OkObjectResult, writing value of type 'Models.Entities.DangTuyen'.
+2024-07-10 19:09:09.660 +07:00 [INF] Executed action Application.Controllers.RecruitmentsController.GetRecruitmentById (Application) in 578.0296ms
+2024-07-10 19:09:09.660 +07:00 [INF] Executed endpoint 'Application.Controllers.RecruitmentsController.GetRecruitmentById (Application)'
+2024-07-10 19:09:09.661 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5231/api/recruitments/9 - 200 null application/json; charset=utf-8 583.4369ms
+2024-07-10 19:09:10.515 +07:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5231/api/recruitments?page=1 - null null
+2024-07-10 19:09:10.516 +07:00 [INF] CORS policy execution successful.
+2024-07-10 19:09:10.516 +07:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5231/api/recruitments?page=1 - 204 null null 0.551ms
+2024-07-10 19:09:10.521 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5231/api/recruitments?page=1 - null null
+2024-07-10 19:09:10.522 +07:00 [INF] CORS policy execution successful.
+2024-07-10 19:09:10.522 +07:00 [INF] Executing endpoint 'Application.Controllers.RecruitmentsController.GetRecruitments (Application)'
+2024-07-10 19:09:10.522 +07:00 [INF] Route matched with {action = "GetRecruitments", controller = "Recruitments"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetRecruitments(System.String, Int32, System.String, System.String) on controller Application.Controllers.RecruitmentsController (Application).
+2024-07-10 19:09:10.628 +07:00 [INF] Executed DbCommand (104ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [d].[Id], [d].[ChuyenNganh], [d].[DoanhNghiepId], [d].[HinhThucDangTuyenId], [d].[KhuVuc], [d].[MoTa], [d].[MucLuong], [d].[NgayBatDau], [d].[NgayDangKy], [d].[NgayKetThuc], [d].[NhanVienKiemDuyetId], [d].[SoLuong], [d].[TenViTri], [d].[ThoiGianDangTuyen], [d].[TrangThai], [d].[UuDaiId], [d0].[Id], [d0].[DiaChi], [d0].[DienThoai], [d0].[Email], [d0].[Image], [d0].[MaSoThue], [d0].[MatKhau], [d0].[NgayDangKy], [d0].[NguoiDaiDien], [d0].[NhanVienDangKyId], [d0].[TenDoanhNghiep], [d0].[XacNhan]
+FROM [DangTuyens] AS [d]
+INNER JOIN [DoanhNghieps] AS [d0] ON [d].[DoanhNghiepId] = [d0].[Id]
+WHERE [d].[NgayKetThuc] >= GETDATE()
+ORDER BY [d].[Id] DESC
+2024-07-10 19:09:10.678 +07:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType0`4[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.IEnumerable`1[[Models.Entities.DangTuyen, Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-07-10 19:09:10.679 +07:00 [INF] Executed action Application.Controllers.RecruitmentsController.GetRecruitments (Application) in 156.9278ms
+2024-07-10 19:09:10.679 +07:00 [INF] Executed endpoint 'Application.Controllers.RecruitmentsController.GetRecruitments (Application)'
+2024-07-10 19:09:10.679 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5231/api/recruitments?page=1 - 200 null application/json; charset=utf-8 157.8037ms
+2024-07-10 19:09:11.921 +07:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5231/api/recruitments?page=2 - null null
+2024-07-10 19:09:11.921 +07:00 [INF] CORS policy execution successful.
+2024-07-10 19:09:11.921 +07:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5231/api/recruitments?page=2 - 204 null null 0.4069ms
+2024-07-10 19:09:11.923 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5231/api/recruitments?page=2 - null null
+2024-07-10 19:09:11.923 +07:00 [INF] CORS policy execution successful.
+2024-07-10 19:09:11.923 +07:00 [INF] Executing endpoint 'Application.Controllers.RecruitmentsController.GetRecruitments (Application)'
+2024-07-10 19:09:11.923 +07:00 [INF] Route matched with {action = "GetRecruitments", controller = "Recruitments"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetRecruitments(System.String, Int32, System.String, System.String) on controller Application.Controllers.RecruitmentsController (Application).
+2024-07-10 19:09:11.980 +07:00 [INF] Executed DbCommand (55ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [d].[Id], [d].[ChuyenNganh], [d].[DoanhNghiepId], [d].[HinhThucDangTuyenId], [d].[KhuVuc], [d].[MoTa], [d].[MucLuong], [d].[NgayBatDau], [d].[NgayDangKy], [d].[NgayKetThuc], [d].[NhanVienKiemDuyetId], [d].[SoLuong], [d].[TenViTri], [d].[ThoiGianDangTuyen], [d].[TrangThai], [d].[UuDaiId], [d0].[Id], [d0].[DiaChi], [d0].[DienThoai], [d0].[Email], [d0].[Image], [d0].[MaSoThue], [d0].[MatKhau], [d0].[NgayDangKy], [d0].[NguoiDaiDien], [d0].[NhanVienDangKyId], [d0].[TenDoanhNghiep], [d0].[XacNhan]
+FROM [DangTuyens] AS [d]
+INNER JOIN [DoanhNghieps] AS [d0] ON [d].[DoanhNghiepId] = [d0].[Id]
+WHERE [d].[NgayKetThuc] >= GETDATE()
+ORDER BY [d].[Id] DESC
+2024-07-10 19:09:11.980 +07:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType0`4[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.IEnumerable`1[[Models.Entities.DangTuyen, Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-07-10 19:09:11.981 +07:00 [INF] Executed action Application.Controllers.RecruitmentsController.GetRecruitments (Application) in 57.3452ms
+2024-07-10 19:09:11.981 +07:00 [INF] Executed endpoint 'Application.Controllers.RecruitmentsController.GetRecruitments (Application)'
+2024-07-10 19:09:11.981 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5231/api/recruitments?page=2 - 200 null application/json; charset=utf-8 58.0245ms
+2024-07-10 19:09:11.987 +07:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5231/static-files/images/DoanhNghiep/2.jpg - null null
+2024-07-10 19:09:11.987 +07:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5231/static-files/images/DoanhNghiep/1.jpg - null null
+2024-07-10 19:09:11.987 +07:00 [INF] CORS policy execution successful.
+2024-07-10 19:09:11.987 +07:00 [INF] CORS policy execution successful.
+2024-07-10 19:09:11.988 +07:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5231/static-files/images/DoanhNghiep/1.jpg - 204 null null 0.2338ms
+2024-07-10 19:09:11.988 +07:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5231/static-files/images/DoanhNghiep/2.jpg - 204 null null 0.2958ms
+2024-07-10 19:09:11.989 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5231/static-files/images/DoanhNghiep/1.jpg - null null
+2024-07-10 19:09:11.989 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5231/static-files/images/DoanhNghiep/2.jpg - null null
+2024-07-10 19:09:11.999 +07:00 [INF] Sending file. Request path: '/images/DoanhNghiep/2.jpg'. Physical path: 'C:\Users\cvtai\OneDrive\Desktop\ResumeManagementSystem\backend\application\StaticFiles\images\DoanhNghiep\2.jpg'
+2024-07-10 19:09:11.999 +07:00 [INF] Sending file. Request path: '/images/DoanhNghiep/1.jpg'. Physical path: 'C:\Users\cvtai\OneDrive\Desktop\ResumeManagementSystem\backend\application\StaticFiles\images\DoanhNghiep\1.jpg'
+2024-07-10 19:09:11.999 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5231/static-files/images/DoanhNghiep/2.jpg - 200 5279 image/jpeg 10.3503ms
+2024-07-10 19:09:11.999 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5231/static-files/images/DoanhNghiep/1.jpg - 200 7408 image/jpeg 10.3963ms
+2024-07-10 19:09:19.516 +07:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5231/api/recruitments?page=1 - null null
+2024-07-10 19:09:19.517 +07:00 [INF] CORS policy execution successful.
+2024-07-10 19:09:19.517 +07:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5231/api/recruitments?page=1 - 204 null null 0.5145ms
+2024-07-10 19:09:19.518 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5231/api/recruitments?page=1 - null null
+2024-07-10 19:09:19.518 +07:00 [INF] CORS policy execution successful.
+2024-07-10 19:09:19.518 +07:00 [INF] Executing endpoint 'Application.Controllers.RecruitmentsController.GetRecruitments (Application)'
+2024-07-10 19:09:19.518 +07:00 [INF] Route matched with {action = "GetRecruitments", controller = "Recruitments"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetRecruitments(System.String, Int32, System.String, System.String) on controller Application.Controllers.RecruitmentsController (Application).
+2024-07-10 19:09:19.577 +07:00 [INF] Executed DbCommand (57ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [d].[Id], [d].[ChuyenNganh], [d].[DoanhNghiepId], [d].[HinhThucDangTuyenId], [d].[KhuVuc], [d].[MoTa], [d].[MucLuong], [d].[NgayBatDau], [d].[NgayDangKy], [d].[NgayKetThuc], [d].[NhanVienKiemDuyetId], [d].[SoLuong], [d].[TenViTri], [d].[ThoiGianDangTuyen], [d].[TrangThai], [d].[UuDaiId], [d0].[Id], [d0].[DiaChi], [d0].[DienThoai], [d0].[Email], [d0].[Image], [d0].[MaSoThue], [d0].[MatKhau], [d0].[NgayDangKy], [d0].[NguoiDaiDien], [d0].[NhanVienDangKyId], [d0].[TenDoanhNghiep], [d0].[XacNhan]
+FROM [DangTuyens] AS [d]
+INNER JOIN [DoanhNghieps] AS [d0] ON [d].[DoanhNghiepId] = [d0].[Id]
+WHERE [d].[NgayKetThuc] >= GETDATE()
+ORDER BY [d].[Id] DESC
+2024-07-10 19:09:19.578 +07:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType0`4[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.IEnumerable`1[[Models.Entities.DangTuyen, Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-07-10 19:09:19.578 +07:00 [INF] Executed action Application.Controllers.RecruitmentsController.GetRecruitments (Application) in 59.9688ms
+2024-07-10 19:09:19.578 +07:00 [INF] Executed endpoint 'Application.Controllers.RecruitmentsController.GetRecruitments (Application)'
+2024-07-10 19:09:19.578 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5231/api/recruitments?page=1 - 200 null application/json; charset=utf-8 60.4279ms
+2024-07-10 19:09:21.061 +07:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5231/api/recruitments/9 - null null
+2024-07-10 19:09:21.061 +07:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5231/static-files/images/DoanhNghiep/undefined.jpg - null null
+2024-07-10 19:09:21.061 +07:00 [INF] CORS policy execution successful.
+2024-07-10 19:09:21.061 +07:00 [INF] CORS policy execution successful.
+2024-07-10 19:09:21.061 +07:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5231/api/recruitments/9 - 204 null null 0.3783ms
+2024-07-10 19:09:21.061 +07:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5231/static-files/images/DoanhNghiep/undefined.jpg - 204 null null 0.3767ms
+2024-07-10 19:09:21.063 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5231/api/recruitments/9 - null null
+2024-07-10 19:09:21.063 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5231/static-files/images/DoanhNghiep/undefined.jpg - null null
+2024-07-10 19:09:21.063 +07:00 [INF] CORS policy execution successful.
+2024-07-10 19:09:21.064 +07:00 [INF] Executing endpoint 'Application.Controllers.RecruitmentsController.GetRecruitmentById (Application)'
+2024-07-10 19:09:21.064 +07:00 [INF] Route matched with {action = "GetRecruitmentById", controller = "Recruitments"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetRecruitmentById(Int32) on controller Application.Controllers.RecruitmentsController (Application).
+2024-07-10 19:09:21.064 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5231/static-files/images/DoanhNghiep/undefined.jpg - 404 0 null 0.3426ms
+2024-07-10 19:09:21.064 +07:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5231/static-files/images/DoanhNghiep/undefined.jpg, Response status code: 404
+2024-07-10 19:09:21.064 +07:00 [ERR] Get recruitment by id
+2024-07-10 19:09:21.119 +07:00 [INF] Executed DbCommand (54ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[ChuyenNganh], [t].[DoanhNghiepId], [t].[HinhThucDangTuyenId], [t].[KhuVuc], [t].[MoTa], [t].[MucLuong], [t].[NgayBatDau], [t].[NgayDangKy], [t].[NgayKetThuc], [t].[NhanVienKiemDuyetId], [t].[SoLuong], [t].[TenViTri], [t].[ThoiGianDangTuyen], [t].[TrangThai], [t].[UuDaiId], [t].[Id0], [t].[Id1], [t0].[Id], [t0].[DangTuyenId], [t0].[MoTa], [t0].[TenTieuChi], [t].[DiaChi], [t].[DienThoai], [t].[Email], [t].[Image], [t].[MaSoThue], [t].[MatKhau], [t].[NgayDangKy0], [t].[NguoiDaiDien], [t].[NhanVienDangKyId], [t].[TenDoanhNghiep], [t].[XacNhan], [t].[MoTa0], [t].[TenHinhThuc], [u].[Id], [u].[DangTuyenId], [u].[DanhGia], [u].[NgayKiemDuyen], [u].[NgayUngTuyen], [u].[NhanVienKiemDuyenId], [u].[TrangThai], [u].[UngVienId]
+FROM (
+    SELECT TOP(1) [d].[Id], [d].[ChuyenNganh], [d].[DoanhNghiepId], [d].[HinhThucDangTuyenId], [d].[KhuVuc], [d].[MoTa], [d].[MucLuong], [d].[NgayBatDau], [d].[NgayDangKy], [d].[NgayKetThuc], [d].[NhanVienKiemDuyetId], [d].[SoLuong], [d].[TenViTri], [d].[ThoiGianDangTuyen], [d].[TrangThai], [d].[UuDaiId], [d0].[Id] AS [Id0], [d0].[DiaChi], [d0].[DienThoai], [d0].[Email], [d0].[Image], [d0].[MaSoThue], [d0].[MatKhau], [d0].[NgayDangKy] AS [NgayDangKy0], [d0].[NguoiDaiDien], [d0].[NhanVienDangKyId], [d0].[TenDoanhNghiep], [d0].[XacNhan], [h].[Id] AS [Id1], [h].[MoTa] AS [MoTa0], [h].[TenHinhThuc]
+    FROM [DangTuyens] AS [d]
+    INNER JOIN [DoanhNghieps] AS [d0] ON [d].[DoanhNghiepId] = [d0].[Id]
+    LEFT JOIN [HinhThucDangTuyens] AS [h] ON [d].[HinhThucDangTuyenId] = [h].[Id]
+    WHERE [d].[Id] = @__id_0
+) AS [t]
+LEFT JOIN [TieuChiTuyenDungs] AS [t0] ON [t].[Id] = [t0].[DangTuyenId]
+LEFT JOIN [UngTuyens] AS [u] ON [t].[Id] = [u].[DangTuyenId]
+ORDER BY [t].[Id], [t].[Id0], [t].[Id1], [t0].[Id]
+2024-07-10 19:09:21.120 +07:00 [INF] Executing OkObjectResult, writing value of type 'Models.Entities.DangTuyen'.
+2024-07-10 19:09:21.120 +07:00 [INF] Executed action Application.Controllers.RecruitmentsController.GetRecruitmentById (Application) in 56.8246ms
+2024-07-10 19:09:21.120 +07:00 [INF] Executed endpoint 'Application.Controllers.RecruitmentsController.GetRecruitmentById (Application)'
+2024-07-10 19:09:21.121 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5231/api/recruitments/9 - 200 null application/json; charset=utf-8 57.3816ms
+2024-07-10 19:09:25.942 +07:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5231/api/auth/ungvien - null null
+2024-07-10 19:09:25.942 +07:00 [INF] CORS policy execution successful.
+2024-07-10 19:09:25.942 +07:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5231/api/auth/ungvien - 204 null null 0.47ms
+2024-07-10 19:09:25.944 +07:00 [INF] Request starting HTTP/1.1 POST http://localhost:5231/api/auth/ungvien - application/json 49
+2024-07-10 19:09:25.944 +07:00 [INF] CORS policy execution successful.
+2024-07-10 19:09:25.944 +07:00 [INF] Executing endpoint 'Application.Controllers.Auth.UngVienAuthorize (Application)'
+2024-07-10 19:09:25.948 +07:00 [INF] Route matched with {action = "UngVienAuthorize", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UngVienAuthorize(Models.RequestRecords.LoginRecord) on controller Application.Controllers.Auth (Application).
+2024-07-10 19:09:26.018 +07:00 [INF] Executed DbCommand (51ms) [Parameters=[@__email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[AnhDaiDien], [u].[CCCD], [u].[Cv], [u].[DiaChi], [u].[Email], [u].[GioiTinh], [u].[HoTen], [u].[MatKhau], [u].[NgaySinh], [u].[SoDienThoai], [u].[TrinhDoChuyenMon], [u].[TrinhDoHocVan]
+FROM [UngViens] AS [u]
+WHERE [u].[Email] = @__email_0
+2024-07-10 19:09:26.046 +07:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType0`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-07-10 19:09:26.047 +07:00 [INF] Executed action Application.Controllers.Auth.UngVienAuthorize (Application) in 98.9132ms
+2024-07-10 19:09:26.047 +07:00 [INF] Executed endpoint 'Application.Controllers.Auth.UngVienAuthorize (Application)'
+2024-07-10 19:09:26.048 +07:00 [INF] Request finished HTTP/1.1 POST http://localhost:5231/api/auth/ungvien - 200 null application/json; charset=utf-8 103.8579ms
+2024-07-10 19:09:26.064 +07:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5231/api/recruitments?page=1 - null null
+2024-07-10 19:09:26.064 +07:00 [INF] CORS policy execution successful.
+2024-07-10 19:09:26.064 +07:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5231/api/recruitments?page=1 - 204 null null 0.3053ms
+2024-07-10 19:09:26.069 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5231/api/recruitments?page=1 - null null
+2024-07-10 19:09:26.069 +07:00 [INF] CORS policy execution successful.
+2024-07-10 19:09:26.070 +07:00 [INF] Executing endpoint 'Application.Controllers.RecruitmentsController.GetRecruitments (Application)'
+2024-07-10 19:09:26.070 +07:00 [INF] Route matched with {action = "GetRecruitments", controller = "Recruitments"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetRecruitments(System.String, Int32, System.String, System.String) on controller Application.Controllers.RecruitmentsController (Application).
+2024-07-10 19:09:26.124 +07:00 [INF] Executed DbCommand (53ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [d].[Id], [d].[ChuyenNganh], [d].[DoanhNghiepId], [d].[HinhThucDangTuyenId], [d].[KhuVuc], [d].[MoTa], [d].[MucLuong], [d].[NgayBatDau], [d].[NgayDangKy], [d].[NgayKetThuc], [d].[NhanVienKiemDuyetId], [d].[SoLuong], [d].[TenViTri], [d].[ThoiGianDangTuyen], [d].[TrangThai], [d].[UuDaiId], [d0].[Id], [d0].[DiaChi], [d0].[DienThoai], [d0].[Email], [d0].[Image], [d0].[MaSoThue], [d0].[MatKhau], [d0].[NgayDangKy], [d0].[NguoiDaiDien], [d0].[NhanVienDangKyId], [d0].[TenDoanhNghiep], [d0].[XacNhan]
+FROM [DangTuyens] AS [d]
+INNER JOIN [DoanhNghieps] AS [d0] ON [d].[DoanhNghiepId] = [d0].[Id]
+WHERE [d].[NgayKetThuc] >= GETDATE()
+ORDER BY [d].[Id] DESC
+2024-07-10 19:09:26.125 +07:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType0`4[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.IEnumerable`1[[Models.Entities.DangTuyen, Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-07-10 19:09:26.125 +07:00 [INF] Executed action Application.Controllers.RecruitmentsController.GetRecruitments (Application) in 55.503ms
+2024-07-10 19:09:26.125 +07:00 [INF] Executed endpoint 'Application.Controllers.RecruitmentsController.GetRecruitments (Application)'
+2024-07-10 19:09:26.125 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5231/api/recruitments?page=1 - 200 null application/json; charset=utf-8 56.1429ms
+2024-07-10 19:09:27.599 +07:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5231/api/recruitments/9 - null null
+2024-07-10 19:09:27.599 +07:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5231/static-files/images/DoanhNghiep/undefined.jpg - null null
+2024-07-10 19:09:27.599 +07:00 [INF] CORS policy execution successful.
+2024-07-10 19:09:27.599 +07:00 [INF] CORS policy execution successful.
+2024-07-10 19:09:27.599 +07:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5231/api/recruitments/9 - 204 null null 0.3982ms
+2024-07-10 19:09:27.599 +07:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5231/static-files/images/DoanhNghiep/undefined.jpg - 204 null null 0.3982ms
+2024-07-10 19:09:27.603 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5231/api/recruitments/9 - null null
+2024-07-10 19:09:27.603 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5231/static-files/images/DoanhNghiep/undefined.jpg - null null
+2024-07-10 19:09:27.603 +07:00 [INF] CORS policy execution successful.
+2024-07-10 19:09:27.603 +07:00 [INF] Executing endpoint 'Application.Controllers.RecruitmentsController.GetRecruitmentById (Application)'
+2024-07-10 19:09:27.603 +07:00 [INF] Route matched with {action = "GetRecruitmentById", controller = "Recruitments"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetRecruitmentById(Int32) on controller Application.Controllers.RecruitmentsController (Application).
+2024-07-10 19:09:27.603 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5231/static-files/images/DoanhNghiep/undefined.jpg - 404 0 null 0.3945ms
+2024-07-10 19:09:27.603 +07:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5231/static-files/images/DoanhNghiep/undefined.jpg, Response status code: 404
+2024-07-10 19:09:27.603 +07:00 [ERR] Get recruitment by id
+2024-07-10 19:09:27.657 +07:00 [INF] Executed DbCommand (53ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[ChuyenNganh], [t].[DoanhNghiepId], [t].[HinhThucDangTuyenId], [t].[KhuVuc], [t].[MoTa], [t].[MucLuong], [t].[NgayBatDau], [t].[NgayDangKy], [t].[NgayKetThuc], [t].[NhanVienKiemDuyetId], [t].[SoLuong], [t].[TenViTri], [t].[ThoiGianDangTuyen], [t].[TrangThai], [t].[UuDaiId], [t].[Id0], [t].[Id1], [t0].[Id], [t0].[DangTuyenId], [t0].[MoTa], [t0].[TenTieuChi], [t].[DiaChi], [t].[DienThoai], [t].[Email], [t].[Image], [t].[MaSoThue], [t].[MatKhau], [t].[NgayDangKy0], [t].[NguoiDaiDien], [t].[NhanVienDangKyId], [t].[TenDoanhNghiep], [t].[XacNhan], [t].[MoTa0], [t].[TenHinhThuc], [u].[Id], [u].[DangTuyenId], [u].[DanhGia], [u].[NgayKiemDuyen], [u].[NgayUngTuyen], [u].[NhanVienKiemDuyenId], [u].[TrangThai], [u].[UngVienId]
+FROM (
+    SELECT TOP(1) [d].[Id], [d].[ChuyenNganh], [d].[DoanhNghiepId], [d].[HinhThucDangTuyenId], [d].[KhuVuc], [d].[MoTa], [d].[MucLuong], [d].[NgayBatDau], [d].[NgayDangKy], [d].[NgayKetThuc], [d].[NhanVienKiemDuyetId], [d].[SoLuong], [d].[TenViTri], [d].[ThoiGianDangTuyen], [d].[TrangThai], [d].[UuDaiId], [d0].[Id] AS [Id0], [d0].[DiaChi], [d0].[DienThoai], [d0].[Email], [d0].[Image], [d0].[MaSoThue], [d0].[MatKhau], [d0].[NgayDangKy] AS [NgayDangKy0], [d0].[NguoiDaiDien], [d0].[NhanVienDangKyId], [d0].[TenDoanhNghiep], [d0].[XacNhan], [h].[Id] AS [Id1], [h].[MoTa] AS [MoTa0], [h].[TenHinhThuc]
+    FROM [DangTuyens] AS [d]
+    INNER JOIN [DoanhNghieps] AS [d0] ON [d].[DoanhNghiepId] = [d0].[Id]
+    LEFT JOIN [HinhThucDangTuyens] AS [h] ON [d].[HinhThucDangTuyenId] = [h].[Id]
+    WHERE [d].[Id] = @__id_0
+) AS [t]
+LEFT JOIN [TieuChiTuyenDungs] AS [t0] ON [t].[Id] = [t0].[DangTuyenId]
+LEFT JOIN [UngTuyens] AS [u] ON [t].[Id] = [u].[DangTuyenId]
+ORDER BY [t].[Id], [t].[Id0], [t].[Id1], [t0].[Id]
+2024-07-10 19:09:27.658 +07:00 [INF] Executing OkObjectResult, writing value of type 'Models.Entities.DangTuyen'.
+2024-07-10 19:09:27.658 +07:00 [INF] Executed action Application.Controllers.RecruitmentsController.GetRecruitmentById (Application) in 54.9168ms
+2024-07-10 19:09:27.658 +07:00 [INF] Executed endpoint 'Application.Controllers.RecruitmentsController.GetRecruitmentById (Application)'
+2024-07-10 19:09:27.658 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5231/api/recruitments/9 - 200 null application/json; charset=utf-8 55.5104ms
+2024-07-10 19:09:31.869 +07:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5231/api/auth/ungvien - null null
+2024-07-10 19:09:31.869 +07:00 [INF] CORS policy execution successful.
+2024-07-10 19:09:31.870 +07:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5231/api/auth/ungvien - 204 null null 0.368ms
+2024-07-10 19:09:31.871 +07:00 [INF] Request starting HTTP/1.1 POST http://localhost:5231/api/auth/ungvien - application/json 49
+2024-07-10 19:09:31.871 +07:00 [INF] CORS policy execution successful.
+2024-07-10 19:09:31.871 +07:00 [INF] Executing endpoint 'Application.Controllers.Auth.UngVienAuthorize (Application)'
+2024-07-10 19:09:31.871 +07:00 [INF] Route matched with {action = "UngVienAuthorize", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UngVienAuthorize(Models.RequestRecords.LoginRecord) on controller Application.Controllers.Auth (Application).
+2024-07-10 19:09:31.928 +07:00 [INF] Executed DbCommand (54ms) [Parameters=[@__email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[AnhDaiDien], [u].[CCCD], [u].[Cv], [u].[DiaChi], [u].[Email], [u].[GioiTinh], [u].[HoTen], [u].[MatKhau], [u].[NgaySinh], [u].[SoDienThoai], [u].[TrinhDoChuyenMon], [u].[TrinhDoHocVan]
+FROM [UngViens] AS [u]
+WHERE [u].[Email] = @__email_0
+2024-07-10 19:09:31.929 +07:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType0`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-07-10 19:09:31.929 +07:00 [INF] Executed action Application.Controllers.Auth.UngVienAuthorize (Application) in 57.143ms
+2024-07-10 19:09:31.929 +07:00 [INF] Executed endpoint 'Application.Controllers.Auth.UngVienAuthorize (Application)'
+2024-07-10 19:09:31.929 +07:00 [INF] Request finished HTTP/1.1 POST http://localhost:5231/api/auth/ungvien - 200 null application/json; charset=utf-8 57.8864ms
+2024-07-10 19:09:31.944 +07:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5231/api/recruitments?page=1 - null null
+2024-07-10 19:09:31.944 +07:00 [INF] CORS policy execution successful.
+2024-07-10 19:09:31.944 +07:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5231/api/recruitments?page=1 - 204 null null 0.3179ms
+2024-07-10 19:09:31.946 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5231/api/recruitments?page=1 - null null
+2024-07-10 19:09:31.946 +07:00 [INF] CORS policy execution successful.
+2024-07-10 19:09:31.946 +07:00 [INF] Executing endpoint 'Application.Controllers.RecruitmentsController.GetRecruitments (Application)'
+2024-07-10 19:09:31.946 +07:00 [INF] Route matched with {action = "GetRecruitments", controller = "Recruitments"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetRecruitments(System.String, Int32, System.String, System.String) on controller Application.Controllers.RecruitmentsController (Application).
+2024-07-10 19:09:32.002 +07:00 [INF] Executed DbCommand (55ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [d].[Id], [d].[ChuyenNganh], [d].[DoanhNghiepId], [d].[HinhThucDangTuyenId], [d].[KhuVuc], [d].[MoTa], [d].[MucLuong], [d].[NgayBatDau], [d].[NgayDangKy], [d].[NgayKetThuc], [d].[NhanVienKiemDuyetId], [d].[SoLuong], [d].[TenViTri], [d].[ThoiGianDangTuyen], [d].[TrangThai], [d].[UuDaiId], [d0].[Id], [d0].[DiaChi], [d0].[DienThoai], [d0].[Email], [d0].[Image], [d0].[MaSoThue], [d0].[MatKhau], [d0].[NgayDangKy], [d0].[NguoiDaiDien], [d0].[NhanVienDangKyId], [d0].[TenDoanhNghiep], [d0].[XacNhan]
+FROM [DangTuyens] AS [d]
+INNER JOIN [DoanhNghieps] AS [d0] ON [d].[DoanhNghiepId] = [d0].[Id]
+WHERE [d].[NgayKetThuc] >= GETDATE()
+ORDER BY [d].[Id] DESC
+2024-07-10 19:09:32.003 +07:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType0`4[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.IEnumerable`1[[Models.Entities.DangTuyen, Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-07-10 19:09:32.003 +07:00 [INF] Executed action Application.Controllers.RecruitmentsController.GetRecruitments (Application) in 56.672ms
+2024-07-10 19:09:32.003 +07:00 [INF] Executed endpoint 'Application.Controllers.RecruitmentsController.GetRecruitments (Application)'
+2024-07-10 19:09:32.003 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5231/api/recruitments?page=1 - 200 null application/json; charset=utf-8 57.0752ms
+2024-07-10 19:09:39.202 +07:00 [INF] Application is shutting down...
