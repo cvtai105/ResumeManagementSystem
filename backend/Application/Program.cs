@@ -132,7 +132,6 @@ var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
 {
-    app.UseHttpLogging();
     app.UseSwagger();
     app.UseSwaggerUI();
     app.UseDeveloperExceptionPage();
