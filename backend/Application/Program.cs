@@ -145,23 +145,23 @@ var app = builder.Build();
 app.UseHttpsRedirection();
 app.UseCors(MyAllowSpecificOrigins);
 var staticFilesPath = Path.Combine(builder.Environment.ContentRootPath, "StaticFiles");
-// if (!Directory.Exists(staticFilesPath))
-// {
-//     Directory.CreateDirectory(staticFilesPath);
-// }
+if (!Directory.Exists(staticFilesPath))
+{
+    Directory.CreateDirectory(staticFilesPath);
+}
 
-// var cacheMaxAgeOneWeek = (60 * 60 * 24 * 7).ToString();
-// // app.UseStaticFiles(new StaticFileOptions
-// // {
-// //     FileProvider = new PhysicalFileProvider( 
-// //            Path.Combine(builder.Environment.ContentRootPath, "StaticFiles")),
-// //     RequestPath = "/static-files",
-// //     OnPrepareResponse = ctx =>
-// //     {
-// //         ctx.Context.Response.Headers.Append(
-// //              "Cache-Control", $"public, max-age={cacheMaxAgeOneWeek}");
-// //     }
-// // });
+var cacheMaxAgeOneWeek = (60 * 60 * 24 * 7).ToString();
+app.UseStaticFiles(new StaticFileOptions
+{
+    FileProvider = new PhysicalFileProvider( 
+           Path.Combine(builder.Environment.ContentRootPath, "StaticFiles")),
+    RequestPath = "/static-files",
+    OnPrepareResponse = ctx =>
+    {
+        ctx.Context.Response.Headers.Append(
+             "Cache-Control", $"public, max-age={cacheMaxAgeOneWeek}");
+    }
+});
 
 app.UseAuthentication();
 app.UseAuthorization();
