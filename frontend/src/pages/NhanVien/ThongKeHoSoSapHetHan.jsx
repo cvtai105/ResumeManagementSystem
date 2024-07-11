@@ -10,7 +10,7 @@ const fetchThongKe = async () => {
 const ThongKeHoSoSapHetHan = () => {
     const [data, setData] = useState([]);
     useEffect(() => {
-        fetchthongKe();
+        fetchThongKe().then(data => setData(data));
     }, []);
 
     return (
@@ -31,10 +31,10 @@ const ThongKeHoSoSapHetHan = () => {
                     <tbody>
                         {data.map((item, index) => (
                             <tr key={index} className="border-b hover:bg-gray-50">
-                                <td className="py-2 px-4 border-r">{item.maHopDong}</td>
-                                <td className="py-2 px-4 border-r">{item.congTy}</td>
-                                <td className="py-2 px-4 border-r">{item.ngayToiHan}</td>
-                                <td className="py-2 px-4 border-r">{item.ungVien}</td>
+                                <td className="py-2 px-4 border-r">{item.id}</td>
+                                <td className="py-2 px-4 border-r">{item.tenDoanhNghiep}</td>
+                                <td className="py-2 px-4 border-r">{item.ngayKetThuc}</td>
+                                <td className="py-2 px-4 border-r">{item.soLuong}</td>
                                 <td className="py-2 px-4 border-r">{item.viTri}</td>
                             </tr>
                         ))}
