@@ -76,9 +76,14 @@ namespace Application.Controllers{
         [HttpGet("filter")]
         public async Task<ActionResult<IEnumerable<DangTuyen>>> GetFilteredDangTuyen()
         {
-            var today = DateTime.Today;
-            var filteredDangTuyens = await _dangTuyenBL.GetFilteredDangTuyen(today);
-            return Ok(filteredDangTuyens);
+            try{
+                var today = DateTime.Today;
+                var filteredDangTuyens = await _dangTuyenBL.GetFilteredDangTuyen(today);
+                return Ok(filteredDangTuyens);
+            }
+            catch{
+                return NotFound();
+            }
         }
         [HttpGet("/api/doanhnghiep/dangtuyen/{id}")]
         public async Task<ActionResult<IEnumerable<Object>>> GetHoSoUngTuyenThuocIDUngTuyen(int id)

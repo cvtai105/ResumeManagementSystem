@@ -69,7 +69,7 @@ public class DangTuyenDAO(AppDbContext context)
         var result = await query.ToListAsync();
 
         return result.Where(dt => 
-            dt.SoLuong == dt.UngTuyens.Count || dt.NgayKetThuc <= today).ToList();
+            dt.SoLuong == dt.UngTuyens?.Count || dt.NgayKetThuc <= today).ToList();
     }
     public async Task<IEnumerable<Object>> GetHoSoUngTuyenThuocIDUngTuyen(int id)
     {
