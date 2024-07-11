@@ -87,6 +87,8 @@ namespace Application.Controllers
 
                 var cookieOptions = new CookieOptions
                 {
+                    SameSite = SameSiteMode.None,
+                    Secure = true,
                     HttpOnly = false,
                     Expires = DateTime.UtcNow.AddHours(1)
                 };

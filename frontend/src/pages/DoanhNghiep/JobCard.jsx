@@ -51,7 +51,7 @@ const JobCard = ({ jobName, salaryRange, expiredDate, positionCount ,applicantsC
                     <div key={index} className="grid grid-cols-10 gap-4 p-2 border-b border-gray-200 last:border-0 items-center">
                       <div className="col-span-1">
                         { hasReloadImage && <img
-                            src={`${hostUngVienImgUrl}/default.png`}
+                            src={'%PUBLIC_URL%/default.png'}
                             alt="Avatar"
                             className="w-12 h-12 rounded-full"
                         />}
