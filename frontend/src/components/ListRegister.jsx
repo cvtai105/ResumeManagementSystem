@@ -160,8 +160,9 @@ function DataTable({ registerId, handleRowClick, step }) {
                     {row.ungVienId}
                   </td>
                   <td className="px-6  border border-gray-300 text-sm">
-                    {row.id
-                      ? new Date(row.ngayUngTuyen).toLocaleDateString("vn")
+                    {row.idm ?
+                      row.ngayUngTuyen ? 
+                      new Date(row.ngayUngTuyen).toLocaleDateString("vn") : ''
                       : ""}
                   </td>
                   <td className="px-6  border border-gray-300 text-sm">

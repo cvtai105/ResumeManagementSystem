@@ -27,7 +27,17 @@ namespace Application.Controllers
             }
             return Ok(hosoungtuyen);
         }
-
+        [HttpGet("{fileName}")]
+        public IActionResult GetPdf(string fileName)
+        {
+            var filePath = Path.Combine(Directory.GetCurrentDirectory(), "StaticFiles", "pdfs", "CVs", fileName);
+            if (!System.IO.File.Exists(filePath))
+            {
+                return NotFound();
+            }
+            var fileBytes = System.IO.File.ReadAllBytes(filePath);
+            return File(fileBytes, "application/pdf");
+        }
         
     }
 }

@@ -33,7 +33,7 @@ namespace Application.Controllers
         [HttpPut("update/{id}")]
         public async Task<IActionResult> UpdateStatus(int id, [FromBody] UpdateStatusDto updateStatusDto)
         {
-            var result = await _ungTuyenBL.UpdateStatus(id, updateStatusDto.Status);
+            var result = await _ungTuyenBL.UpdateStatus(id, updateStatusDto.Status, updateStatusDto.EmployeeId);
             if (!result)
             {
                 return BadRequest("Failed to update status");

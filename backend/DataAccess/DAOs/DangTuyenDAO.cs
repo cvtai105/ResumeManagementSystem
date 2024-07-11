@@ -1,4 +1,5 @@
 using DataAccess.Data;
+using DataAccess.Migrations;
 using Microsoft.EntityFrameworkCore;
 using Models.Entities;
 using System.Collections.Generic;
@@ -66,10 +67,11 @@ public class DangTuyenDAO(AppDbContext context)
             .Include(dt => dt.UngTuyens)
             .Include(dt => dt.DoanhNghiep);
 
+
         var result = await query.ToListAsync();
 
         return result.Where(dt => 
-            dt.SoLuong == dt.UngTuyens?.Count || dt.NgayKetThuc <= today).ToList();
+            dt.SoLuong == dt.UngTuyens?.Count || dt.NgayKetThuc <= today && dt.UngTuyens.All(ut => ut.TrangThai != "Đã xử lý - Đạt" && ut.TrangThai != "Đã xử lý - Không đạt")).ToList();
     }
     public async Task<IEnumerable<Object>> GetHoSoUngTuyenThuocIDUngTuyen(int id)
     {

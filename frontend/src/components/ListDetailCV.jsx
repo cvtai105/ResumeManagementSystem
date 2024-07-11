@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import PdfViewer from "./PDFViewer"
 import "../index.css";
 function ListDetailCV({ formData }) {
   let [data, setDangTuyens] = useState([]);
@@ -110,8 +111,21 @@ function ListDetailCV({ formData }) {
     }
     return paginationButtons;
   };
+  const [showPdfViewer, setShowPdfViewer] = useState(false);
+  const [selectedPdf, setSelectedPdf] = useState('');
+  const handleButtonClick = (fileName) => {
+    document.getElementById("la").innerText = fileName;
+    setSelectedPdf(fileName);
+    setShowPdfViewer(true);
+  };
   return (
     <div className="flex justify-right items-center mt-20 bg-gray-100 ">
+      <div id = 'la'></div>
+      {/* {showPdfViewer && (
+        <div className="w-full max-w-4xl mb-6">
+          <PdfViewer fileName={selectedPdf} />
+        </div>
+      )} */}
       <div className="bg-white shadow-lg rounded-lg p-6 w-full max-w-4xl">
         <div className="overflow-x-auto">
           <h4 className="mb-2">DANH SÁCH HỒ SƠ</h4>
@@ -127,6 +141,8 @@ function ListDetailCV({ formData }) {
                 <th className="bg-grey px-6 py-3 border border-gray-300 text-left text-sm font-medium text-gray-700">
                   Mô tả thêm
                 </th>
+                <th className="bg-grey px-6 py-3 border border-gray-300 text-left text-sm font-medium text-gray-700">
+                </th>
               </tr>
             </thead>
             <tbody>
@@ -141,6 +157,15 @@ function ListDetailCV({ formData }) {
                   <td className="px-6  border border-gray-300 text-sm">
                     {row.moTa}
                   </td>
+                  <td className="px-6  border border-gray-300 text-sm">
+                      {
+                        row.id ? 
+                        <button onClick={() => handleButtonClick(row.fileHoSo)} className='btn-dark py-1 px-2 rounded text-sm'>
+                          Chọn
+                        </button> : ''  
+                      }
+                      
+                    </td>
                 </tr>
               ))}
             </tbody>

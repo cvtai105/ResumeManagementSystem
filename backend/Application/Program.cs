@@ -87,6 +87,17 @@ builder.Services.AddScoped<UngTuyenDAO>();
 builder.Services.AddScoped<HoSoUngTuyenBL>();
 builder.Services.AddScoped<HoSoUngTuyenDAO>();
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAllOrigins",
+        builder =>
+        {
+            builder.AllowAnyOrigin()
+                   .AllowAnyMethod()
+                   .AllowAnyHeader();
+        });
+});
+
 builder.Services.AddControllers();
 builder.Services.AddAuthentication(options =>
 {

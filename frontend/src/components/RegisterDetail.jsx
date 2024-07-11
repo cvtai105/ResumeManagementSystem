@@ -65,7 +65,7 @@ function RegistrationDetails({nextStep, selectedRegister, setFormData, formData}
             Ngày lập phiếu:
           </label>
           <input
-            value={selectedRegister?.id ? new Date(selectedRegister?.ngayUngTuyen).toLocaleDateString('vn') || '' : ''}
+            value={selectedRegister?.id ? selectedRegister?.ngayUngTuyen ? new Date(selectedRegister?.ngayUngTuyen).toLocaleDateString('vn'): '' : ''}
             type="text"
             id="creationDate"
             placeholder="12/12/2022"

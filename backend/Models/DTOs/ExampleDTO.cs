@@ -14,5 +14,6 @@ namespace Models.DTOs
     public class UpdateStatusDto
     {
         public string Status { get; set; } = String.Empty;
+        public string EmployeeId { get; set; } = String.Empty;
     }
 }
