@@ -155,6 +155,10 @@ namespace BusinessLogic
 
             return info;
         }
+        public async Task<IEnumerable<Object>> getHopDongSapHetHan()
+        {
+            return await _dangTuyenDAO.getHopDongSapHetHan();
+        }
 
         public  async Task<IEnumerable<DangTuyen>> ListRecruitmentForCompany(int doanhNghiepId)
         {
