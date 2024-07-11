@@ -8,10 +8,14 @@ namespace BusinessLogic
     {
         private readonly NhanVienDAO _nhanVienDAO = nhanVienDAO;
 
-        public async Task<bool> IsValidUser(LoginRecord loginRecord)
+        public async Task<NhanVien?> IsValidUser(LoginRecord loginRecord)
         {   
             NhanVien? nhanVien = await _nhanVienDAO.GetByEmail(loginRecord.Email);
-            return nhanVien != null && nhanVien.MatKhau == loginRecord.Password;
+            if (nhanVien != null && nhanVien.MatKhau == loginRecord.Password)
+            {
+                return nhanVien;
+            }
+            return null;
         }
 
         public async Task<NhanVien> RegisterUser(NhanVien nhanVien)

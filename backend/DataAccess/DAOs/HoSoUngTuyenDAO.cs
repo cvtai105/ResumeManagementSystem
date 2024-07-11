@@ -16,5 +16,12 @@ public class HoSoUngTuyenDAO(AppDbContext context)
             .Where(d => d.UngTuyenId == id)
             .ToListAsync();
     }
+
+    public async Task<HoSoUngTuyen> Add(HoSoUngTuyen hoSoUngTuyen)
+    {
+        await _context.HoSoUngTuyens.AddAsync(hoSoUngTuyen);
+        await _context.SaveChangesAsync();
+        return hoSoUngTuyen;
+    }
     
 }

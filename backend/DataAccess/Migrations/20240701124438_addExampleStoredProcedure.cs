@@ -12,7 +12,7 @@ namespace DataAccess.Migrations
         {
         //Them procedure tại đây
             migrationBuilder.Sql(@"
-                CREATE PROCEDURE GetNhanVienInfo
+                CREATE or ALTER PROCEDURE  GetNhanVienInfo
                     @Email NVARCHAR(255)
                 AS
                 BEGIN
@@ -27,7 +27,9 @@ namespace DataAccess.Migrations
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-
+            migrationBuilder.Sql(@"
+                DROP PROCEDURE IF EXISTS GetNhanVienInfo;
+            ");
         }
     }
 }

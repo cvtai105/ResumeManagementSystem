@@ -32,9 +32,11 @@ namespace Application.Controllers
         [HttpPost("nhanvien")]
         public async Task<IActionResult> NhanVienAuthorize([FromBody] LoginRecord loginInfo)
         {
-            if (await _nhanVienBL.IsValidUser(loginInfo))
+            var nhanVien = await _nhanVienBL.IsValidUser(loginInfo);
+
+            if (nhanVien != null)
             {
-                var tokenString = GenerateToken(loginInfo.Email, "nhanvien");
+                var tokenString = GenerateToken(nhanVien.Email, nhanVien.Id, "nhanvien");
 
                 var cookieOptions = new CookieOptions
                 {
@@ -53,10 +55,10 @@ namespace Application.Controllers
         [HttpPost("doanhnghiep")]
         public async Task<IActionResult> DoanhNghiepAuthorize([FromBody] LoginRecord loginInfo)
         {
-            if (await _doanhNghiepBL.IsValidUser(loginInfo))
+            var doanhNghiep = await _doanhNghiepBL.IsValidUser(loginInfo);
+            if (doanhNghiep != null)
             {
-                var doanhNghiep = await _doanhNghiepBL.GetDoanhNghiepByEmail(loginInfo.Email);
-                var tokenString = GenerateToken(loginInfo.Email, "doanhnghiep");
+                var tokenString = GenerateToken(doanhNghiep.Email, doanhNghiep.Id, "doanhnghiep");
 
                 var cookieOptions = new CookieOptions
                 {
@@ -77,9 +79,11 @@ namespace Application.Controllers
         [HttpPost("ungvien")]
         public async Task<IActionResult> UngVienAuthorize([FromBody] LoginRecord loginInfo)
         {
-            if (await _ungVienBL.IsValidUser(loginInfo))
+            var ungVien = await _ungVienBL.IsValidUser(loginInfo);
+            if (ungVien != null)
             {
-                var tokenString = GenerateToken(loginInfo.Email, "ungvien");
+
+                var tokenString = GenerateToken(ungVien.Email,ungVien.Id, "ungvien");
 
                 var cookieOptions = new CookieOptions
                 {
@@ -96,7 +100,7 @@ namespace Application.Controllers
         }
         
 
-        private string GenerateToken(string email, string role)
+        private string GenerateToken(string email, int id, string role)
         {
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.UTF8.GetBytes(_secret);
@@ -106,7 +110,8 @@ namespace Application.Controllers
                 new(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
                 new(JwtRegisteredClaimNames.Email, email),
                 new(JwtRegisteredClaimNames.Sub, email),
-                new(ClaimTypes.Role, role)
+                new(ClaimTypes.Role, role),
+                new(ClaimTypes.NameIdentifier, id.ToString())
             };
 
             var tokenDescriptor = new SecurityTokenDescriptor

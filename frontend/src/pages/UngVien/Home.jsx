@@ -7,18 +7,17 @@ import useFetch from "../../hooks/useFetch";
 const hostApi = process.env.REACT_APP_API_URL;
 
 function Home() {
-    const navigate = useNavigate();
-
+    
     const [totalPages, setTotalPages] = useState(1);
     const [currentPage, setCurrentPage] = useState(1);
-
+    
     const {data, loading, error} = useFetch(`${hostApi}/recruitments?page=${currentPage}`);
+    const navigate = useNavigate();
 
     const jobData = data?.data || [];
 
     useEffect(() => {
         setTotalPages(data?.pageCount || 1);
-        console.log(jobData);
     }
     , [jobData]);
 

@@ -91,5 +91,12 @@ namespace Application.Controllers{
             var hoSoUngTuyenThuocIDUngTuyens = await _dangTuyenBL.GetHoSoUngTuyenThuocIDUngTuyen(id);
             return Ok(hoSoUngTuyenThuocIDUngTuyens);
         }
+        
+        [HttpGet("thongke")]
+        public async Task<ActionResult<IEnumerable<Object>>> getHopDongSapHetHan()
+        {
+            var getHopDongSapHetHan = await _dangTuyenBL.getHopDongSapHetHan();
+            return Ok(getHopDongSapHetHan);
+        }
     }
 }

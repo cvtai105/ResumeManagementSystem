@@ -4,6 +4,7 @@ using Models.Entities;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Models.DTOs;
+using Application.Request;
 
 namespace Application.Controllers
 {
@@ -12,10 +13,11 @@ namespace Application.Controllers
     public class UngTuyenController : ControllerBase
     {
         private readonly UngTuyenBL _ungTuyenBL;
-
-        public UngTuyenController(UngTuyenBL ungTuyenBL)
+        private readonly ILogger<UngTuyenController> _logger;
+        public UngTuyenController(UngTuyenBL ungTuyenBL, ILogger<UngTuyenController> logger)
         {
             _ungTuyenBL = ungTuyenBL;
+            _logger = logger;
         }
 
         [HttpGet("danhsach/{id}")]
@@ -37,6 +39,34 @@ namespace Application.Controllers
                 return BadRequest("Failed to update status");
             }
             return Ok("Status updated successfully");
+        }
+
+        [HttpPost("create")]
+        public async Task<IActionResult> PostUngTuyen([FromForm] UngTuyenRequest data)
+        {
+            _logger.LogError($"Ung tuyen request received, {data.Email}, {data.Name}, {data.Phone}, {data.DangTuyenId}, {data.Cv != null}");
+            if (data.Cv == null || data.Cv.Length == 0)
+            {
+                _logger.LogError("File not selected");
+                return BadRequest("File not selected");
+            }
+
+            var newFileName = Guid.NewGuid().ToString() + data.Cv.FileName;
+
+            var path = Path.Combine(Directory.GetCurrentDirectory(), "StaticFiles/pdfs/CVs", newFileName);
+
+            var ungtuyen = await _ungTuyenBL.UngTuyen(data.Email, data.Name, data.Phone, data.DangTuyenId, newFileName);
+            if (ungtuyen == null)
+            {
+                return BadRequest(new { message = "Ung tuyen existed" });
+            }
+
+            using (var stream = new FileStream(path, FileMode.Create))
+            {
+                await data.Cv.CopyToAsync(stream);
+            }
+
+            return Ok(ungtuyen);
         }
     }
 }

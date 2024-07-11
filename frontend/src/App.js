@@ -19,6 +19,7 @@ import JobDetail from './pages/UngVien/JobDetail';
 import Recruitment from './pages/DoanhNghiep/Recruitment';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import ThongKeHoSoSapHetHan from './pages/NhanVien/ThongKeHoSoSapHetHan';
 
 const routes = createRoutesFromElements(
   <>
@@ -29,10 +30,11 @@ const routes = createRoutesFromElements(
       <Route path="jobs/:id" element={<JobDetail />} />
     </Route>
 
-    <Route path="/nhanvien" element={<><NhanVienLayout /><Footer /></>} >
+    <Route path="/nhanvien" element={<><NhanVienLayout /></>} >
       <Route index element={<XacThucDangKy />} />
       <Route path='xacthuc' element={<XacThucDangKy />} /> 
       <Route path="danhgia" element={<Review/>}/>
+      <Route path="thongkehethan" element={<ThongKeHoSoSapHetHan/>}/>
     </Route>
 
     <Route path="/doanhnghiep" element={ <DoanhNghiepLayout/>}>

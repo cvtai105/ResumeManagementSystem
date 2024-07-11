@@ -5,6 +5,7 @@ import { isNhanVienAuth } from "../fetchServices/Auth/checkAuth";
 import deleteCookie from "../utils/deleteCookie";
 import { useNavigate  } from "react-router-dom";
 import './nav.css';
+import Footer from "../components/Footer";
 
 
 function NhanVienLayout() {
@@ -39,6 +40,7 @@ function NhanVienLayout() {
                                 <NavLink to="" end className={({ isActive }) => isActive ? "navlink text-dodger-blue" : "navlink"} >Trang Chủ</NavLink>
                                 <NavLink to="xacthuc" className={({ isActive }) => isActive ? "navlink text-dodger-blue" : "navlink"} >Xác Thực</NavLink>
                                 <NavLink to="danhgia" className={({ isActive }) => isActive ? "navlink text-dodger-blue" : "navlink"} >Đánh Giá</NavLink>
+                                <NavLink to="thongkehethan" className={({ isActive }) => isActive ? "navlink text-dodger-blue" : "navlink"} >Thống kê hết hạn</NavLink>
                             </div>
                         </div>
                     </div>
@@ -59,9 +61,11 @@ function NhanVienLayout() {
                 </div>
             </div>
         </nav>
-      <main>
+      <main className="min-h-screen">
         <Outlet /> {/* This is where nested routes will be rendered */}
       </main>
+
+      <Footer />
 
       
     </>
