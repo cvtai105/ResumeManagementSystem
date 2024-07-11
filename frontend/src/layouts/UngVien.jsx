@@ -5,6 +5,7 @@ import { isUngVienAuth } from "../fetchServices/Auth/checkAuth";
 import deleteCookie from "../utils/deleteCookie";
 import { useNavigate  } from "react-router-dom";
 import './nav.css';
+import getCookie from "../utils/getCookie";
 
 
 function UngVienLayout() {
@@ -16,7 +17,10 @@ function UngVienLayout() {
       setIsAuth(true);
     }else {
     }
+    console.log('login cookie', getCookie('UngVienAuthToken'));
   }
+
+  
   , [nav]);
 
   function logoutHandle() {
