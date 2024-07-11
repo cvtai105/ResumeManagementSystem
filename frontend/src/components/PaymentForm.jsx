@@ -128,7 +128,7 @@ const PaymentForm = ({
                 <p><strong>Tổng tiền thanh toán:</strong> {totalAmount.toLocaleString()} đồng</p>
               )}
               
-              {formData.paymentMethod === "transfer" ? (
+              {formData.paymentMethod === "Chuyển khoản" ? (
                 <div className="flex flex-col gap-3">
                   <p className="text-3xl font-semibold">Thông Tin Ngân Hàng</p>
                   <p><strong>Ngân hàng:</strong> Vietcombank</p>
