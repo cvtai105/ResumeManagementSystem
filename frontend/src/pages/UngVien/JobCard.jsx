@@ -14,7 +14,7 @@ const JobCard = ({ jobName, company, salaryRange, location, onClick }) => {
             id = "image"
             src={`${hostImgURL}/DoanhNghiep/${company.id}.jpg`} 
             alt="Company Logo" 
-            onError={(e)=>{document.getElementById('image').removeAttribute('onerror'); e.target.src='%PUBLIC_URL%/default.png'}}
+            onError={(e)=>{document.getElementById('image').removeAttribute('onerror'); e.target.src='default.png'}}
             className="company-logo" />
           </div>
           <div className="job-card-right text-inherit">
