@@ -10,6 +10,7 @@ import jwtDecode from '../../utils/jwtDecode';
 import getCookie from '../../utils/getCookie';
 const hostApi = process.env.REACT_APP_API_URL;
 const hostImgURL = process.env.REACT_APP_IMAGE_URL;
+const hostDefaultImg = process.env.REACT_APP_DOMAIN;
 
 
 
@@ -129,7 +130,13 @@ const JobDetail = () => {
                 <div className='job-detail__right'>
                     <div className='job-detail__left-items'>
                         <div className='text-2xl font-semibold flex gap-4'>
-                            <img className='w-20 h-20' src={`${hostImgURL}/DoanhNghiep/${job?.doanhNghiep?.id}.jpg`} alt='logo'  />
+                            <img className='w-20 h-20' src={`${hostImgURL}/DoanhNghiep/${job?.doanhNghiep?.id}.jpg`}
+                                onError={(e) => {
+                                    e.target.onerror = null;
+                                    console.log(`${hostDefaultImg}/companyDefault.jpg`);
+                                    e.target.src = `${hostDefaultImg}/companyDefault.jpg`;
+                                }}
+                                alt='logo'  />
                             {job?.doanhNghiep?.tenDoanhNghiep}
                         </div>
                         <div className='flex flex-col '>

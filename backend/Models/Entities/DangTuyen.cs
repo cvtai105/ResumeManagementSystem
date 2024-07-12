@@ -11,12 +11,11 @@ namespace Models.Entities
         public int? SoLuong { get; set; }
         public string? MoTa { get; set; }
         public int? ThoiGianDangTuyen { get; set; }
-        public string? TrangThai { get; set; }
-        public string? MucLuong { get; set; }
-        public string? ChuyenNganh { get; set; }
+        public string? TrangThai { get; set; } = "Đang chờ kiểm duyệt";
+        public string? MucLuong { get; set; } = "Thỏa thuận";
+        public string? ChuyenNganh { get; set; } = "Không yêu cầu";
         public string? KhuVuc { get; set; }
-
-        public DateTime? NgayDangKy { get; set; }
+        public DateTime? NgayDangKy { get; set; } = DateTime.Now;
         public DateTime? NgayBatDau { get; set; }
         public DateTime? NgayKetThuc { get; set; }
         public int DoanhNghiepId { get; set; }

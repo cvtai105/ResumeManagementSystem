@@ -128,13 +128,13 @@ namespace BusinessLogic
         }
 
         //Tài
-        public Object GetRecruitments(string? keyword = null, int page = 1, string? location = null, string? branch = null)
+        public Object GetRecruitments(string? keyword = null, int page = 1, string? location = null, string? branch = null, bool forJobseeker = false)
         {
             // Define the filter
             Expression<Func<DangTuyen, bool>> filter = r =>
                 (string.IsNullOrEmpty(keyword) || (r.TenViTri != null && r.TenViTri.Contains(keyword)) || (r.MoTa != null && r.MoTa.Contains(keyword))) &&
                 (string.IsNullOrEmpty(location) || r.KhuVuc == location) &&
-                (string.IsNullOrEmpty(branch) || r.ChuyenNganh == branch);
+                (string.IsNullOrEmpty(branch) || r.ChuyenNganh == branch) && (!forJobseeker ||  r.NgayKetThuc > DateTime.Now);
             // Define the ordering (for example, by Id)
             Func<IQueryable<DangTuyen>, IOrderedQueryable<DangTuyen>> orderBy = q => q.OrderByDescending(r => r.Id);
 

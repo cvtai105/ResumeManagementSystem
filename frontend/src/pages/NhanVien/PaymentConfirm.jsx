@@ -17,7 +17,7 @@ const PaymentConfirm = () => {
 
     const fetchDangTuyenData = async () => {
         try {
-            const response = await axios.get(`${hostApi}/recruitments?page=${currentPage}`);
+            const response = await axios.get(`${hostApi}/recruitments?page=${currentPage}&forJobSeeker=false`);
             const { data, pageCount } = response.data;
             const formattedData = data.map(dangTuyen => ({
                 Id: dangTuyen.id,

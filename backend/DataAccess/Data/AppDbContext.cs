@@ -25,7 +25,7 @@ public class AppDbContext(DbContextOptions options) : DbContext(options)
 
         modelBuilder.Entity<UngVien>().HasData(new UngVien{
             Id = 1,
-            HoTen = "Nguyễn Văn A",
+            HoTen = "Nguyễn Văn An",
             Email = "ungvien@email.com",
             MatKhau = "123456",
             DiaChi = "Hà Nội",
@@ -33,25 +33,25 @@ public class AppDbContext(DbContextOptions options) : DbContext(options)
             NgaySinh = new DateTime(1999, 1, 1),
             TrinhDoHocVan = "Đại học FPT",
             TrinhDoChuyenMon = "CNTT",
-            AnhDaiDien = "example.jpg",
+            AnhDaiDien = "1.jpg",
             Cv = "example.jpg"
         },
         new UngVien{
             Id = 2,
-            HoTen = "Nguyễn Văn B",
+            HoTen = "Trần Văn Ba",
             Email = "ungvien2@email.com",
             MatKhau = "123456",
             DiaChi = "Hà Nội",
             SoDienThoai = "0123456789",
-            NgaySinh = new DateTime(1999, 1, 1),
+            NgaySinh = new DateTime(2002, 3, 1),
             TrinhDoHocVan = "Đại học FPT",
             TrinhDoChuyenMon = "CNTT",
-            AnhDaiDien = "example.jpg",
+            AnhDaiDien = "2.jpg",
             Cv = "example.jpg"
         },
         new UngVien{
             Id = 3,
-            HoTen = "Nguyễn Văn C",
+            HoTen = "Hồ Thị Giang",
             Email = "ungvien3@email.com",
             MatKhau = "123456",
             DiaChi = "Hà Nội",
@@ -59,7 +59,7 @@ public class AppDbContext(DbContextOptions options) : DbContext(options)
             NgaySinh = new DateTime(1999, 1, 1),
             TrinhDoHocVan = "Đại học FPT",
             TrinhDoChuyenMon = "CNTT",
-            AnhDaiDien = "example.jpg",
+            AnhDaiDien = "3.jpg",
             Cv = "example.jpg"
         }   
     );
@@ -208,16 +208,16 @@ public class AppDbContext(DbContextOptions options) : DbContext(options)
             },
             new DangTuyen {
                 Id = 4,
-                TenViTri = "Nhân viên kinh doanh",
+                TenViTri = "Lập trình Game Unity Middle",
                 SoLuong = 3,
                 MoTa = """
-                    - Tìm kiếm khách hàng tiềm năng.
+                    - Phát triển ứng dụng web với các Javascript Framework AngularJS hoặc ReactJS kết hợp với API Server.
 
-                    - Tư vấn sản phẩm, dịch vụ cho khách hàng.
+                    - Phát triển thêm tính năng mới hoặc cải tiến tính năng sẵn có trên ứng dụng web theo yêu cầu.
 
-                    - Chăm sóc khách hàng hiện tại.
+                    - Tích hợp các thư viện của Third Party vào ứng dụng web.
 
-                    - Thực hiện các công việc khác theo sự phân công của cấp trên.
+                    - Tối ưu hiệu suất ứng dụng nhằm đảm bảo tính tương thích trên tất cả các thiết bị và trình duyệt khác nhau.
                 """,
                 ThoiGianDangTuyen = 30,
                 TrangThai = "Đang tuyển",
@@ -227,12 +227,12 @@ public class AppDbContext(DbContextOptions options) : DbContext(options)
                 NgayKetThuc = new DateTime(2024, 8, 20),
                 KhuVuc = "Hồ Chi Minh",
                 ChuyenNganh = "Kinh Doanh",
-                DoanhNghiepId = 3,
+                DoanhNghiepId = 1,
                 HinhThucDangTuyenId = 3
             },
             new DangTuyen {
                 Id = 5,
-                TenViTri = "Nhân viên kinh doanh",
+                TenViTri = "Nhân viên Marketting",
                 SoLuong = 3,
                 MoTa = """
                     - Tìm kiếm khách hàng tiềm năng.
@@ -273,7 +273,7 @@ public class AppDbContext(DbContextOptions options) : DbContext(options)
                 NgayDangKy = new DateTime(2024, 7, 1),
                 NgayBatDau = new DateTime(2024, 8, 10),
                 NgayKetThuc = new DateTime(2024, 9, 20),
-                DoanhNghiepId = 3,
+                DoanhNghiepId = 2,
                 KhuVuc = "Hồ Chi Minh",
                 ChuyenNganh = "Kinh Doanh",
                 HinhThucDangTuyenId = 3
@@ -321,7 +321,7 @@ public class AppDbContext(DbContextOptions options) : DbContext(options)
                 NgayDangKy = new DateTime(2024, 7, 1),
                 NgayBatDau = new DateTime(2024, 8, 10),
                 NgayKetThuc = new DateTime(2024, 9, 20),
-                DoanhNghiepId = 3,
+                DoanhNghiepId = 1,
                 KhuVuc = "Hồ Chi Minh",
                 ChuyenNganh = "Kinh Doanh",
                 HinhThucDangTuyenId = 3
@@ -345,7 +345,7 @@ public class AppDbContext(DbContextOptions options) : DbContext(options)
                 NgayDangKy = new DateTime(2024, 7, 1),
                 NgayBatDau = new DateTime(2024, 8, 10),
                 NgayKetThuc = new DateTime(2024, 9, 20),
-                DoanhNghiepId = 3,
+                DoanhNghiepId = 2,
                 KhuVuc = "Hồ Chi Minh",
                 ChuyenNganh = "Kinh Doanh",
                 HinhThucDangTuyenId = 3
@@ -472,7 +472,7 @@ public class AppDbContext(DbContextOptions options) : DbContext(options)
         modelBuilder.Entity<UngTuyen>().HasData(
             new UngTuyen{
                 Id = 1,
-                NgayUngTuyen = new DateTime(2024, 1, 1),
+                NgayUngTuyen = DateTime.Now,
                 DangTuyenId = 1,
                 DanhGia = null,
                 UngVienId = 2,
@@ -480,7 +480,7 @@ public class AppDbContext(DbContextOptions options) : DbContext(options)
             },
             new UngTuyen{
                 Id = 2,
-                NgayUngTuyen = new DateTime(2024, 1, 1),
+                NgayUngTuyen = DateTime.Now,
                 DangTuyenId = 2,
                 DanhGia = null,
                 UngVienId = 2,
@@ -488,7 +488,7 @@ public class AppDbContext(DbContextOptions options) : DbContext(options)
             },
             new UngTuyen{
                 Id = 3,
-                NgayUngTuyen = new DateTime(2024, 1, 1),
+                NgayUngTuyen = DateTime.Now,
                 DangTuyenId = 3,
                 DanhGia = null,
                 UngVienId = 2,
@@ -496,7 +496,7 @@ public class AppDbContext(DbContextOptions options) : DbContext(options)
             },
             new UngTuyen{
                 Id = 4,
-                NgayUngTuyen = new DateTime(2024, 1, 1),
+                NgayUngTuyen = DateTime.Now,
                 DangTuyenId = 4,
                 DanhGia = null,
                 UngVienId = 2,
@@ -504,7 +504,7 @@ public class AppDbContext(DbContextOptions options) : DbContext(options)
             },
             new UngTuyen{
                 Id = 5,
-                NgayUngTuyen = new DateTime(2024, 1, 1),
+                NgayUngTuyen = DateTime.Now,
                 DangTuyenId = 5,
                 DanhGia = null,
                 UngVienId = 2,
@@ -512,7 +512,7 @@ public class AppDbContext(DbContextOptions options) : DbContext(options)
             },
             new UngTuyen{
                 Id = 6,
-                NgayUngTuyen = new DateTime(2024, 1, 1),
+                NgayUngTuyen = DateTime.Now,
                 DangTuyenId = 1,
                 DanhGia = null,
                 UngVienId = 3,
@@ -520,7 +520,7 @@ public class AppDbContext(DbContextOptions options) : DbContext(options)
             },
             new UngTuyen{
                 Id = 7,
-                NgayUngTuyen = new DateTime(2024, 1, 1),
+                NgayUngTuyen = DateTime.Now,
                 DangTuyenId = 2,
                 DanhGia = null,
                 UngVienId = 3,
@@ -528,7 +528,7 @@ public class AppDbContext(DbContextOptions options) : DbContext(options)
             },
             new UngTuyen{
                 Id = 8,
-                NgayUngTuyen = new DateTime(2024, 1, 1),
+                NgayUngTuyen = DateTime.Now,
                 DangTuyenId = 3,
                 DanhGia = null,
                 UngVienId = 3,
@@ -536,14 +536,13 @@ public class AppDbContext(DbContextOptions options) : DbContext(options)
             },
             new UngTuyen{
                 Id = 9,
-                NgayUngTuyen = new DateTime(2024, 1, 1),
+                NgayUngTuyen = DateTime.Now,
                 DangTuyenId = 4,
                 DanhGia = null,
                 UngVienId = 3,
                 NhanVienKiemDuyenId = 1
             }
         );
-
         modelBuilder.Entity<HoSoUngTuyen>().HasData(
             new HoSoUngTuyen{
                 Id = 1,
@@ -610,7 +609,86 @@ public class AppDbContext(DbContextOptions options) : DbContext(options)
             }
         );
 
+        modelBuilder.Entity<ThanhToan>().HasData(
+            new ThanhToan{
+                Id = 1,
+                SoTien = 10000000,
+                HanThanhToan = DateTime.Now,
+                DangTuyenId = 1,
+                DaThanhToan = true,
+                HinhThucThanhToanId = 1
+            },
+            new ThanhToan{
+                Id = 2,
+                SoTien = 5000000,
+                HanThanhToan = DateTime.Now,
+                DangTuyenId = 2,
+                DaThanhToan = true,
+                HinhThucThanhToanId = 1
+            },
+            new ThanhToan{
+                Id = 3,
+                SoTien = 5000000,
+                HanThanhToan = DateTime.Now,
+                DangTuyenId = 3,
+                DaThanhToan = true,
+                HinhThucThanhToanId = 1
+            },
+            new ThanhToan{
+                Id = 4,
+                SoTien = 5000000,
+                HanThanhToan = DateTime.Now,
+                DangTuyenId = 4,
+                DaThanhToan = true,
+                HinhThucThanhToanId = 1
+            },
+            new ThanhToan{
+                Id = 5,
+                SoTien = 5000000,
+                HanThanhToan = DateTime.Now,
+                DangTuyenId = 5,
+                DaThanhToan = true,
+                HinhThucThanhToanId = 1
+            },
+            new ThanhToan{
+                Id = 6,
+                SoTien = 5000000,
+                HanThanhToan = DateTime.Now,
+                DangTuyenId = 6,
+                DaThanhToan = true,
+                HinhThucThanhToanId = 1
+            },
+            new ThanhToan{
+                Id = 7,
+                SoTien = 5000000,
+                HanThanhToan = DateTime.Now,
+                DangTuyenId = 7,
+                DaThanhToan = true,
+                HinhThucThanhToanId = 1
+            },
+            new ThanhToan{
+                Id = 8,
+                SoTien = 5000000,
+                HanThanhToan = DateTime.Now,
+                DangTuyenId = 8,
+                DaThanhToan = true,
+                HinhThucThanhToanId = 1
+            },
+            new ThanhToan{
+                Id = 9,
+                SoTien = 5000000,
+                HanThanhToan = DateTime.Now,
+                DangTuyenId = 9,
+                DaThanhToan = true,
+                HinhThucThanhToanId = 1
+            },
+            new ThanhToan{
+                Id = 10,
+                SoTien = 5000000,
+                HanThanhToan = DateTime.Now,
+                DangTuyenId = 10,
+                DaThanhToan = true,
+                HinhThucThanhToanId = 1
+            });
     }
-
-    
 }

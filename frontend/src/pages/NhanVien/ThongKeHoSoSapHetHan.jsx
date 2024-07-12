@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import React  from 'react';
+import formateDate from '../../utils/formateDate';
 
 const fetchThongKe = async () => {
     const response = await fetch('http://localhost:5231/api/dangkydangtuyen/thongke');
@@ -33,7 +34,7 @@ const ThongKeHoSoSapHetHan = () => {
                             <tr key={index} className="border-b hover:bg-gray-50">
                                 <td className="py-2 px-4 border-r">{item.id}</td>
                                 <td className="py-2 px-4 border-r">{item.tenDoanhNghiep}</td>
-                                <td className="py-2 px-4 border-r">{item.ngayKetThuc}</td>
+                                <td className="py-2 px-4 border-r">{formateDate(item.ngayKetThuc)}</td>
                                 <td className="py-2 px-4 border-r">{item.soLuong}</td>
                                 <td className="py-2 px-4 border-r">{item.viTri}</td>
                             </tr>

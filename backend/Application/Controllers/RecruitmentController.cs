@@ -39,9 +39,9 @@ namespace Application.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetRecruitments(string? keyword = null, int page = 1, string? location = null, string? branch = null)
+        public IActionResult GetRecruitments(string? keyword = null, int page = 1, string? location = null, string? branch = null, bool forJobSeeker = true)
         {
-            return Ok(_dangtuyenBL.GetRecruitments(keyword, page, location, branch));  
+            return Ok(_dangtuyenBL.GetRecruitments(keyword, page, location, branch, forJobSeeker));  
         }
     }
 }

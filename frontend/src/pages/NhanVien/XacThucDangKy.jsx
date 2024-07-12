@@ -174,15 +174,7 @@ const XacThucDangKy = () => {
           </table>
         </div>
       </div>
-      <div className="pagination">
-        <button>&lt;</button>
-        <button>1</button>
-        <button>2</button>
-        <button>...</button>
-        <button>9</button>
-        <button>10</button>
-        <button>&gt;</button>
-      </div>
+   
     </div>
   );
 };

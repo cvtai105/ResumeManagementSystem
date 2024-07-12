@@ -23,7 +23,6 @@
 5. note: ai thay đổi folder Migrations (chạy dòng số 2) nên báo cho mn. mọi người khi pull về chỉ cần chạy dòng lệnh số 4.
 
 
-
 # Entity relationship convention:
 1. khóa chính: id / classnameId
 2. khóa ngoại: <navigation property><navigationtype primarykey> / <referenced entity class name><referenced entity class primary key>

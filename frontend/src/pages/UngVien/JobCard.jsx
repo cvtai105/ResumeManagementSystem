@@ -6,11 +6,17 @@ import getCookie from '../../utils/getCookie';
 const hostImgURL = process.env.REACT_APP_IMAGE_URL;
 
 const JobCard = ({ jobName, company, salaryRange, location, onClick }) => {
-    console.log(`${hostImgURL}/DoanhNghiep/${company.id}.jpg`);
     return (
         <div className="job-card text-inherit" onClick={()=>onClick()}>
           <div className="job-card-left text-inherit">
-            <img src={`${hostImgURL}/DoanhNghiep/${company.id}.jpg`} alt="Company Logo" className="company-logo" />
+            <img 
+            src={`${hostImgURL}/DoanhNghiep/${company.id}.jpg`} 
+            alt="Company Logo" 
+            className="company-logo"
+            onError={(e)=>{
+              e.target.onerror = null;
+              e.target.src = `companyDefault.jpg`;
+            }} />
           </div>
           <div className="job-card-right text-inherit">
             <p className="job-title">{jobName}</p>

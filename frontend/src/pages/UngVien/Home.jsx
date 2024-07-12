@@ -15,6 +15,7 @@ function Home() {
     const navigate = useNavigate();
 
     const jobData = data?.data || [];
+    console.log(jobData);
 
     useEffect(() => {
         setTotalPages(data?.pageCount || 1);
@@ -39,7 +40,8 @@ function Home() {
                 jobName={job.tenViTri}
                 company={job.doanhNghiep}
                 salaryRange={job.mucLuong}
-                location={job.khuVuc}
+                //lấy tỉnh thành, sau dấu phẩy cuối cùng
+                location={job.khuVuc != null ? job.khuVuc : job.doanhNghiep.diaChi.slice(job.doanhNghiep.diaChi.lastIndexOf(",") + 1)}
                 onClick={() => {navigate(`/jobs/${job.id}`)}}
                 />
             ))}

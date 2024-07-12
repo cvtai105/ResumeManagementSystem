@@ -51,13 +51,12 @@ const JobCard = ({ jobName, salaryRange, expiredDate, positionCount ,applicantsC
                     <div key={index} className="grid grid-cols-10 gap-4 p-2 border-b border-gray-200 last:border-0 items-center">
                       <div className="col-span-1">
                         { hasReloadImage && <img
-                            src={`${hostUngVienImgUrl}/default.png`}
-                            alt="Avatar"
+                            src={'default.png'}
                             className="w-12 h-12 rounded-full"
                         />}
                         { !hasReloadImage &&
                             <img
-                            src={`${hostUngVienImgUrl}/${application.avatar}`}
+                            src={`${hostUngVienImgUrl}/${application.ungVien.id}.jpg`}
                             className="w-12 h-12 rounded-full"
                             onError={(e) => {
                                 setHasReloadImage(true);
