@@ -71,7 +71,7 @@ public class DangTuyenDAO(AppDbContext context)
         var result = await query.ToListAsync();
 
         return result.Where(dt => 
-            dt.SoLuong == dt.UngTuyens?.Count || dt.NgayKetThuc <= today && dt.UngTuyens.All(ut => ut.TrangThai != "Đã xử lý - Đạt" && ut.TrangThai != "Đã xử lý - Không đạt")).ToList();
+            dt.SoLuong == dt.UngTuyens?.Count || dt.NgayKetThuc <= today && dt.UngTuyens.All(ut => ut.TrangThai is null || ut.TrangThai != "Đạt" || ut.TrangThai == "Không đạt")).ToList();
     }
     public async Task<IEnumerable<Object>> GetHoSoUngTuyenThuocIDUngTuyen(int id)
     {

@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import PdfViewer from "./PDFViewer"
 import "../index.css";
+import { FaListUl, FaDollarSign, FaCalendarAlt, FaUsers, FaBriefcase, FaEnvelope, FaFileAlt,FaBirthdayCake  } from 'react-icons/fa'; // Ensure you have react-icons installed
+const hostUngVienImgUrl = process.env.REACT_APP_UNGVIENIMAGE_URL;
+const hostCVUrl = process.env.REACT_APP_CV_URL;
 function ListDetailCV({ formData }) {
   let [data, setDangTuyens] = useState([]);
 
@@ -121,11 +123,6 @@ function ListDetailCV({ formData }) {
   return (
     <div className="flex justify-right items-center mt-20 bg-gray-100 ">
       <div id = 'la'></div>
-      {/* {showPdfViewer && (
-        <div className="w-full max-w-4xl mb-6">
-          <PdfViewer fileName={selectedPdf} />
-        </div>
-      )} */}
       <div className="bg-white shadow-lg rounded-lg p-6 w-full max-w-4xl">
         <div className="overflow-x-auto">
           <h4 className="mb-2">DANH SÁCH HỒ SƠ</h4>
@@ -158,12 +155,13 @@ function ListDetailCV({ formData }) {
                     {row.moTa}
                   </td>
                   <td className="px-6  border border-gray-300 text-sm">
-                      {
-                        row.id ? 
-                        <button onClick={() => handleButtonClick(row.fileHoSo)} className='btn-dark py-1 px-2 rounded text-sm'>
-                          Chọn
-                        </button> : ''  
-                      }
+                      
+                        { row.id ? 
+                        <div className="col-span-2 flex items-center justify-center">
+                          <FaFileAlt className="text-gray-500" />
+                          <a href={`${hostCVUrl}/${row.fileHoSo}`} target="_blank" rel="noopener noreferrer" className="ml-2 text-blue-500 hover:underline">CV.pdf</a> 
+                        </div>
+                         : ''}
                       
                     </td>
                 </tr>
