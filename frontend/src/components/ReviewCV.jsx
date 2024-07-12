@@ -1,14 +1,19 @@
 import React, { useState } from "react";
 import ListCriteria from "./ListCriteria";
 import ListDetailCV from "./ListDetailCV";
+import jwtDecode from '../utils/jwtDecode';
+import getCookie from '../utils/getCookie';
 import axios from "axios";
 function ReviewCV({ prevStep, formData }) {
+  const token = getCookie('NhanVienAuthToken');
+  const user = jwtDecode(token);
   const updateApplicationStatus = async (applicationId, newStatus) => {
     try {
       const response = await axios.put(
         `http://localhost:5231/api/ungtuyen/update/${applicationId}`,
         {
           Status: newStatus,
+          EmployeeId: user.nameid
         }
       );
       console.log(response.data);

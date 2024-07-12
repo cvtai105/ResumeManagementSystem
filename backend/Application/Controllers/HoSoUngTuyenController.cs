@@ -1,8 +1,7 @@
 using BusinessLogic;
 using Microsoft.AspNetCore.Mvc;
 using Models.Entities;
-using System.Collections.Generic;
-using System.Threading.Tasks;
+
 
 namespace Application.Controllers
 {
@@ -27,7 +26,6 @@ namespace Application.Controllers
             }
             return Ok(hosoungtuyen);
         }
-
         
     }
 }

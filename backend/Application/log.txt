@@ -3806,3 +3806,14 @@ Error Number:544,State:1,Class:16
    at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
    at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
    at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2024-07-11 20:13:16.213 +07:00 [ERR] Get recruitment by id
+2024-07-11 20:13:16.483 +07:00 [ERR] Get recruitment by id
+2024-07-11 20:14:07.012 +07:00 [ERR] Get recruitment by id
+2024-07-11 20:14:07.046 +07:00 [ERR] Get recruitment by id
+2024-07-11 20:15:22.129 +07:00 [ERR] Get recruitment by id
+2024-07-11 20:15:22.412 +07:00 [ERR] Get recruitment by id
+2024-07-11 20:16:11.682 +07:00 [ERR] Get recruitment by id
+2024-07-11 20:16:11.740 +07:00 [ERR] Get recruitment by id
+2024-07-11 20:16:21.699 +07:00 [ERR] Ung tuyen request received, ungvien@email.com, Nguyễn Văn A, 0123456789, 9, True
+2024-07-11 20:16:25.651 +07:00 [ERR] Get recruitment by id
+2024-07-11 20:16:25.776 +07:00 [ERR] Get recruitment by id

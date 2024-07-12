@@ -27,7 +27,7 @@ public class UngTuyenDAO(AppDbContext context)
     return ungTuyenList;
 }
 
-    public async Task<bool> UpdateStatus(int id, string status)
+    public async Task<bool> UpdateStatus(int id, string status, string EmployeeId)
     {
         var ungTuyen = await _context.UngTuyens.FindAsync(id);
         if (ungTuyen == null)
@@ -35,6 +35,7 @@ public class UngTuyenDAO(AppDbContext context)
             return false;
         }
         ungTuyen.TrangThai = status;
+        ungTuyen.NhanVienKiemDuyenId = int.Parse(EmployeeId);
         await _context.SaveChangesAsync();
         return true;
 }

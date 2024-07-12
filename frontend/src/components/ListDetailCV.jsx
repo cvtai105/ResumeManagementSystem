@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "../index.css";
+import { FaListUl, FaDollarSign, FaCalendarAlt, FaUsers, FaBriefcase, FaEnvelope, FaFileAlt,FaBirthdayCake  } from 'react-icons/fa'; // Ensure you have react-icons installed
+const hostUngVienImgUrl = process.env.REACT_APP_UNGVIENIMAGE_URL;
+const hostCVUrl = process.env.REACT_APP_CV_URL;
 function ListDetailCV({ formData }) {
   let [data, setDangTuyens] = useState([]);
 
@@ -110,8 +113,16 @@ function ListDetailCV({ formData }) {
     }
     return paginationButtons;
   };
+  const [showPdfViewer, setShowPdfViewer] = useState(false);
+  const [selectedPdf, setSelectedPdf] = useState('');
+  const handleButtonClick = (fileName) => {
+    document.getElementById("la").innerText = fileName;
+    setSelectedPdf(fileName);
+    setShowPdfViewer(true);
+  };
   return (
     <div className="flex justify-right items-center mt-20 bg-gray-100 ">
+      <div id = 'la'></div>
       <div className="bg-white shadow-lg rounded-lg p-6 w-full max-w-4xl">
         <div className="overflow-x-auto">
           <h4 className="mb-2">DANH SÁCH HỒ SƠ</h4>
@@ -127,6 +138,8 @@ function ListDetailCV({ formData }) {
                 <th className="bg-grey px-6 py-3 border border-gray-300 text-left text-sm font-medium text-gray-700">
                   Mô tả thêm
                 </th>
+                <th className="bg-grey px-6 py-3 border border-gray-300 text-left text-sm font-medium text-gray-700">
+                </th>
               </tr>
             </thead>
             <tbody>
@@ -141,6 +154,16 @@ function ListDetailCV({ formData }) {
                   <td className="px-6  border border-gray-300 text-sm">
                     {row.moTa}
                   </td>
+                  <td className="px-6  border border-gray-300 text-sm">
+                      
+                        { row.id ? 
+                        <div className="col-span-2 flex items-center justify-center">
+                          <FaFileAlt className="text-gray-500" />
+                          <a href={`${hostCVUrl}/${row.fileHoSo}`} target="_blank" rel="noopener noreferrer" className="ml-2 text-blue-500 hover:underline">CV.pdf</a> 
+                        </div>
+                         : ''}
+                      
+                    </td>
                 </tr>
               ))}
             </tbody>
