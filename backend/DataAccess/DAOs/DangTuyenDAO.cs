@@ -182,7 +182,7 @@ public class DangTuyenDAO(AppDbContext context)
     }
 
     //le
-    public async Task<bool> UpdateNgayBatDau(int id,  DateTime ngayBatDau)
+    public async Task<bool> UpdateNgay(int id,  DateTime ngayBatDau, DateTime ngayKetThuc)
     {
         var dangTuyen = await _context.DangTuyens.FindAsync(id);
         if (dangTuyen == null)
@@ -190,6 +190,11 @@ public class DangTuyenDAO(AppDbContext context)
             return false;
         }
         dangTuyen.NgayBatDau = ngayBatDau;
+        if (dangTuyen.NgayBatDau.HasValue && dangTuyen.ThoiGianDangTuyen.HasValue)
+        {
+            ngayKetThuc = dangTuyen.NgayBatDau.Value.AddDays((double)dangTuyen.ThoiGianDangTuyen);
+        }
+        dangTuyen.NgayKetThuc = ngayKetThuc;
         await _context.SaveChangesAsync();
         return true;
 }

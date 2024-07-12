@@ -24,7 +24,7 @@ const PaymentConfirm = () => {
                 doanhNghiep: dangTuyen.doanhNghiep?.tenDoanhNghiep || 'N/A',
                 SoLuong: dangTuyen.soLuong || 0,
                 TenViTri: dangTuyen.tenViTri || 'N/A',
-                NgayBatDau: dangTuyen.ngayBatDau ? formatDate(dangTuyen.ngayBatDau) : null,
+                // NgayBatDau: dangTuyen.ngayBatDau ? formatDate(dangTuyen.ngayBatDau) : null,
                 ThanhToan: dangTuyen.thanhToan || 0
             }));
 
@@ -68,16 +68,19 @@ const PaymentConfirm = () => {
     };
 
     const handleThanhToanClick = async (id) => {
+        console.log(`Updating payment for ID: ${id}`);
         try {
             const currentDate = new Date();
-
-            await axios.put(`${hostApi}/dangkydangtuyen/update/${id}`, { NgayBatDau: currentDate });
+            const newDate = new Date(currentDate); // Create a copy of the current date
+            newDate.setDate(currentDate.getDate() + 10);
+            await axios.put(`${hostApi}/dangkydangtuyen/update/${id}`, { NgayBatDau: newDate, NgayKetThuc: currentDate });
             await axios.put(`${hostApi}/dangkydangtuyen/update/thanhtoan/${id}`, { DaThanhToan: true });
             fetchDangTuyenData();
         } catch (error) {
             console.error("Error updating payment status:", error);
         }
     };
+    
 
     return (
         <div className="px-44 min-h-screen bg-gray-100 text-center">
@@ -90,7 +93,7 @@ const PaymentConfirm = () => {
                             <th className="px-5 py-2 border border-gray-300 text-left text-sm font-medium text-gray-700 bg-grey">Tên Công Ty</th>
                             <th className="px-5 py-2 border border-gray-300 text-left text-sm font-medium text-gray-700 bg-grey">Số Lượng</th>
                             <th className="px-5 py-2 border border-gray-300 text-left text-sm font-medium text-gray-700 bg-grey">Tên Vị Trí</th>
-                            <th className="px-5 py-2 border border-gray-300 text-left text-sm font-medium text-gray-700 bg-grey">Ngày Bắt Đầu</th>
+                            {/* <th className="px-5 py-2 border border-gray-300 text-left text-sm font-medium text-gray-700 bg-grey">Ngày Bắt Đầu</th> */}
                             <th className="px-5 py-2 border border-gray-300 text-left text-sm font-medium text-gray-700 bg-grey">Trạng Thái Thanh Toán</th>
                             <th className="px-5 py-2 border border-gray-300 text-left text-sm font-medium text-gray-700 bg-grey">Hành Động</th>
                         </tr>
@@ -102,7 +105,7 @@ const PaymentConfirm = () => {
                                 <td className="px-6 border border-gray-300 text-sm">{dangTuyen.doanhNghiep}</td>
                                 <td className="px-6 border border-gray-300 text-sm">{dangTuyen.SoLuong}</td>
                                 <td className="px-6 border border-gray-300 text-sm">{dangTuyen.TenViTri}</td>
-                                <td className="px-6 border border-gray-300 text-sm">{dangTuyen.NgayBatDau || 'N/A'}</td>
+                                {/* <td className="px-6 border border-gray-300 text-sm">{dangTuyen.NgayBatDau || 'N/A'}</td> */}
                                 <td className="px-6 border border-gray-300 text-sm">
                                     {paymentStatuses[dangTuyen.Id] ? 'Đã thanh toán' : 'Chưa thanh toán'}
                                 </td>

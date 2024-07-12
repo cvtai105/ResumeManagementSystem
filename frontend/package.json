@@ -9,6 +9,7 @@
     "@fortawesome/fontawesome-svg-core": "^6.5.2",
     "@fortawesome/free-solid-svg-icons": "^6.5.2",
     "@fortawesome/react-fontawesome": "^0.2.2",
+    "@mui/icons-material": "^5.16.0",
     "@mui/material": "^5.16.0",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
@@ -27,7 +28,8 @@
     "react-select": "^5.8.0",
     "react-toastify": "^10.0.5",
     "toast": "^0.5.4",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "zero-styled": "^0.2.2"
   },
   "scripts": {
     "start": "react-scripts start",

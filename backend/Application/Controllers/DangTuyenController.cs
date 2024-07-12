@@ -37,7 +37,7 @@ namespace Application.Controllers{
                 NgayDangKy = DateTime.UtcNow,
                 NgayBatDau = request.PaymentMethod == "Chuyển khoản" ?  DateTime.UtcNow.AddDays(10) : (DateTime?)null,
                 NgayKetThuc = request.PaymentMethod == "Chuyển khoản" ? DateTime.UtcNow.AddDays(10).AddDays(request.PostingDuration) : (DateTime?)null,
-                TrangThai = "Chờ duyệt",
+                TrangThai = request.PaymentMethod == "Chuyển khoản" ? "Đang tuyển" : "Chờ duyệt",
                 ThanhToans = new List<ThanhToan>
                 {
                     new ThanhToan
@@ -89,9 +89,9 @@ namespace Application.Controllers{
         }
        //le
        [HttpPut("update/{id}")]
-        public async Task<IActionResult> UpdateNgayBatDau(int id, [FromBody] UpdateNgayBatDauDto dto)
+        public async Task<IActionResult> UpdateNgay(int id, [FromBody] UpdateNgayDto dto)
         {
-            var result = await _dangTuyenBL.UpdateNgayBatDau(id, dto.NgayBatDau);
+            var result = await _dangTuyenBL.UpdateNgay(id, dto.NgayBatDau, dto.NgayKetThuc);
             if (result)
             {
                 return Ok(new { message = "NgayBatDau updated successfully" });
