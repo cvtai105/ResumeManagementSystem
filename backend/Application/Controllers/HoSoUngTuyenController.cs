@@ -1,9 +1,7 @@
 using BusinessLogic;
 using Microsoft.AspNetCore.Mvc;
 using Models.Entities;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Cors;
+
 
 namespace Application.Controllers
 {
@@ -27,19 +25,6 @@ namespace Application.Controllers
                 return NotFound();
             }
             return Ok(hosoungtuyen);
-        }
-        [EnableCors("AllowSpecificOrigin")]
-        [HttpGet("{fileName}")]
-        public IActionResult GetPdf(string fileName)
-        {
-            var filePath = Path.Combine(Directory.GetCurrentDirectory(), "StaticFiles", "pdfs", "CVs", fileName);
-            Console.WriteLine($"Đường dẫn file: {filePath}");
-            if (!System.IO.File.Exists(filePath))
-            {
-                return NotFound();
-            }
-            var fileBytes = System.IO.File.ReadAllBytes(filePath);
-            return File(fileBytes, "application/pdf", fileName);
         }
         
     }
