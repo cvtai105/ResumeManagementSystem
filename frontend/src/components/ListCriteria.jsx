@@ -28,109 +28,103 @@ function ListCriteria({ setReview, formData }) {
 
     fetchData();
   }, []);
-
-  // Trình xử lý để thay đổi trạng thái của ô kiểm tra
-  const handleCheckboxChange = (index) => {
-    console.log("Checkbox clicked:", index); // Debugging log
-    setCheckboxes((prevCheckboxes) => {
-      const newCheckboxes = prevCheckboxes.map((checkbox, idx) =>
-        idx === index ? { ...checkbox, checked: !checkbox.checked } : checkbox
-      );
-      console.log("Updated checkboxes:", newCheckboxes); // Debugging log
-      const countChecked = countTrue(newCheckboxes);
-      countChecked == data.length ? setReview(true) : setReview(false);
-      return newCheckboxes;
-    });
-  };
-  function countTrue(checkboxes) {
-    let count = 0;
-    checkboxes.forEach((element) => {
-      if (element.checked) count += 1;
-    });
-    return count;
-  }
+    
+    
+   
+  
+    // Trình xử lý để thay đổi trạng thái của ô kiểm tra
+    const handleCheckboxChange = (index) => {
+      console.log('Checkbox clicked:', index); // Debugging log
+      setCheckboxes((prevCheckboxes) => {
+        const newCheckboxes = prevCheckboxes.map((checkbox, idx) =>
+          idx === index ? { ...checkbox, checked: !checkbox.checked } : checkbox
+        );
+        console.log('Updated checkboxes:', newCheckboxes); // Debugging log
+        const countChecked = countTrue(newCheckboxes);
+        countChecked == data.length ? setReview(true) : setReview(false) 
+        document.getElementById("test").innerText = countTrue(newCheckboxes);
+        return newCheckboxes;
+      });
+    };
+    function countTrue(checkboxes) {
+      let count = 0
+      checkboxes.forEach(element => {
+          if(element.checked) count += 1;
+      }); 
+      return count;
+    }
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 5;
 
-  // Tính toán số trang
-  const totalPages = Math.ceil(data.length / itemsPerPage);
+    // Tính toán số trang
+    const totalPages = Math.ceil(data.length / itemsPerPage);
+  
+    // Lọc dữ liệu cho trang hiện tại
+    const currentData = data.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
+  
+    // Hàm chuyển trang
+    const handlePageChange = (page) => {
+      setCurrentPage(page);
+    };
+  
+    // Thêm các hàng trống nếu cần thiết
+    const emptyRows = itemsPerPage - currentData.length;
+    const rows = [...currentData, ...Array(emptyRows).fill({})];
+  
+    // Hàm để hiển thị các nút pagination với dấu ...
+    const renderPaginationButtons = () => {
+      const paginationButtons = [];
+      if (totalPages <= 3) {
+        for (let i = 1; i <= totalPages; i++) {
+          paginationButtons.push(
+            <button
+              key={i}
+              className={`px-3 py-1 bg-blue-100 text-blue-600 rounded border border-blue-600 text-sm ${currentPage === i ? 'btn-dark' : ''}`}
+              onClick={() => handlePageChange(i)}
+            >
+              {i}
+            </button>
+          );
+        }
+      } else {
+        
+          paginationButtons.push(
+            <button
+              key={1}
+              className={`px-3 py-1 bg-blue-100 text-blue-600 rounded border border-blue-600 text-sm ${currentPage === 1 ? 'btn-dark' : ''}`}
+              onClick={() => handlePageChange(1)}
+            >
+              1
+            </button>
+          );
+          if (currentPage > 2 ) paginationButtons.push(<span>...</span>);
+  
+          if(currentPage > 1 && currentPage < totalPages){
 
-  // Lọc dữ liệu cho trang hiện tại
-  const currentData = data.slice(
-    (currentPage - 1) * itemsPerPage,
-    currentPage * itemsPerPage
-  );
-
-  // Hàm chuyển trang
-  const handlePageChange = (page) => {
-    setCurrentPage(page);
-  };
-
-  // Thêm các hàng trống nếu cần thiết
-  const emptyRows = itemsPerPage - currentData.length;
-  const rows = [...currentData, ...Array(emptyRows).fill({})];
-
-  // Hàm để hiển thị các nút pagination với dấu ...
-  const renderPaginationButtons = () => {
-    const paginationButtons = [];
-    if (totalPages <= 3) {
-      for (let i = 1; i <= totalPages; i++) {
-        paginationButtons.push(
-          <button
-            key={i}
-            className={`px-3 py-1 bg-blue-100 text-blue-600 rounded border border-blue-600 text-sm ${
-              currentPage === i ? "btn-dark" : ""
-            }`}
-            onClick={() => handlePageChange(i)}
-          >
-            {i}
-          </button>
-        );
+            paginationButtons.push(
+              <button
+                key={currentPage}
+                className={"px-3 py-1 bg-blue-100 text-blue-600 rounded border border-blue-600 btn-dark text-sm "}
+                onClick={() => handlePageChange(currentPage)}
+              >
+                {currentPage}
+              </button>
+            );
+          }
+          if (currentPage < totalPages - 1) paginationButtons.push(<span>...</span>);
+          
+          paginationButtons.push(
+            <button
+              key={totalPages}
+              className={`px-3 py-1 bg-blue-100 text-blue-600 rounded border border-blue-600 text-sm ${currentPage === totalPages ? 'btn-dark' : ''}`}
+              onClick={() => handlePageChange(totalPages)}
+            >
+              {totalPages}
+            </button>
+          );
       }
-    } else {
-      paginationButtons.push(
-        <button
-          key={1}
-          className={`px-3 py-1 bg-blue-100 text-blue-600 rounded border border-blue-600 text-sm ${
-            currentPage === 1 ? "btn-dark" : ""
-          }`}
-          onClick={() => handlePageChange(1)}
-        >
-          1
-        </button>
-      );
-      if (currentPage > 2) paginationButtons.push(<span>...</span>);
-
-      if (currentPage > 1 && currentPage < totalPages) {
-        paginationButtons.push(
-          <button
-            key={currentPage}
-            className={
-              "px-3 py-1 bg-blue-100 text-blue-600 rounded border border-blue-600 btn-dark text-sm "
-            }
-            onClick={() => handlePageChange(currentPage)}
-          >
-            {currentPage}
-          </button>
-        );
-      }
-      if (currentPage < totalPages - 1)
-        paginationButtons.push(<span>...</span>);
-
-      paginationButtons.push(
-        <button
-          key={totalPages}
-          className={`px-3 py-1 bg-blue-100 text-blue-600 rounded border border-blue-600 text-sm ${
-            currentPage === totalPages ? "btn-dark" : ""
-          }`}
-          onClick={() => handlePageChange(totalPages)}
-        >
-          {totalPages}
-        </button>
-      );
-    }
-    return paginationButtons;
-  };
+      return paginationButtons;
+    };
   return (
     <div className="flex justify-center items-center mt-20 bg-gray-100">
       <div className="bg-white shadow-lg rounded-lg p-6 w-full max-w-4xl">

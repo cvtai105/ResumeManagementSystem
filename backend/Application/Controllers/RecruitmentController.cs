@@ -43,6 +43,5 @@ namespace Application.Controllers
         {
             return Ok(_dangtuyenBL.GetRecruitments(keyword, page, location, branch));  
         }
-        
     }
 }

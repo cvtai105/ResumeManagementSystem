@@ -40,6 +40,8 @@ function NhanVienLayout() {
                                 <NavLink to="" end className={({ isActive }) => isActive ? "navlink text-dodger-blue" : "navlink"} >Trang Chủ</NavLink>
                                 <NavLink to="xacthuc" className={({ isActive }) => isActive ? "navlink text-dodger-blue" : "navlink"} >Xác Thực</NavLink>
                                 <NavLink to="danhgia" className={({ isActive }) => isActive ? "navlink text-dodger-blue" : "navlink"} >Đánh Giá</NavLink>
+                                <NavLink to="xac-thuc-thanh-toan" className={({ isActive }) => isActive ? "navlink text-dodger-blue" : "navlink"} >Đăng tuyển</NavLink>
+        
                                 <NavLink to="thongkehethan" className={({ isActive }) => isActive ? "navlink text-dodger-blue" : "navlink"} >Thống kê hết hạn</NavLink>
                             </div>
                         </div>

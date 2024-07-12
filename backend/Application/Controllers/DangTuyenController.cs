@@ -5,6 +5,7 @@ using Models.RequestModel;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using System;
+using Models.DTOs;
 
 namespace Application.Controllers{
     [Route("api/dangkydangtuyen")]
@@ -85,6 +86,76 @@ namespace Application.Controllers{
         {
             var hoSoUngTuyenThuocIDUngTuyens = await _dangTuyenBL.GetHoSoUngTuyenThuocIDUngTuyen(id);
             return Ok(hoSoUngTuyenThuocIDUngTuyens);
+        }
+       //le
+       [HttpPut("update/{id}")]
+        public async Task<IActionResult> UpdateNgayBatDau(int id, [FromBody] UpdateNgayBatDauDto dto)
+        {
+            var result = await _dangTuyenBL.UpdateNgayBatDau(id, dto.NgayBatDau);
+            if (result)
+            {
+                return Ok(new { message = "NgayBatDau updated successfully" });
+            }
+            else
+            {
+                return BadRequest(new { message = "Failed to update NgayBatDau" });
+            }
+        }
+        //le
+        [HttpPut("update/thanhtoan/{id}")]
+        public async Task<IActionResult> UpdatePaymentStatus(int id, [FromBody] UpdatePaymentStatusDto dto)
+        {
+            var result = await _dangTuyenBL.UpdatePaymentStatus(id, dto.DaThanhToan);
+            if (result)
+            {
+                return Ok(new { message = "DaThanhToan updated successfully" });
+            }
+            else
+            {
+                return BadRequest(new { message = "Failed to update DaThanhToan" });
+            }
+        }
+        //le
+         [HttpGet("paid-amount/{id}")]
+        public async Task<ActionResult<decimal>> GetPaidAmount(int id)
+        {
+            try
+            {
+                var paidAmount = await _dangTuyenBL.GetTotalPaidAmount(id);
+                return Ok(paidAmount);
+            }
+            catch (Exception ex)
+            {
+                // Log the exception (not shown here)
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
+        }
+          //le
+        [HttpGet("payment/{id}")]
+        public async Task<ActionResult<decimal>> GetPaymentAmount(int id)
+        {
+            try
+            {
+                var paidAmount = await _dangTuyenBL.GetPaymentAmount(id);
+                return Ok(paidAmount);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
+        }
+        [HttpGet("paymentstatus/{id}")]
+        public async Task<ActionResult<decimal>> GetPaymentStatus(int id)
+        {
+            try
+            {
+                var status = await _dangTuyenBL.GetPaymentStatus(id);
+                return Ok(status);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
         }
         
         [HttpGet("thongke")]

@@ -15,4 +15,13 @@ namespace Models.DTOs
     {
         public string Status { get; set; } = String.Empty;
     }
+    public class UpdateNgayDto
+    {
+        public DateTime NgayBatDau { get; set; }
+        public DateTime NgayKetThuc {get; set;}
+    }
+       public class UpdatePaymentStatusDto
+    {
+        public bool DaThanhToan { get; set; } }
+
 }

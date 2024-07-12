@@ -13,6 +13,7 @@ import DoanhNghiepLogin from './pages/DoanhNghiep/Login';
 import DangKyThongTinDangTuyen from './pages/DoanhNghiep/DangKyThongTinDangTuyen';
 import { createBrowserRouter } from 'react-router-dom';
 import Review from './pages/NhanVien/Review';
+import PaymentConfirm from './pages/NhanVien/PaymentConfirm';
 import XacThucDangKy from './pages/NhanVien/XacThucDangKy';
 import DangKyThanhVienDoanhNghiep from './pages/DoanhNghiep/DangKyThanhVienDoanhNghiep'
 import JobDetail from './pages/UngVien/JobDetail';
@@ -34,6 +35,7 @@ const routes = createRoutesFromElements(
       <Route index element={<XacThucDangKy />} />
       <Route path='xacthuc' element={<XacThucDangKy />} /> 
       <Route path="danhgia" element={<Review/>}/>
+      <Route path="xac-thuc-thanh-toan" element={<PaymentConfirm/>}/>
       <Route path="thongkehethan" element={<ThongKeHoSoSapHetHan/>}/>
     </Route>
 
