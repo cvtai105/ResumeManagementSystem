@@ -134,7 +134,7 @@ namespace BusinessLogic
             Expression<Func<DangTuyen, bool>> filter = r =>
                 (string.IsNullOrEmpty(keyword) || (r.TenViTri != null && r.TenViTri.Contains(keyword)) || (r.MoTa != null && r.MoTa.Contains(keyword))) &&
                 (string.IsNullOrEmpty(location) || r.KhuVuc == location) &&
-                (string.IsNullOrEmpty(branch) || r.ChuyenNganh == branch) && r.NgayKetThuc >= DateTime.Now;
+                (string.IsNullOrEmpty(branch) || r.ChuyenNganh == branch);
             // Define the ordering (for example, by Id)
             Func<IQueryable<DangTuyen>, IOrderedQueryable<DangTuyen>> orderBy = q => q.OrderByDescending(r => r.Id);
 
